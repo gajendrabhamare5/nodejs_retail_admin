@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+    <title>Brand | title</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description"
+        content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon" href="<?php echo $fav_icon ?>">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="/assets/fonts/ionicons.css">
+    <link rel="stylesheet" href="/assets/fonts/linearicons.css">
+    <link rel="stylesheet" href="/assets/fonts/open-iconic.css">
+    <link rel="stylesheet" href="/assets/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-material.css">
+    <link rel="stylesheet" href="/assets/css/shreerang-material.css">
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="/assets/assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/libs/flot/flot.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="/assets/libs/datatables/datatables.css">
+    <link rel="stylesheet" href="/assets/libs/dropzone/dropzone.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="/assets/libs/select2/select2.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/assets/libs/growl/growl.css">
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+            <!-- [ Layout sidenav ] Start -->
+            {{>sidebar}}
+            <!-- [ Layout sidenav ] End -->
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                <!-- [ Layout navbar ( Header ) ] Start -->
+                {{>header}}
+                <!-- [ Layout navbar ( Header ) ] End -->
+
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Add Brand</h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/index"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item ">Brand</li>
+                                <li class="breadcrumb-item active">Add Brand</li>
+                            </ol>
+                        </div>
+
+                        <div class="card mb-4 col-md-12" style="float:left;margin-right:40px;">
+                            <h6 class="card-header">Add New Brand</h6>
+                            <div id="accordion2">
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="d-flex justify-content-between text-dark collapsed"
+                                            data-toggle="collapse" aria-expanded="false" href="#accordion2-1">ADD <div
+                                                class="collapse-icon"></div></a>
+                                    </div>
+
+                                    <div id="accordion2-1" class="collapse" data-parent="#accordion2" style="">
+                                        <div class="card-body">
+                                            <form action="/brand_add" method="post" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label class="form-label">Brand Name</label>
+                                                <input type="text" class="form-control" name="brand_name" id="brand_name" autofocus>
+                                                <small class="form-text text-muted" id="error"
+                                                    style="display:none;color:red !important;"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Select Image</label>
+                                                <input type="file" name="image_file" accept="image/*"
+                                                    class="form-control" onchange="readURL(this);" id="image_file">
+                                                <img id="blah" src="http://placehold.it/150"
+                                                    style="max-width:150px;max-height:150px;margin: auto;border: 3px solid #73AD21;padding: 10px;">
+                                            </div>
+                                            <script>
+                                                function readURL(input) {
+                                                    if (input.files && input.files[0]) {
+                                                        var reader = new FileReader();
+
+                                                        reader.onload = function (e) {
+                                                            $('#blah')
+                                                                .attr('src', e.target.result);
+                                                        };
+
+                                                        reader.readAsDataURL(input.files[0]);
+                                                    }
+                                                }
+                                            </script>
+                                            <div class="form-group">
+                                                <label class="form-label">Meta Title</label>
+                                                <input type="text" class="form-control" name="brand_title" id="brand_title">
+                                                <small class="form-text text-muted" id="error"
+                                                    style="display:none;color:red !important;"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Meta Keyword</label>
+                                                <input type="text" class="form-control" name="brand_keyword" id="brand_keyword">
+                                                <small class="form-text text-muted" id="error"
+                                                    style="display:none;color:red !important;"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Meta Description</label>
+                                                <input type="text" class="form-control" name="brand_description" id="brand_description">
+                                                <small class="form-text text-muted" id="error"
+                                                    style="display:none;color:red !important;"></small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Other Details</label>
+                                                <textarea name="content" id="editor1"></textarea>
+                                                <small class="form-text text-muted" id="error"
+                                                    style="display:none;color:red !important;"></small>
+                                            </div>
+
+                                            <button type="submit" id="add_cat" class="btn btn-primary">Add</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="card col-md-12">
+                            <div>
+                                <button type="button" onclick="delete_brand()"
+                                    class="btn btn-danger icon-btn borderless">Delete</button>
+                            </div>
+                            <div class="card-datatable table-responsive">
+                                <table id="user-list" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Sr. No.</th>
+                                            <th>Image</th>
+                                            <th>Brand Name</th>
+                                            <th>Meta Title</th>
+                                            <th>Meta Keyword</th>
+                                            <th>Meta Description</th>
+                                            <th>Top Brands</th>
+                                            <th>Hidden</th>
+                                            <th>Other Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+										{{#each brand_master}}
+										<tr>
+											<td>{{{this.checkbox}}}</td>
+											<td>{{{this.edit}}}</td>
+                                            <td>{{{this.hide}}}</td>
+											<td>{{this.no}}</td>
+											<td>{{{this.image}}}</td>
+											<td>{{this.name}}</td>
+											{{!-- <td>{{this.cat_seo_url}}</td> --}}
+											{{!-- <td>{{this.cat_mob_no}}</td> --}}
+											<td>{{this.meta_title}}</td>
+											<td>{{this.meta_keyword}}</td>
+											<td>{{this.meta_description}}</td>
+                                            <td></td>
+                                            <td>{{this.brand_hide}}</td>
+
+											<td>{{{this.brand_description}}}</td>
+										</tr>
+										{{/each}}
+									</tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                   {{>footer}}
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper] End -->
+
+    <!-- Core scripts -->
+    <script src="/assets/js/pace.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+    <script src="/assets/libs/popper/popper.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <script src="/assets/js/sidenav.js"></script>
+    <script src="/assets/js/layout-helpers.js"></script>
+    <script src="/assets/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="/assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/libs/eve/eve.js"></script>
+    <script src="/assets/libs/flot/flot.js"></script>
+    <script src="/assets/libs/flot/curvedLines.js"></script>
+    <script src="/assets/libs/chart-am4/core.js"></script>
+    <script src="/assets/libs/chart-am4/charts.js"></script>
+    <script src="/assets/libs/chart-am4/animated.js"></script>
+    <script src="/assets/libs/raphael/raphael.js"></script>
+    <script src="/assets/libs/morris/morris.js"></script>
+    <script src="/assets/libs/moment/moment.js"></script>
+    <script src="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="/assets/libs/datatables/datatables.js"></script>
+    <script src="/assets/libs/dropzone/dropzone.js"></script>
+    <script src="/assets/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="/assets/libs/select2/select2.js"></script>
+    <script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+
+    <!-- Demo -->
+    {{!-- <script src="/assets/js/demo.js"></script> --}}
+    <script src="/assets/js/analytics.js"></script>
+    <script src="/assets/js/pages/forms_selects.js"></script>
+    <script>
+
+
+
+
+
+        function select_all() {
+            var items = document.getElementsByName('delete_checkbox');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].type == 'checkbox')
+                    items[i].checked = true;
+            }
+
+            //$('input[name="delete_checkbox"]').attr('checked', true);
+
+        }
+
+
+        function unselect_all() {
+            var items = document.getElementsByName('delete_checkbox');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].type == 'checkbox')
+                    items[i].checked = false;
+            }
+            //$('input[name="delete_checkbox"]').attr('checked', false);
+
+        }
+    </script>
+
+
+
+    <script>
+
+        CKEDITOR.replace('editor1',{enterMode:CKEDITOR.ENTER_BR});
+
+        function chkapp(brand_id) {
+            var appview = "";
+            if ($("#chk" + brand_id).prop('checked') == true) {
+                appview = 1;
+            }
+            else {
+                appview = 0
+            }
+            var form_data = new FormData();
+            form_data.append('brand_id', brand_id);
+            form_data.append('appview', appview);
+            $.ajax({
+
+                type: "POST",
+                data: form_data,
+                dataType: 'text',
+                contentType: false,
+                cache: false,
+                processData: false,
+                url: "ajaxfiles/brand_appview_process.php",
+                success: function (response) {
+                    if (response == "ok") {
+                        location.reload();
+                    }
+                }
+
+            });
+        }
+     /*   $(function () {
+
+            $('#user-list').dataTable({
+                "dom": 'lfrtip',
+                "buttons": [{
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: [2, 3, 4, 5, 6, 7]
+                    }
+                },
+                {
+                    extend: 'csv',
+                    exportOptions: {
+                        columns: [2, 3, 4, 5, 6, 7]
+                    }
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [2, 3, 4, 5, 6, 7]
+                    }
+                }
+                ],
+                "aLengthMenu": [
+                    [10, 25, 50, 100, -1],
+                    [10, 25, 50, 100, "All"]
+                ],
+                "iDisplayLength": 10,
+                "bProcessing": true,
+                "sAjaxSource": "datatables/view_brands.php",
+                "aoColumns": [
+                    { mData: 'checkbox' },
+                    { mData: 'edit' },
+                    { mData: 'hide' },
+                    { mData: 'no' },
+                    { mData: 'image' },
+                    { mData: 'name' },
+                    { mData: 'title' },
+                    { mData: 'keyword' },
+                    { mData: 'description' },
+                    { mData: 'view_app' },
+                    { mData: 'hidden' },
+                    { mData: 'other_details' }
+                ],
+
+            });
+        }); */
+    </script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+    <script src="/assets/libs/growl/growl.js"></script>
+
+    <script>
+
+
+        function hide_brand(hide_id) {
+
+            if (confirm('Are You Sure You Want To Hide?')) {
+
+                location.href = "brand_hide/" + hide_id;
+
+            }
+
+        }
+
+        function delete_brand() {
+            var delete_id = [];
+            $.each($("input[name='delete_checkbox']:checked"), function () {
+                delete_id.push($(this).val());
+            });
+            //alert("Id to Delete are: " + delete_id.join(", "));
+            if (delete_id == "") {
+                alert("Please Select a Brand to Delete");
+            } else {
+
+                if (confirm('Are You Sure You Want To Delete?')) {
+                    $.ajax({
+                        type: "get",
+                        url: "brand_delete/" + delete_id,
+                        success: function (response) {
+                            if(response == "error"){
+									alert("You cannot delete brand ");
+								}else if(response == "ok"){
+									location.reload();
+								}
+
+                        }
+                    });
+                    //alert(delete_id);
+
+                }
+
+            }
+        }
+    </script>
+
+</body>
+
+
+</html>

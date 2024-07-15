@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+    <title>Catalog |title </title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description"
+        content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon" href="">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.css">
+    <link rel="stylesheet" href="assets/fonts/linearicons.css">
+    <link rel="stylesheet" href="assets/fonts/open-iconic.css">
+    <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="assets/css/bootstrap-material.css">
+    <link rel="stylesheet" href="assets/css/shreerang-material.css">
+    <link rel="stylesheet" href="assets/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/libs/flot/flot.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.css">
+    <link rel="stylesheet" href="assets/libs/dropzone/dropzone.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="assets/libs/select2/select2.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+            <!-- [ Layout sidenav ] Start -->
+            {{>sidebar}}
+            <!-- [ Layout sidenav ] End -->
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                <!-- [ Layout navbar ( Header ) ] Start -->
+                {{>header}}
+                <!-- [ Layout navbar ( Header ) ] End -->
+
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">View Catalog</h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/index"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item ">Catalog</li>
+                                <li class="breadcrumb-item active">View Catalog</li>
+                            </ol>
+                        </div>
+
+                        <div class="card mb-4 col-md-6" style="float:left;margin-right:40px;display:none;">
+                            <div class="card-header">
+                                <div class="col-md-6" style="float:left;">
+                                    <form action="export_product_date.php?msg=e" method="POST">
+                                        <div class="form-group">
+                                            <label class="form-label">From Date:</label>
+                                            <input type="date" class="form-control" name="date_from">
+                                            <label class="form-label">To Date:</label>
+                                            <input type="date" class="form-control" name="date_to">
+                                        </div>
+                                        <input type="submit" class="btn btn-primary" value="Export By Date">
+                                    </form>
+                                </div>
+                                <div class="col-md-6" style="float:right;">
+                                    <form action="export_product_catagory.php?msg=e" method="POST">
+                                        <div class="form-group">
+                                            <label class="form-label">Select Catalog:</label>
+                                            <select name="catalog_go" class="select2-demo form-control">
+                                                <option value="">Select Catalog</option>
+                                                <?php
+					 											$q3=$conn->query("select catalog_id,catalog_name from `catalog_master`");
+					 											foreach($q3 as $ij)
+					 											{
+					 										?>
+                                                <option value="<?php echo $ij['catalog_id'];?>">
+                                                    <?php echo $ij['catalog_name'];?>
+                                                </option>
+                                                <?php
+					 											}
+					 										?>
+                                            </select>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary" value="Export By Catalog">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 col-md-12" style="float:left;margin-right:40px;">
+                            <div>
+                                <button type="button" onclick="delete_product()"
+                                    class="btn btn-danger icon-btn borderless">Delete</button>
+                                {{!-- <button type="button" onclick="export_selected()"
+                                    class="btn btn-success icon-btn borderless">Export Selected</button> --}}
+                                <button type="button" onclick="select_all()"
+                                    class="btn btn-success icon-btn borderless">Select All</button>
+                                <button type="button" onclick="unselect_all()"
+                                    class="btn btn-success icon-btn borderless">Unselect All</button>
+                                <button type="button" onclick="out_of_stock()"
+                                    class="btn btn-danger icon-btn borderless">Out Of Stock</button>
+                                <div class="col-md-3" style="display:contents;">
+
+                                    {{!-- <div style="float: right;width: 15%;">
+                                        <select class="select2-demo form-control" style="width:20%;" id="selected_cat"
+                                            name="selected_cat[]">
+                                            <?php
+                                 $sql1 = $conn->query("select * from category_master where category_delete='0' AND type_id!=15 and category_hide=0");
+                                 while ($fetch1 = mysqli_fetch_assoc($sql1)) {
+                                 ?>
+                                            <option value="<?php echo $fetch1['category_id']; ?>">
+                                                <?php echo $fetch1['category_name']; ?>
+                                            </option>
+                                            <?php }
+                                 ?>
+                                        </select>
+                                    </div> --}}
+                                    {{!-- <div style="float: right;">
+                                        <button type="button" onclick="export_category_wise()"
+                                            class="btn btn-success icon-btn borderless">Export </button>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="card-datatable table-responsive">
+                                <table id="user-list" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Image</th>
+                                            <th>Author</th>
+                                            <!-- <th>Sub</th>
+                                            <th>Brand Name</th>-->
+                                            <th>Catalog Name</th>
+                                            <th>Stock Status</th>
+                                            <th>Stock</th>
+
+                                            <th>Disable Date</th>
+                                            <th>Price</th>
+                                            <th>PCS</th>
+                                            <th>SKU</th>
+                                            <th>Category</th>
+                                            <th>Subcategory</th>
+                                            <th>Notes</th>
+                                            <th>Upload Date</th>
+                                            <th>Push to top Date</th>
+
+                                            <!-- <th>Meta Title</th>
+                                            <th>Meta Keyword</th>
+                                            <th>Meta Description</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each view_product}}
+
+                                        <tr>
+                                            <td><input type="checkbox" id="delete_checkbox" name="delete_checkbox"
+                                                    value="{{this.product_id}}"></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info dropdown-toggle"
+                                                        data-toggle="dropdown">Edit</button>
+
+                                                    <div class="dropdown-menu">
+
+                                                        <a class="dropdown-item"
+                                                            href="/product_edit/{{this.product_id}}">Edit</a>
+
+                                                        <a class="dropdown-item" href="javascript:void(0);"
+                                                            data-target="#modals-editproduct" data-toggle="modal"
+                                                            onclick="editdetail('{{this.product_id}}')">Quik Edit</a>
+
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                            <td><img src="{{this.image}}" alt="image"
+                                                    style="max-height:50px;max-width:50px;"></td>
+                                            {{!-- <td><a
+                                                    href="product_sub_images.php?id=' . $product_id . '&type=catalog"><button
+                                                        type="button" style="line-height:2;"
+                                                        class="btn btn-warning icon-btn borderless"><span
+                                                            class="ion ion-md-image"></span></button></a></td> --}}
+                                            {{!-- <td>{{{this.image}}}</td> --}}
+                                            <td>{{this.username}}</td>
+                                            <td>{{this.name}}</td>
+                                            <td>{{this.product_status}}</td>
+                                            <td>
+                                                {{#if (lte this.stock 3 )}}
+                                                <span id="{{this.product_id}}"><button
+                                                        class='btn btn-round btn-outline-danger'>{{this.stock}}</button></span>
+                                                {{else}}
+                                                <span id="{{this.product_id}}"><button
+                                                        class='btn btn-round btn-outline-success'>{{this.stock}}</button></span>
+                                                {{/if}}
+                                                {{!-- {{this.stock}} --}}
+
+                                            </td>
+                                            <td>{{this.disable_date}}</td>
+                                            <td>{{this.price}}</td>
+                                            <td>{{this.pcs}}</td>
+                                            <td>{{{this.sku}}}</td>
+                                            <td>{{{this.category}}}</td>
+                                            <td>{{{this.subcategory}}}</td>
+                                            <td>{{{this.note}}}</td>
+                                            <td>{{{this.date}}}</td>
+                                            <td>{{{this.pushdate}}}</td>
+                                            <input type="hidden" value="{{this.product_id}}">
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                    {{>footer}}
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper] End -->
+
+    <!-- Core scripts -->
+    <script src="assets/js/pace.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+    <script src="assets/libs/popper/popper.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/sidenav.js"></script>
+    <script src="assets/js/layout-helpers.js"></script>
+    <script src="assets/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/libs/eve/eve.js"></script>
+    <script src="assets/libs/flot/flot.js"></script>
+    <script src="assets/libs/flot/curvedLines.js"></script>
+    <script src="assets/libs/chart-am4/core.js"></script>
+    <script src="assets/libs/chart-am4/charts.js"></script>
+    <script src="assets/libs/chart-am4/animated.js"></script>
+    <script src="assets/libs/raphael/raphael.js"></script>
+    <script src="assets/libs/morris/morris.js"></script>
+    <script src="assets/libs/moment/moment.js"></script>
+    <script src="assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="assets/libs/datatables/datatables.js"></script>
+    <script src="assets/libs/dropzone/dropzone.js"></script>
+    <script src="assets/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="assets/libs/select2/select2.js"></script>
+    <script src="assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+
+    <!-- Demo -->
+    <script src="assets/js/demo.js"></script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/pages/forms_selects.js"></script>
+    <script>
+        function select_all() {
+            var items = document.getElementsByName('delete_checkbox');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].type == 'checkbox')
+                    items[i].checked = true;
+            }
+            //$('input[name="delete_checkbox"]').attr('checked', true);
+        }
+        function unselect_all() {
+            var items = document.getElementsByName('delete_checkbox');
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].type == 'checkbox')
+                    items[i].checked = false;
+            }
+            //$('input[name="delete_checkbox"]').attr('checked', false);
+
+        }
+
+        function out_of_stock() {
+            var export_id = [];
+            console.log("export_id", export_id);
+            $.each($("input[name='delete_checkbox']:checked"), function () {
+                export_id.push($(this).val());
+            });
+
+            if (export_id == "") {
+                alert("Please Select a Catalog To Make it Out Of Stock");
+            } else {
+                if (confirm('Are You Sure You Want To Make it Out Of Stock?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/out_of_stock_process/" + export_id,
+                        success: function (response) {
+                            if (response == "ok") {
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function popover() {
+            $('[data-toggle="popover"]').popover();
+        }
+    </script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+
+<script id="sizeOptionTemplate" type="text/x-handlebars-template">
+    {{#each size}}
+        <option value="{{this._id}}">{{this.size_name}}</option>
+    {{/each}}
+</script>
+    <script>
+
+        function editdetail(product_id) {
+
+            $("#product_detail").html('<div class="form-group"><label class="form-label col-md-12"> <i class="fas fa-sync fa-spin" style="font-size: 20px;"></i></label></div>');
+            $.ajax({
+                type: "POST",
+                data: { product_id: product_id },
+                url: "/product_edit_detail_fetch/" + product_id,
+                success: function (response) {
+                    /* console.log(response)     */
+                    const productType = response.sql_product.product_type;
+
+                    const checkboxVisibility = response.sql_size_relation.length > 0 ? 'none' : 'block';
+                    const checkboxVisibility1 = response.sql_size_relation.length > 0 ? 'none' : 'block';
+
+                    $('#unchecked_size').css('display', checkboxVisibility);
+                    $('#checked_size').css('display', checkboxVisibility1);
+
+
+           let sizeOptionsHtml1 = '';
+               let sizeOptionsHtml = '';
+                   sizeOptionsHtml1 = response.sql_size_relation.map((size_relation, num) => {
+
+                    if (response.size && Array.isArray(response.size)) {
+                        sizeOptionsHtml = response.size.map((size, index) =>
+                        `<option value="${size._id}" ${size._id === size_relation.size_id ? 'selected' : ''}>${size.size_name}</option>`).join('');
+                    }
+
+                   return `  <div id="sizes${num}">
+                            <div class="form-group col-3" style="float:left;">
+                                <label class="form-label">Size</label>
+                                <select class="form-control" id="product_size${num}" name="product_size1[]">
+                                ${sizeOptionsHtml}
+                                </select>
+                            </div>
+
+                            <div class="form-group col-3" style="float:left;">
+                                <label class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="product_quantity"
+                                    name="product_quantity1[]" value="${size_relation.size_qty}">
+                            </div>
+                            <div class="form-group col-3" style="float:left;">
+                                <label class="form-label">Price</label>
+                                <input type="number" class="form-control" id="size_price" name="size_price1[]" value="${size_relation.product_price}">
+                            </div>
+
+                            <div class="form-group col-2" style="float:right;">
+                                <button type="button" class="btn btn-round btn-default" onclick="remove_size(${num})"><i
+                                        class="ion ion-md-close align-middle"
+                                        style="color:red;font-size:20px;"></i></button>
+                            </div>
+
+                        </div>
+                            `}).join('');
+
+                    $("#product_detail").html(`<div class="form-group">
+                    <label class="form-label col-md-12">
+                        Name :${response.sql_product.product_name}
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label col-md-4">
+                        <input type="radio" name="product_type" value="Ready to Ship" ${productType === 'Ready to Ship' ? 'checked' : ''}> Ready to Ship
+                    </label>
+                    <label class="form-label col-md-4">
+                        <input type="radio" name="product_type" value="Upcoming" ${productType === 'Upcoming' ? 'checked' : ''}> Upcoming
+                    </label>
+                    <label class="form-label col-md-4">
+                        <input type="radio" name="product_type" value="Ask Availibility" ${productType === 'Ask Availibility' ? 'checked' : ''}> Ask Availibility
+                    </label>
+                    <label class="form-label col-md-4">
+                        <input type="radio" name="product_type" value="" ${productType === '' ? 'checked' : ''}> None
+                    </label>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="form-label">Is Size Available?</label>
+                    <input type="checkbox" id="size_checkbox" name="size_checkbox[]" onchange="check_size_available()" ${response.sql_size_relation.length > 0 ? 'checked' : ''}>
+                </div>
+                <br>
+
+                <div id="unchecked_size" >
+                    <div class="form-group col-md-12">
+                        <label class="form-label">Catalog Quantity (Stock)</label>
+                        <input type="number" class="form-control" id="product_quantity" name="product_quantity"
+                            value="${response.sql_product.product_qty}">
+                    </div>
+                </div>
+                <br>
+                <div id="checked_size">
+                    <div class="form-group col-md-12">
+                        <button type="button" class="btn btn-info" onclick="add_size('${product_id}')">Add Size</button>
+                    </div>
+                    <div id="show_size" style="display:grid;">
+               ${sizeOptionsHtml1}
+
+                    </div>
+                </div>
+                <br>
+                <div class="form-group col-md-12">
+                    <label class="form-label col-md-12">Disable Date</label>
+                    <input type="date" class="form-control" id="disable_date" name="disable_date" value="${response.disableDate}">
+                </div>
+                <br>
+                <div class="form-group col-md-12">
+                    <label class="form-label col-md-12">Push to Top</label>
+                    <input type="date" class="form-control" id="product_date" name="product_date" value="${response.pushtotopDate}">
+                </div>
+                <input type="hidden" value="${response.totalsize}" id="total_size" name="total_size">
+                <input type="hidden" value="${product_id}" id="product_id" name="product_id">`);
+                },
+
+            });
+        }
+
+        function check_size_available(i) {
+
+            if ($("#size_checkbox").prop("checked") == true) {
+                $("#unchecked_size").hide();
+                $("#checked_size").show();
+            }
+            else if ($("#size_checkbox").prop("checked") == false) {
+                $("#unchecked_size").show();
+                $("#checked_size").hide();
+            }
+
+        }
+        function chnageval(pid, type) {
+            //console.log(pid+" "+$("#"+type+""+pid).val()+" "+type);
+
+            var value = ""
+            if (type == "product_type") {
+                value = $('input[name=' + type + "" + pid + ']:checked').val();
+            }
+            else {
+                value = $("#" + type + "" + pid).val();
+            }
+            console.log(value);
+            $.ajax({
+                type: "POST",
+                data: { product_id: pid, type: type, value: value },
+                url: "ajaxfiles/product_change.php",
+                success: function (response) {
+                    if (type == "product_qty") {
+                        $("#" + pid).html(response);
+                    }
+
+                }
+            });
+        }
+
+        function chnageqtyval(pid, sid) {
+            //console.log(pid+" "+$("#"+type+""+pid).val()+" "+type);
+
+            var value = $("#product_quantity" + sid).val();
+
+            console.log(value);
+            $.ajax({
+                type: "POST",
+                data: { product_id: pid, value: value, sid: sid },
+                url: "ajaxfiles/product_qty_change.php",
+                success: function (response) {
+                    $("#" + pid).html(response);
+                }
+            });
+        }
+        function delete_product() {
+            var delete_id = [];
+            $.each($("input[name='delete_checkbox']:checked"), function () {
+                delete_id.push($(this).val());
+            });
+            //alert("Id to Delete are: " + delete_id.join(", "));
+            if (delete_id == "") {
+                alert("Please Select a Catalog to Delete");
+            } else {
+                console.log("delete_id=", delete_id);
+                if (confirm('Are You Sure You Want To Delete?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/product_delete/" + delete_id,
+                        success: function (response) {
+                            if (response == "error") {
+                                alert("You cannot delete product whose order is placed!");
+                            } else if (response == "ok") {
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+
+            }
+        }
+
+        function remove_size(k) {
+            var j = $("#total_size").val();
+            var remove = parseInt(j)-1;
+
+            $("#sizes" + k).remove();
+            	$("#total_size").val(remove);
+
+        }
+
+
+
+         {{!-- function add_size() {
+
+             var k = $("#total_size").val();
+             var product_price = $("#product_price" +k).val();
+
+             var append_size = `<div id="sizes${k}"><div class="row"><div class="form-group col-4"><label class="form-label">Size</label><select class="form-control" id="product_size${k}" name="product_size1[]"> ${sizeOptionsHtml} </select ></div ><div class="form-group col-3" style="float:right;"><label class="form-label">Quantity</label><input type="number" class="form-control" id="product_quantity${k}" name="product_quantity1[]"></div><div class="form-group col-3"><label class="form-label">Price</label><input type="number" class="form-control" id="size_price${k}" name="size_price1[]" value="${product_price}"></div><div class="form-group col-2"><button type="button" class="btn btn-round btn-default" onclick="remove_size(${k})"><i class="ion ion-md-close align-middle" style="color:red;font-size:20px;"></i></button></div></div ></div >`;
+
+             $("#show_size").append(append_size);
+             k++;
+             $("#total_size").val(k);
+         } --}}
+
+         function add_size(product_id){
+             $.ajax({
+                type: "POST",
+                data: { product_id: product_id },
+                url: "/product_edit_detail_fetch/" + product_id,
+                success: function (response) {
+
+                     let sizeOptionsHtml = '';
+
+
+                    if (response.size && Array.isArray(response.size)) {
+                        sizeOptionsHtml = response.size.map((size, index) =>
+                        `<option value="${size._id}" >${size.size_name}</option>`).join('');
+                    }
+
+
+             var k = $("#total_size").val();
+             var product_price = $("#product_price" +k).val();
+
+             var append_size = `<div id="sizes${k}"><div class="row"><div class="form-group col-4"><label class="form-label">Size</label><select class="form-control" id="product_size${k}" name="product_size1[]">  ${sizeOptionsHtml} </select ></div ><div class="form-group col-3" style="float:right;"><label class="form-label">Quantity</label><input type="number" class="form-control" id="product_quantity${k}" name="product_quantity1[]"></div><div class="form-group col-3"><label class="form-label">Price</label><input type="number" class="form-control" id="size_price${k}" name="size_price1[]" value="${product_price}"></div><div class="form-group col-2"><button type="button" class="btn btn-round btn-default" onclick="remove_size(${k})"><i class="ion ion-md-close align-middle" style="color:red;font-size:20px;"></i></button></div></div ></div >`;
+
+             $("#show_size").append(append_size);
+             k++;
+             $("#total_size").val(k);
+
+                }
+             });
+         }
+
+    </script>
+    <script>
+
+        function export_selected() {
+            var export_id = [];
+            $.each($("input[name='delete_checkbox']:checked"), function () {
+                export_id.push($(this).val());
+            });
+
+            if (export_id == "") {
+                alert("Please Select a Catalog to Export");
+            } else {
+                location.href = "export_selected_catalog.php?id=" + export_id;
+            }
+        }
+        function export_category_wise() {
+            var selected_cat = $("#selected_cat").val();
+
+            if (selected_cat.length == 0) {
+                alert("Please Select a Category to Export");
+                $("#selected_cat").focus();
+            } else {
+                location.href = "export_categorywise_product.php?id=" + selected_cat;
+            }
+        }
+
+    </script>
+
+</body>
+
+<div class="modal fade" id="modals-editproduct">
+    <div class="modal-dialog">
+        <form class="modal-content" method="POST" action="/product_quick_edit_process">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-row" id="product_detail">
+
+                </div>
+
+                <div id="brand-listing-area">
+                    <!--<div class="form-row" >
+						<div class="form-group col">
+							<label class="form-label col-4" style="max-width:32.333333%">Brand Name</label>
+							<input type="text" class="col-4" style="max-width:32.333333%" id="" placeholder="Percentage">
+							<input type="text" class=" col-4" style="max-width:32.333333%" id="" placeholder="Rupees">
+						</div>
+					</div>-->
+                </div>
+                <div class="form-row" id="errorbox" style="display:none;">
+
+                    <div class="form-group col">
+                        <label class="form-label" id="error" style="color:red;"></label>
+
+                    </div>
+                </div>
+                <!--<input type="hidden" id="order_pm_id">-->
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-info">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

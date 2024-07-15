@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+    <title>Size |title </title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description"
+        content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon" href="<?php echo $fav_icon ?>">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.css">
+    <link rel="stylesheet" href="assets/fonts/linearicons.css">
+    <link rel="stylesheet" href="assets/fonts/open-iconic.css">
+    <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="assets/css/bootstrap-material.css">
+    <link rel="stylesheet" href="assets/css/shreerang-material.css">
+    <link rel="stylesheet" href="assets/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/libs/flot/flot.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="assets/libs/datatables/datatables.css">
+    <link rel="stylesheet" href="assets/libs/dropzone/dropzone.css">
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+            <!-- [ Layout sidenav ] Start -->
+            {{>sidebar}}
+            <!-- [ Layout sidenav ] End -->
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                <!-- [ Layout navbar ( Header ) ] Start -->
+                {{>header}}
+                <!-- [ Layout navbar ( Header ) ] End -->
+
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Add Size</h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.php"><i class="feather icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item ">Size</li>
+                                <li class="breadcrumb-item active">Add Size</li>
+                            </ol>
+                        </div>
+
+                        <div class="card mb-4 col-md-3" style="float:left;margin-right:40px;">
+                            <h6 class="card-header">Add New Size</h6>
+                            <div class="card-body">
+                                <form action="/size_add" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="form-label">Size Name</label>
+                                        <input type="text" class="form-control" id="size_name" name="size_name"
+                                            autofocus>
+                                        <small class="form-text text-muted" id="error"
+                                            style="display:none;color:red !important;"></small>
+                                    </div>
+                                    <button type="submit" id="add_cat" class="btn btn-primary">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card col-md-8">
+                            <!--<div>
+							<button type="button" onclick="hide_fabric()" class="btn btn-danger icon-btn borderless">Hide</button>
+						</div>-->
+                            <div class="card-datatable table-responsive">
+                                <table id="user-list" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <!--<th></th>-->
+                                            <th></th>
+                                            <th></th>
+                                            <th>Sr. No.</th>
+                                            <th>Size Name</th>
+                                            <th>Hidden</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+										{{#each size_master}}
+										<tr>
+											<td>{{{this.edit}}}</td>
+                                            <td>{{{this.hide}}}</td>
+											<td>{{this.no}}</td>
+											<td>{{this.name}}</td>
+											<td>{{this.size_hide}}</td>
+
+										</tr>
+										{{/each}}
+									</tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                    {{>footer}}
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper] End -->
+
+    <!-- Core scripts -->
+    <script src="assets/js/pace.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+    <script src="assets/libs/popper/popper.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/sidenav.js"></script>
+    <script src="assets/js/layout-helpers.js"></script>
+    <script src="assets/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/libs/eve/eve.js"></script>
+    <script src="assets/libs/flot/flot.js"></script>
+    <script src="assets/libs/flot/curvedLines.js"></script>
+    <script src="assets/libs/chart-am4/core.js"></script>
+    <script src="assets/libs/chart-am4/charts.js"></script>
+    <script src="assets/libs/chart-am4/animated.js"></script>
+    <script src="assets/libs/raphael/raphael.js"></script>
+    <script src="assets/libs/morris/morris.js"></script>
+    <script src="assets/libs/moment/moment.js"></script>
+    <script src="assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="assets/libs/datatables/datatables.js"></script>
+    <script src="assets/libs/dropzone/dropzone.js"></script>
+
+
+    <!-- Demo -->
+    <script src="assets/js/demo.js"></script>
+    <script src="assets/js/analytics.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+
+    <script>
+
+        function hide_size(hide_id) {
+
+            if (confirm('Are You Sure You Want To Hide?')) {
+
+                location.href = "size_hide/" + hide_id;
+
+            }
+
+        }
+    </script>
+
+</body>
+
+
+</html>
