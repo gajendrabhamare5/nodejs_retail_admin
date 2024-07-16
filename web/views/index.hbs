@@ -1,0 +1,925 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="preconnect" href="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="theme-color" content="#111111">
+	<meta name="author" content="title">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="canonical" href="">
+	<link rel="shortcut icon" href="" type="image/png" />
+	<title>Index Title </title>
+	<meta property="og:site_name" content="">
+	<meta property="og:url" content="">
+	<meta property="og:title" content="">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:type" content="image/png" />
+	<meta property="og:image:width" content="200">
+	<meta property="og:image:height" content="50">
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/toastr.min.css">
+	<link rel="stylesheet" href="/assets/css/slick.min.css" />
+	<link rel="stylesheet" href="/assets/css/slick-theme.min.css" />
+	<link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38//assets/themef0c4.css?v=2" rel="stylesheet" type="text/css" media="all" />
+	<script src="//assets/jquery.min.js" type="text/javascript"></script>
+	<style>
+		:root {
+			--typeHeaderPrimary: "Tenor Sans";
+			--typeHeaderFallback: sans-serif;
+			--typeHeaderSize: 36px;
+			--typeHeaderWeight: 400;
+			--typeHeaderLineHeight: 1;
+			--typeHeaderSpacing: 0.0em;
+			--typeBasePrimary: "Twentieth Century";
+			--typeBaseFallback: sans-serif;
+			--typeBaseSize: 18px;
+			--typeBaseWeight: 400;
+			--typeBaseSpacing: 0.025em;
+			--typeBaseLineHeight: 1.4;
+			--typeCollectionTitle: 18px;
+			--iconWeight: 2px;
+			--iconLinecaps: miter;
+			--buttonRadius: 0px;
+			--colorGridOverlayOpacity: 0.0;
+		}
+
+		.placeholder-content {
+			background-image: linear-gradient(100deg, #f4f4f4 40%, #ececec 63%, #f4f4f4 79%);
+		}
+
+		#slider_custom {
+			width: 100%;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.4);
+			;
+		}
+
+		.slide_custom {
+			width: 100%;
+			display: none;
+			animation-name: fade;
+			animation-duration: 1s;
+		}
+
+		.slide_custom img {
+			width: 100%;
+		}
+
+		@keyframes fade {
+			from {
+				opacity: 0.5;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.controls_custom {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 1.5em;
+			padding: 15px 10px;
+			border-radius: 5px;
+		}
+
+		.controls_custom:hover {
+			background: white;
+			transition: 0.3s;
+		}
+
+		.controls_custom:active {
+			color: grey;
+		}
+
+		#left-arrow_custom {
+			left: 10px;
+		}
+
+		#right-arrow_custom {
+			right: 10px;
+		}
+
+		#dots-con_custom {
+			text-align: center;
+		}
+
+		.dot_custom {
+			display: inline-block;
+			background: grey;
+			padding: 8px;
+			border-radius: 50%;
+			margin: 10px 5px;
+		}
+
+		#dots-con_custom .active {
+			background: crimson;
+		}
+
+		@media (max-width:576px) {
+			#slider_custom {
+				width: 100%;
+			}
+
+			.controls_custom {
+				font-size: 1em;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.mobile_catego {
+				display: none;
+			}
+		}
+
+		div#category_slider {
+			display: flex;
+		}
+
+		.category_items {
+			width: 28%;
+			text-align: center;
+			margin: 4px;
+			box-shadow: 0px 1px 3px 1px #80808047;
+			flex: 0 0 28%;
+		}
+
+		.category_name {
+			padding: 5px 5px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		.newSliderSections {
+			margin: 20px 0 !important;
+		}
+
+		.collectionHover {
+			position: relative !important;
+		}
+
+		.collection-item__title {
+			position: absolute !important;
+			bottom: 0;
+		}
+
+		.collectionHover .collection-item {
+			color: #fff;
+			border: none;
+			margin: 0 0 10px;
+		}
+
+		.collectionHover:hover .collection-item__title {
+			position: absolute;
+			top: 50%;
+			transform: scale(1.03);
+			transition: all .8s ease;
+		}
+
+		.collectionHover:hover .see_all {
+			display: block;
+		}
+
+		.see_all {
+			display: none;
+		}
+
+		.see_all a {
+			color: #ffff;
+			border: 1px solid;
+			padding: 0px 8px;
+		}
+
+		@media only screen and (max-width: 768px) {
+			.statuss {
+				padding-left: 30px;
+				padding-left: 30px;
+				margin-right: 5px;
+			}
+		}
+
+		.collectionHover {
+			position: relative !important;
+		}
+
+		.collection-item__title {
+			position: absolute !important;
+			bottom: 0;
+		}
+
+		.collectionHover .collection-item {
+			color: #fff;
+			border: none;
+			margin: 0 0 10px;
+		}
+
+		.collectionHover:hover .collection-item__title {
+			position: absolute;
+			top: 50%;
+			transform: scale(1.03);
+			transition: all .8s ease;
+		}
+
+		.collectionHover:hover .see_all {
+			display: block;
+		}
+
+		.see_all {
+			display: none;
+		}
+
+		.see_all a {
+			color: #ffff;
+			border: 1px solid;
+			padding: 0px 8px;
+		}
+
+		.site-footer {
+			border-top: 1px solid #e8e8e1;
+		}
+
+		.testimonail-image--round img {
+			overflow: hidden;
+			border-radius: 0px;
+		}
+
+		@keyframes preloading {
+			0% {
+				transform-origin: 0% 50%;
+				transform: scaleX(0);
+				opacity: 0
+			}
+
+			40% {
+				transform-origin: 0% 50%;
+				transform: scaleX(1);
+				opacity: 1
+			}
+
+			41% {
+				transform-origin: 100% 50%;
+				transform: scaleX(1);
+				opacity: 1
+			}
+
+			to {
+				transform-origin: 100% 50%;
+				transform: scaleX(0);
+				opacity: 1
+			}
+		}
+
+		@keyframes rzp-rot {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@-webkit-keyframes rzp-rot {
+			to {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		.catSec {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			flex-shrink: 0;
+			height: fit-content;
+			width: 88px;
+			margin: 10px;
+			cursor: pointer;
+		}
+
+		.subcatSec {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			flex-shrink: 0;
+			height: fit-content;
+			width: fit-content;
+			/* border-radius: 50%; */
+			border: 2px solid #dc1f26;
+		}
+
+		.subdiv1 {
+			flex-shrink: 0;
+			object-fit: cover;
+			height: 90px;
+			width: 90px;
+			/* border-radius: 50%; */
+			border: 3px solid white;
+			background-color: gray;
+			overflow: hidden;
+		}
+
+		.catSecImag {
+			object-fit: cover;
+			height: 100px;
+			width: 100px;
+			background-color: white;
+		}
+
+		.subcatSec1 {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			flex-shrink: 0;
+			height: fit-content;
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		.subcatSec1 p {
+			text-align: center;
+			color: black;
+			font-family: 'whatmorePrimaryFontFamily';
+			font-weight: normal;
+			font-size: 10.56px;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.slider-wrapper {
+			max-width: 100%;
+			margin: 0 auto;
+		}
+
+		.slick-prev {
+			left: 0;
+			z-index: 9;
+		}
+
+		.slick-next {
+			right: 0;
+		}
+
+		.slider-nav>.slide:not(:first-child) {
+			display: none;
+		}
+
+		.bottom_sec {
+			display: grid;
+		}
+
+		.view_btn {
+			color: white;
+			padding: 4px 9px;
+			border-radius: 5px;
+			border-width: 0px;
+			border-color: white;
+			/* box-shadow: inset rgb(247 243 243) 0px 0px 10px 3px; */
+			border-color: #0c0a0a;
+			z-index: 2;
+			margin: 0 auto;
+		}
+
+		.video_detail_sec {
+			border-bottom: 1px solid red;
+			margin: 5px auto;
+			font-weight: 600;
+			font-size: 15px;
+		}
+
+		.views_btn {
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			padding: 4px;
+			font-size: 13px;
+			border-radius: 5px;
+			border-width: 0px;
+			margin: 10px;
+			background: #00000094;
+			color: white;
+			min-width: auto;
+			letter-spacing: 2px;
+		}
+
+		.view_btn1 {
+			display: flex;
+			gap: 10px;
+			justify-content: center;
+			margin: 0 !important;
+		}
+
+		@media (max-width: 576px) {
+			.view_btn1 {
+				display: flex;
+				gap: 10px;
+				justify-content: start;
+			}
+		}
+
+		.quick-product__btn {
+			font-size: calc(var(--typeBaseSize)*.85);
+			position: absolute;
+			bottom: 100px;
+			right: 0px;
+			left: 26px;
+			left: 10px;
+			z-index: 2;
+			background-color: #111;
+			background-color: var(--colorBtnPrimary);
+			color: #fff;
+			color: var(--colorBtnPrimaryText);
+			overflow: hidden;
+			padding: 8px 5px;
+			text-align: center;
+			cursor: pointer;
+			opacity: 0;
+			transform: translateY(5px);
+			transition: opacity .25s ease, transform .25s ease-out, background .4s ease;
+		}
+	</style>
+	<script>
+		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+		window.theme = window.theme || {};
+		theme.routes = {
+			home: "/",
+			cart: "/cart.js",
+			cartPage: "/cart",
+			cartAdd: "/cart/add.js",
+			cartChange: "/cart/change.js",
+			search: "/search"
+		};
+		theme.settings = {
+			cartType: "drawer",
+			isCustomerTemplate: false,
+			moneyFormat: "${{amount_no_decimals}}",
+			saveType: "dollar",
+			productImageSize: "natural",
+			productImageCover: false,
+			predictiveSearch: true,
+			predictiveSearchType: "product,article",
+			predictiveSearchVendor: false,
+			predictiveSearchPrice: false,
+			quickView: true,
+			themeName: '',
+			themeVersion: "7.1.0"
+		};
+	</script>
+	<script>
+		window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');
+	</script>
+
+</head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJ258N1MCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KJ258N1MCJ');
+</script>
+
+<body class="template-index" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+	<div id="PageContainer" class="page-container">
+		<div class="transition-body">
+			{{>header}}
+			<main class="main-content" id="MainContent">
+				<div class="status">
+					<!-- <div class="st-search-bar hidden-desktop" id="stDesktopSearchBox">
+						<style>
+							[v-cloak] {
+								display: none;
+							}
+						</style>
+						<div id="trending-autocomplete" class="st-trending-box">
+							<div class="st-container-trend" style="display: block;">
+								<div id="st-before-search" style="background: white;">
+									<ul class="suggesstion-box" style="display: none;width: 300px;">
+									</ul>
+									<div class="st-autocomplete-footer"></div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<div class="mobile_catego" id="category_slider">
+						<div class="page-width">
+							<div class="whatmore-story-horizontal-flex " style="display: flex;  flex-flow: row nowrap; justify-content: center; height: fit-content;">
+
+									<!-- <div class="catSec">
+										<div class="subcatSec">
+											<a href="">
+												<div class="subdiv1">
+													<img alt="" class="catSecImag" src="">
+												</div>
+											</a>
+										</div>
+										<div class="subcatSec1">
+											<p></p>
+										</div>
+									</div> -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<section class="slider-wrapper">
+						<div class="slider slider-nav">
+
+								<div class="slide">
+									<a href="<?php echo $url; ?>">
+										<img alt="" src="">
+									</a>
+
+						</div>
+					</section>
+
+				<div id="tt-pageContent">
+					<div class="container-indent nomargin">
+
+							<div id="shopify-section-template--14452072742970__featured-collection" class="shopify-section index-section">
+								<div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" data-section-type="featured-collection">
+									<div class="page-width">
+										<div class="section-header">
+											<h2 class="section-header__title">
+
+											</h2>
+											<p class="section-header__title">
+												Discover our wide range of women’s ethnic wear and western wear fashion
+											</p>
+										</div>
+									</div>
+									<div class="page-width page-width--flush-small">
+										<div class="grid-overflow-wrapper">
+											<div class="grid grid--uniform" data-aos="overflow__animation">
+
+											</div>
+										</div>
+										<div class="section-header">
+											<a href="<?php echo $base_url; ?>Sale" class="btn btn--secondary btn--small section-header__link">View all</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<div id="shopify-section-template--14452072742970__featured-collection" class="shopify-section index-section">
+							<div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" data-section-type="featured-collection">
+								<div class="page-width">
+									<div class="section-header">
+										<h2 class="section-header__title">
+											NEW ARRIVALS
+										</h2>
+										<p class="section-header__title">
+											Shop our all-new styles in ethnic and contemporary fashion for women.
+										</p>
+									</div>
+								</div>
+								<div class="page-width page-width--flush-small">
+									<div class="grid-overflow-wrapper">
+										<div class="grid grid--uniform" data-aos="overflow__animation">
+
+										</div>
+									</div>
+									<div class="section-header">
+										<a href="new-arrival" class="btn btn--secondary btn--small section-header__link">View all</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+							<div id="shopify-section-template--14581230927938__featured-collections" style="    padding: 5px 40px;" class="shopify-section index-section">
+								<div style="background-color:#ffffff">
+									<div class="page-width">
+										<div class="section-header">
+											<h2 class="section-header__title">SHOP BY CATEGORY</h2>
+											<p class="section-header__title">
+												Discover our wide range of women’s ethnic wear and western wear fashion
+											</p>
+										</div>
+										<div class="grid grid--uniform">
+
+
+												<div class="grid__item small--one-half medium-up--one-quarter">
+													<a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
+													<div class="collectionHover">
+														<a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+															<div class="collection-image collection-image--portrait image-wrap">
+																<img class="lazyautosizes lazyloaded" alt="s_image" src="" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
+																<noscript>
+																	<img class="lazyloaded" alt="lazy_alt" src="">
+																</noscript>
+															</div>
+														</a>
+														<div class="collection-item__title collection-item__title--overlaid collection-item__title--body collection-item__title--bottom-center"><a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+																<span>
+
+																</span>
+															</a>
+															<div class="see_all"><a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="">See All</a></div>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<!-- <div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" class="shopify-section index-section" data-section-type="featured-collection">
+								<div class="index-section">
+									<div class="page-width">
+										<div class="custom-content ">
+											<div class="custom__item one-whole align--center">
+												<div class="custom__item-inner custom__item-inner--liquid">
+													<div class="rte">
+														<div class="home-main-content">
+															<div class="title">India’s Leading
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="page-width">
+										<div class="section-header">
+											<h2 class="section-header__title">
+												WATCH AND SHOP
+											</h2>
+											<p class="section-header__title">
+												Discover our wide range of women’s ethnic wear and western wear fashion
+											</p>
+										</div>
+									</div>
+									<div class="page-width page-width--flush-small statuss">
+										<div class="grid-overflow-wrapper">
+											<div class="grid grid--uniform aos-init aos-animate view_btn1" data-aos="overflow__animation" style="text-align:center;">
+
+														<div>
+															<label style="position: relative;">
+																<video controls="" autoplay="" muted="" loop="" style="width:180px;height: 322px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);  border-radius: 10px;    margin: 6px;">
+																	<source src="https://drive.google.com/uc?export=download&id=" type="video/mp4">
+																</video>
+
+
+																	<a class="btn btn-primary views_btn"> <i class="fa fa-eye"></i></button></a>
+
+															</label>
+															<div class="bottom_sec">
+																<a href=" " class="btn btn-primary view_btn">View</button></a>
+
+																	<span class="video_detail_sec"> </span>
+
+															</div>
+														</div>
+
+												?>
+											</div>
+										</div>
+									</div>
+									<div class="section-header">
+										<a href="/videos" class="btn btn--secondary btn--small section-header__link">View all Videos</a>
+									</div>
+								</div>
+							</div> -->
+
+							<div id="shopify-section-template--14581230927938__featured-collections" style="    padding: 5px 40px;" class="shopify-section index-section">
+								<div style="background-color:#ffffff">
+									<div class="page-width">
+										<div class="section-header">
+											<h2 class="section-header__title">Discount CATEGORY</h2>
+											<p class="section-header__title">
+												Discover our wide range of women’s ethnic wear and western wear fashion
+											</p>
+										</div>
+										<div class="grid grid--uniform">
+
+												<div class="grid__item small--one-half medium-up--one-quarter">
+													<a href="" aria-label="" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
+													<div class="collectionHover"><a href="" aria-label="" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+															<div class="collection-image collection-image--portrait image-wrap"><img class="lazyautosizes lazyloaded" alt="subcat_image" src="" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
+																<noscript>
+																	<img class="lazyloaded" alt="lazy_subcat" src="">
+																</noscript>
+															</div>
+														</a>
+														<div class="collection-item__title collection-item__title--overlaid collection-item__title--body collection-item__title--bottom-center"><a href="" aria-label="" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+																<span>
+
+																</span>
+															</a>
+															<div class="see_all"><a href="" aria-label="" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="" aria-label="">See All</a></div>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						<div id="shopify-section-template--14576455254082__16547722820cd6ccd7" class="shopify-section index-section">
+							<style data-shopify="">
+								.logo-bar--template--14576455254082__16547722820cd6ccd7 {
+									opacity: 1.0;
+								}
+
+								.logo-bar {
+									align-items: unset;
+								}
+							</style>
+							<div style="background-color:#fff8f2">
+								<div class="page-width aos-init aos-animate" data-aos="logo__animation" style="padding-top:20px">
+									<div class="logo-bar logo-bar-new logo-bar--template--14576455254082__16547722820cd6ccd7">
+										<div class="logo-bar__item">
+											<img alt="Free Shipping" src="/cust_img/free_shipping.jpg">
+											<p class="section-header__title">
+												Free Shipping*
+											</p>
+										</div>
+										<div class="logo-bar__item">
+											<img alt="Worldwide Delivery" src="/cust_img/world_wide.jpg">
+											<p class="section-header__title">
+												Worldwide Delivery
+											</p>
+										</div>
+										<div class="logo-bar__item">
+											<img alt="Secured Payments" src="/cust_img/secured.jpg">
+											<p class="section-header__title">
+												Secured Payments
+											</p>
+										</div>
+										<div class="logo-bar__item">
+											<img alt="Cash on Delivery*" src="/cust_img/cash_on_delivery.jpg">
+											<p class="section-header__title">
+												Cash on Delivery*
+											</p>
+										</div>
+										<div class="logo-bar__item">
+											<img alt="Easy Customer Support" src="/cust_img/support.jpg">
+											<p class="section-header__title">
+												Easy Customer Support
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+							<div id="shopify-section-template--14452073070650__testimonials" class="shopify-section index-section">
+								<style data-shopify>
+									.testimonials-template--14452073070650__testimonials {
+										background-color: #f9f9f9;
+										color: #1c1d1d;
+									}
+								</style>
+								<div class="testimonials-section testimonials-template--14452073070650__testimonials text-center" data-section-id="template--14452073070650__testimonials" data-section-type="testimonials" data-aos>
+									<div class="page-width">
+										<div class="section-header">
+											<h2>CUSTOMER REVIEWS</h2>
+										</div>
+									</div>
+									<div class="slideshow-wrapper">
+										<div class="testimonials-slider" id="Testimonials-template--14452073070650__testimonials" data-dots="true" data-count="5">
+
+												<div class="testimonials-slide testimonials-slide--testimonials-0" data-index="0" data-aos="row-of-5">
+													<blockquote class="testimonials-slider__text"><span class="testimonial-stars" style="    color: #ffa900;">★★★★★</span>
+														<div class="rte-setting text-spacing">
+															<p>customer_review</p>
+														</div>
+														<div class="testimonail-image testimonail-image--round">
+															<div class="image-wrap text-spacing" style="height: 0; padding-bottom: 100.0%;"><img class="lazyload" alt="customer" data-src="" data-widths="[180, 360, 540, 720]" data-aspectratio="1.0" data-sizes="auto">
+																<noscript>
+																	<img class="lazyloaded" alt="customer_lazyload" src=""><br>
+																</noscript>
+															</div>
+														</div><br>
+														<div class="testimonials__info" style="text-transform: capitalize;">customer_name</div>
+													</blockquote>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<div id="shopify-section-template--14452072742970__featured-collections" class="shopify-section">
+							<div class="index-section">
+								<div class="page-width">
+									<div class="custom-content ">
+										<div class="custom__item one-whole align--center">
+											<div class="custom__item-inner custom__item-inner--liquid">
+												<div class="rte">
+													<div class="home-page-seo-content">
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div style="clear:both"></div>
+								</div>
+							</div>
+						</div>
+			</main>
+
+			<div id="shopify-section-footer-promotions" class="shopify-section index-section--footer">
+			</div>
+			<div id="shopify-section-footer" class="shopify-section">
+				{{>footer}}
+			</div>
+		</div>
+	</div>
+	<div id="VideoModal" class="modal modal--solid">
+		<div class="modal__inner">
+			<div class="modal__centered page-width text-center">
+				<div class="modal__centered-content">
+					<div class="video-wrapper video-wrapper--modal">
+						<div id="VideoHolder"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="modal__close js-modal-close text-link">
+			<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+				<path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+			</svg>
+			<span class="icon__fallback-text">"Close (esc)"</span>
+		</button>
+	</div>
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="pswp__bg"></div>
+		<div class="pswp__scroll-wrap">
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+			<div class="pswp__ui pswp__ui--hidden">
+				<button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
+					<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
+						<path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+					</svg>
+				</button>
+				<button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
+					<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+						<path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+					</svg>
+				</button>
+				<button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
+					<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
+						<path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tool-tip data-tool-tip="">
+		<div class="tool-tip__inner" data-tool-tip-inner>
+			<button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+					<path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+				</svg></button>
+			<div data-tool-tip-title></div>
+			<div class="tool-tip__content" data-tool-tip-content>
+			</div>
+		</div>
+	</tool-tip>
+</body>
+<style>
+</style>
+<script type="text/javascript" src="/assets/js/slick.min.js"></script>
+<script>
+	$(window).on("load", function() {
+		/* $('.slider-nav').show(); */
+		$('.slider-nav').slick({
+			dots: false, // Display dots navigation
+			arrows: true, // Display arrows navigation
+			infinite: true, // Infinite loop
+			speed: 500, // Transition speed in milliseconds
+			autoplay: false, // Autoplay the slider
+			autoplaySpeed: 2000
+		});
+	});
+
+</script>
+<script type="text/javascript" rel="preload" src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38//assets/vendor-scripts-v11.js?v=5" as="script"></script>
+<script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38//assets/theme.js?v=8" defer="defer"></script>
+
+<script type="text/javascript" rel="preload" src="/assets/custom_web.js" defer="defer" as="script"></script>
+<script src="/assets/toastr.min.js"></script>
+
+</html>

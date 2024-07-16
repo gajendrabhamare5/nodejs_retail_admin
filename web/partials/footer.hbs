@@ -1,0 +1,418 @@
+<?php
+include "retail-admin/include/conn.php";
+?>
+<div class="whatsapp-button">
+    <a rel="nofollow noreferrer noopener" href="https://api.whatsapp.com/send?phone=<?php echo $phonenumber_dynamic ?>&amp;text=Hi" target="_blank"><i class="fa fa-whatsapp whats-mobile" style="font-size:48px;color:green"></i>
+    </a>
+</div>
+<style>
+    .whatsapp-button {
+        position: fixed;
+        bottom: 50px;
+        right: 10px;
+        z-index: 99;
+    }
+
+    .whatsapp-button1 {
+        position: fixed;
+        bottom: 105px;
+        right: -458px;
+        z-index: 99;
+    }
+
+    @media only screen and (max-width: 834px) {
+        .st-wrapper-searchbox {
+            display: none !important;
+            width: 80px;
+        }
+
+        .st-search-bar.hidden-desktop {
+            margin: 0 5px 15px;
+            padding: 0px 0px 5px 0px;
+        }
+
+        .st-search-bar {
+            position: relative;
+        }
+
+        .st-search-bar input {
+            height: 40px !important;
+            border: 1px solid #1c1d1d;
+            border-radius: 5px;
+            background-position-x: 15px !important;
+            padding-left: 40px !important;
+            background-repeat: no-repeat;
+            background-size: 12px;
+            background-position-y: center;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIuOTA0IDE5Mi45MDQiPjxwYXRoIGQ9Ik0xOTAuNzA3IDE4MC4xMDFsLTQ3LjA3OC00Ny4wNzdjMTEuNzAyLTE0LjA3MiAxOC43NTItMzIuMTQyIDE4Ljc1Mi01MS44MzFDMTYyLjM4MSAzNi40MjMgMTI1Ljk1OSAwIDgxLjE5MSAwIDM2LjQyMiAwIDAgMzYuNDIzIDAgODEuMTkzYzAgNDQuNzY3IDM2LjQyMiA4MS4xODcgODEuMTkxIDgxLjE4NyAxOS42ODggMCAzNy43NTktNy4wNDkgNTEuODMxLTE4Ljc1MWw0Ny4wNzkgNDcuMDc4YTcuNDc0IDcuNDc0IDAgMDA1LjMwMyAyLjE5NyA3LjQ5OCA3LjQ5OCAwIDAwNS4zMDMtMTIuODAzek0xNSA4MS4xOTNDMTUgNDQuNjk0IDQ0LjY5MyAxNSA4MS4xOTEgMTVjMzYuNDk3IDAgNjYuMTg5IDI5LjY5NCA2Ni4xODkgNjYuMTkzIDAgMzYuNDk2LTI5LjY5MiA2Ni4xODctNjYuMTg5IDY2LjE4N0M0NC42OTMgMTQ3LjM4IDE1IDExNy42ODkgMTUgODEuMTkzeiIvPjwvc3ZnPg==) !important;
+            font-size: 16px !important;
+            padding: 0px 30px 0px 10px;
+        }
+
+        .st-search-bar .input-close-btn {
+            width: 20px;
+            height: 15px !important;
+            font-family: inherit;
+            cursor: pointer;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MTIiIGhlaWdodD0iNjEyIj48cGF0aCBkPSJNNjEyIDM2LjAwNEw1NzYuNTIxLjYwMyAzMDYgMjcwLjYwOCAzNS40NzguNjAzIDAgMzYuMDA0bDI3MC41MjIgMjcwLjAwN0wwIDU3NS45OTdsMzUuNDc4IDM1LjRMMzA2IDM0MS40MTFsMjcwLjUyMSAyNjkuOTg2IDM1LjQ3OS0zNS40LTI3MC41NDEtMjY5Ljk4NnoiLz48L3N2Zz4=) !important;
+            background-position-y: center !important;
+            background-position-x: center;
+            background-repeat: no-repeat !important;
+            background-size: 15px !important;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-right: 14px;
+            margin-top: 13px;
+            z-index: 6;
+            color: #3c3c3c;
+        }
+    }
+</style>
+<footer class="site-footer" style="    background-color: #FFCCCB ;" data-section-id="footer" data-section-type="footer-section">
+    <input type="hidden" id="redirect_url1" value="<?php echo $base_url; ?>">
+    <div class="page-width">
+        <div class="grid">
+            <div class="grid__item footer__item--1494301487049" data-type="menu">
+                <style data-shopify>
+                    @media only screen and (min-width: 769px) and (max-width: 959px) {
+                        .footer__item--1494301487049 {
+                            width: 50%;
+                            padding-top: 40px;
+                        }
+
+                        .footer__item--1494301487049:nth-child(2n + 1) {
+                            clear: left;
+                        }
+                    }
+
+                    @media only screen and (min-width: 960px) {
+                        .footer__item--1494301487049 {
+                            width: 20%;
+                        }
+                    }
+                </style>
+                <div class=" footer__item--785eb85e-9f83-41ce-a566-650746823440" data-type="menu">
+                    <style data-shopify="">
+                        @media only screen and (min-width: 769px) and (max-width: 959px) {
+                            .footer__item--785eb85e-9f83-41ce-a566-650746823440 {
+                                width: 50%;
+                                padding-top: 40px;
+                            }
+
+                            .footer__item--785eb85e-9f83-41ce-a566-650746823440:nth-child(2n + 1) {
+                                clear: left;
+                            }
+                        }
+
+                        @media only screen and (min-width: 960px) {
+                            .footer__item--785eb85e-9f83-41ce-a566-650746823440 {
+                                width: 17%;
+                            }
+                        }
+
+                        .footer__title {
+                            font-weight: bold;
+                        }
+                    </style>
+                    <p class="h4 footer__title small--hide" style=" font-size: 12px;width: 160px;color: #2F2625;">
+                        Address
+                    </p>
+                    <button type="button" class="h4 footer__title collapsible-trigger collapsible-trigger-btn medium-up--hide" aria-controls="Footer-785eb85e-9f83-41ce-a566-650746823440" aria-expanded="false">
+                        Address
+                        <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
+                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <div id="Footer-785eb85e-9f83-41ce-a566-650746823440" class="collapsible-content collapsible-content--small">
+                        <div class="collapsible-content__inner">
+                            <div class="footer__collapsible">
+                                <ul class="no-bullets site-footer__linklist" style=" font-size: 12px;width: 138px;">
+
+                                    <li>
+                                        <!-- <a href="<?php //echo $base_url;
+                                                        ?><?php //echo $category_seo_url;
+                                                            ?>"><?php //echo $category_name;
+                                                                                    ?></a> -->
+                                     Bhatar Road
+                                    </li>
+                                    <li>
+                                        Contact No : 8007840596
+                                    </li>
+                                    <li>
+                                        Email id: : gajubhamare05@gmail.com
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item footer__item--336fbd94-b275-4ffd-bd1f-70a9b18d234f" data-type="menu">
+                <style data-shopify="">
+                    @media only screen and (min-width: 769px) and (max-width: 959px) {
+                        .footer__item--336fbd94-b275-4ffd-bd1f-70a9b18d234f {
+                            width: 50%;
+                            padding-top: 40px;
+                        }
+
+                        .footer__item--336fbd94-b275-4ffd-bd1f-70a9b18d234f:nth-child(2n + 1) {
+                            clear: left;
+                        }
+                    }
+
+                    @media only screen and (min-width: 960px) {
+                        .footer__item--336fbd94-b275-4ffd-bd1f-70a9b18d234f {
+                            width: 17%;
+                        }
+                    }
+                </style>
+                <p class="h4 footer__title small--hide" style=" font-size: 12px;width: 220px;    color: #2F2625;">
+                    Discover
+                </p>
+                <button type="button" class="h4 footer__title collapsible-trigger collapsible-trigger-btn medium-up--hide" aria-controls="Footer-336fbd94-b275-4ffd-bd1f-70a9b18d234f" aria-expanded="false">
+                    Discover
+                    <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
+                            <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div id="Footer-336fbd94-b275-4ffd-bd1f-70a9b18d234f" class="collapsible-content collapsible-content--small">
+                    <div class="collapsible-content__inner">
+                        <div class="footer__collapsible">
+                            <ul class="no-bullets site-footer__linklist" style=" font-size: 12px;width: 220px; ">
+                                <li><a href="<?php echo $base_url; ?>">Home</a></li>
+                                <li><a href="<?php echo $base_url; ?>about-us">About Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item footer__item--1b9556d2-d708-4d20-a0d7-adbf45889678" data-type="menu">
+                <style data-shopify="">
+                    @media only screen and (min-width: 769px) and (max-width: 959px) {
+                        .footer__item--1b9556d2-d708-4d20-a0d7-adbf45889678 {
+                            width: 50%;
+                            padding-top: 40px;
+                        }
+
+                        .footer__item--1b9556d2-d708-4d20-a0d7-adbf45889678:nth-child(2n + 1) {
+                            clear: left;
+                        }
+                    }
+
+                    @media only screen and (min-width: 960px) {
+                        .footer__item--1b9556d2-d708-4d20-a0d7-adbf45889678 {
+                            width: 17%;
+                        }
+                    }
+                </style>
+                <p class="h4 footer__title small--hide" style=" font-size: 12px;width: 220px;    color: #2F2625;">
+                    Support
+                </p>
+                <button type="button" id="supportSec" class="h4 footer__title collapsible-trigger collapsible-trigger-btn medium-up--hide" aria-controls="Footer-1b9556d2-d708-4d20-a0d7-adbf45889678" aria-expanded="false">
+                    Support
+                    <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
+                            <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div id="Footer-1b9556d2-d708-4d20-a0d7-adbf45889678" class="collapsible-content collapsible-content--small">
+                    <div class="collapsible-content__inner">
+                        <div class="footer__collapsible">
+                            <ul class="no-bullets site-footer__linklist" style=" font-size: 12px;width: 220px; ">
+                                <li><a href="/track-order">Track Order</a></li>
+                                <li><a href="/contact-us">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item footer__item--53cc8aac-8f95-4751-bb50-113597146232" data-type="menu">
+                <style data-shopify="">
+                    @media only screen and (min-width: 769px) and (max-width: 959px) {
+                        .footer__item--53cc8aac-8f95-4751-bb50-113597146232 {
+                            width: 50%;
+                            padding-top: 40px;
+                        }
+
+                        .footer__item--53cc8aac-8f95-4751-bb50-113597146232:nth-child(2n + 1) {
+                            clear: left;
+                        }
+                    }
+
+                    @media only screen and (min-width: 960px) {
+                        .footer__item--53cc8aac-8f95-4751-bb50-113597146232 {
+                            width: 15%;
+                        }
+                    }
+
+                    @media only screen and (max-width: 768px) {
+                        .site-footer__linklist {
+                            margin: 0 auto;
+                        }
+                    }
+                </style>
+                <p class="h4 footer__title small--hide" style=" font-size: 12px;width: 220px;    color: #2F2625;">
+                    Policies
+                </p>
+                <button type="button" class="h4 footer__title collapsible-trigger collapsible-trigger-btn medium-up--hide" aria-controls="Footer-53cc8aac-8f95-4751-bb50-113597146232" aria-expanded="false">
+                    Policies
+                    <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
+                            <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div id="Footer-53cc8aac-8f95-4751-bb50-113597146232" class="collapsible-content collapsible-content--small">
+                    <div class="collapsible-content__inner">
+                        <div class="footer__collapsible">
+                            <ul class="no-bullets site-footer__linklist" style=" font-size: 12px;width: 220px; ">
+                                <li><a href="/shipping-policy"> Shipping Policy</a></li>
+                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                <li><a href="/return-exchange">Cancellation, Return &amp; Exchange Policy</a></li>
+                                <li><a href="/terms-condition">terms & Conditions </a></li>
+                                <li><a href="/faq">Faq's </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item footer__item--1494292487693" data-type="newsletter" style="
+    padding-left: 80px;margin-top: -12px;
+">
+                <style data-shopify>
+                    @media only screen and (min-width: 769px) and (max-width: 959px) {
+                        .footer__item--1494292487693 {
+                            width: 50%;
+                            padding-top: 40px;
+                        }
+
+                        .footer__item--1494292487693:nth-child(2n + 1) {
+                            clear: left;
+                        }
+                    }
+
+                    @media only screen and (min-width: 960px) {
+                        .footer__item--1494292487693 {
+                            width: 31%;
+                        }
+                    }
+
+                    .footer__item-padding {
+                        display: flex;
+                    }
+                </style>
+                <div class="footer__item-padding">
+                    <div>
+                        <div class="collapsible-content__inner">
+                            <div class="footer__collapsible footer_collapsible--disabled">
+                                <p class="h4 footer__title small--hide" style=" font-size: 12px;width: 220px;    color: #2F2625;">
+                                    CONNECT WITH US
+                                </p>
+                                <p style=" font-size: 12px;width: 220px; ">Be the first to know about our biggest and best sales. We&#x27;ll never send more than one email a month.</p>
+                                <form method="post" action="#" accept-charset="UTF-8" class="contact-form"><input type="hidden" name="form_type" value="customer" /><input type="hidden" name="utf8" value="✓" /><label for="Email-1494292487693" class="hidden-label">Enter your email</label>
+                                    <label for="newsletter-submit-1494292487693" class="hidden-label">Subscribe</label>
+                                    <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+                                    <input type="hidden" name="contact[context]" value="footer">
+                                    <div class="footer__newsletter">
+                                        <input type="email" value="" placeholder="Enter your email" id="subscribe_email" name="contact[email]" id="Email-1494292487693" class="footer__newsletter-input" autocorrect="off" autocapitalize="off">
+                                        <button type="button" aria-label="commit-btn" id="newsletter-submit-1494292487693" class="footer__newsletter-btn" name="commit" onclick="subscribe()">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-email" viewBox="0 0 64 64">
+                                                <path d="M63 52H1V12h62zM1 12l25.68 24h9.72L63 12M21.82 31.68L1.56 51.16m60.78.78L41.27 31.68" />
+                                            </svg>
+                                            <span class="footer__newsletter-btn-label">
+                                                Subscribe
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <ul class="no-bullets social-icons footer__social">
+                                    <li>
+                                        <a target="_blank" rel="noopener" href="<?php echo $instagram ?>" title="<?php echo $title; ?> — Modern on Instagram">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-instagram" viewBox="0 0 32 32" style="color: black;">
+                                                <path fill="#444" d="M16 3.094c4.206 0 4.7.019 6.363.094 1.538.069 2.369.325 2.925.544.738.287 1.262.625 1.813 1.175s.894 1.075 1.175 1.813c.212.556.475 1.387.544 2.925.075 1.662.094 2.156.094 6.363s-.019 4.7-.094 6.363c-.069 1.538-.325 2.369-.544 2.925-.288.738-.625 1.262-1.175 1.813s-1.075.894-1.813 1.175c-.556.212-1.387.475-2.925.544-1.663.075-2.156.094-6.363.094s-4.7-.019-6.363-.094c-1.537-.069-2.369-.325-2.925-.544-.737-.288-1.263-.625-1.813-1.175s-.894-1.075-1.175-1.813c-.212-.556-.475-1.387-.544-2.925-.075-1.663-.094-2.156-.094-6.363s.019-4.7.094-6.363c.069-1.537.325-2.369.544-2.925.287-.737.625-1.263 1.175-1.813s1.075-.894 1.813-1.175c.556-.212 1.388-.475 2.925-.544 1.662-.081 2.156-.094 6.363-.094zm0-2.838c-4.275 0-4.813.019-6.494.094-1.675.075-2.819.344-3.819.731-1.037.4-1.913.944-2.788 1.819S1.486 4.656 1.08 5.688c-.387 1-.656 2.144-.731 3.825-.075 1.675-.094 2.213-.094 6.488s.019 4.813.094 6.494c.075 1.675.344 2.819.731 3.825.4 1.038.944 1.913 1.819 2.788s1.756 1.413 2.788 1.819c1 .387 2.144.656 3.825.731s2.213.094 6.494.094 4.813-.019 6.494-.094c1.675-.075 2.819-.344 3.825-.731 1.038-.4 1.913-.944 2.788-1.819s1.413-1.756 1.819-2.788c.387-1 .656-2.144.731-3.825s.094-2.212.094-6.494-.019-4.813-.094-6.494c-.075-1.675-.344-2.819-.731-3.825-.4-1.038-.944-1.913-1.819-2.788s-1.756-1.413-2.788-1.819c-1-.387-2.144-.656-3.825-.731C20.812.275 20.275.256 16 .256z" />
+                                                <path fill="#444" d="M16 7.912a8.088 8.088 0 0 0 0 16.175c4.463 0 8.087-3.625 8.087-8.088s-3.625-8.088-8.088-8.088zm0 13.338a5.25 5.25 0 1 1 0-10.5 5.25 5.25 0 1 1 0 10.5zM26.294 7.594a1.887 1.887 0 1 1-3.774.002 1.887 1.887 0 0 1 3.774-.003z" />
+                                            </svg>
+                                            <span class="icon__fallback-text">Instagram</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" rel="noopener" href="<?php echo $facebook ?>" title="<?php echo $title; ?> — Modern on Facebook">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 14222 14222" style="color: black;">
+                                                <path d="M14222 7112c0 3549.352-2600.418 6491.344-6000 7024.72V9168h1657l315-2056H8222V5778c0-562 275-1111 1159-1111h897V2917s-814-139-1592-139c-1624 0-2686 984-2686 2767v1567H4194v2056h1806v4968.72C2600.418 13603.344 0 10661.352 0 7112 0 3184.703 3183.703 1 7111 1s7111 3183.703 7111 7111zm-8222 7025c362 57 733 86 1111 86-377.945 0-749.003-29.485-1111-86.28zm2222 0v-.28a7107.458 7107.458 0 0 1-167.717 24.267A7407.158 7407.158 0 0 0 8222 14137zm-167.717 23.987C7745.664 14201.89 7430.797 14223 7111 14223c319.843 0 634.675-21.479 943.283-62.013z" />
+                                            </svg>
+                                            <span class="icon__fallback-text">Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" rel="noopener" href="<?php echo $pinterest ?>" title="<?php echo $title; ?>  — Modern on Pinterest">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pinterest" viewBox="0 0 256 256" style="color: black;">
+                                                <path d="M0 128.002c0 52.414 31.518 97.442 76.619 117.239-.36-8.938-.064-19.668 2.228-29.393 2.461-10.391 16.47-69.748 16.47-69.748s-4.089-8.173-4.089-20.252c0-18.969 10.994-33.136 24.686-33.136 11.643 0 17.268 8.745 17.268 19.217 0 11.704-7.465 29.211-11.304 45.426-3.207 13.578 6.808 24.653 20.203 24.653 24.252 0 40.586-31.149 40.586-68.055 0-28.054-18.895-49.052-53.262-49.052-38.828 0-63.017 28.956-63.017 61.3 0 11.152 3.288 19.016 8.438 25.106 2.368 2.797 2.697 3.922 1.84 7.134-.614 2.355-2.024 8.025-2.608 10.272-.852 3.242-3.479 4.401-6.409 3.204-17.884-7.301-26.213-26.886-26.213-48.902 0-36.361 30.666-79.961 91.482-79.961 48.87 0 81.035 35.364 81.035 73.325 0 50.213-27.916 87.726-69.066 87.726-13.819 0-26.818-7.47-31.271-15.955 0 0-7.431 29.492-9.005 35.187-2.714 9.869-8.026 19.733-12.883 27.421a127.897 127.897 0 0 0 36.277 5.249c70.684 0 127.996-57.309 127.996-128.005C256.001 57.309 198.689 0 128.005 0 57.314 0 0 57.309 0 128.002z" />
+                                            </svg>
+                                            <span class="icon__fallback-text">Pinterest</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" rel="noopener" href="<?php echo $youtube; ?>" title="<?php echo $title; ?>  — Modern on Youtube">
+                                            <svg style="color:black;" xmlns="https://www.w3.org/2000/svg" class="icon icon-facebook" width="512" height="512" viewBox="0 0 512 512">
+                                                <!--  <title>ionicons-v5_logos</title> -->
+                                                <path d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z" fill="#472465"></path>
+                                            </svg>
+                                            <span class="icon__fallback-text">youtube</span>
+                                        </a>
+                                    </li>
+
+                                    <!--  <li>
+                                        <a target="_blank" rel="noopener" href="<?php echo $twitter; ?>" title="<?php echo $title; ?>  — Modern on Twitter">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-facebook" height="1em" viewBox="0 0 512 512"> //! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. // <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+                                            <span class="icon__fallback-text">twitter</span>
+                                        </a>
+                                    </li> -->
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seo-bottom-description">
+
+
+            <div class="left">
+                <!-- <h3 data-mce-fragment="1">Sitemap :</h3> -->
+                <p data-mce-fragment="1">
+                </p>
+            </div>
+
+        </div>
+
+        <!-- <p class="footer__small-text"><a target="_blank" rel="nofollow" href="#"><strong>Address:</strong>  <?php // echo $address;
+                                                                                                                    ?>. <strong>Contact No:</strong> <?php // echo $phoneno
+                                                                                                                                                        ?> <strong>Email id: </strong><?php // echo $owner_mail
+                                                                                                                                                                                                            ?></a></p> -->
+        <p class="footer__small-text"><a target="_blank" rel="nofollow" href="#">All Rights Reserved By Gajendra Bhamare.</a></p>
+    </div>
+</footer>
+<script>
+    var baseurl = "<?php echo $base_url; ?>";
+    var producttype = "<?php echo $producttype; ?>";
+    var currency_symbol = "<?php echo $_SESSION['currency_label'] ?>";
+    var c_convert = "<?php echo $_SESSION['currency_cost']; ?>";
+    var session_userid = '<?php echo $session_userid; ?>';
+    var session_userid_new = '<?php echo $session_userid_new; ?>';
+    var online_per = "<?php echo $Online_Charge_Percentage; ?>";
+</script>
+<script src="/assets/jquery.min.js" type="text/javascript"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->

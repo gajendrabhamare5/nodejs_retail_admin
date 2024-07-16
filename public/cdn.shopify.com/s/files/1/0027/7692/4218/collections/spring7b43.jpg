@@ -1,0 +1,8 @@
+HTTP/1.1 301 Moved Permanently
+Date: Mon, 19 Dec 2022 05:49:50 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: max-age=3600
+Expires: Mon, 19 Dec 2022 06:49:50 GMT
+Location: https://cdn.shopify.com/s/files/1/0027/7692/4218/collections/spring.jpg?v=1525296055
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=72x2BaY6AQjxyMM2rUdi69ufcCmVvI3gpNPCed87THsekWcQL%2B7k%2BimjU4j2Sf9xMRUmfnWsRLy1g46HfLeTuAPcjpH6XRzkdJnHtkV14Vv52ftBp%2FThIWVnpY9L%2BszbmA%3D%3D"}],

@@ -98,15 +98,19 @@ const static_path = path.join(__dirname, "./public")
 const template_path = path.join(__dirname, "./templates/views")
 const partial_path = path.join(__dirname, "./templates/partials")
 
+
+ const template_path1 = path.join(__dirname, "./web/views")
+ const partial_path1 = path.join(__dirname, "./web/partials")
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(static_path))
 
 // app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'main' }));
-
+// app.use("/retail_admin")
 app.set("view engine", "hbs")
-app.set("views", template_path)
-hbs.registerPartials(partial_path)
+app.set("views", template_path1)
+hbs.registerPartials(partial_path1)
 
 
 app.get("/", (req, res) => {
@@ -114,8 +118,9 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
+
 const categoryRoutes = require('./routes/category');
-app.use('/',categoryRoutes)
+app.use('/retail_admin',categoryRoutes)
 
 const subcategoryRoutes = require('./routes/subcategory');
 app.use('/',subcategoryRoutes)
