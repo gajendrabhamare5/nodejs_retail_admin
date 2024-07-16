@@ -185,7 +185,9 @@ const deletebrand = async (req,res)=>{
     }
 
     /* res.json({ message: 'Brand deleted successfully' }); */
-    res.redirect('/brand_add');
+     //res.redirect('/brand_add');
+    // res.status(302).set('Location', '/brand_add').end();
+    res.send("ok")
 
    } catch (error) {
     console.log(error);
@@ -242,10 +244,12 @@ const updatebrand = async (req,res)=>{
 
         const { brand_name, brand_title, brand_keyword, brand_description, content } = req.body;
 
+        console.log("brand_name",req.body.brand_name);
+
         const brand_image = req.files ? req.files.image_file :null
 
         let updateFields = {};
-        if (brand_name) updateFields.category_name = brand_name;
+        if (brand_name) updateFields.brand_name = brand_name;
         if (brand_title) updateFields.brand_meta_title = brand_title;
         if (brand_keyword) updateFields.brand_meta_keyword = brand_keyword;
         if (brand_description) updateFields.brand_meta_description = brand_description;
