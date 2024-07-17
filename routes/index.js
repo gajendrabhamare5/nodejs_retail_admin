@@ -11,6 +11,8 @@ const Controllercontactus = require('../controllers/contactus.js');
 const Controllershipping_policy = require('../controllers/shipping-policy.js');
 const Controllerprivacy_policy = require('../controllers/privacy-policy.js');
 const Controllerexchange_policy = require('../controllers/exchange-policy.js');
+const Controllerterms_condition = require('../controllers/terms_condition.js');
+const Controllerfaq = require('../controllers/faq.js');
 
  router.get('/portfolio', Controllerport.getportfolioInfo);
  router.get('/product', Controllerproduct.getportproductInfo);
@@ -23,6 +25,8 @@ const Controllerexchange_policy = require('../controllers/exchange-policy.js');
  router.get('/shipping-policy', Controllershipping_policy.getshipping_policyInfo);
  router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
  router.get('/exchange-policy', Controllerexchange_policy.getexchange_policyInfo);
+ router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
+ router.get('/faq', Controllerfaq.getfaqInfo);
 //  router.post('/portfolio', Controller.updateportfolio)
 
 
