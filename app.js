@@ -155,6 +155,9 @@ app.use('/',subattributeRoutes)
 const productviewRoutes = require('./routes/product_view');
 app.use('/',productviewRoutes)
 
+const indexviewRoutes = require('./routes/index.js');
+app.use('/',indexviewRoutes)
+
 /*   const producteditdetailRoutes = require('./routes/product_edit_detail_fetch');
  app.use('/',producteditdetailRoutes)  */
 
