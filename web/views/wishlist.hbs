@@ -1,0 +1,224 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <link rel="canonical" href="wishlist">
+    <link rel="preconnect" href="https://cdn.shopify.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopifycdn.com/" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com/">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="shortcut icon" href="" type="image/png" />
+    <title>title
+
+    </title>
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+
+    <link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="assets/css/toastr.min.css">
+    <style data-shopify>
+        :root {
+            --typeHeaderPrimary: "Tenor Sans";
+            --typeHeaderFallback: sans-serif;
+            --typeHeaderSize: 36px;
+            --typeHeaderWeight: 400;
+            --typeHeaderLineHeight: 1;
+            --typeHeaderSpacing: 0.0em;
+
+            --typeBasePrimary: "Twentieth Century";
+            --typeBaseFallback: sans-serif;
+            --typeBaseSize: 18px;
+            --typeBaseWeight: 400;
+            --typeBaseSpacing: 0.025em;
+            --typeBaseLineHeight: 1.4;
+
+            --typeCollectionTitle: 18px;
+
+            --iconWeight: 2px;
+            --iconLinecaps: miter;
+
+
+            --buttonRadius: 0px;
+
+
+            --colorGridOverlayOpacity: 0.0;
+        }
+
+        .placeholder-content {
+            background-image: linear-gradient(100deg, #f4f4f4 40%, #ececec 63%, #f4f4f4 79%);
+        }
+    </style>
+    <script>
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+        window.theme = window.theme || {};
+        theme.routes = {
+            home: "/",
+            cart: "/cart.js",
+            cartPage: "/cart",
+            cartAdd: "/cart/add.js",
+            cartChange: "/cart/change.js",
+            search: "/search"
+        };
+        theme.strings = {
+            soldOut: "Sold Out",
+            unavailable: "Unavailable",
+            inStockLabel: "In stock, ready to ship",
+            oneStockLabel: "Low stock - [count] item left",
+            otherStockLabel: "Low stock - [count] items left",
+            willNotShipUntil: "Ready to ship [date]",
+            willBeInStockAfter: "Back in stock [date]",
+            waitingForStock: "Inventory on the way",
+            savePrice: "Save [saved_amount]",
+            cartEmpty: "Your cart is currently empty.",
+            cartTermsConfirmation: "You must agree with the terms and conditions of sales to check out",
+            searchCollections: "Collections:",
+            searchPages: "Pages:",
+            searchArticles: "Articles:",
+            productFrom: "from ",
+        };
+        theme.settings = {
+            cartType: "drawer",
+            isCustomerTemplate: false,
+            moneyFormat: "${{amount_no_decimals}}",
+            saveType: "dollar",
+            productImageSize: "natural",
+            productImageCover: false,
+            predictiveSearch: true,
+            predictiveSearchType: "product,article",
+            predictiveSearchVendor: false,
+            predictiveSearchPrice: false,
+            quickView: true,
+            themeName: 'Impulse',
+            themeVersion: "7.1.0"
+        };
+    </script>
+
+
+
+    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
+    <link rel="stylesheet" href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183" defer="defer"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head>
+
+<style>
+    @media screen and (min-width: 768px) {
+
+        .page-content,
+        .shopify-email-marketing-confirmation__container,
+        .shopify-policy__container {
+            padding-top: 150px;
+        }
+    }
+</style>
+
+<body class="template-index" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">Skip to content</a>
+
+    <div id="PageContainer" class="page-container">
+
+        <div class="transition-body">
+           {{>header}}
+            <div>
+
+                <main class="main-content" id="MainContent">
+                    <div class="page-width page-content custom_width">
+
+                        <div class="wrapper">
+                            <header class="section-header" style="margin-bottom: 20px;">
+                                <h1 class="section-header__title">My Wishlist
+                                </h1>
+                                <hr>
+                            </header>
+
+                            <div class="grid">
+
+                                <div class="grid_12" data-wishlistcontainer="" style="display: block;">
+
+                                    <ul class="bulk_action">
+
+                                        <li data-hulkmoveallitmes="" style="display: none;"><a href="javascript:void(0)">Move to cart</a></li>
+                                        <li data-hulkdeleteallitmes="" style="display: none;"><a href="javascript:void(0)">Delete</a></li>
+                                    </ul>
+                                    <div class="wishlist-list-view" data-hulklistviewcontainer="" style="display: none;"></div>
+
+                                    <p id="empty_wishlist" style="color: #666;font-size: 25px;display: flex;align-items: center;justify-content: center;font-weight: 700;">
+
+                                    <div class="wishlist-empty" data-hulkemptywishlist="" style="display: none">
+                                        <div class="empty_content" style="text-align: center">
+                                            <h3>Please add product to your wishlist to see them here.</h3>
+                                            <a href="/collections" class="wishlist-btn hulkBtnStyle" style="background-color: #D97676; border: 1px solid #D97676; color: white;">Return to shop</a>
+                                        </div>
+                                    </div>
+                                    <div class="wishlist-pagination pagination" data-hulkpagination="" style="display: none">
+                                        <a href="#" class="pagination-link" data-prevpage="" style="display: none;">Previous</a>
+                                        <div data-paginationcountcontainer="" style="display: flex"><a href="https://advanced-wishlist.hulkapps.com/frontend/wishlist/api/wishlist/products/guest?page=1" data-page="1" style="margin: 0 10px;padding:7px;background-color: #D97676;color: #D97676" class="pagination-link"> 1 </a></div>
+                                        <a href="javascript:void(0)" data-value="1" data-currentpage="" style="display: none">1</a>
+                                        <a href="#" class="pagination-link" data-nextpage="" style="display: none;">Next</a>
+                                    </div>
+                                </div>
+                                <div class="grid_12 wishlist-login" data-hulkloginmsg="" style="display: none">
+                                    <div class="empty_content" style="text-align: center">
+                                        <h3>Login to see your wishlist!</h3>
+                                        <a href="/login" class="wishlist-btn hulkBtnStyle" style="background-color: #D97676; border: 1px solid #D97676; color: white;">Login</a>
+                                    </div>
+                                </div>
+                                <div class="swiper mySwiper hulk__product__recommendation swiper-initialized swiper-horizontal swiper-pointer-events" data-hulkapps-swiper="" style="margin-top: 5rem;display: none">
+                                    <div class="product_recommendation_heading" data-recommend-heading="">
+                                        <h2 class="product-recommend-title" style="color: undefined"><span>You may also like</span></h2>
+                                    </div>
+                                    <div class="swiper-wrapper product__recommendation" data-recommend-list="" id="swiper-wrapper-3b2578f3ca10bea38" aria-live="polite" style="cursor: grab; transition-duration: 0ms;"></div>
+                                    <div class="swiper-button-next" style="display: none;" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-3b2578f3ca10bea38" aria-disabled="false"></div>
+                                    <div class="swiper-button-prev" style="display: none;" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3b2578f3ca10bea38" aria-disabled="false"></div>
+                                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </main>
+
+                <div id="shopify-section-footer" class="shopify-section">
+                    <style data-shopify>
+                        .site-footer {
+                            border-top: 1px solid #e8e8e1;
+                        }
+                    </style>
+                   {{>footer}}
+
+                </div>
+            </div>
+
+
+
+</body>
+
+
+
+
+<script src="assets/custom_web.js"></script>
+<script src="assets/toastr.min.js"></script>
+
+</html>

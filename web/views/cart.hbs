@@ -1,0 +1,709 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <link rel="canonical" href="cart">
+    <link rel="preconnect" href="https://cdn.shopify.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopifycdn.com/" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com/">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="shortcut icon" href="" type="image/png" />
+    <title>Your Shopping Cart
+
+    </title>
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="cart">
+    <meta property="og:title" content="Your Shopping Cart">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:secure_url" content="">
+    <link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
+    <style data-shopify>
+        :root {
+            --typeHeaderPrimary: "Tenor Sans";
+            --typeHeaderFallback: sans-serif;
+            --typeHeaderSize: 36px;
+            --typeHeaderWeight: 400;
+            --typeHeaderLineHeight: 1;
+            --typeHeaderSpacing: 0.0em;
+
+            --typeBasePrimary: "Twentieth Century";
+            --typeBaseFallback: sans-serif;
+            --typeBaseSize: 18px;
+            --typeBaseWeight: 400;
+            --typeBaseSpacing: 0.025em;
+            --typeBaseLineHeight: 1.4;
+
+            --typeCollectionTitle: 18px;
+
+            --iconWeight: 2px;
+            --iconLinecaps: miter;
+
+            --buttonRadius: 0px;
+
+            --colorGridOverlayOpacity: 0.0;
+        }
+
+        .placeholder-content {
+            background-image: linear-gradient(100deg, #f4f4f4 40%, #ececec 63%, #f4f4f4 79%);
+        }
+    </style>
+    <script>
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+        window.theme = window.theme || {};
+        theme.routes = {
+            home: "/",
+            cart: "/cart.js",
+            cartPage: "/cart",
+            cartAdd: "/cart/add.js",
+            cartChange: "/cart/change.js",
+            search: "/search"
+        };
+        theme.strings = {
+            soldOut: "Sold Out",
+            unavailable: "Unavailable",
+            inStockLabel: "In stock, ready to ship",
+            oneStockLabel: "Low stock - [count] item left",
+            otherStockLabel: "Low stock - [count] items left",
+            willNotShipUntil: "Ready to ship [date]",
+            willBeInStockAfter: "Back in stock [date]",
+            waitingForStock: "Inventory on the way",
+            savePrice: "Save [saved_amount]",
+            cartEmpty: "Your cart is currently empty.",
+            cartTermsConfirmation: "You must agree with the terms and conditions of sales to check out",
+            searchCollections: "Collections:",
+            searchPages: "Pages:",
+            searchArticles: "Articles:",
+            productFrom: "from ",
+        };
+        theme.settings = {
+            cartType: "drawer",
+            isCustomerTemplate: false,
+            moneyFormat: "${{amount_no_decimals}}",
+            saveType: "dollar",
+            productImageSize: "natural",
+            productImageCover: false,
+            predictiveSearch: true,
+            predictiveSearchType: "product,article",
+            predictiveSearchVendor: false,
+            predictiveSearchPrice: false,
+            quickView: true,
+            themeName: 'Impulse',
+            themeVersion: "7.1.0"
+        };
+    </script>
+    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
+    <link rel="stylesheet" href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183" defer="defer"></script>
+
+</head>
+<style>
+    .maincart {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0px 0px 2px 2px #8080808c;
+    }
+
+    .prod-offer-wrap {
+        height: 75px;
+        background-color: rgba(234, 128, 0, .1);
+        width: 100%;
+        border-radius: 7px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 9px;
+        margin-bottom: 12px;
+        padding: 9px 13px 10px 17px;
+        line-height: 1.44;
+    }
+
+    .prod-offer-head {
+        font-weight: bold;
+    }
+
+    .prod-offer-desc {
+        color: grey;
+    }
+
+    .prod-offer-text p {
+        margin: 3px 0 3px;
+    }
+
+    .crossbutton {
+      /*   left: calc(100% - 50px); */
+        position: absolute;
+        color: white;
+        background: #ea4a4a;
+        border-radius: 100%;
+        padding: 14px 1px 1px 1px;
+        text-align: center;
+        line-height: 0px;
+        height: 28px;
+        width: 26px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .crossbutton {
+          /*   left: calc(100% - 630px); */
+        }
+    }
+</style>
+
+<body class="template-cart" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">Skip to content</a>
+
+    <div id="PageContainer" class="page-container">
+        <div class="transition-body">
+         {{>header}}
+            <main class="main-content" id="MainContent">
+                <div id="shopify-section-template--14452072579130__main" class="shopify-section">
+                    <div class="page-width page-content">
+                        <header class="section-header text-center">
+                            <h1 class="section-header__title">Cart</h1>
+
+
+                                <div class="text-spacing">
+                                    <p>Your cart is currently empty</p>
+                                    <p><a href='http://localhost:4000/'>Continue shopping</a></p>
+                                </div>
+
+                                <div class=" text-spacing">
+
+                                    <p><a href='http://localhost:4000/'>Continue shopping</a></p>
+                                </div>
+                        </header>
+
+
+                        <form action="" method="post" novalidate="" data-location="page" id="CartPageForm">
+                            <div class="cart__page">
+                                <div data-products="" class="cart__page-col showcart">
+                                    <div class="maincart">
+
+                                                       {{!--  <div class="prod-offer-wrap subcart">
+                                                            <div class="prod-offer-text">
+                                                                <p class="prod-offer-head">scheme_name</p>
+                                                                <p class="prod-offer-desc">text_applied</p>
+                                                            </div>
+                                                            <div>
+                                                                <button class="prod-offer-btn" style="color: rgb(234, 128, 0); font-size: 16px; font-family: montserrat;"><a href="">Add items</a></button>
+                                                            </div>
+                                                        </div> --}}
+
+
+                                            <div class="cart__item" data-key="7832701861946:66be641dcd6160f6ab01156da3783e9f">
+                                            <a href="javaScript:void(0)" class="dcartitemremove" aria-label="button" data-type="carts" data-id="549"><span class="crossbutton">x</span></a>
+                                                <div class="cart__image">
+                                                    <!-- <a href="/<?php echo $pagename . $product_seo_url ?>" style="height: 0; padding-bottom: 133.42696629213484%;"> -->
+                                                    <img class="lazyautosizes lazyloaded" data-widths="[180, 360, 540]" data-aspectratio="" data-sizes="auto" alt="" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" sizes="150px" srcset="<?Php echo $img; ?>">
+
+                                                    <noscript>
+                                                        <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="">
+                                                    </noscript>
+                                                    <!-- </a> -->
+                                                </div>
+                                                <div class="cart__item-details">
+                                                    <div class="cart__item-title">
+                                                        <a href="" class="cart__item-name">
+                                                            title
+                                                        </a>
+                                                        <div class="cart__item--variants">
+
+                                                                <div>
+                                                                    <span>Size:</span> strtoupper($Size)
+
+                                                                </div>
+
+                                                            <div>
+                                                                <span>Weight:</span><span class="pro-weight977">45</span>
+                                                            </div>
+                                                            <!-- <div>
+                                                            <span>Pcs:</span> <?php echo $productcount * $qty * $catalog_pcs ?>
+                                                        </div> -->
+
+                                                                <div>
+
+                                                                    <div class="prod-offer-apply">
+
+                                                                        <p style="margin-left: 5px;color: #63c954;"></p>
+                                                                    </div>
+                                                                </div>
+
+{{!--
+                                                                <div>
+                                                                    <span>Point:</span><span class="pro-point98898"></span>
+                                                                </div>
+ --}}
+                                                        </div>
+                                                        <div class="cart__item--variants">
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="cart__item-sub">
+                                                        <div>
+
+                                                            <div class="js-qty__wrapper">
+                                                                <label for="proqty<?php echo $ccid; ?>" class="hidden-label">Quantity</label>
+                                                                <input type="text" id="proqty<?php echo $ccid; ?>" name="updates[]" class="js-qty__num" value="<?php echo $qty ?>" min="1" max="100000" pattern="[0-9]*" data-id="proqty<?php echo $ccid; ?>" readonly>
+                                                                <button type="button" onclick="onplusmin('min','<?php echo $ccid; ?>')" class="quantity-minus js-qty__adjust js-qty__adjust--minus" aria-label="Reduce item quantity by one">
+                                                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20">
+                                                                        <path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path>
+                                                                    </svg>
+                                                                    <span class="icon__fallback-text" aria-hidden="true">−</span>
+                                                                </button>
+                                                                <button type="button" onclick="onplusmin('plus','<?php echo $ccid; ?>')" class="quantity-plus js-qty__adjust js-qty__adjust--plus" aria-label="Increase item quantity by one">
+                                                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20">
+                                                                        <path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path>
+                                                                    </svg>
+                                                                    <span class="icon__fallback-text" aria-hidden="true">+</span>
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="cart__remove">
+
+                                                                <button type="button" class="dcartitemremove" aria-label="button" data-type="carts" data-id="988">
+                                                                    Remove
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="cart__item-price-col text-right">
+
+                                                            <span class="cart__pricecart-item-price fwm cd js_tt_price_it" id="tt-subtot<?php echo $ccid; ?>">
+
+                                                            </span>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="cart__page-col">
+
+                                    <div data-discounts="">
+
+                                    </div>
+
+                                    <div class="cart__item-sub cart__item-row">
+                                        <input type="hidden" id="fullsubtotalcart" value="<?php echo $total; ?>">
+                                        <div>Subtotal</div>
+
+                                        <div data-subtotal="" id="subtotcart"> 56565</div>
+                                    </div>
+                                    <div class="cart__item-sub cart__item-row combodiv" style="display: none;">
+                                        <input type="hidden" id="combodiscount" value="0">
+                                        <div>Combo Offer Discount</div>
+
+                                        <div id="combocart"></div>
+                                    </div>
+
+                                    <div class="cart__item-row cart__checkout-wrapper">
+                                        <button type="submit" name="checkout" data-terms-required="false" class="btn cart__checkout">
+                                            Check out
+                                        </button>
+
+                                    </div>
+
+                                    <div class="cart__item-row text-center">
+                                        <small>
+                                            Shipping, taxes, and discount codes calculated at checkout.<br>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <hr class="hr--large">
+                <div id="shopify-section-template--14452072579130__featured-collection" class="shopify-section index-section">
+                    <div id="CollectionSection-template--14452072579130__featured-collection" data-section-id="template--14452072579130__featured-collection" data-section-type="featured-collection">
+                        <div class="page-width">
+                            <div class="section-header">
+                                <h2 class="section-header__title">
+                                    Popular picks
+                                </h2>
+                                <p class="section-header__title">
+                                </p>
+                                <!--  <a href="index.php" class="btn btn--secondary btn--small section-header__link">View all</a> -->
+                            </div>
+                        </div>
+                        <div class="page-width page-width--flush-small">
+                            <div class="grid-overflow-wrapper">
+                                <div class="grid grid--uniform" data-aos="overflow__animation">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="section-header">
+
+                            <a href="index.php" class="btn btn--secondary btn--small section-header__link">View all</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <div id="shopify-section-footer" class="shopify-section">
+                <style data-shopify>
+                    .site-footer {
+                        border-top: 1px solid #e8e8e1;
+                    }
+                </style>
+            {{>footer}}
+            </div>
+        </div>
+    </div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
+                        <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+                    </svg>
+                </button>
+
+                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                        <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                    </svg>
+                </button>
+
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
+                        <path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <tool-tip data-tool-tip="">
+        <div class="tool-tip__inner" data-tool-tip-inner>
+            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                    <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                </svg></button>
+            <div data-tool-tip-title>Your Shopping Cart</div>
+            <div class="tool-tip__content" data-tool-tip-content>
+            </div>
+        </div>
+    </tool-tip>
+</body>
+
+<script src="assets/custom_web.js?ver=<?php echo time(); ?>"></script>
+<script src="assets/toastr.min.js"></script>
+
+</html>
+<script>
+    var basurl = '<?php echo $base_url; ?>';
+    $(function() {
+
+        var rowcount = '<? echo $rowcount; ?>';
+        var scheme_count = '<? echo $scheme_count; ?>';
+        if (rowcount > 0 && scheme_count > 0) {
+            view_cart_design();
+        }
+
+        $('body').on('click', '.dcartitemremove', function() {
+            var cartid = $(this).attr("data-id");
+            var carttype = $(this).attr("data-type");
+            console.log(cartid);
+            console.log(carttype);
+            var ctype = "";
+
+            var type = "delete_cart";
+
+            $.ajax({
+                type: "POST",
+                url: baseurl + "ajaxfiles/add_to_cart.php",
+                dataType: "JSON",
+                data: {
+                    Type: type,
+                    CID: cartid,
+                    CType: ctype
+                },
+                success: function(data) {
+                    $(".countproduct").html(data.count);
+                    if (carttype == "popup") {
+                        $(".opencart").click();
+                    }
+                    if (carttype == "carts") {
+                        location.reload();
+                    }
+                }
+            });
+
+        });
+    });
+
+    function view_cart_design() {
+        var show_scheme = [];
+        var oldsubtot = $("#fullsubtotalcart").val();
+        console.log(oldsubtot, 'oldsubtot');
+        $.ajax({
+            type: "POST",
+            url: baseurl + "ajaxfiles/view_cart_scheme.php",
+            dataType: "json",
+
+            success: function(data) {
+                $(".showcart").html('');
+                var cartitem = data.cartitem;
+                var subtotal = data.total;
+
+                /*  console.log(cartitem, 'cartitem');
+                 console.log(subtotal, 'subtotal'); */
+                var cou = data.cou;
+                /* console.log(cou, 'cou'); */
+                var html = '';
+                var plusmin = '';
+
+                combo_discount = 0;
+
+                var scheme_aplied = [];
+                var scheme_array = data.scheme_array;
+                for (i = 0; i < cou; i++) {
+                    var total_qty = '0';
+                    var scheme_div = '';
+                    var types = '';
+                    var ccid = data.cartitem[i].ccid;
+
+                    var catalog_pcs_c = data.cartitem[i].catalog_pcs;
+
+                    var img = data.cartitem[i].img;
+
+                    var per_product_weight = data.cartitem[i].per_product_weight;
+
+                    var title = data.cartitem[i].product_name;
+
+                    var product_point1 = data.cartitem[i].product_point1;
+
+                    var product_point = data.cartitem[i].product_point;
+
+                    var is_point_visible = data.cartitem[i].is_point_visible;
+
+                    var Size = data.cartitem[i].Size;
+
+                    var c_qty = data.cartitem[i].qty;
+
+                    var product_seo_url = data.cartitem[i].product_seo_url;
+
+                    var c_convert = "<?php echo $_SESSION['currency_cost']; ?>";
+
+                    var qrate = data.cartitem[i].qrate;
+                    var free_item = data.cartitem[i].free_item;
+
+                    var all_scm = data.cartitem[i].all_scm;
+
+                    var offer_applied = data.cartitem[i].offer_applied;
+                    var offer = data.cartitem[i].offer;
+                    var offer_id = data.cartitem[i].offer_id;
+                    var text_applied = data.cartitem[i].text_applied;
+
+                    var qrate = Math.round((parseInt(qrate) / parseFloat(c_convert)) * 100) / 100;
+                    /*   console.log(offer, 'offer'); */
+
+                    if (offer != '' && jQuery.inArray(offer, scheme_aplied) === -1 && offer_applied == true) {
+                        scheme_aplied.push(offer);
+                        scheme_array[offer].sort(function(a, b) {
+                            return a - b
+                        });
+                        var count1 = all_scm[0]['free_qty']
+                        console.log(count1, 'count');
+                        for (var index = 0; index < count1; index++) {
+                            combo_discount = combo_discount + scheme_array[offer][index];
+
+                        }
+
+                        /*  console.log(scheme_array[offer][0], 'offerscn'); */
+                    }
+
+                    var cart_pro_weight = +per_product_weight * +c_qty * +catalog_pcs_c;
+                    cart_pro_weight = +cart_pro_weight.toFixed(2);
+
+                    var size = '';
+                    if (Size.length > 0) {
+                        size += `<div>
+                                <span>Size:</span> ${Size}
+
+                                 </div>`
+
+                    }
+                    var point = '';
+                    if (product_point != '0' && is_point_visible != '0') {
+                        point += `<div>
+                                <span>Point:</span><span class="pro-point${ccid}">${product_point}( ${product_point1} %)"</span>
+                            </div>`
+
+                    }
+
+                    html += `<div class="maincart">`;
+
+
+                    if (offer_applied == true) {
+
+                        scheme_div = `<div>
+                                        <div class="prod-offer-apply">
+                                            <p style="margin-left: 5px;color: #63c954;">${offer} ${text_applied}</p>
+
+                                        </div>
+                                    </div>`;
+
+                    } else if (offer_applied == false) {
+
+                        html += `<div class="prod-offer-wrap subcart${ccid}" >
+                                            <div class="prod-offer-text">
+                                                <p class="prod-offer-head">${offer}</p>
+                                                <p class="prod-offer-desc">${text_applied}</p>
+                                            </div>
+                                            <div>
+                                                <button class="prod-offer-btn" style="color: rgb(234, 128, 0); font-size: 16px; font-family: montserrat;"><a href="${baseurl}scheme/${offer_id}">Add items</a></button>
+                                            </div>
+                                    </div>`
+
+                    } else if (offer_applied == '-' && text_applied != '') {
+                        scheme_div = `<div>
+                                        <div class="prod-offer-apply">
+                                            <p style="margin-left: 5px;color: #63c954;"> ${text_applied}</p>
+                                        </div>
+                                    </div>`;
+                    }
+
+                    plusmin = '';
+
+                    plusmin = ` <div class="cart__item-sub">
+                                    <div>
+                                      <div class="js-qty__wrapper">
+                                            <label for="proqty${ccid}" class="hidden-label">Quantity</label>
+                                            <input type="text" id="proqty${ccid}" name="updates[]" class="js-qty__num" value="${c_qty}" min="1" max="100000" pattern="[0-9]*" data-id="proqty${ccid}" readonly>
+                                            <button type="button" onclick="onplusmin('min','${ccid}')" class="quantity-minus js-qty__adjust js-qty__adjust--minus" aria-label="Reduce item quantity by one">
+                                                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20">
+                                                    <path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path>
+                                                </svg>
+                                                <span class="icon__fallback-text" aria-hidden="true">−</span>
+                                            </button>
+                                            <button type="button" onclick="onplusmin('plus','${ccid}')" class="quantity-plus js-qty__adjust js-qty__adjust--plus" aria-label="Increase item quantity by one">
+                                                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20">
+                                                    <path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path>
+                                                </svg>
+                                                <span class="icon__fallback-text" aria-hidden="true">+</span>
+                                            </button>
+                                        </div>
+                                        <div class="cart__remove">
+
+                                            <button type="button" class="dcartitemremove" aria-label="button" data-type="carts" data-id="${ccid}">
+                                                Remove
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="cart__item-price-col text-right">
+
+                                        <span class="cart__pricecart-item-price fwm cd js_tt_price_it" id="tt-subtot${ccid}">
+                                            <?php echo $_SESSION['currency_label']; ?> ${qrate}
+                                        </span>
+
+                                    </div>
+                                </div>`
+
+
+                    html += `<div class="cart__item" data-key="7832701861946:66be641dcd6160f6ab01156da3783e9f">
+                    <a href="javaScript:void(0)" class="dcartitemremove" aria-label="button" data-type="carts" data-id="${ccid}"><span class="crossbutton">x</span></a>
+                                <div class="cart__image">
+                                    <img class="lazyautosizes lazyloaded" data-widths="[180, 360, 540]" data-aspectratio="" data-sizes="auto" alt="${title}" src="${img}" sizes="150px" srcset="${img}">
+
+                                    <noscript>
+                                        <img class="lazyloaded" src="${img}" alt="${img}">
+                                    </noscript>
+
+                                </div>
+                        <div class="cart__item-details">
+                                <div class="cart__item-title">
+                                    <a href="${basurl}product/${product_seo_url}" class="cart__item-name">
+                                    ${title}
+                                    </a>
+                                    <div class="cart__item--variants">
+
+                                       ${size}
+
+                                        <div>
+                                            <span>Weight:</span><span class="pro-weight${ccid}"> ${cart_pro_weight} KG</span>
+                                        </div>
+
+                                        ${scheme_div}
+                                        ${point}
+
+                                          <div style="display:none">
+
+                                                <div class="prod-offer-apply">
+
+                                                    <p style="margin-left: 5px;color: #63c954;"></p>
+                                                </div>
+                                            </div>
+
+                                    </div>
+                                    <div class="cart__item--variants">
+
+                                    </div>
+
+                                </div>
+
+                                        ${plusmin}
+
+                    </div>
+                </div>
+            </div>`
+
+                }
+                $(".showcart").html(html);
+
+                /* console.log(combo_discount, 'combo_discount');
+                console.log(scheme_aplied, 'scheme_aplied'); */
+
+                $("#combocart").html(currency_symbol + Math.round((parseInt(combo_discount) / parseFloat(c_convert)) * 100) / 100);
+                $("#combodiscount").val(combo_discount);
+                if (combo_discount > 0) {
+
+                    $(".combodiv").show();
+                } else {
+                    $(".combodiv").hide();
+                }
+            }
+        });
+
+    }
+</script>
+
+<script>
+    var cart_array = [];
+    cart_array = <?php echo json_encode($cart_array); ?>;
+    console.log(cart_array);
+</script>
