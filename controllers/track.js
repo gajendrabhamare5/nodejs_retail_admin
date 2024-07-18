@@ -5,5 +5,4 @@ const gettrackorderInfo = async (req, res) => {
 
 module.exports = {
     gettrackorderInfo,
-
 }
