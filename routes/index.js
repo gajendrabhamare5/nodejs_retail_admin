@@ -20,11 +20,12 @@ const Controllerfaq = require('../controllers/faq.js');
  router.get('/checkout', Controllercheckout.getcheckoutInfo);
  router.get('/wishlist', Controllerwishlist.getwishlistInfo);
  router.get('/aboutus', Controllerabout.getaboutInfo);
- router.get('/TRACK_ORDER', Controllertrackorder.gettrackorderInfo);
- router.get('/contactus', Controllercontactus.getcontactusInfo);
+ router.get('/track-order', Controllertrackorder.gettrackorderInfo);
+ router.get('/contact-us', Controllercontactus.getcontactusInfo);
  router.get('/shipping-policy', Controllershipping_policy.getshipping_policyInfo);
  router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
- router.get('/exchange-policy', Controllerexchange_policy.getexchange_policyInfo);
+//  router.post('/privacy-policy', Controllerprivacy_policy.insertInfo);
+ router.get('/return-exchange', Controllerexchange_policy.getexchange_policyInfo);
  router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
  router.get('/faq', Controllerfaq.getfaqInfo);
 //  router.post('/portfolio', Controller.updateportfolio)
