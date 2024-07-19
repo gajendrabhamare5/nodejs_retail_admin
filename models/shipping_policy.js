@@ -10,6 +10,6 @@ const shippingRelationSchema = new mongoose.Schema({
     },
 })
 
-const shippingRelation = new mongoose.model("shipping_policy", shippingRelationSchema);
+const shippingRelation = new mongoose.model("shipping_policies", shippingRelationSchema);
 
 module.exports = shippingRelation

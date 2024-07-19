@@ -9,8 +9,8 @@ const privacyRelationSchema = new mongoose.Schema ({
         type:Date,
     },
 
-})
+});
 
-const privacyRelation = new mongoose.model("privacy_policy", privacyRelationSchema);
+const privacyRelation = mongoose.model('privacy_policys', privacyRelationSchema);
 
 module.exports = privacyRelation

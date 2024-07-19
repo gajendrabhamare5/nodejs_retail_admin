@@ -1,6 +1,9 @@
+const faq = require("../models/faq.js");
 
 const getfaqInfo = async (req, res) => {
-    res.render("faq")
+    const faqData = await faq.findOne();
+    
+    res.render("faq",{faqData})
 }
 
 module.exports = {

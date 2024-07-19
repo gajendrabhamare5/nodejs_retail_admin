@@ -1,6 +1,11 @@
+const exchange = require("../models/exchangePolicy.js")
 
 const getexchange_policyInfo = async (req, res) => {
-    res.render("exchange_policy")
+
+    const exchangeData = await exchange.findOne();
+    //console.log("exchangeData",exchangeData);
+
+    res.render("exchange_policy", { exchangeData });
 }
 
 module.exports = {
