@@ -142,7 +142,7 @@ const getproductInfo = async (req, res) => {
             aaData: data_product,
         };
 
-        res.render("product_view", { view_product: data_product })
+        res.render("retail_admin/views/product_view", { view_product: data_product })
 
     } catch (error) {
         console.log(error);

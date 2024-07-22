@@ -46,7 +46,7 @@ const getsubattribute = async (req, res) => {
         };
 
 
-        res.render("sub_attribute", { attributeData, subattrData: data_subattr });
+        res.render("retail_admin/views/sub_attribute", { attributeData, subattrData: data_subattr });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");

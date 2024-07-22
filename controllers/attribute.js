@@ -37,7 +37,7 @@ const getattribute = async (req,res)=>{
         };
 
 
-        res.render("attribute",{attributes :data_attr });
+        res.render("retail_admin/views/attribute",{attributes :data_attr });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
@@ -111,7 +111,7 @@ const attributegetinfo = async (req,res)=>{
             return res.status(404).json({ error: 'Category not found' })
         }
 
-        res.render("attribute_edit", { attributes });
+        res.render("retail_admin/views/attribute_edit", { attributes });
 
     } catch (error) {
         console.error("Error executing query", error);

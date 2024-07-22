@@ -28,7 +28,7 @@ const getproductInfo = async (req, res) => {
 
         const subattributeData = await subattribute.find();
 
-        res.render("product_add", { category, brand, size, attributeData, subattributeData });
+        res.render("retail_admin/views/product_add", { category, brand, size, attributeData, subattributeData });
 
     } catch (error) {
         console.log(error);
@@ -469,7 +469,7 @@ const productadd = async (req, res) => {
 
         }
 
-        res.redirect('/product_add');
+        res.redirect('/retail_admin/views/product_add');
 
     } catch (error) {
         console.log(error);

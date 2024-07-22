@@ -183,7 +183,7 @@ const getproductpage = async (req, res) => {
                 });
 
 
-        res.render("product_edit", {
+        res.render("retail_admin/views/product_edit", {
             sql_product,
             sql_subimage,
             sql_relation_cat,
@@ -687,7 +687,7 @@ const updateproduct = async (req, res) => {
                 const deletesubimage = await productSubimage.deleteMany({ product_id: productId, subimage_type: 'catalog', _id: { $in: objectIdArray } });
                 /* console.log("deletesubimage",deletesubimage); */
             }
-            res.redirect('/product_view')
+            res.redirect('/retail_admin/views/product_view')
         }
 
     } catch (error) {
@@ -700,7 +700,7 @@ const updateproduct = async (req, res) => {
 
 const quickproduct = async (req, res) => {
     const productId = req.params.id;
-    console.log("productId", productId);
+    //console.log("productId", productId);
     res.send("Connect Successfull...")
 
 }
@@ -864,7 +864,7 @@ const quickproductupdate = async (req, res) => {
                 const insertsize = await sizeRelation.save();
             }
         }
-        res.redirect('/product_view');
+        res.redirect('retail_admin/views/product_view');
     }
 
 

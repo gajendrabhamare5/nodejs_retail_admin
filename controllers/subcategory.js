@@ -79,7 +79,7 @@ const getSubCategory = async (req, res) => {
             aaData: data_cat,
         };
 
-        res.render("subcategory_add", { category, subcategory_masters: data_cat });
+        res.render("retail_admin/views/subcategory_add", { category, subcategory_masters: data_cat });
 
     } catch (error) {
         console.log(error);
@@ -173,7 +173,7 @@ if(subcategory_image != null){
 }
 
 
-        res.redirect('/subcategory_add');
+        res.redirect('retail_admin/views/subcategory_add');
 
     } catch (error) {
         console.log(error);
@@ -194,7 +194,7 @@ const subcatgoryDelete = async (req, res) => {
         }
 
         // res.json({ message: 'Subcategory deleted successfully' });
-        res.redirect('/subcategory_add');
+        res.redirect('retail_admin/views/subcategory_add');
 
     } catch (error) {
         console.log(error);
@@ -221,7 +221,7 @@ const subcatgoryEditInfo = async (req, res) => {
             return res.status(404).send("Subcategory not found");
         }
 
-        res.render("subcategory_edit", { category, subcategory });
+        res.render("retail_admin/views/subcategory_edit", { category, subcategory });
 
     } catch (error) {
         console.log(error);
@@ -278,7 +278,7 @@ const updatesubcatgory = async (req, res) => {
         }
 
         const updatedsubcategory = await SubCategory.findByIdAndUpdate(SubcatId, updateFields, { new: true });
-        res.redirect("/subcategory_add")
+        res.redirect("retail_admin/views/subcategory_add")
 
     } catch (error) {
         console.log(error);

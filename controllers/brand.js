@@ -78,7 +78,7 @@ const getbrand = async (req,res) =>{
     };
 
 
-res.render("brand_add", { brand_master: data_brand })
+res.render("retail_admin/views/brand_add", { brand_master: data_brand })
 }
 
 const insertbrand = async (req,res) =>{
@@ -166,7 +166,7 @@ const {
 
     }
 
-        res.redirect('/brand_add');
+        res.redirect('retail_admin/views/brand_add');
 
     } catch (error) {
         console.log(error);
@@ -211,7 +211,7 @@ try {
     brand.brand_hide = brand.brand_hide === "0" ? "1" : "0";
     await brand.save();
 
-    res.redirect('/brand_add');
+    res.redirect('retail_admin/views/brand_add');
 
 } catch (error) {
 console.log(error);
@@ -229,7 +229,7 @@ const brandEditInfo = async (req,res)=>{
              return res.status(404).json({ error: 'Brand not found' })
          }
 
-         res.render("brand_edit", { brand });
+         res.render("retail_admin/views/brand_edit", { brand });
 
      } catch (error) {
          console.error("Error executing query", error);
@@ -293,7 +293,7 @@ const updatebrand = async (req,res)=>{
             return res.status(404).json({ error: 'Brand not found' });
         }
 
-        res.redirect('/brand_add');
+        res.redirect('retail_admin/views/brand_add');
 
     } catch (error) {
         console.error("Error executing query", error);

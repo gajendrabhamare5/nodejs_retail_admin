@@ -54,7 +54,7 @@ const getsizeInfo = async (req,res)=>{
         aaData: data_size,
     };
 
-        res.render("size_add", {size_master: data_size})
+        res.render("retail_admin/views/size_add", {size_master: data_size})
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");
@@ -76,7 +76,7 @@ const insertsize = async (req,res)=>{
         })
 
         const insertsize = await size.save();
-        res.redirect('/size_add');
+        res.redirect('retail_admin/views/size_add');
 
     } catch (error) {
         console.log(error);
@@ -96,7 +96,7 @@ const hidesize = async (req,res)=>{
     size.size_hide = size.size_hide === "0" ? "1" : "0";
     await size.save();
 
-    res.redirect('/size_add');
+    res.redirect('retail_admin/views/size_add');
 
 }
 
@@ -111,7 +111,7 @@ const getsizeeditInfo = async (req,res)=>{
              return res.status(404).json({ error: 'Size not found' })
          }
 
-         res.render("size_edit", { size });
+         res.render("retail_admin/views/size_edit", { size });
 
      } catch (error) {
          console.error("Error executing query", error);
@@ -129,7 +129,7 @@ const updatesize = async (req,res)=>{
 
         const updatesize = await Size.findByIdAndUpdate(sizeId,updateFields, { new: true });
 
-        res.redirect('/size_add');
+        res.redirect('retail_admin/views/size_add');
 
             } catch (error) {
                 console.error(error);
