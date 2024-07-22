@@ -22,6 +22,7 @@ const Controllerfaq = require('../controllers/faq.js');
  router.get('/aboutus', Controllerabout.getaboutInfo);
  router.get('/track-order', Controllertrackorder.gettrackorderInfo);
  router.get('/contact-us', Controllercontactus.getcontactusInfo);
+ router.post('/contact-us', Controllercontactus.insertcontactusInfo);
  router.get('/shipping-policy', Controllershipping_policy.getshipping_policyInfo);
  router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
 //  router.post('/privacy-policy', Controllerprivacy_policy.insertInfo);

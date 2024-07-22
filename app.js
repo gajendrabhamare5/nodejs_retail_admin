@@ -1,11 +1,10 @@
-const express = require('express')
+const express = require('express');
 const fileUpload = require('express-fileupload');
-const path = require("path")
-const bodyParser = require('body-parser')
-const hbs = require("hbs")
-const handlebars = require('handlebars');
-require("./db/conn")
-// const exphbs = require('express-handlebars');
+const path = require("path");
+const bodyParser = require('body-parser');
+const hbs = require("hbs");
+const fs = require('fs');
+require("./db/conn");
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -13,13 +12,9 @@ app.use(fileUpload({
     createParentPath: true
 }));
 
-/* handlebars.registerHelper('concat', function () {
-    let args = Array.prototype.slice.call(arguments, 0, -1);
-    return args.join('');
-}); */
-
+// Registering helpers
 hbs.registerHelper('lte', function(a, b) {
-  return  a <= b
+  return a <= b;
 });
 
 hbs.handlebars.registerHelper('intval', function(value) {
@@ -31,148 +26,131 @@ hbs.handlebars.registerHelper('add', function(a, b) {
 });
 
 hbs.registerHelper('objectArrayContains', function(array, property, value, options) {
-    // Check if any object in the array has the specified property with the given value
     const found = array.some(item => item[property] === value);
-
-    if (found) {
-        return options.fn(this);
-    } else {
-        // Otherwise, execute the {{else}} block if provided
-        return options.inverse(this);
-    }
+    return found ? options.fn(this) : options.inverse(this);
 });
 
-// Register the 'eq' helper
-hbs.registerHelper('eq', function (a, b) {
-    return a == b
+hbs.registerHelper('eq', function(a, b) {
+    return a == b;
 });
 
-hbs.registerHelper('eq1', function (a, b) {
+hbs.registerHelper('eq1', function(a, b) {
     return a === b;
 });
 
-hbs.registerHelper('neq', function (a, b) {
+hbs.registerHelper('neq', function(a, b) {
     return a != b;
 });
 
 hbs.registerHelper('colClass', function(num) {
     return num == 1 ? '4' : '3';
-  });
-
-  hbs.registerHelper('isGreaterThan', function (value, comparison, options) {
-    if (value > comparison) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
 });
 
-  hbs.registerHelper('includes', function (array, value, options) {
-    const stringValue = value.toString();
-    /* console.log('Checking if', stringValue, 'is in', array); */
+hbs.registerHelper('isGreaterThan', function(value, comparison, options) {
+    return value > comparison ? options.fn(this) : options.inverse(this);
+});
 
-    if (Array.isArray(array) && array.includes(stringValue)) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
+hbs.registerHelper('includes', function(array, value, options) {
+    const stringValue = value.toString();
+    return Array.isArray(array) && array.includes(stringValue) ? options.fn(this) : options.inverse(this);
 });
 
 hbs.registerHelper('includes1', function(arr, val, options) {
     return arr.includes(val) ? options.fn(this) : options.inverse(this);
 });
 
-hbs.registerHelper('isInArray', function (array, value, options) {
-    if (array.includes(value.toString())) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
+hbs.registerHelper('isInArray', function(array, value, options) {
+    return array.includes(value.toString()) ? options.fn(this) : options.inverse(this);
 });
 
-hbs.registerHelper('count', function (array) {
+hbs.registerHelper('count', function(array) {
     return array.length;
 });
 
-const static_path = path.join(__dirname, "./public")
-const template_path = path.join(__dirname, "./templates/views")
-const partial_path = path.join(__dirname, "./templates/partials")
-
-
- const template_path1 = path.join(__dirname, "./web/views")
- const partial_path1 = path.join(__dirname, "./web/partials")
+// Set static and views paths
+const static_path = path.join(__dirname, "./public");
+const template_path = path.join(__dirname, "./templates/views");
+const partial_path1 = path.join(__dirname, "./views/retail_admin/partials");
+const partial_path2 = path.join(__dirname, "./views/web/partials");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(static_path))
+app.use(express.static(static_path));
 
-// app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'main' }));
-// app.use("/retail_admin")
-app.set("view engine", "hbs")
-app.set("views", template_path1)
-hbs.registerPartials(partial_path1)
+// Function to register partials from a directory
+const registerPartials = (partialsPath) => {
+    fs.readdirSync(partialsPath).forEach((file) => {
+        const matches = /^([^.]+).hbs$/.exec(file);
+        if (matches) {
+            const name = matches[1];
+            const template = fs.readFileSync(path.join(partialsPath, file), 'utf8');
+            hbs.registerPartial(name, template);
+        }
+    });
+};
 
+// Register partials from both directories
+
+registerPartials(partial_path1);
+// registerPartials(partial_path2);
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Define routes
+app.get('/retail_admin', (req, res) => {
+
+    res.render('retail_admin/views/index'); // Adjust the path to your admin template
+});
 
 app.get("/", (req, res) => {
     console.log("GET request to /");
-    res.render("index")
-})
 
+    res.render("web/views/index");
+});
 
 const categoryRoutes = require('./routes/category');
-app.use('/retail_admin',categoryRoutes)
+app.use('/retail_admin', categoryRoutes);
 
 const subcategoryRoutes = require('./routes/subcategory');
-app.use('/',subcategoryRoutes)
+app.use('/', subcategoryRoutes);
 
 const seoRoutes = require('./routes/home_seo');
-app.use('/',seoRoutes)
+app.use('/', seoRoutes);
 
 const sliderRoutes = require('./routes/slider');
-app.use('/',sliderRoutes)
+app.use('/', sliderRoutes);
 
 const mobnumberRoutes = require('./routes/contact_number');
-app.use('/',mobnumberRoutes)
+app.use('/', mobnumberRoutes);
 
 const marqueeRoutes = require('./routes/marquee');
-app.use('/',marqueeRoutes)
+app.use('/', marqueeRoutes);
 
 const brandRoutes = require('./routes/brand');
-app.use('/',brandRoutes)
+app.use('/', brandRoutes);
 
 const sizeRoutes = require('./routes/size');
-app.use('/',sizeRoutes)
+app.use('/', sizeRoutes);
 
 const productRoutes = require('./routes/product');
-app.use('/',productRoutes)
+app.use('/', productRoutes);
 
 const attributeRoutes = require('./routes/attribute');
-app.use('/',attributeRoutes)
+app.use('/', attributeRoutes);
 
 const subattributeRoutes = require('./routes/subattribute');
-app.use('/',subattributeRoutes)
+app.use('/', subattributeRoutes);
 
 const productviewRoutes = require('./routes/product_view');
-app.use('/',productviewRoutes)
+app.use('/', productviewRoutes);
 
 const indexviewRoutes = require('./routes/index.js');
-app.use('/',indexviewRoutes)
-
-
-
-/*   const producteditdetailRoutes = require('./routes/product_edit_detail_fetch');
- app.use('/',producteditdetailRoutes)  */
-
+app.use('/', indexviewRoutes);
 
 const producteditRoutes = require('./routes/product_edit');
-app.use('/',producteditRoutes)
-
-/* app.use((req, res, next) => {
-    console.log(`Incoming request: ${req.method} ${req.url}`);
-    console.log(`Request body:`, req.body);
-    next();
-}); */
+app.use('/', producteditRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port no ${port}`);
-})
+});
