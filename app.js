@@ -40,6 +40,10 @@ const hbs = exphbs.create({
         includes1: (arr, val, options) => arr.includes(val) ? options.fn(this) : options.inverse(this),
         isInArray: (array, value, options) => array.includes(value.toString()) ? options.fn(this) : options.inverse(this),
         count: (array) => array.length
+    },
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
     }
 });
 

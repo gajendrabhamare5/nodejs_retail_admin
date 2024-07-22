@@ -28,7 +28,7 @@ const updatemarquee = async (req, res) => {
             });
             const savemarquee = await marqueeData.save();
         }
-        res.redirect('retail_admin/views/marquee');
+        res.redirect('/retail_admin/marquee');
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");

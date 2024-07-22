@@ -60,12 +60,12 @@
 	<div class="layout-wrapper layout-2">
 		<div class="layout-inner">
 			<!-- [ Layout sidenav ] Start -->
-			{{>admin/sidebar}}
+			{{> admin/sidebar}}
 			<!-- [ Layout sidenav ] End -->
 			<!-- [ Layout container ] Start -->
 			<div class="layout-container">
 				<!-- [ Layout navbar ( Header ) ] Start -->
-				{{>admin/header}}
+				{{> admin/header}}
 				<!-- [ Layout navbar ( Header ) ] End -->
 
 				<!-- [ Layout content ] Start -->
@@ -84,7 +84,7 @@
 						</div>
 
 						<div class="card mb-12 col-md-12" style="float:left;margin-right:40px;">
-							<form action="/home_seo" method="post" enctype="multipart/form-data">
+							<form action="/retail_admin/home_seo" method="post" enctype="multipart/form-data">
 								{{#each getseo}}
 								<h6 class="card-header">Home </h6>
 								<div class="card-body">

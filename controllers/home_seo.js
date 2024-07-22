@@ -6,7 +6,7 @@ const Seo = require("../models/home_seo");
 const getSeoInfo = async (req,res)=>{
     try {
         const getseo = await Seo.find()
-        console.log(getseo);
+       // console.log(getseo);
         res.render("retail_admin/views/home_seo", { getseo });
     } catch (error) {
         console.error(error);
@@ -19,7 +19,7 @@ const updateSeo = async (req,res) => {
 
 const { content, tital, keyword, discription } = req.body;
 
-console.log("req.body",req.body);
+//console.log("req.body",req.body);
 
         let seoData = await Seo.findOne();
         if (seoData) {
@@ -31,7 +31,7 @@ console.log("req.body",req.body);
            const updateseo =  await seoData.save();
 
         } else {
-            console.log("else part called..");
+            //console.log("else part called..");
             // Insert new record
             seoData = new Seo({
                 content,
@@ -42,7 +42,7 @@ console.log("req.body",req.body);
            const saveseo =  await seoData.save();
 
         }
-        res.redirect('/home_seo')
+        res.redirect('/retail_admin/home_seo')
 
     } catch (error) {
         console.error(error);

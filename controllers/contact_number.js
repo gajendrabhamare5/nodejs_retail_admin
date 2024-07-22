@@ -5,7 +5,7 @@ const getcnumberInfo = async (req, res) => {
     try {
         const getcnumber = await cnumber.find()
         res.render("retail_admin/views/contact_number", { getcnumber });
-    } catch (error) {   
+    } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
@@ -16,7 +16,7 @@ const updatecnumber = async (req, res) => {
 
         const { line_1, line_2, line_3, line_4, line_5 } = req.body;
 
-        console.log("req.body", req.body);
+        //console.log("req.body", req.body);
 
         let cnumberData = await cnumber.findOne();
         if (cnumberData) {
@@ -41,7 +41,7 @@ const updatecnumber = async (req, res) => {
             const savecnumber = await cnumberData.save();
 
         }
-        res.redirect('/retail_admin/views/contact_number')
+        res.redirect('/retail_admin/contact_number')
 
     } catch (error) {
         console.error(error);
