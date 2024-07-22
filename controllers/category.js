@@ -76,7 +76,7 @@ const getCategory = async (req, res) => {
         /* const category_masters = await Category.find(); */
         /* res.render("category_add", { categories }); */
 
-        res.render("category_add", { category_masters: data_cat });
+        res.render("retail_admin/views/category_add", { category_masters: data_cat });
 
     } catch (error) {
         console.error(error);
@@ -180,7 +180,7 @@ const createCategory = async (req, res) => {
             });
             const savedCategory = await category.save();
         }
-        res.redirect('/category');
+        res.redirect('retail_admin/category');
     } catch (error) {
         res.status(400).send(error);
     }
@@ -201,7 +201,7 @@ const catgoryHide = async (req, res) => {
         category.category_hide = category.category_hide === "0" ? "1" : "0";
         await category.save();
 
-        res.redirect('/category');
+        res.redirect('retail_admin/category');
     } catch (err) {
         console.error("Error executing query", err);
         res.status(500).send("Database query error");
@@ -220,7 +220,7 @@ const catgoryDelete = async (req, res) => {
         }
 
         res.json({ message: 'Category deleted successfully' });
-        res.redirect('/category');
+        res.redirect('retail_admin/category');
 
     } catch (error) {
 
@@ -238,7 +238,7 @@ const catgoryEditInfo = async (req, res) => {
             return res.status(404).json({ error: 'Category not found' })
         }
 
-        res.render("category_edit", { category });
+        res.render("retail_admin/views/category_edit", { category });
 
     } catch (error) {
         console.error("Error executing query", error);
@@ -305,7 +305,7 @@ const updatecatgory = async (req, res) => {
             return res.status(404).json({ error: 'Category not found' });
         }
 
-        res.redirect('/category');
+        res.redirect('retail_admin/category');
 
     } catch (error) {
         console.error("Error executing query", error);

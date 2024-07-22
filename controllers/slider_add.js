@@ -6,7 +6,7 @@ const Slider = require("../models/slider_add");
 const getSlider = async (req, res) => {
     try {
         const getslider = await Slider.find()
-        res.render("slider_add", { getslider });
+        res.render("retail_admin/views/slider_add", { getslider });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
@@ -50,7 +50,7 @@ const insertSlider = async (req, res) => {
 
         const savedSlider = await slider.save();
 
-        res.redirect('/slider_add');
+        res.redirect('retail_admin/views/slider_add');
 
     } catch (error) {
         console.error(error);
@@ -70,7 +70,7 @@ const sliderDelete = async (req, res) => {
         }
 
         /* res.json({ message: 'Slider deleted successfully' }); */
-        res.redirect('/slider_add');
+        res.redirect('retail_admin/views/slider_add');
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");
@@ -83,7 +83,7 @@ const sliderEditInfo = async (req, res) => {
         const sliderId = req.params.id;
         const slider = await Slider.findById(sliderId);
 
-        res.render("slider_edit", { slider })
+        res.render("retail_admin/views/slider_edit", { slider })
 
     } catch (error) {
         console.log(error);
@@ -139,7 +139,7 @@ const updateSlider = async (req, res) => {
             return res.status(404).json({ error: 'Slider not found' });
         }
 
-        res.redirect('/slider_add');
+        res.redirect('retail_admin/views/slider_add');
 
     } catch (error) {
         console.log(error);

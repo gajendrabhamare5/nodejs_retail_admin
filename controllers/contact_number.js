@@ -4,8 +4,8 @@ const cnumber = require("../models/contact_number");
 const getcnumberInfo = async (req, res) => {
     try {
         const getcnumber = await cnumber.find()
-        res.render("contact_number", { getcnumber });
-    } catch (error) {
+        res.render("retail_admin/views/contact_number", { getcnumber });
+    } catch (error) {   
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
@@ -29,7 +29,7 @@ const updatecnumber = async (req, res) => {
             const updatecnumber = await cnumberData.save();
 
         } else {
-           
+
             // Insert new record
             cnumberData = new cnumber({
                 line_1,
@@ -41,7 +41,7 @@ const updatecnumber = async (req, res) => {
             const savecnumber = await cnumberData.save();
 
         }
-        res.redirect('/contact_number')
+        res.redirect('/retail_admin/views/contact_number')
 
     } catch (error) {
         console.error(error);

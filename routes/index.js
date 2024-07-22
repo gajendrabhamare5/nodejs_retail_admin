@@ -14,6 +14,23 @@ const Controllerexchange_policy = require('../controllers/exchange-policy.js');
 const Controllerterms_condition = require('../controllers/terms_condition.js');
 const Controllerfaq = require('../controllers/faq.js');
 
+//retail admin controller called
+const categoryController = require('../controllers/category');
+const subcategoryController = require('../controllers/subcategory');
+const seoController = require('../controllers/home_seo');
+const sliderController = require('../controllers/slider_add');
+const cnumberController = require('../controllers/contact_number');
+const marqueeController = require('../controllers/marquee');
+const brandController = require('../controllers/brand');
+const sizeController = require('../controllers/size');
+const productController = require('../controllers/product');
+const attributeController = require('../controllers/attribute.js');
+const subattributeController = require('../controllers/subattribute.js');
+const productviewController = require('../controllers/productview');
+const producteditController = require('../controllers/product_edit.js');
+
+//web routes called
+
  router.get('/portfolio', Controllerport.getportfolioInfo);
  router.get('/product', Controllerproduct.getportproductInfo);
  router.get('/cart', Controllercart.getcartInfo);
@@ -30,6 +47,78 @@ const Controllerfaq = require('../controllers/faq.js');
  router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
  router.get('/faq', Controllerfaq.getfaqInfo);
 //  router.post('/portfolio', Controller.updateportfolio)
+
+
+//retail_admin Routes called
+router.get('/retail_admin/category', categoryController.getCategory);
+router.get('/retail_admin/category_hide/:id', categoryController.catgoryHide)
+router.get('/retail_admin/category_delete/:id', categoryController.catgoryDelete)
+router.get('/retail_admin/category_edit/:id', categoryController.catgoryEditInfo)
+router.post('/retail_admin/category_edit/:id', categoryController.updatecatgory)
+router.post('/retail_admin/category', categoryController.createCategory);
+
+router.get('/retail_admin/subcategory_add', subcategoryController.getSubCategory);
+router.post('/retail_admin/subcategory_add', subcategoryController.createSubCategory);
+router.get('/retail_admin/subcategory_delete/:id', subcategoryController.subcatgoryDelete)
+router.get('/retail_admin/subcategory_edit/:id', subcategoryController.subcatgoryEditInfo)
+router.post('/retail_admin/subcategory_edit/:id', subcategoryController.updatesubcatgory)
+
+router.get('/retail_admin/home_seo', seoController.getSeoInfo);
+router.post('/retail_admin/home_seo', seoController.updateSeo)
+
+router.get('/retail_admin/slider_add', sliderController.getSlider);
+router.post('/retail_admin/slider_add', sliderController.insertSlider);
+router.get('/retail_admin/slider_delete/:id', sliderController.sliderDelete)
+router.get('/retail_admin/slider_edit/:id', sliderController.sliderEditInfo)
+router.post('/retail_admin/slider_edit/:id', sliderController.updateSlider)
+
+router.get('/retail_admin/contact_number', cnumberController.getcnumberInfo);
+router.post('/retail_admin/contact_number', cnumberController.updatecnumber)
+
+router.get('/retail_admin/marquee', marqueeController.getmarqueeInfo);
+router.post('/retail_admin/marquee', marqueeController.updatemarquee)
+
+router.get('/retail_admin/brand_add', brandController.getbrand);
+router.get('/retail_admin/brand_delete/:id', brandController.deletebrand);
+router.get('/retail_admin/brand_hide/:id', brandController.brandHide)
+router.get('/retail_admin/brand_edit/:id', brandController.brandEditInfo)
+router.post('/retail_admin/brand_add', brandController.insertbrand)
+router.post('/retail_admin/brand_edit/:id', brandController.updatebrand)
+
+router.get('/retail_admin/size_add', sizeController.getsizeInfo);
+router.get('/retail_admin/size_hide/:id', sizeController.hidesize);
+router.get('/retail_admin/size_edit/:id', sizeController.getsizeeditInfo);
+router.post('/retail_admin/size_add', sizeController.insertsize);
+router.post('/retail_admin/size_edit/:id', sizeController.updatesize);
+
+router.get('/retail_admin/product_add', productController.getproductInfo);
+router.post('/retail_admin/get_subcat_from_cat/:id', productController.getsubcat);
+router.post('/retail_admin/check_repeat_product', productController.checkrepeatproduct);
+router.post('/retail_admin/product_add', productController.productadd);
+
+router.get('/retail_admin/attribute', attributeController.getattribute);
+router.post('/retail_admin/attribute_add_process', attributeController.addattribute);
+router.post('/retail_admin/attribute_delete/:id', attributeController.deleteattribute);
+router.get('/retail_admin/attribute_edit/:id', attributeController.attributegetinfo);
+router.post('/retail_admin/attribute_edit_process', attributeController.attributeupdate);
+
+router.get('/retail_admin/sub_attribute', subattributeController.getsubattribute);
+router.post('/retail_admin/sub_attribute_add_process', subattributeController.addSubattribute);
+router.post('/retail_admin/sub_attribute_delete/:id', subattributeController.deletesubattribute);
+router.get('/retail_admin/subattribute_edit/:id', subattributeController.subattributegetinfo);
+router.post('/retail_admin/subattribute_edit_process', subattributeController.subattributeupdate);
+router.post('/retail_admin/subattribute_pop_process', subattributeController.subattributepop);
+router.post('/retail_admin/product_attribute', subattributeController.proattribute);
+
+router.get('/retail_admin/product_view', productviewController.getproductInfo);
+ router.post('/retail_admin/product_delete/:id', productviewController.deleteproduct);
+ router.post('/retail_admin/out_of_stock_process/:id', productviewController.outofstockproduct);
+
+ router.get('/retail_admin/product_edit/:id', producteditController.getproductpage);
+router.post('/retail_admin/product_edit/:id', producteditController.updateproduct);
+router.get('/retail_admin/product_edit_detail_fetch', producteditController.quickproduct);
+router.post('/retail_admin/product_edit_detail_fetch/:id', producteditController.quickproduct1);
+router.post('/retail_admin/product_quick_edit_process', producteditController.quickproductupdate);
 
 
 module.exports = router;

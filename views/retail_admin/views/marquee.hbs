@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/assets/libs/growl/growl.css">
 
-    <script type="text/javascript" src="myckeditor/ckeditor/ckeditor.js"></script>
+    {{!-- <script type="text/javascript" src="myckeditor/ckeditor/ckeditor.js"></script> --}}
     <!--  <script src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.9.2/ckeditor.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -62,12 +62,12 @@
     <div class="layout-wrapper layout-2">
         <div class="layout-inner">
             <!-- [ Layout sidenav ] Start -->
-            {{>sidebar}}
+            {{>admin/sidebar}}
             <!-- [ Layout sidenav ] End -->
             <!-- [ Layout container ] Start -->
             <div class="layout-container">
                 <!-- [ Layout navbar ( Header ) ] Start -->
-                {{>header}}
+                {{>admin/header}}
                 <!-- [ Layout navbar ( Header ) ] End -->
 
                 <!-- [ Layout content ] Start -->
@@ -88,7 +88,7 @@
                         <div class="card mb-12 col-md-12" style="float:left;margin-right:40px;">
 
                             <h6 class="card-header">Edit Marquee </h6>
-                            <form action="/marquee" method="post" enctype="multipart/form-data">
+                            <form action="retail_admin/views/marquee" method="post" enctype="multipart/form-data">
                                 {{#each getmarqueeinfo}}
                             <div class="card-body">
                                 <div class="form-group">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <!-- [ Layout footer ] Start -->
-                    {{>footer}}
+                    {{>admin/footer}}
                     <!-- [ Layout footer ] End -->
 
                 </div>
