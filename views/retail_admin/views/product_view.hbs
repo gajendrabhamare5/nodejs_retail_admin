@@ -368,7 +368,7 @@
             $.ajax({
                 type: "POST",
                 data: { product_id: product_id },
-                url: "/product_edit_detail_fetch/" + product_id,
+                url: "/retail_admin/product_edit_detail_fetch/" + product_id,
                 success: function (response) {
                     /* console.log(response)     */
                     const productType = response.sql_product.product_type;
@@ -580,7 +580,7 @@
              $.ajax({
                 type: "POST",
                 data: { product_id: product_id },
-                url: "/product_edit_detail_fetch/" + product_id,
+                url: "/retail_admin/product_edit_detail_fetch/" + product_id,
                 success: function (response) {
 
                      let sizeOptionsHtml = '';
@@ -637,7 +637,7 @@
 
 <div class="modal fade" id="modals-editproduct">
     <div class="modal-dialog">
-        <form class="modal-content" method="POST" action="/product_quick_edit_process">
+        <form class="modal-content" method="POST" action="/retail_admin/product_quick_edit_process">
             <div class="modal-header">
                 <h5 class="modal-title">Edit Detail</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>

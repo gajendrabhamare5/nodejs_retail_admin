@@ -198,11 +198,11 @@
                     type: "POST",
                     dataType: "text",
                     data: { id: id, attribute_name: attribute_name, attribute_metakey: attribute_metakey, attribute_metatitle: attribute_metatitle, attribute_metadesc: attribute_metadesc, filter_checkbox: filter_checkbox },
-                    url: "/attribute_edit_process",
+                    url: "/retail_admin/attribute_edit_process",
                     success: function (response) {
 
                         if (response == "ok") {
-                            location.href = "/attribute";
+                            location.href = "/retail_admin/attribute";
                         }
                         else if (response == "error") {
                             alert("Attribute Name Already Exist");

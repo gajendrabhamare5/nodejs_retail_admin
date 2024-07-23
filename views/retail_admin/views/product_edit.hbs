@@ -84,7 +84,7 @@
                                 <li class="breadcrumb-item active">Edit Catalog</li>
                             </ol>
                         </div>
-                        <form action="/product_edit/{{sql_product._id}}" method="POST" enctype="multipart/form-data">
+                        <form action="/retail_admin/product_edit/{{sql_product._id}}" method="POST" enctype="multipart/form-data">
 
                             <div class="row">
                                 <div class="col-md-10">
@@ -743,7 +743,7 @@
                     attribute_name: attribute_name,
                     sub_attribute_name: sub_attribute_name
                 },
-                url: "/subattribute_pop_process",
+                url: "/retail_admin/subattribute_pop_process",
                 success: function (response) {
                     if (response.status == "ok") {
                         var dynamicid = $("#dynamicid").val();
@@ -778,7 +778,7 @@
             }
 
             $.ajax({
-                url: '/product_attribute',
+                url: '/retail_admin/product_attribute',
                 type: 'POST',
                 data: {
                     datapost: datavalue
@@ -866,7 +866,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/get_subcat_from_cat/" + cat_id,
+                url: "/retail_admin/get_subcat_from_cat/" + cat_id,
                 data: {
                     subtypeIds: subtypeIds,
                     protype: 'edit'
@@ -1156,7 +1156,7 @@
                     method: method,
                     product_id: product_id
                 },
-                url: "/check_repeat_product",
+                url: "/retail_admin/check_repeat_product",
                 success: function (response) {
                     if (response == "ok") {
                         $("form").submit();

@@ -15,7 +15,6 @@ const productSubimage = require("../models/product_subimage")
 const brandRelation = require("../models/brand_relation_master.js")
 
 const getproductInfo = async (req, res) => {
-
     try {
 
         const sqlData = await Product.find().sort({ _id: 'desc' });
@@ -72,7 +71,7 @@ const getproductInfo = async (req, res) => {
             let disable_date = '';
 
             if (disable_date1 !== null && disable_date1 !== undefined) {
-                const disable_date = disable_date1.toISOString().slice(0, 10);
+                 disable_date = disable_date1.toISOString().slice(0, 10);
             }
 
 

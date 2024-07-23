@@ -552,6 +552,10 @@ const updateproduct = async (req, res) => {
                 for (let k = 0; k < product_size.length; k++) {
                     const sizeId = product_size[k];
 
+                    const sizeIdsConcatenated = product_size.join('');
+                    const sizeObjectId = mongoose.Types.ObjectId(sizeIdsConcatenated);
+                    console.log("sizeObjectId",sizeObjectId);
+                    
                     const size = await Size.findById(sizeId);
                     const productSkuSize = "GB";
                     let sizePriceNew = size_price1[k];
@@ -687,15 +691,13 @@ const updateproduct = async (req, res) => {
                 const deletesubimage = await productSubimage.deleteMany({ product_id: productId, subimage_type: 'catalog', _id: { $in: objectIdArray } });
                 /* console.log("deletesubimage",deletesubimage); */
             }
-            res.redirect('/retail_admin/views/product_view')
+            res.redirect('/retail_admin/product_view')
         }
 
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error")
     }
-
-
 }
 
 const quickproduct = async (req, res) => {
@@ -730,7 +732,7 @@ const quickproduct1 = async (req, res) => {
 
     const sql_brand_relation = await brandRelationMaster.find({ product_id: productId, brand_type: 'catalog' })
 
-    const brandIds = sql_brand_relation.map(doc => doc.brand_id.toString());
+    const brandIds = sql_brand_relation.filter(doc => doc.brand_id).map(doc => doc.brand_id.toString());
 
     const size = await Size.find({ size_hide: 0 }).sort({ _id: 1 })
 
@@ -864,10 +866,8 @@ const quickproductupdate = async (req, res) => {
                 const insertsize = await sizeRelation.save();
             }
         }
-        res.redirect('retail_admin/views/product_view');
+        res.redirect('/retail_admin/product_view');
     }
-
-
 }
 
 module.exports = {

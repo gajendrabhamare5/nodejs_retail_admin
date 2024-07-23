@@ -133,7 +133,7 @@
                                         {{#each subattrData}}
                                         <tr>
                                             <td><input type="checkbox" id="delete_checkbox" name="delete_checkbox" value="{{this.id}}"></td>
-                                            <td><a href="/subattribute_edit/{{this.id}}"><button type="button" class="btn btn-outline-info icon-btn borderless"><span class="ion ion-md-create"></span></button></a></td>
+                                            <td><a href="/retail_admin/subattribute_edit/{{this.id}}"><button type="button" class="btn btn-outline-info icon-btn borderless"><span class="ion ion-md-create"></span></button></a></td>
                                             <td>{{this.no}}</td>
                                             <td>{{{this.attribute_name}}}</td>
                                             <td>{{{this.sub_attribute_name}}}</td>
@@ -234,7 +234,7 @@
 					contentType: false,
 					cache: false,
 					processData: false,
-					url: "/sub_attribute_add_process",
+					url: "/retail_admin/sub_attribute_add_process",
 					success: function(response){
 						if(response == "ok"){
 							location.reload();
@@ -267,7 +267,7 @@
 					if(confirm('Are You Sure You Want To Delete?')){
 						$.ajax({
 							type: "POST",
-							url: "/sub_attribute_delete/"+delete_id,
+							url: "/retail_admin/sub_attribute_delete/"+delete_id,
 							success: function(response){
 								if(response == "error"){
 									alert("You cannot delete SubAttribute as it is linked with Attribute!");

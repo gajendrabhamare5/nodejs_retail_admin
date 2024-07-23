@@ -76,7 +76,7 @@ const insertsize = async (req,res)=>{
         })
 
         const insertsize = await size.save();
-        res.redirect('retail_admin/views/size_add');
+        res.redirect('/retail_admin/size_add');
 
     } catch (error) {
         console.log(error);
@@ -96,7 +96,7 @@ const hidesize = async (req,res)=>{
     size.size_hide = size.size_hide === "0" ? "1" : "0";
     await size.save();
 
-    res.redirect('retail_admin/views/size_add');
+    res.redirect('/retail_admin/size_add');
 
 }
 
@@ -129,7 +129,7 @@ const updatesize = async (req,res)=>{
 
         const updatesize = await Size.findByIdAndUpdate(sizeId,updateFields, { new: true });
 
-        res.redirect('retail_admin/views/size_add');
+        res.redirect('/retail_admin/size_add');
 
             } catch (error) {
                 console.error(error);

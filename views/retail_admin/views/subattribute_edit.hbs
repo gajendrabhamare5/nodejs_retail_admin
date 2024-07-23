@@ -200,11 +200,11 @@
                     type: "POST",
                     dataType: "text",
                     data: { id: id, sub_attribute_name: sub_attribute_name, sub_attribute_metakey: sub_attribute_metakey, sub_attribute_metatitle: sub_attribute_metatitle, sub_attribute_metadesc: sub_attribute_metadesc, attribute_id: attribute_id },
-                    url: "/subattribute_edit_process",
+                    url: "/retail_admin/subattribute_edit_process",
                     success: function (response) {
 
                         if (response == "ok") {
-                            location.href = "/sub_attribute";
+                            location.href = "/retail_admin/sub_attribute";
                         }
                         else if (response == "error") {
                             alert("Attribute Name Already Exist");

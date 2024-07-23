@@ -14,7 +14,7 @@ const productSubimage = require("../models/product_subimage")
 const attribute = require("../models/attribute");
 const subattribute = require("../models/sub_attribute_master");
 const attributeRelation = require("../models/attribute_relation_master");
-
+const mongoose = require('mongoose');
 
 const { exit } = require('process');
 
@@ -118,7 +118,7 @@ const productadd = async (req, res) => {
         var size_price1 = [];
         size_price1 = req.body['size_price1[]'];
         const total_attribute1 = req.body.total_attribute1;
-        console.log("total_attribute1=", total_attribute1);
+
         var product_attribute1 = [];
         var product_subattribute1 = [];
         for (i = 1; i < total_attribute1; i++) {
@@ -133,9 +133,7 @@ const productadd = async (req, res) => {
 
             product_subattribute1.push(product_subattribute2);
         }
-        console.log("product_attribute1 length", product_attribute1.length);
-        console.log("product_attribute1", product_attribute1);
-        console.log("product_subattribute1", product_subattribute1);
+
 
         const accessories_length = req.body['accessories_length[]'];
         const fabric = req.body['fabric[]'];
@@ -377,7 +375,8 @@ const productadd = async (req, res) => {
                 for (let k = 0; k < product_size.length; k++) {
                     const sizeId = product_size[k];
 
-                    const size = await Size.findById(sizeId);
+                    //const size = await Size.findById(sizeId);
+
                     const productSkuSize = "GB";
                     let sizePriceNew = size_price1[k];
 
@@ -469,7 +468,7 @@ const productadd = async (req, res) => {
 
         }
 
-        res.redirect('/retail_admin/views/product_add');
+        res.redirect('/retail_admin/product_add');
 
     } catch (error) {
         console.log(error);

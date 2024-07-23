@@ -1,6 +1,7 @@
 const attributeRelation = require("../models/attribute_relation_master");
 const attribute = require("../models/attribute");
 const subattribute = require("../models/sub_attribute_master");
+const mongoose = require('mongoose');
 
 const getsubattribute = async (req, res) => {
     try {
@@ -19,10 +20,20 @@ const getsubattribute = async (req, res) => {
             const sub_attribute_metakey = fetch.sub_attribute_metakey
             const sub_attribute_metadesc = fetch.sub_attribute_metadesc
 
-            const sql = await attribute.findOne({ _id: attribute_id })
-            if (sql) {
-                attribute_name = sql.attribute_name;
+            let attribute_name = "Unknown Attribute"; // Default value if no attribute is found
+
+            if (mongoose.Types.ObjectId.isValid(attribute_id)) {
+                // If attribute_id is valid, attempt to find the corresponding attribute
+                const sql = await attribute.findOne({ _id: attribute_id });
+                if (sql) {
+                    attribute_name = sql.attribute_name;
+                } else {
+                    console.log(`Attribute not found for ID: ${attribute_id}`);
+                }
+            } else {
+                console.log(`Invalid ObjectId: ${attribute_id}`);
             }
+
             num++;
 
             const data1 = {
@@ -114,7 +125,7 @@ const subattributegetinfo = async (req, res) => {
             return res.status(404).json({ error: 'Sub category not found' })
         }
 
-        res.render("subattribute_edit", { subattributes, attributes });
+        res.render("retail_admin/views/subattribute_edit", { subattributes, attributes });
 
     } catch (error) {
         console.error("Error executing query", error);
