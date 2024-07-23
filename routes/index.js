@@ -31,21 +31,24 @@ const producteditController = require('../controllers/product_edit.js');
 
 //web routes called
 
- router.get('/portfolio', Controllerport.getportfolioInfo);
- router.get('/product', Controllerproduct.getportproductInfo);
- router.get('/cart', Controllercart.getcartInfo);
- router.get('/checkout', Controllercheckout.getcheckoutInfo);
- router.get('/wishlist', Controllerwishlist.getwishlistInfo);
- router.get('/aboutus', Controllerabout.getaboutInfo);
- router.get('/track-order', Controllertrackorder.gettrackorderInfo);
- router.get('/contact-us', Controllercontactus.getcontactusInfo);
- router.post('/contact-us', Controllercontactus.insertcontactusInfo);
- router.get('/shipping-policy', Controllershipping_policy.getshipping_policyInfo);
- router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
+router.get('/portfolio', Controllerport.getportfolioInfo);
+router.get('/product', Controllerproduct.getportproductInfo);
+router.get('/cart', Controllercart.getcartInfo);
+router.get('/checkout', Controllercheckout.getcheckoutInfo);
+router.get('/wishlist', Controllerwishlist.getwishlistInfo);
+router.get('/aboutus', Controllerabout.getaboutInfo);
+router.get('/track-order', Controllertrackorder.gettrackorderInfo);
+
+router.get('/contact-us', Controllercontactus.getcontactusInfo);
+router.post('/contact-us', Controllercontactus.insertcontactusInfo);
+
+router.post('/contact-us', Controllercontactus.insertcontactusInfo);
+router.get('/shipping-policy', Controllershipping_policy.getshipping_policyInfo);
+router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
 //  router.post('/privacy-policy', Controllerprivacy_policy.insertInfo);
- router.get('/return-exchange', Controllerexchange_policy.getexchange_policyInfo);
- router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
- router.get('/faq', Controllerfaq.getfaqInfo);
+router.get('/return-exchange', Controllerexchange_policy.getexchange_policyInfo);
+router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
+router.get('/faq', Controllerfaq.getfaqInfo);
 //  router.post('/portfolio', Controller.updateportfolio)
 
 
@@ -111,10 +114,10 @@ router.post('/retail_admin/subattribute_pop_process', subattributeController.sub
 router.post('/retail_admin/product_attribute', subattributeController.proattribute);
 
 router.get('/retail_admin/product_view', productviewController.getproductInfo);
- router.post('/retail_admin/product_delete/:id', productviewController.deleteproduct);
- router.post('/retail_admin/out_of_stock_process/:id', productviewController.outofstockproduct);
+router.post('/retail_admin/product_delete/:id', productviewController.deleteproduct);
+router.post('/retail_admin/out_of_stock_process/:id', productviewController.outofstockproduct);
 
- router.get('/retail_admin/product_edit/:id', producteditController.getproductpage);
+router.get('/retail_admin/product_edit/:id', producteditController.getproductpage);
 router.post('/retail_admin/product_edit/:id', producteditController.updateproduct);
 router.get('/retail_admin/product_edit_detail_fetch', producteditController.quickproduct);
 router.post('/retail_admin/product_edit_detail_fetch/:id', producteditController.quickproduct1);

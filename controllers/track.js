@@ -1,6 +1,6 @@
 
 const gettrackorderInfo = async (req, res) => {
-    res.render("track")
+    res.render("web/views/track")
 }
 
 module.exports = {

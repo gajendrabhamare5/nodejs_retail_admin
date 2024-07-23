@@ -64,14 +64,14 @@
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
         window.theme = window.theme || {};
-        theme.routes = {
+       {{!--  theme.routes = {
             home: "/",
             cart: "/cart.js",
             cartPage: "/cart",
             cartAdd: "/cart/add.js",
             cartChange: "/cart/change.js",
             search: "/search"
-        };
+        }; --}}
         theme.strings = {
             soldOut: "Sold Out",
             unavailable: "Unavailable",
@@ -129,9 +129,7 @@
 
     <div id="PageContainer" class="page-container">
         <div class="transition-body">
-            {{>header}}
-
-
+            {{>web/header}}
 
             <style>
                 @media only screen and (min-width: 769px) {
@@ -181,7 +179,7 @@
 
 
                             <div class="form-vertical">
-                                <form method="post" action="/contact-us" accept-charset="UTF-8" class="contact-form">
+                                {{!-- <form method="post" action="/web/contact-us" accept-charset="UTF-8" class="contact-form"> --}}
                                     <input type="hidden" name="form_type" value="contact" />
                                     <input type="hidden" name="utf8" value="✓" />
 
@@ -208,6 +206,7 @@
                                     <textarea rows="5" id="inq_msg" class="input-full" name="inq_msg"></textarea>
 
                                     <label for="regbtn" class="hidden-label">Send</label>
+                                     <label id="registermsg"></label>
                                     <button type="submit" onclick="contact_add()" id="regbtn" class="btn">
                                         Send
                                     </button>
@@ -215,7 +214,7 @@
 
                                     <!-- <p data-spam-detection-disclaimer>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p> -->
 
-                                </form>
+                                {{!-- </form> --}}
                             </div>
                         </div>
                     </div>
@@ -223,7 +222,7 @@
 
                 </div>
             </main>
-            {{>footer}}
+            {{>web/footer}}
 
         </div>
     </div>
@@ -243,6 +242,7 @@
             $("#regbtn").html("Loading..");
             $("#regbtn").css("pointer-events", "none");
             var inq_name = $("#inq_name").val();
+            console.log("inq_name=",inq_name);
             var inq_email = $("#inq_email").val();
             var inq_phone = $("#inq_phone").val();
             var inq_msg = $("#inq_msg").val();
