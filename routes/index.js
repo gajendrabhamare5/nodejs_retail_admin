@@ -13,6 +13,7 @@ const Controllerprivacy_policy = require('../controllers/privacy-policy.js');
 const Controllerexchange_policy = require('../controllers/exchange-policy.js');
 const Controllerterms_condition = require('../controllers/terms_condition.js');
 const Controllerfaq = require('../controllers/faq.js');
+const Controllersubscribe = require('../controllers/subscribe.js');
 
 //retail admin controller called
 const categoryController = require('../controllers/category');
@@ -33,11 +34,13 @@ const producteditController = require('../controllers/product_edit.js');
 
 router.get('/portfolio', Controllerport.getportfolioInfo);
 router.get('/product', Controllerproduct.getportproductInfo);
-router.get('/cart', Controllercart.getcartInfo);
+// router.get('/cart', Controllercart.getcartInfo);
 router.get('/checkout', Controllercheckout.getcheckoutInfo);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
 router.get('/aboutus', Controllerabout.getaboutInfo);
 router.get('/track-order', Controllertrackorder.gettrackorderInfo);
+
+router.post('/subscribe_process', Controllersubscribe.insertsubscribers)
 
 router.get('/contact-us', Controllercontactus.getcontactusInfo);
 router.post('/contact-us', Controllercontactus.insertcontactusInfo);

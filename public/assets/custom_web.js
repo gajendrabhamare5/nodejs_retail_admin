@@ -899,7 +899,7 @@ function subscribe() {
             data: {
                 subscribe_email: subscribe_email
             },
-            url: baseurl + 'ajaxfiles/subscribe_process.php',
+            url: 'subscribe_process',
             success: function (response) {
                 if (response == "ok") {
                     toastr.success("", "Thank You For Subscribing", {
