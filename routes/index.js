@@ -14,6 +14,7 @@ const Controllerexchange_policy = require('../controllers/exchange-policy.js');
 const Controllerterms_condition = require('../controllers/terms_condition.js');
 const Controllerfaq = require('../controllers/faq.js');
 const Controllersubscribe = require('../controllers/subscribe.js');
+const Controllerheader = require('../controllers/headerweb');
 
 //retail admin controller called
 const categoryController = require('../controllers/category');
@@ -32,6 +33,7 @@ const producteditController = require('../controllers/product_edit.js');
 
 //web routes called
 
+router.get('/', Controllerheader.getheaderInfo);
 router.get('/portfolio', Controllerport.getportfolioInfo);
 router.get('/product', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);

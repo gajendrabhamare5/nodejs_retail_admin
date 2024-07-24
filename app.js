@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 require('./db/conn');
+const injectCommonData = require('./middleware/commonData');
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -57,14 +58,16 @@ app.use(bodyParser.json());
 const static_path = path.join(__dirname, './public');
 app.use(express.static(static_path));
 
+app.use(injectCommonData);
+
 // Define routes
 app.get('/retail_admin', (req, res) => {
     res.render('retail_admin/views/index', { layout: false });
 });
 
-app.get('/', (req, res) => {
-    res.render('web/views/index', { layout: false });
-});
+// app.get('/', (req, res) => {
+//     res.render('web/views/index', { layout: false });
+// });
 
 
 const indexviewRoutes = require('./routes/index.js');
