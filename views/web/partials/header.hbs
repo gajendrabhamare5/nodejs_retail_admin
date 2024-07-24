@@ -788,14 +788,14 @@
                                             <div class="customdropdown site-nav__dropdown megamenu text-left">
                                                 <div class="page-width">
                                                     <div class="customMedium appear-animation">
-
+                                                    {{#each subcategories}}
                                                         <div>
-                                                            <a href="" class="site-nav__dropdown-link subcatSecCustom"
-                                                                aria-label="<?php echo $subcat_name; ?>">
-                                                                SubCat Name
+                                                            <a href="{{this.subcategory_seo_url}}" class="site-nav__dropdown-link subcatSecCustom"
+                                                                aria-label="{{this.subcategory_name}}">
+                                                                {{this.subcategory_name}}
                                                             </a>
-
                                                         </div>
+                                                        {{/each}}
                                                     </div>
                                                 </div>
                                             </div>
