@@ -788,14 +788,20 @@
                                             <div class="customdropdown site-nav__dropdown megamenu text-left">
                                                 <div class="page-width">
                                                     <div class="customMedium appear-animation">
-                                                    {{#each subcategories}}
-                                                        <div>
-                                                            <a href="{{this.subcategory_seo_url}}" class="site-nav__dropdown-link subcatSecCustom"
-                                                                aria-label="{{this.subcategory_name}}">
-                                                                {{this.subcategory_name}}
-                                                            </a>
-                                                        </div>
-                                                        {{/each}}
+                                                        {{#if this.subcategories}}
+                                                            {{#each this.subcategories}}
+                                                            <div>
+                                                                <a href="{{this.subcategory_seo_url}}"
+                                                                    class="site-nav__dropdown-link subcatSecCustom"
+                                                                    aria-label="{{this.subcategory_name}}">
+                                                                    {{this.subcategory_name}}
+                                                                </a>
+                                                            </div>
+                                                            {{/each}}
+                                                        {{else}}
+                                                            <div>No subcategories available.</div>
+                                                        {{/if}}
+
                                                     </div>
                                                 </div>
                                             </div>
