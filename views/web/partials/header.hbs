@@ -463,7 +463,7 @@
                     <li class="mobile-nav__item appear-animation appear-delay-4"><a href="http://localhost:4000/"
                             aria-label="home" class="mobile-nav__link mobile-nav__link--top-level">HOME</a>
                     </li>
-                    {{!-- {{#if category_data.length}} --}}
+
                     {{#each category_data}}
                     <li class="mobile-nav__item appear-animation appear-delay-2">
                         <div class="mobile-nav__has-sublist"><a aria-label="{{this.category_seo_url}}"
@@ -471,80 +471,33 @@
                                 id="Label-collections-all{{this.category_name}}">
                                 {{this.category_name}}
                             </a>
+                            {{#if this.subcategories.length}}
                             <div class="mobile-nav__toggle">
-                                <button type="button" aria-controls="Linklist-collections-all{{this.category_name}}"
-                                    aria-labelledby="Label-collections-all{{this.category_name}}"
-                                    class="collapsible-trigger collapsible--auto-height"><span
-                                        class="collapsible-trigger__icon collapsible-trigger__icon--open"
-                                        role="presentation">
-                                        <svg aria-hidden="true" focusable="false" role="presentation"
-                                            class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
-                                            <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000"
-                                                fill="none" fill-rule="evenodd" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="Linklist-collections-all{{category_data.category_name}}"
-                            class="mobile-nav__sublist collapsible-content collapsible-content--all">
-                            <div class="collapsible-content__inner">
-                                <ul class="mobile-nav__sublist">
-                                    <li class="mobile-nav__item">
-
-                                        <div class="mobile-nav__child-item">
-                                            <a href="#" class="mobile-nav__link"
-                                                id="Sublabel-collections-tops<?php echo $num1; ?>"
-                                                aria-label="mobile-nav">
-                                                Parent Name
-                                            </a>
-                                            <button type="button"
-                                                aria-controls="Sublinklist-collections-all1-collections-tops<?php echo $num1; ?>"
-                                                aria-labelledby="Sublabel-collections-tops<?php echo $num1; ?>"
-                                                class="collapsible-trigger"><span
-                                                    class="collapsible-trigger__icon collapsible-trigger__icon--circle collapsible-trigger__icon--open"
-                                                    role="presentation">
-                                                    <svg aria-hidden="true" focusable="false" role="presentation"
-                                                        class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
-                                                        <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2"
-                                                            stroke="#000" fill="none" fill-rule="evenodd" />
+                                 <button type="button" aria-controls="Linklist-collections-all{{this._id}}" aria-labelledby="Label-collections-all1" class="collapsible-trigger collapsible--auto-height"><span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
+                                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
+                                                        <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd" />
                                                     </svg>
                                                 </span>
                                             </button>
-                                        </div>
-                                        <div id="Sublinklist-collections-all1-collections-tops<?php echo $num1; ?>"
-                                            aria-labelledby="Sublabel-collections-tops<?php echo $num1; ?>"
-                                            class="mobile-nav__sublist collapsible-content collapsible-content--all">
-                                            <div class="collapsible-content__inner">
-                                                <ul class="mobile-nav__grandchildlist">
-
-                                                    <li class="mobile-nav__item">
-                                                        <a href="" class="mobile-nav__link" aria-label=">">
-                                                            Subcategory Name
-                                                        </a>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="mobile-nav__child-item">
-                                            <a href="<?php echo $base_url; ?><?php echo $subcat_seo_url; ?>"
-                                                class="mobile-nav__link"
-                                                aria-label="<?php echo $base_url; ?><?php echo $subcat_seo_url; ?>">
-                                                Test Subcat
-                                            </a>
-                                        </div>
-
-                                    </li>
-                                </ul>
                             </div>
                         </div>
 
+                        <div id="Linklist-collections-all{{this._id}}"
+                            class="mobile-nav__sublist collapsible-content collapsible-content--all">
+                            <div class="collapsible-content__inner">
+                                <ul class="mobile-nav__sublist">
+                                    {{#each this.subcategories}}
+                                    <li class="mobile-nav__item">
+                                         <a href="{{this.subcategory_seo_url}}" class="mobile-nav__link">
+                                            {{this.subcategory_name}}</a>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        {{/if}}
                     </li>
                     {{/each}}
-                    {{!-- {{/if}} --}}
 
                 </ul>
             </div>
@@ -553,20 +506,20 @@
                     <div class="grid__item one-half appear-animation appear-delay-6 medium-up--hide">
                         <a href="/ABOUT_US" class="mobile-nav__link" aria-label="aboutus">About</a>
                     </div>
-                    <div class="grid__item one-half appear-animation appear-delay-6 medium-up--hide">
+                    {{!-- <div class="grid__item one-half appear-animation appear-delay-6 medium-up--hide">
                         <a href="<?php echo $base_url; ?>my_account" class="mobile-nav__link"
                             aria-label="aboutus">Wallet</a>
                     </div>
                     <div class="grid__item one-half appear-animation appear-delay-6 medium-up--hide">
                         <a href="/wishlist" class="mobile-nav__link" aria-label="aboutus">Wishlist</a>
-                    </div>
+                    </div> --}}
                     <div class="grid__item one-half appear-animation appear-delay-7 medium-up--hide">
                         <a href="/CONTACT_US" class="mobile-nav__link" aria-label="contactus">Contact</a>
                     </div>
                     <div class="grid__item one-half appear-animation appear-delay-8 medium-up--hide">
                         <a href="/faq" class="mobile-nav__link" aria-label="faq">FAQ</a>
                     </div>
-                    <div class="grid__item one-half appear-animation appear-delay-9">
+                 {{!--    <div class="grid__item one-half appear-animation appear-delay-9">
 
                         <a href="<?php echo $base_url ?>my_account" class="mobile-nav__link" aria-label="my account">MY
                             Account
@@ -575,13 +528,13 @@
                         <a href="<?php echo $base_url ?>login" class="mobile-nav__link" aria-label="log in">Log in
                         </a>
 
-                    </div>
+                    </div> --}}
                 </div>
             </li>
             <ul class="mobile-nav__social appear-animation appear-delay-10">
                 <li class="mobile-nav__social-item">
                     <a target="_blank" rel="noopener" aria-label="instagram" href="https://www.instagram.com/#/"
-                        title="<?php echo $title ?> — Modern on Instagram">
+                        title="{{title}} — Modern on Instagram">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-instagram"
                             viewBox="0 0 32 32">
                             <path fill="#444"
@@ -594,7 +547,7 @@
                 </li>
                 <li class="mobile-nav__social-item">
                     <a target="_blank" rel="noopener" aria-label="facebook" href="#"
-                        title="<?php echo $title ?> — Modern on Facebook">
+                        title="{{title}} — Modern on Facebook">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook"
                             viewBox="0 0 14222 14222">
                             <path
@@ -605,7 +558,7 @@
                 </li>
                 <li class="mobile-nav__social-item">
                     <a target="_blank" rel="noopener" aria-label="pinterest" href="#"
-                        title="<?php echo $title ?> — Modern on Pinterest">
+                        title="{{title}} — Modern on Pinterest">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pinterest"
                             viewBox="0 0 256 256">
                             <path
@@ -675,8 +628,9 @@
 <div data-section-id="header" data-section-type="header">
     <div class="header-sticky-wrapper">
         <div id="HeaderWrapper" class="header-wrapper">
-            <header id="SiteHeader" class="site-header site-header--stuck site-header--opening" data-sticky="true"
-                data-overlay="false">
+            <header id="SiteHeader" class="site-header" data-sticky="true" data-overlay="false">
+                {{#if announcement}}
+                {{#each announcement}}
                 <div class="toolbar announcement-bar ddd">
                     <div class="page-width">
 
@@ -684,7 +638,7 @@
                             <div class="toolbar__item toolbar__item--menu">
                                 <ul class="inline-list toolbar__menu">
                                     <li>
-                                        <span class="announcement-text">Welcome To My Site</span>
+                                        <span class="announcement-text">{{this.title}}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -702,27 +656,26 @@
                             </div> -->
                             <a href="/wishlist" class="site-nav__link site-nav__link--icon icon_common2 mobile_icon"
                                 data-icon="wishlist" style="display:none;margin-right:5px;padding:2px">
-                                <span class="cart-link header_listing">
-
-                                    <i class="fa fa-heart-o icon icon-bag" style="font-size:20px;line-height:1.5;"></i>
-
-
-
+                                <span class="cart-link header_listing" style="position: relative;">
+                                <i class="fa fa-heart-o icon icon-bag" style="font-size:20px;line-height:1.5;"></i>
+                                    {{!-- <i class="fa fa-heart-o icon icon-bag" style="font-size:20px;line-height:1.5;"></i> --}}
                                     <span class="cart-link__bubble"></span>
                                 </span>
                             </a>
-                            <a href="<?php echo $base_url; ?>my_account"
+                            {{!-- <a href="<?php echo $base_url; ?>my_account"
                                 class="site-nav__link site-nav__link--icon icon_common2 mobile_icon" aria-label="wallet"
                                 style="display:none;padding:2px">
                                 <div class="header_listing">
                                     <img class="icon icon-user" alt="wallet" src="" style="width:97%;height:20px;">
                                 </div>
-                            </a>
+                            </a> --}}
 
                         </div>
 
                     </div>
                 </div>
+                {{/each}}
+                {{/if}}
                 <div class="page-width">
                     <div class="header-layout header-layout--center-split" data-logo-align="center">
                         <div class="header-item header-item--left header-item--navigation">
@@ -778,10 +731,10 @@
                                             </a>
                                         </li>
                                         {{#each category_data}}
-                                        <li class="site-nav__item site-nav__expanded-item site-nav--has-dropdown site-nav--is-megamenu"
-                                            aria-haspopup="true">
+                                        <li class="site-nav__item site-nav__expanded-item   {{#if this.subcategories}}
+                                        site-nav--has-dropdown site-nav--is-megamenu{{/if}}" {{#if this.subcategories}}aria-haspopup="true"{{/if}}>
                                             <a href="{{this.category_seo_url}}" aria-label="{{this.category_name}}"
-                                                class=" hease site-nav__link site-nav__link--underline site-nav__link--has-dropdown">
+                                                class=" hease site-nav__link site-nav__link--underline site-nav__link--has-dropdown" style="">
                                                 {{this.category_name}}
                                             </a>
 
@@ -811,8 +764,6 @@
                                     </ul>
                                 </div>
                             </div>
-
-
                         </div>
 
                         <div class="header-item header-item--icons">

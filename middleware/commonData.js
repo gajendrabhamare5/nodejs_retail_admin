@@ -1,6 +1,7 @@
 
 const Category = require('../models/category.js');
 const Subcategory = require('../models/subcategory.js');
+const Announcement = require('../models/announcement.js');
 
 async function injectCommonData(req, res, next) {
   try {
@@ -35,14 +36,17 @@ async function injectCommonData(req, res, next) {
        category.subcategories = subcategories;
      }
 
-    // const subcat_data = await Subcategory.find();
+     // const subcat_data = await Subcategory.find();
 
+     const announcement = await Announcement.findOne();
 
     res.locals.category_data = category_data;
+    res.locals.announcement = announcement;
 
   } catch (error) {
     console.error('Error fetching common data:', error);
     res.locals.category_data = [];
+    res.locals.announcement = [];
 
   }
 
