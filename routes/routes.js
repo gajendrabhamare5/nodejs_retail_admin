@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Controllerport = require('../controllers/portfolio');
-const Controllerproduct = require('../controllers/product1');
-const Controllercart = require('../controllers/cart');
+const Controllerport = require('../controllers/portfolio.js');
+const Controllerproduct = require('../controllers/product1.js');
+const Controllercart = require('../controllers/cart.js');
 const Controllercheckout = require('../controllers/checkout.js');
-const Controllerwishlist = require('../controllers/wishlist');
+const Controllerwishlist = require('../controllers/wishlist.js');
 const Controllerabout = require('../controllers/aboutus.js');
 const Controllertrackorder = require('../controllers/track.js');
 const Controllercontactus = require('../controllers/contactus.js');
@@ -14,21 +14,21 @@ const Controllerexchange_policy = require('../controllers/exchange-policy.js');
 const Controllerterms_condition = require('../controllers/terms_condition.js');
 const Controllerfaq = require('../controllers/faq.js');
 const Controllersubscribe = require('../controllers/subscribe.js');
-const Controllerheader = require('../controllers/headerweb');
+const Controllerheader = require('../controllers/headerweb.js');
 
 //retail admin controller called
-const categoryController = require('../controllers/category');
-const subcategoryController = require('../controllers/subcategory');
-const seoController = require('../controllers/home_seo');
-const sliderController = require('../controllers/slider_add');
-const cnumberController = require('../controllers/contact_number');
-const marqueeController = require('../controllers/marquee');
-const brandController = require('../controllers/brand');
-const sizeController = require('../controllers/size');
-const productController = require('../controllers/product');
+const categoryController = require('../controllers/category.js');
+const subcategoryController = require('../controllers/subcategory.js');
+const seoController = require('../controllers/home_seo.js');
+const sliderController = require('../controllers/slider_add.js');
+const cnumberController = require('../controllers/contact_number.js');
+const marqueeController = require('../controllers/marquee.js');
+const brandController = require('../controllers/brand.js');
+const sizeController = require('../controllers/size.js');
+const productController = require('../controllers/product.js');
 const attributeController = require('../controllers/attribute.js');
 const subattributeController = require('../controllers/subattribute.js');
-const productviewController = require('../controllers/productview');
+const productviewController = require('../controllers/productview.js');
 const producteditController = require('../controllers/product_edit.js');
 
 //web routes called

@@ -70,7 +70,7 @@ app.get('/retail_admin', (req, res) => {
 // });
 
 
-const indexviewRoutes = require('./routes/index.js');
+const indexviewRoutes = require('./routes/routes.js');
 app.use('/', indexviewRoutes);
 
 
