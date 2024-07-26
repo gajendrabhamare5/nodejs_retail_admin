@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 require('./db/conn');
 const injectCommonData = require('./middleware/commonData');
+const helpers = require('./helpers/helpers.js');
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -40,7 +41,8 @@ const hbs = exphbs.create({
         },
         includes1: (arr, val, options) => arr.includes(val) ? options.fn(this) : options.inverse(this),
         isInArray: (array, value, options) => array.includes(value.toString()) ? options.fn(this) : options.inverse(this),
-        count: (array) => array.length
+        count: (array) => array.length,
+        product_design: helpers.product_design
     },
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
@@ -59,6 +61,8 @@ const static_path = path.join(__dirname, './public');
 app.use(express.static(static_path));
 
 app.use(injectCommonData);
+
+// hbs.registerHelper('product_design', helpers.product_design);
 
 // Define routes
 app.get('/retail_admin', (req, res) => {

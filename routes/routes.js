@@ -30,6 +30,7 @@ const attributeController = require('../controllers/attribute.js');
 const subattributeController = require('../controllers/subattribute.js');
 const productviewController = require('../controllers/productview.js');
 const producteditController = require('../controllers/product_edit.js');
+const inquiryController = require('../controllers/inquiry.js');
 
 //web routes called
 
@@ -128,5 +129,7 @@ router.get('/retail_admin/product_edit_detail_fetch', producteditController.quic
 router.post('/retail_admin/product_edit_detail_fetch/:id', producteditController.quickproduct1);
 router.post('/retail_admin/product_quick_edit_process', producteditController.quickproductupdate);
 
+
+router.get('/retail_admin/inquiry_list', inquiryController.getinquiryinfo);
 
 module.exports = router;

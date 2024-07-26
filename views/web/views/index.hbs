@@ -545,12 +545,13 @@
 
 					<section class="slider-wrapper">
 						<div class="slider slider-nav">
-
+								{{#each slider}}
 								<div class="slide">
-									<a href="#">
-										<img alt="" src="\images\slider\2024\6\western_dress_collection.jpg">
+									<a href="{{this.url}}">
+										<img alt="" src="{{this.image}}">
 									</a>
-
+								</div>
+								{{/each}}
 						</div>
 					</section>
 
@@ -597,7 +598,9 @@
 								<div class="page-width page-width--flush-small">
 									<div class="grid-overflow-wrapper">
 										<div class="grid grid--uniform" data-aos="overflow__animation">
-
+												 {{#each products}}
+													{{{product_design this}}}
+												{{/each}}
 										</div>
 									</div>
 									<div class="section-header">
@@ -607,7 +610,7 @@
 							</div>
 						</div>
 
-
+							{{#if seasonStore}}
 							<div id="shopify-section-template--14581230927938__featured-collections" style="    padding: 5px 40px;" class="shopify-section index-section">
 								<div style="background-color:#ffffff">
 									<div class="page-width">
@@ -619,34 +622,37 @@
 										</div>
 										<div class="grid grid--uniform">
 
-
+												{{#each seasonStore}}
 												<div class="grid__item small--one-half medium-up--one-quarter">
-													<a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
+													<a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
 													<div class="collectionHover">
-														<a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+														<a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
 															<div class="collection-image collection-image--portrait image-wrap">
-																<img class="lazyautosizes lazyloaded" alt="s_image" src="" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
+																<img class="lazyautosizes lazyloaded" alt="s_image" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
 																<noscript>
-																	<img class="lazyloaded" alt="lazy_alt" src="">
+																	<img class="lazyloaded" alt="lazy_alt" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg">
 																</noscript>
 															</div>
 														</a>
 														<div class="collection-item__title collection-item__title--overlaid collection-item__title--body collection-item__title--bottom-center"><a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
 																<span>
-
+																{{this.title}}
 																</span>
 															</a>
-															<div class="see_all"><a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="">See All</a></div>
+															<div class="see_all"><a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="{{this.url}}">See All</a></div>
 														</div>
 													</div>
 												</div>
-
+												{{/each}}
 										</div>
 									</div>
 								</div>
 							</div>
+							{{/if}}
 
-						<!-- <div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" class="shopify-section index-section" data-section-type="featured-collection">
+							{{#if video}}
+
+						 <div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" class="shopify-section index-section" data-section-type="featured-collection">
 								<div class="index-section">
 									<div class="page-width">
 										<div class="custom-content ">
@@ -675,36 +681,36 @@
 									<div class="page-width page-width--flush-small statuss">
 										<div class="grid-overflow-wrapper">
 											<div class="grid grid--uniform aos-init aos-animate view_btn1" data-aos="overflow__animation" style="text-align:center;">
-
+														{{#each video}}
 														<div>
 															<label style="position: relative;">
 																<video controls="" autoplay="" muted="" loop="" style="width:180px;height: 322px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);  border-radius: 10px;    margin: 6px;">
-																	<source src="https://drive.google.com/uc?export=download&id=" type="video/mp4">
+																	<source src="{{this.category_image}}" type="video/mp4">
 																</video>
 
 
-																	<a class="btn btn-primary views_btn"> <i class="fa fa-eye"></i></button></a>
+																	{{!-- <a class="btn btn-primary views_btn"> <i class="fa fa-eye"></i></button></a> --}}
 
 															</label>
 															<div class="bottom_sec">
-																<a href=" " class="btn btn-primary view_btn">View</button></a>
-
-																	<span class="video_detail_sec"> </span>
-
+																<a href="{{this.category_seo_url}}" class="btn btn-primary view_btn">View</button></a>
+																	{{!-- <span class="video_detail_sec"> </span> --}}
 															</div>
 														</div>
 
-												?>
+												{{/each}}
 											</div>
 										</div>
 									</div>
-									<div class="section-header">
+									{{!-- <div class="section-header">
 										<a href="/videos" class="btn btn--secondary btn--small section-header__link">View all Videos</a>
-									</div>
+									</div> --}}
 								</div>
-							</div> -->
+							</div>
 
-							<div id="shopify-section-template--14581230927938__featured-collections" style="    padding: 5px 40px;" class="shopify-section index-section">
+							{{/if}}
+
+							{{!-- <div id="shopify-section-template--14581230927938__featured-collections" style="    padding: 5px 40px;" class="shopify-section index-section">
 								<div style="background-color:#ffffff">
 									<div class="page-width">
 										<div class="section-header">
@@ -737,7 +743,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 
 
 						<div id="shopify-section-template--14576455254082__16547722820cd6ccd7" class="shopify-section index-section">
@@ -787,7 +793,7 @@
 								</div>
 							</div>
 						</div>
-
+						{{#if review}}
 							<div id="shopify-section-template--14452073070650__testimonials" class="shopify-section index-section">
 								<style data-shopify>
 									.testimonials-template--14452073070650__testimonials {
@@ -803,28 +809,33 @@
 									</div>
 									<div class="slideshow-wrapper">
 										<div class="testimonials-slider" id="Testimonials-template--14452073070650__testimonials" data-dots="true" data-count="5">
+										{{#each review}}
 
 												<div class="testimonials-slide testimonials-slide--testimonials-0" data-index="0" data-aos="row-of-5">
 													<blockquote class="testimonials-slider__text"><span class="testimonial-stars" style="    color: #ffa900;">★★★★★</span>
+
 														<div class="rte-setting text-spacing">
-															<p>customer_review</p>
+															<p>{{this.customer_review}}</p>
 														</div>
+
 														<div class="testimonail-image testimonail-image--round">
-															<div class="image-wrap text-spacing" style="height: 0; padding-bottom: 100.0%;"><img class="lazyload" alt="customer" data-src="" data-widths="[180, 360, 540, 720]" data-aspectratio="1.0" data-sizes="auto">
+															<div class="image-wrap text-spacing" style="height: 0; padding-bottom: 100.0%;"><img class="lazyload" alt="customer" data-src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg" data-widths="[180, 360, 540, 720]" data-aspectratio="1.0" data-sizes="auto">
 																<noscript>
-																	<img class="lazyloaded" alt="customer_lazyload" src=""><br>
+																	<img class="lazyloaded" alt="customer_lazyload" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg"><br>
 																</noscript>
 															</div>
-														</div><br>
-														<div class="testimonials__info" style="text-transform: capitalize;">customer_name</div>
+														</div>
+														<br>
+
+														<div class="testimonials__info" style="text-transform: capitalize;">{{this.customer_name}}</div>
 													</blockquote>
 												</div>
-
+												{{/each}}
 										</div>
 									</div>
 								</div>
 							</div>
-
+							{{/if}}
 						<div id="shopify-section-template--14452072742970__featured-collections" class="shopify-section">
 							<div class="index-section">
 								<div class="page-width">

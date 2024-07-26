@@ -1,217 +1,222 @@
 const mongoose = require("mongoose")
 
-const productSchema = new mongoose.Schema ({
-    product_sku : {
-        type:String,
+const productSchema = new mongoose.Schema({
+    product_sku: {
+        type: String,
         /* require:true, */
     },
-    product_hsn : {
-        type:String,
+    product_hsn: {
+        type: String,
 
     },
-    product_name : {
-        type:String,
+    parent_sku: {
+        type: String,
+        default: null
     },
-    cname : {
-        type:String,
+
+    product_name: {
+        type: String,
+    },
+    cname: {
+        type: String,
 
     },
-    product_seo_url : {
-        type:String,
+    product_seo_url: {
+        type: String,
 
     },
-    product_image : {
-        type:String,
+    product_image: {
+        type: String,
 
     },
     product_qty:
     {
-        type:String,
+        type: String,
     },
     catalog_pcs:
     {
-        type:String,
+        type: String,
     },
     product_price:
     {
-        type:Number,
+        type: Number,
     },
     product_mrp_price:
     {
-        type:String,
+        type: String,
     },
     product_sale_price:
     {
-        type:String,
+        type: String,
     },
     product_reseller_price:
     {
-        type:String,
+        type: String,
     },
     product_reseller_sale_price:
     {
-        type:String,
+        type: String,
     },
     product_reseller_mrp_price:
     {
-        type:String,
+        type: String,
     },
     product_gst:
     {
-        type:String,
+        type: String,
     },
-     product_weight:
+    product_weight:
     {
-        type:String,
+        type: String,
     },
     product_stitch:
     {
-        type:String,
+        type: String,
     },
     catalog_type:
     {
-        type:String,
+        type: String,
     },
     moq:
     {
-        type:String,
+        type: String,
     },
     top_fabric:
     {
-        type:String,
+        type: String,
     },
     bottom_fabric:
     {
-        type:String,
+        type: String,
     },
     dupatta_fabric:
     {
-        type:String,
+        type: String,
     },
     saree_fabric:
     {
-        type:String,
+        type: String,
     },
     blouse_fabric:
     {
-        type:String,
+        type: String,
     },
     lehenga_fabric:
     {
-        type:String,
+        type: String,
     },
     inner_for:
     {
-        type:String,
+        type: String,
     },
     color:
     {
-        type:String,
+        type: String,
     },
     bottom:
     {
-        type:String,
+        type: String,
     },
     length:
     {
-        type:String,
+        type: String,
     },
     accessories_length:
     {
-        type:String,
+        type: String,
     },
     product_short_description:
     {
-        type:String,
+        type: String,
     },
     product_full_description:
     {
-        type:String,
+        type: String,
     },
     product_status:
     {
-        type:String,
+        type: String,
     },
     product_meta_title:
     {
-        type:String,
+        type: String,
     },
     product_meta_keyword:
     {
-        type:String,
+        type: String,
     },
     product_meta_description:
     {
-        type:String,
+        type: String,
     },
     disable_date:
     {
-        type:Date,
+        type: Date,
         default: Date.now,
     },
     upcoming:
     {
-        type:String,
+        type: String,
     },
     product_type:
     {
-        type:String,
+        type: String,
     },
     video_link:
     {
-        type:String,
+        type: String,
     },
     other_detail:
     {
-        type:String,
+        type: String,
     },
     single_catalog:
     {
-        type:String,
+        type: String,
     },
     product_date:
     {
-        type:Date,
+        type: Date,
         default: Date.now,
     },
     push_to_top_date:
     {
-        type:Date,
+        type: Date,
         default: Date.now,
     },
     added_by:
     {
-        type:String,
+        type: String,
 
     },
     delivery_date:
     {
-        type:Date,
+        type: Date,
         default: Date.now,
     },
     fabric:
     {
-        type:String,
+        type: String,
 
     },
     availability:
     {
-        type:String,
+        type: String,
 
     },
     permalink:
     {
-        type:String,
+        type: String,
 
     },
     filter:
     {
-        type:String,
+        type: String,
 
     },
     note:
     {
-        type:String,
+        type: String,
 
     },
 
