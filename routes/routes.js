@@ -32,6 +32,7 @@ const productviewController = require('../controllers/productview.js');
 const producteditController = require('../controllers/product_edit.js');
 const inquiryController = require('../controllers/inquiry.js');
 
+
 //web routes called
 
 router.get('/', Controllerheader.getheaderInfo);
@@ -131,5 +132,9 @@ router.post('/retail_admin/product_quick_edit_process', producteditController.qu
 
 
 router.get('/retail_admin/inquiry_list', inquiryController.getinquiryinfo);
+router.post('/retail_admin/inquiry_delete/:id', inquiryController.deleteinquiry);
+
+router.get('/retail_admin/about_us', Controllerabout.getadminaboutinfo);
+router.post('/retail_admin/about_us_add_process', Controllerabout.addadminaboutinfo);
 
 module.exports = router;

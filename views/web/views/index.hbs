@@ -844,7 +844,9 @@
 											<div class="custom__item-inner custom__item-inner--liquid">
 												<div class="rte">
 													<div class="home-page-seo-content">
-
+														{{#each homeabout}}
+															{{{this.content}}}
+														{{/each}}
 													</div>
 												</div>
 											</div>
