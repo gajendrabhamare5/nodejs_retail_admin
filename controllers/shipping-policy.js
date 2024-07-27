@@ -8,7 +8,11 @@ const shippingdata = await shipping.findOne();
     res.render("web/views/shipping_policy",{shippingdata})
 }
 
+const getadminshipping_policy = async (req,res) =>{
+    res.render("retail_admin/views/shipping_policy")
+}
+
 module.exports = {
     getshipping_policyInfo,
-
+    getadminshipping_policy,
 }

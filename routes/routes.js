@@ -34,6 +34,7 @@ const inquiryController = require('../controllers/inquiry.js');
 const Controllerprivacy = require('../controllers/privacy-policy.js');
 
 
+
 //web routes called
 
 router.get('/', Controllerheader.getheaderInfo);
@@ -140,5 +141,7 @@ router.post('/retail_admin/about_us_add_process', Controllerabout.addadminabouti
 
 router.get('/retail_admin/privacy_policy', Controllerprivacy.getadminprivacy_policy);
 router.post('/retail_admin/privacy_policy_update', Controllerprivacy.addadminprivacy_policy);
+
+router.get('/retail_admin/shipping_policy', Controllershipping_policy.getadminshipping_policy);
 
 module.exports = router;
