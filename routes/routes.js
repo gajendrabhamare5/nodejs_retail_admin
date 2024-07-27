@@ -31,6 +31,7 @@ const subattributeController = require('../controllers/subattribute.js');
 const productviewController = require('../controllers/productview.js');
 const producteditController = require('../controllers/product_edit.js');
 const inquiryController = require('../controllers/inquiry.js');
+const Controllerprivacy = require('../controllers/privacy-policy.js');
 
 
 //web routes called
@@ -136,5 +137,8 @@ router.post('/retail_admin/inquiry_delete/:id', inquiryController.deleteinquiry)
 
 router.get('/retail_admin/about_us', Controllerabout.getadminaboutinfo);
 router.post('/retail_admin/about_us_add_process', Controllerabout.addadminaboutinfo);
+
+router.get('/retail_admin/privacy_policy', Controllerprivacy.getadminprivacy_policy);
+router.post('/retail_admin/privacy_policy_update', Controllerprivacy.addadminprivacy_policy);
 
 module.exports = router;
