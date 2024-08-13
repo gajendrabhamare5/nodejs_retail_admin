@@ -32,6 +32,10 @@ const productviewController = require('../controllers/productview.js');
 const producteditController = require('../controllers/product_edit.js');
 const inquiryController = require('../controllers/inquiry.js');
 const Controllerprivacy = require('../controllers/privacy-policy.js');
+const Controllershipping = require('../controllers/shipping-policy.js');
+const Controllerterms = require('../controllers/terms_condition.js');
+const Controllerfaqs = require('../controllers/faq.js');
+const Controllerexchange = require('../controllers/exchange-policy.js');
 
 
 
@@ -142,6 +146,16 @@ router.post('/retail_admin/about_us_add_process', Controllerabout.addadminabouti
 router.get('/retail_admin/privacy_policy', Controllerprivacy.getadminprivacy_policy);
 router.post('/retail_admin/privacy_policy_update', Controllerprivacy.addadminprivacy_policy);
 
-router.get('/retail_admin/shipping_policy', Controllershipping_policy.getadminshipping_policy);
+router.get('/retail_admin/shipping_policy', Controllershipping.getadminshipping_policy);
+router.post('/retail_admin/shipping_policy_update', Controllershipping.addadminshipping_policy);
+
+router.get('/retail_admin/terms', Controllerterms.getadminterms);
+router.post('/retail_admin/terms_update', Controllerterms.addadminterms);
+
+router.get('/retail_admin/faqs', Controllerfaqs.getadminfaq);
+router.post('/retail_admin/faq_update', Controllerfaqs.addadminfaq);
+
+router.get('/retail_admin/refund_policy', Controllerexchange.getadminrefund);
+router.post('/retail_admin/refund_policy_update', Controllerexchange.addadminrefund);
 
 module.exports = router;
