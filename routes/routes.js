@@ -38,6 +38,7 @@ const Controllerfaqs = require('../controllers/faq.js');
 const Controllerexchange = require('../controllers/exchange-policy.js');
 const Controllercod = require('../controllers/cod_charge.js');
 const Controllerannouncement = require('../controllers/announcement.js');
+const Controllerseason = require('../controllers/seasonstore.js');
 
 
 
@@ -165,5 +166,7 @@ router.post('/retail_admin/update_cod_charge_process',Controllercod.addadmincodc
 
 router.get('/retail_admin/announcement_slider',Controllerannouncement.getadminannouncement)
 router.post('/retail_admin/announcement_slider_update',Controllerannouncement.addadminannouncement)
+
+router.get('/retail_admin/season_store_add',Controllerseason.getadminseason)
 
 module.exports = router;

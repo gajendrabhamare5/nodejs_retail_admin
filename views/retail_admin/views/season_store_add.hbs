@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+	<title>Season Store title </title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+	<meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+	<meta name="author" content="Srthemesvilla" />
+	<link rel="icon" type="image/x-icon" href="">
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<!-- Icon fonts -->
+	<link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+	<link rel="stylesheet" href="/assets/fonts/ionicons.css">
+	<link rel="stylesheet" href="/assets/fonts/linearicons.css">
+	<link rel="stylesheet" href="/assets/fonts/open-iconic.css">
+	<link rel="stylesheet" href="/assets/fonts/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="/assets/fonts/feather.css">
+	<!-- Core stylesheets -->
+	<link rel="stylesheet" href="/assets/css/bootstrap-material.css">
+	<link rel="stylesheet" href="/assets/css/shreerang-material.css">
+	<link rel="stylesheet" href="/assets/css/uikit.css">
+	<!-- Libs -->
+	<link rel="stylesheet" href="/assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" href="/assets/libs/flot/flot.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+	<link rel="stylesheet" href="/assets/libs/datatables/datatables.css">
+	<link rel="stylesheet" href="/assets/libs/dropzone/dropzone.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-select/bootstrap-select.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="/assets/libs/select2/select2.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
+	<style>
+		.labelCustom {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.fa-times-circle {
+			cursor: pointer;
+		}
+		.card-body{
+			padding:7px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- [ Preloader ] Start -->
+	<div class="page-loader">
+		<div class="bg-primary"></div>
+	</div>
+	<!-- [ Preloader ] End -->
+	<!-- [ Layout wrapper ] Start -->
+	<div class="layout-wrapper layout-2">
+		<div class="layout-inner">
+			<!-- [ Layout sidenav ] Start -->
+			{{>admin/sidebar}}
+			<!-- [ Layout sidenav ] End -->
+			<!-- [ Layout container ] Start -->
+			<div class="layout-container">
+				<!-- [ Layout navbar ( Header ) ] Start -->
+				{{>admin/header}}
+				<!-- [ Layout navbar ( Header ) ] End -->
+				<!-- [ Layout content ] Start -->
+				<div class="layout-content">
+					<!-- [ content ] Start -->
+					<div class="container-fluid flex-grow-1 container-p-y">
+						<div style="display:flex;justify-content:space-between;">
+							<div>
+								<h4 class="font-weight-bold py-3 mb-0">Update Season Store</h4>
+							</div>
+							<div>
+								<button type="button" id="add_cat" class="btn btn-primary" onclick="add_store()">Add More Store</button>
+								<button type="button" id="add_cat" class="btn btn-primary" onclick="submit()">Submit</button>
+							</div>
+						</div>
+						<div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item ">Season Store</li>
+								<li class="breadcrumb-item active">Update Season Store</li>
+							</ol>
+						</div>
+
+						<div class="storeSec col-12" style="display:flex;flex-wrap:wrap;gap:5px;">
+                                {{#each getdata}}
+								<div class="card col-md-3 storeSecc{{num}}">
+									<div class="card-header labelCustom">
+										<h6>Season Store {{num}}</h6>
+										<div> <i class="fa fa-times-circle" onclick="deleteProduct({{this._id}})"></i></div>
+									</div>
+									<div class="card-body">
+										<div class="form-group col-12">
+											<label class="form-label">Select Image</label>
+											<input type="file" name="image_file11[]" accept="image/*" class="form-control" onchange="readURL(this,{{num}});" id="image_file<?php echo $slider_id1; ?>">
+											<img id="blah{{num}}" src="{{this.slider_image}}" style="max-width:50px;max-height:50px;margin: auto;padding: 10px;">
+										</div>
+										<div class="form-group">
+											<label class="form-label">Url</label>
+											<input type="text" class="form-control" name="url11[]" id="url{{this._id}}" value="{{this.url}}">
+										</div>
+										<div class="form-group">
+											<label class="form-label">Title</label>
+											<input type="text" class="form-control" name="title11[]" id="title{{this._id}}" value="{{this.title}}">
+										</div>
+									</div>
+									<div class="card-body text-right">
+										<button type="button" id="add_cat" class="btn btn-primary" onclick="updateFunc({{this._id}})">Update</button>
+									</div>
+								</div>
+                                {{/each}}
+						</div>
+						<div>
+							<input type="hidden" value="{{getdata.length}}" id="total_store">
+						</div>
+						
+					</div>
+					<!-- [ content ] End -->
+					<!-- [ Layout footer ] Start -->
+				{{>admin/footer}}
+					<!-- [ Layout footer ] End -->
+				</div>
+				<!-- [ Layout content ] Start -->
+			</div>
+			<!-- [ Layout container ] End -->
+		</div>
+		<!-- Overlay -->
+		<div class="layout-overlay layout-sidenav-toggle"></div>
+	</div>
+	<!-- [ Layout wrapper] End -->
+	<!-- Core scripts -->
+	<script src="/assets/js/pace.js"></script>
+	<script src="/assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+	<script src="/assets/libs/popper/popper.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
+	<script src="/assets/js/sidenav.js"></script>
+	<script src="/assets/js/layout-helpers.js"></script>
+	<script src="/assets/js/material-ripple.js"></script>
+	<!-- Libs -->
+	<script src="/assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="/assets/libs/eve/eve.js"></script>
+	<script src="/assets/libs/flot/flot.js"></script>
+	<script src="/assets/libs/flot/curvedLines.js"></script>
+	<script src="/assets/libs/chart-am4/core.js"></script>
+	<script src="/assets/libs/chart-am4/charts.js"></script>
+	<script src="/assets/libs/chart-am4/animated.js"></script>
+	<script src="/assets/libs/raphael/raphael.js"></script>
+	<script src="/assets/libs/morris/morris.js"></script>
+	<script src="/assets/libs/moment/moment.js"></script>
+	<script src="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+	<script src="/assets/libs/datatables/datatables.js"></script>
+	<script src="/assets/libs/dropzone/dropzone.js"></script>
+	<script src="/assets/libs/bootstrap-select/bootstrap-select.js"></script>
+	<script src="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+	<script src="/assets/libs/select2/select2.js"></script>
+	<script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+	<!-- Demo -->
+	<script src="/assets/js/demo.js"></script>
+	<script src="/assets/js/analytics.js"></script>
+	<script src="/assets/js/pages/forms_selects.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+	<script>
+		function readURL(input, id) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#blah' + id)
+						.attr('src', e.target.result);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		function deleteProduct(sliderID){
+			if (confirm('Are You Sure You Want To Delete?')) {
+				$.ajax({
+					type: "POST",
+					dataType:"JSON",
+					url: "season_store_delete.php?id=" + sliderID,
+					success: function(response) {
+						if (response.status == "ok") {
+							alert("Successfully deleted");
+							location.reload();
+						} else {
+							alert("something went wrong.");
+							location.reload();
+						}
+					}
+				});
+				//alert(delete_id);
+
+			}
+		}
+		function removeProduct(count) {
+			var added_pro = $("#total_store").val();
+			var newCount = parseInt(added_pro) - 1;
+			$(".storeSecc" + count).remove();
+			$("#total_store").val(newCount);
+		}
+
+		function updateFunc(sliderId)
+		{
+			var url = $("#url" + sliderId).val();
+			var title = $("#title" + sliderId).val();
+			var image_file = $('#image_file' + sliderId).prop('files')[0];
+			var form_data = new FormData();
+			form_data.append('image_file', image_file);
+			form_data.append('url', url);
+			form_data.append('title', title);
+			form_data.append('id', sliderId);
+			$.ajax({
+
+				type: "POST",
+				data: form_data,
+				dataType: 'JSON',
+				contentType: false,
+				cache: false,
+				processData: false,
+				url: "ajaxfiles/season_store_edit_process.php",
+				//data: {cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
+				success: function(response) {
+					if (response.status == "success") {
+						location.reload();
+					} else{
+						alert("Something went wrong.");
+					}
+				}
+
+			});
+		}
+
+		function add_store() {
+			var added_store = $("#total_store").val();
+			var newStoreCount = parseInt(added_store) + 1;
+			var storeSec = `<div class="card col-md-3 storeSecc${newStoreCount}">
+								<div class="labelCustom card-header">
+									<h6>Season Store ${newStoreCount}</h6>
+									<div> <i class="fa fa-times-circle" onclick="removeProduct(${newStoreCount})"></i></div>
+								</div>
+								<div class="card-body">
+									<div class="form-group col-12">
+										<label class="form-label">Select Image</label>
+										<input type="file" name="image_file[]" accept="image/*" class="form-control" onchange="readURL(this,${newStoreCount});" id="image_file${newStoreCount}">
+										<img id="blah${newStoreCount}" src="http://placehold.it/150" style="max-width:50px;max-height:50px;margin: auto;padding: 10px;">
+									</div>
+									<div class="form-group">
+										<label class="form-label">Url</label>
+										<input type="text" class="form-control" name="url[]" id="url${newStoreCount}" value="">
+									</div>
+									<div class="form-group">
+										<label class="form-label">Title</label>
+										<input type="text" class="form-control" name="title[]" id="title${newStoreCount}" value="">
+									</div>
+								</div>
+							</div>`;
+			$("#total_store").val(newStoreCount);
+			$(".storeSec").append(storeSec);
+		}
+
+		function FileListItem(a) {
+			a = [].slice.call(Array.isArray(a) ? a : arguments)
+			for (var c, b = c = a.length, d = !0; b-- && d;) d = a[b] instanceof File
+			if (!d) throw new TypeError("expected argument to FileList is File or array of File objects")
+			for (b = (new ClipboardEvent("")).clipboardData || new DataTransfer; c--;) b.items.add(a[c])
+			return b.files
+		}
+
+		function submit() {
+			var formData = new FormData();
+			var total_storeCount = $("#total_store").val();
+			var fileInputs = document.querySelectorAll('input[name="image_file[]"]');
+			for (var i = 0; i < fileInputs.length; i++) {
+				var fileInput = fileInputs[i];
+				var files = fileInput.files;
+				if (files.length > 0) {
+					for (var j = 0; j < files.length; j++) {
+						formData.append("image_files[" + i + "]", files[j]);
+					}
+				} else {
+					formData.append("image_files[" + i + "]", "");
+				}
+			}
+			var url_array = $("input[name='url[]']").map(function() {
+				return $(this).val();
+			}).get();
+			formData.append("url_array", url_array);
+			var title_array = $("input[name='title[]']").map(function() {
+				return $(this).val();
+			}).get();
+			formData.append("title_array", title_array);
+			$.ajax({
+				type: "POST",
+				url: "ajaxfiles/season_store_add_process.php",
+				dataType: "JSON",
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					if (data.status == "ok") {
+						location.reload();
+					} else {
+						alert("something went wrong.");
+					}
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>
