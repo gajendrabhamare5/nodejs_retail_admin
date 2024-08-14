@@ -36,6 +36,8 @@ const Controllershipping = require('../controllers/shipping-policy.js');
 const Controllerterms = require('../controllers/terms_condition.js');
 const Controllerfaqs = require('../controllers/faq.js');
 const Controllerexchange = require('../controllers/exchange-policy.js');
+const Controllercod = require('../controllers/cod_charge.js');
+const Controllerannouncement = require('../controllers/announcement.js');
 
 
 
@@ -157,5 +159,11 @@ router.post('/retail_admin/faq_update', Controllerfaqs.addadminfaq);
 
 router.get('/retail_admin/refund_policy', Controllerexchange.getadminrefund);
 router.post('/retail_admin/refund_policy_update', Controllerexchange.addadminrefund);
+
+router.get('/retail_admin/update_cod_charge',Controllercod.getadmincodcharge)
+router.post('/retail_admin/update_cod_charge_process',Controllercod.addadmincodcharge)
+
+router.get('/retail_admin/announcement_slider',Controllerannouncement.getadminannouncement)
+router.post('/retail_admin/announcement_slider_update',Controllerannouncement.addadminannouncement)
 
 module.exports = router;

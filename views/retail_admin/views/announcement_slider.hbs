@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+    <title>Announcement Slider title </title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon" href="">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="/assets/fonts/ionicons.css">
+    <link rel="stylesheet" href="/assets/fonts/linearicons.css">
+    <link rel="stylesheet" href="/assets/fonts/open-iconic.css">
+    <link rel="stylesheet" href="/assets/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-material.css">
+    <link rel="stylesheet" href="/assets/css/shreerang-material.css">
+    <link rel="stylesheet" href="/assets/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="/assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/libs/flot/flot.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="/assets/libs/datatables/datatables.css">
+	<link rel="stylesheet" href="/assets/libs/dropzone/dropzone.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="/assets/libs/select2/select2.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="/assets/libs/growl/growl.css">
+
+ <script src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+            <!-- [ Layout sidenav ] Start -->
+           {{>admin/sidebar}}
+            <!-- [ Layout sidenav ] End -->
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                <!-- [ Layout navbar ( Header ) ] Start -->
+               {{>admin/header}}
+                <!-- [ Layout navbar ( Header ) ] End -->
+
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Home </h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item ">Home </li>
+                                <li class="breadcrumb-item active">Announcement Slider </li>
+                            </ol>
+                        </div>
+
+                        <div class="card mb-12 col-md-12" style="float:left;margin-right:40px;">
+                            <h6 class="card-header">Home </h6>
+                            {{#each sqldata}}
+                            <div class="card-body">
+								<div class="form-group">
+									<label class="form-label" style="font-size:15px;">Announcement Title</label>
+									<input type="text" class="form-control" id="title" value="{{this.title}}">
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" style="font-size:15px;">Announcement Url</label>
+									<input type="text" class="form-control" id="url" value="{{this.url}}">
+								</div>
+
+
+								<button type="button" id="add_cat" class="btn btn-primary" onclick="add_about_us()">Update</button>
+                            </div>
+                            {{/each}}
+                        </div>
+
+
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                  {{>admin/footer}}
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper] End -->
+<script>
+ //  CKEDITOR.replace( 'editor1' );
+//   CKEDITOR.replace( 'editor2' );
+ //  CKEDITOR.replace('editor1',{enterMode:CKEDITOR.ENTER_BR});
+  </script>
+    <!-- Core scripts -->
+    <script src="/assets/js/pace.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+    <script src="/assets/libs/popper/popper.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <script src="/assets/js/sidenav.js"></script>
+    <script src="/assets/js/layout-helpers.js"></script>
+    <script src="/assets/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="/assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="/assets/libs/eve/eve.js"></script>
+    <script src="/assets/libs/flot/flot.js"></script>
+    <script src="/assets/libs/flot/curvedLines.js"></script>
+    <script src="/assets/libs/chart-am4/core.js"></script>
+    <script src="/assets/libs/chart-am4/charts.js"></script>
+    <script src="/assets/libs/chart-am4/animated.js"></script>
+    <script src="/assets/libs/raphael/raphael.js"></script>
+    <script src="/assets/libs/morris/morris.js"></script>
+	<script src="/assets/libs/moment/moment.js"></script>
+    <script src="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="/assets/libs/datatables/datatables.js"></script>
+	<script src="/assets/libs/dropzone/dropzone.js"></script>
+	<script src="/assets/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="/assets/libs/select2/select2.js"></script>
+    <script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+
+    <!-- Demo -->
+    <script src="/assets/js/demo.js"></script><script src="/assets/js/analytics.js"></script>
+	<script src="/assets/js/pages/forms_selects.js"></script>
+
+
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+	  <script src="/assets/libs/growl/growl.js"></script>
+
+	<script>
+		function add_about_us(){
+
+		//	var section_1 = CKEDITOR.instances.editor1.getData();
+			// var section_2 = CKEDITOR.instances.editor2.getData();
+			var title = $("#title").val();
+			var url = $("#url").val();
+		//	var meta_description = $("#meta_description").val();
+
+			var form_data = new FormData();
+			// form_data.append('image_file', image_file);
+		//	form_data.append('section_1', section_1);
+			form_data.append('title', title);
+			form_data.append('url', url);
+		//	form_data.append('meta_description', meta_description);
+			$.ajax({
+					type: "POST",
+					data: form_data,
+					contentType: false,
+					cache: false,
+					processData: false,
+					url: "/retail_admin/announcement_slider_update",
+					success: function(response){
+						if(response == "ok")
+						{
+							location.reload();
+						}
+						}
+				});
+		}
+
+		function delete_category(){
+				var delete_id = [];
+				$.each($("input[name='delete_checkbox']:checked"), function(){
+					delete_id.push($(this).val());
+				});
+				//alert("Id to Delete are: " + delete_id.join(", "));
+				if(delete_id == ""){
+					alert("Please Select a Category to Delete");
+				}else{
+
+					if(confirm('Are You Sure You Want To Delete?')){
+						$.ajax({
+							type: "POST",
+							url: "category_delete.php?id="+delete_id,
+							success: function(response){
+								if(response == "error"){
+									alert("You cannot delete category as it is linked with subcategory or catalog!");
+								}else if(response == "ok"){
+									location.reload();
+								}
+							}
+						});
+						//alert(delete_id);
+
+					}
+
+				}
+		}
+	</script>
+
+</body>
+
+
+</html>
