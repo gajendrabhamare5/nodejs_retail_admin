@@ -96,7 +96,7 @@
 									<div class="card-body">
 										<div class="form-group col-12">
 											<label class="form-label">Select Image</label>
-											<input type="file" name="image_file11[]" accept="image/*" class="form-control" onchange="readURL(this,{{num}});" id="image_file<?php echo $slider_id1; ?>">
+											<input type="file" name="image_file11[]" accept="image/*" class="form-control" onchange="readURL(this,{{num}});" id="image_file{{this._id}}">
 											<img id="blah{{num}}" src="{{this.slider_image}}" style="max-width:50px;max-height:50px;margin: auto;padding: 10px;">
 										</div>
 										<div class="form-group">
@@ -117,7 +117,7 @@
 						<div>
 							<input type="hidden" value="{{getdata.length}}" id="total_store">
 						</div>
-						
+
 					</div>
 					<!-- [ content ] End -->
 					<!-- [ Layout footer ] Start -->
@@ -278,6 +278,7 @@
 			var formData = new FormData();
 			var total_storeCount = $("#total_store").val();
 			var fileInputs = document.querySelectorAll('input[name="image_file[]"]');
+			formData.append("fileInputs", fileInputs.length);
 			for (var i = 0; i < fileInputs.length; i++) {
 				var fileInput = fileInputs[i];
 				var files = fileInput.files;
@@ -287,19 +288,21 @@
 					}
 				} else {
 					formData.append("image_files[" + i + "]", "");
+
 				}
 			}
 			var url_array = $("input[name='url[]']").map(function() {
 				return $(this).val();
 			}).get();
 			formData.append("url_array", url_array);
+
 			var title_array = $("input[name='title[]']").map(function() {
 				return $(this).val();
 			}).get();
 			formData.append("title_array", title_array);
 			$.ajax({
 				type: "POST",
-				url: "ajaxfiles/season_store_add_process.php",
+				url: "/retail_admin/season_store_add_process",
 				dataType: "JSON",
 				data: formData,
 				processData: false,
