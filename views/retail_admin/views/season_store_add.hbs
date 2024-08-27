@@ -91,7 +91,7 @@
 								<div class="card col-md-3 storeSecc{{num}}">
 									<div class="card-header labelCustom">
 										<h6>Season Store {{num}}</h6>
-										<div> <i class="fa fa-times-circle" onclick="deleteProduct({{this._id}})"></i></div>
+										<div> <i class="fa fa-times-circle" onclick="deleteProduct('{{this._id}}')"></i></div>
 									</div>
 									<div class="card-body">
 										<div class="form-group col-12">
@@ -109,7 +109,7 @@
 										</div>
 									</div>
 									<div class="card-body text-right">
-										<button type="button" id="add_cat" class="btn btn-primary" onclick="updateFunc({{this._id}})">Update</button>
+										<button type="button" id="add_cat" class="btn btn-primary" onclick="updateFunc('{{this._id}}')">Update</button>
 									</div>
 								</div>
                                 {{/each}}
@@ -185,10 +185,10 @@
 				$.ajax({
 					type: "POST",
 					dataType:"JSON",
-					url: "season_store_delete.php?id=" + sliderID,
+					url: "/retail_admin/season_store_delete/" + sliderID,
 					success: function(response) {
 						if (response.status == "ok") {
-							alert("Successfully deleted");
+							alert("Successfully Deleted");
 							location.reload();
 						} else {
 							alert("something went wrong.");
@@ -209,9 +209,11 @@
 
 		function updateFunc(sliderId)
 		{
+			console.log("id=",sliderId)
 			var url = $("#url" + sliderId).val();
 			var title = $("#title" + sliderId).val();
 			var image_file = $('#image_file' + sliderId).prop('files')[0];
+
 			var form_data = new FormData();
 			form_data.append('image_file', image_file);
 			form_data.append('url', url);
@@ -308,7 +310,7 @@
 				processData: false,
 				contentType: false,
 				success: function(response) {
-					if (response == "ok") {
+					if (response.status == "ok") {
 						location.reload();
 					} else {
 						alert("something went wrong.");
