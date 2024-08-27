@@ -169,5 +169,6 @@ router.post('/retail_admin/announcement_slider_update',Controllerannouncement.ad
 
 router.get('/retail_admin/season_store_add',Controllerseason.getadminseason)
 router.post('/retail_admin/season_store_add_process',Controllerseason.addadminseason)
+router.post('/retail_admin/season_store_edit_process',Controllerseason.editadminseason)
 
 module.exports = router;

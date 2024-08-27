@@ -225,7 +225,7 @@
 				contentType: false,
 				cache: false,
 				processData: false,
-				url: "ajaxfiles/season_store_edit_process.php",
+				url: "/retail_admin/season_store_edit_process",
 				//data: {cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
 				success: function(response) {
 					if (response.status == "success") {
@@ -307,8 +307,8 @@
 				data: formData,
 				processData: false,
 				contentType: false,
-				success: function(data) {
-					if (data.status == "ok") {
+				success: function(response) {
+					if (response == "ok") {
 						location.reload();
 					} else {
 						alert("something went wrong.");
