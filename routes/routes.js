@@ -39,6 +39,7 @@ const Controllerexchange = require('../controllers/exchange-policy.js');
 const Controllercod = require('../controllers/cod_charge.js');
 const Controllerannouncement = require('../controllers/announcement.js');
 const Controllerseason = require('../controllers/seasonstore.js');
+const Controllerreview = require('../controllers/review.js');
 
 
 
@@ -172,4 +173,6 @@ router.post('/retail_admin/season_store_add_process',Controllerseason.addadminse
 router.post('/retail_admin/season_store_edit_process',Controllerseason.editadminseason)
 router.post('/retail_admin/season_store_delete/:id',Controllerseason.deleteadminseason)
 
+router.get('/retail_admin/review_product',Controllerreview.getadminreview)
+router.post('/retail_admin/review_rating_add_process',Controllerreview.addadminreview)
 module.exports = router;

@@ -4,6 +4,7 @@ const sharp = require('sharp');
 
 const seasonStore = require("../models/seasonstore");
 const { response } = require('express');
+
 const getadminseason = async (req, res) => {
     const getdata = await seasonStore.find()
     let num = 1;
