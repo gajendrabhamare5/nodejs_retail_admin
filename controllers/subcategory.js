@@ -13,21 +13,21 @@ const getSubCategory = async (req, res) => {
         const category = await Category.find();
 
         const sqlData = await SubCategory.find();
-        console.log("sqlData",sqlData);
+        // console.log("sqlData",sqlData);
 
         let num = 0;
         const data_cat = [];
 
         for (const fetch of sqlData) {
             const category_id = fetch.category_id;
-            console.log("category_id",category_id);
+            // console.log("category_id",category_id);
             if (mongoose.Types.ObjectId.isValid(category_id)) {
                 // Convert category_id to ObjectId for querying
                 const categoryObjectId = new mongoose.Types.ObjectId(category_id)
 
                 // Find category name using category_id
                 const getcategory_name = await Category.findOne({ _id: categoryObjectId }, 'category_name');
-                console.log("Get Category Name:", getcategory_name);
+                // console.log("Get Category Name:", getcategory_name);
 
                 // Check if the category was found
                 const cat_name = getcategory_name ? getcategory_name.category_name : "Unknown Category";

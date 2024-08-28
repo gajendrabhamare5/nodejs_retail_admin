@@ -124,7 +124,7 @@
 									<label class="form-label">Select Product</label>
 									<select class="select2-demo form-control" id="pro_id">
 
-                                        {{#each sql_data}}
+                                        {{#each product_data}}
 										<option value="{{this._id}}">{{this.product_name}}</option>
                                         {{/each}}
 									</select>
@@ -187,6 +187,20 @@
 
                                         </tr>
                                     </thead>
+                                    <tbody>
+										{{#each review_master}}
+										<tr>
+											<td>{{{this.checkbox}}}</td>
+											<td>{{{this.edit}}}</td>
+                                            <td>{{{this.no}}}</td>
+											<td>{{{this.image}}}</td>
+											<td>{{this.product_id}}</td>
+                                            <td>{{this.customer_name}}</td>
+											<td>{{this.customer_review}}</td>
+											<td>{{{this.star}}}</td>
+										</tr>
+										{{/each}}
+									</tbody>
                                 </table>
                             </div>
                         </div>
@@ -275,54 +289,6 @@
 <script src="/assets/js/demo.js"></script><script src="/assets/js/analytics.js"></script>
 
 <script src="/assets/js/pages/forms_selects.js"></script>
-
-    <script>
-		$(function() {
-
-					$('#user-list').dataTable({
-									 "dom": 'lfrtip',
-									 "buttons": [
-										  {
-											   extend: 'pdf',
-											   exportOptions: {
-													columns: [2,3,4,5,6,7]
-												}
-										   },
-										   {
-											   extend: 'csv',
-											   exportOptions: {
-													columns: [2,3,4,5,6,7]
-												}
-										   },
-										   {
-											   extend: 'print',
-											   exportOptions: {
-													columns: [2,3,4,5,6,7]
-												}
-										   }
-									 ],
-									 "aLengthMenu": [
-												[10, 25, 50, 100, -1],
-												[10, 25, 50, 100, "All"]
-												],
-									 "iDisplayLength": 10,
-									 "bProcessing": true,
-									 "sAjaxSource": "datatables/view_product_review.php",
-									 "aoColumns": [
-											{ mData: 'checkbox' },
-											{ mData: 'edit' },
-											{ mData: 'no' } ,
-											{ mData: 'image' } ,
-											{ mData: 'product_name' } ,
-											{ mData: 'customer_name' } ,
-											{ mData: 'customer_review' },
-											{ mData: 'star' }
-									],
-
-							});
-					});
-	</script>
-
 
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
 

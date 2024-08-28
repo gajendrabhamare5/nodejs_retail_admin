@@ -175,4 +175,6 @@ router.post('/retail_admin/season_store_delete/:id',Controllerseason.deleteadmin
 
 router.get('/retail_admin/review_product',Controllerreview.getadminreview)
 router.post('/retail_admin/review_rating_add_process',Controllerreview.addadminreview)
+router.get('/retail_admin/review_edit/:id', Controllerreview.reviewEditInfo)
+router.post('/retail_admin/review_rating_edit_process', Controllerreview.updatereview)
 module.exports = router;
