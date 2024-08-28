@@ -348,8 +348,6 @@
 			var star_review = $("#star_review").val();
 			var image_file = $('#image_file').prop('files')[0];
 
-
-
 			var form_data = new FormData();
 			form_data.append('pro_id', pro_id);
 			form_data.append('cust_name', cust_name);
@@ -380,15 +378,17 @@
 					url: "/retail_admin/review_rating_add_process",
 					//data: {cat_id:cat_id,subcat_name:subcat_name,subcat_meta_title:subcat_meta_title,subcat_meta_keyword:subcat_meta_keyword,subcat_meta_desc:subcat_meta_desc},
 					success: function(response){
-						if(response == "ok"){
+                        var responseFinal = JSON.parse(response)
+						if(responseFinal.status == "ok"){
 							location.reload();
 						}
-						else if(response == "error")
+						else if(responseFinal.status == "error")
 						{
+
 								alert("Something Went Wrong");
 								$('.btn-primary').prop("disabled", false);
 						}
-						else if(response == "image_error")
+						else if(responseFinal.status == "image_error")
 						{
 							alert("Please select image with only  JPG,PNG ,JPEG extension.");
 						}
