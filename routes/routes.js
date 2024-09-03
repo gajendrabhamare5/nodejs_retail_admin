@@ -40,6 +40,7 @@ const Controllercod = require('../controllers/cod_charge.js');
 const Controllerannouncement = require('../controllers/announcement.js');
 const Controllerseason = require('../controllers/seasonstore.js');
 const Controllerreview = require('../controllers/review.js');
+const Controllersubscribers = require('../controllers/subscribe.js');
 
 
 
@@ -177,4 +178,7 @@ router.get('/retail_admin/review_product',Controllerreview.getadminreview)
 router.post('/retail_admin/review_rating_add_process',Controllerreview.addadminreview)
 router.get('/retail_admin/review_edit/:id', Controllerreview.reviewEditInfo)
 router.post('/retail_admin/review_rating_edit_process', Controllerreview.updatereview)
+router.post('/retail_admin/review_rating_delete/:id', Controllerreview.deletereview)
+
+router.get('/retail_admin/subscribers_list',Controllersubscribers.getadmin)
 module.exports = router;

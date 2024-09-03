@@ -13,7 +13,7 @@ const getadminreview = async (req, res) => {
     const data_review = [];
     for (const fetch of sql_data_review) {
         const product_id = fetch.product_id
-       
+
         const getproduct_name = await Product.findOne({ _id: product_id }, 'product_name');
 
         const product_name = getproduct_name ? getproduct_name.product_name : "Unknown Category";
@@ -214,9 +214,21 @@ const updatereview = async (req, res) => {
 
 }
 
+const deletereview = async (req,res)=>{
+    const reviewid = req.params.id;
+    console.log("id",reviewid);
+    if (!reviewid) {
+        res.send('error')
+    } else {
+        const result = await Review.deleteOne({ _id: reviewid });
+        res.send('ok');
+    }
+}
+
 module.exports = {
     getadminreview,
     addadminreview,
     reviewEditInfo,
     updatereview,
+    deletereview,
 }

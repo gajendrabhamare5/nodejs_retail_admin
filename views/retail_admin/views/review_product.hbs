@@ -377,7 +377,7 @@
 					if(confirm('Are You Sure You Want To Delete?')){
 						$.ajax({
 							type: "POST",
-							url: "review_rating_delete.php?id="+delete_id,
+							url: "/retail_admin/review_rating_delete/"+delete_id,
 							success: function(response){
 								if(response == "error"){
 									alert("Something Went Wrong!");
