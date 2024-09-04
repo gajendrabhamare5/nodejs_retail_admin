@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 
 <html lang="en" class="default-style layout-fixed layout-navbar-fixed">
 
 <head>
-    <title>Subscribers title </title>
+    <title>Order Status title </title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,10 +36,6 @@
 	<link rel="stylesheet" href="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
     <link rel="stylesheet" href="/assets/libs/datatables/datatables.css">
 	<link rel="stylesheet" href="/assets/libs/dropzone/dropzone.css">
-	<link rel="stylesheet" href="/assets/libs/bootstrap-select/bootstrap-select.css">
-    <link rel="stylesheet" href="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
-    <link rel="stylesheet" href="/assets/libs/select2/select2.css">
-    <link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
 </head>
 
 <body>
@@ -52,7 +49,7 @@
     <div class="layout-wrapper layout-2">
         <div class="layout-inner">
             <!-- [ Layout sidenav ] Start -->
-            {{>admin/sidebar}}
+           {{>admin/sidebar}}
             <!-- [ Layout sidenav ] End -->
             <!-- [ Layout container ] Start -->
             <div class="layout-container">
@@ -65,44 +62,33 @@
 
                     <!-- [ content ] Start -->
                     <div class="container-fluid flex-grow-1 container-p-y">
-                        <h4 class="font-weight-bold py-3 mb-0">View Subscribers</h4>
+                        <h4 class="font-weight-bold py-3 mb-0">Edit Courier</h4>
                         <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php"><i class="feather icon-home"></i></a></li>
-                                <li class="breadcrumb-item ">Subscribers</li>
-                                <li class="breadcrumb-item active">View Subscribers</li>
+                                <li class="breadcrumb-item ">Courier</li>
+                                <li class="breadcrumb-item active">Edit Courier</li>
                             </ol>
                         </div>
 
-                        <div class="card mb-4 col-md-12" style="float:left;margin-right:40px;">
-                            <div>
-							<button type="button" onclick="delete_user()" class="btn btn-danger icon-btn borderless">Delete</button>
-						</div>
-                            <div class="card-datatable table-responsive">
-                                <table id="user-list" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Id</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
-                                        </tr>
-
-                                    </thead>
-                                    {{#each subscribe_master}}
-                                    <tr>
-                                    <td>{{{this.checkbox}}}</td>
-                                    <td>{{this.no}}</td>
-                                    <td>{{this.email}}</td>
-                                    <td>{{this.flag}}</td>
-                                    {{/each}}
-                                    </tr>
-                                </table>
+                        <div class="card mb-4 col-md-5" style="float:left;margin-right:40px;">
+                            <h6 class="card-header">Edit Courier </h6>
+                            <div class="card-body">
+                                {{#each sql_data}}
+								<div class="form-group">
+									<label class="form-label">Courier Name</label>
+									<input type="text" class="form-control" id="courier_name" value="{{this.courier_name}}" autofocus>
+								</div>
+								<div class="form-group">
+									<label class="form-label">Courier Website</label>
+									<input type="text" class="form-control" id="courier_website" value="{{this.courier_website}}">
+									<small class="form-text text-muted" id="error" style="display:none;color:red !important;"></small>
+								</div>
+                                <input type="hidden" value="{{this._id}}" id="id">
+                                {{/each}}
+								<button type="button" id="add_cat" class="btn btn-primary" onclick="edit_courier()">Update</button>
                             </div>
                         </div>
-
-
-
                     </div>
                     <!-- [ content ] End -->
 
@@ -144,16 +130,10 @@
     <script src="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
     <script src="/assets/libs/datatables/datatables.js"></script>
 	<script src="/assets/libs/dropzone/dropzone.js"></script>
-	<script src="/assets/libs/bootstrap-select/bootstrap-select.js"></script>
-    <script src="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-    <script src="/assets/libs/select2/select2.js"></script>
-    <script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 
 
     <!-- Demo -->
     <script src="/assets/js/demo.js"></script><script src="/assets/js/analytics.js"></script>
-	<script src="/assets/js/pages/forms_selects.js"></script>
-
 
 
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
@@ -165,21 +145,53 @@
       <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
 
 	<script>
+		function edit_courier(){
 
-		function delete_user(){
+			var courier_id = $("#id").val();
+			var courier_name = $("#courier_name").val();
+			var courier_website = $("#courier_website").val();
+
+			if(courier_name == ""){
+				$("#error").html("Enter Courier Name.");
+				$("#error").show();
+			}else if(courier_website == ""){
+				$("#error").html("Enter Courier Website.");
+				$("#error").show();
+			}else{
+				$("#error").hide();
+				$("#add_cat").attr("disabled","disabled");
+
+				$.ajax({
+
+					type: "POST",
+					data: {courier_id:courier_id,courier_name:courier_name,courier_website:courier_website},
+					dataType: 'text',
+					url: "/retail_admin/courier_edit_process",
+					//data: {cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
+					success: function(response){
+						if(response == "ok"){
+							location.href="/retail_admin/courier_add";
+						}
+					}
+
+				});
+			}
+		}
+
+		function delete_courier(){
 				var delete_id = [];
 				$.each($("input[name='delete_checkbox']:checked"), function(){
 					delete_id.push($(this).val());
 				});
 				//alert("Id to Delete are: " + delete_id.join(", "));
 				if(delete_id == ""){
-					alert("Please Select a Product to Delete");
+					alert("Please Select a Courier to Delete");
 				}else{
 
 					if(confirm('Are You Sure You Want To Delete?')){
 						$.ajax({
 							type: "POST",
-							url: "/retail_admin/subscriber_delete/"+delete_id,
+							url: "courier_delete.php?id="+delete_id,
 							success: function(response){
 								if(response == "ok"){
 									location.reload();

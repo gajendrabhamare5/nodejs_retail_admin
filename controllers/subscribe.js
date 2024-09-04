@@ -74,7 +74,19 @@ const getadmin = async (req, res) => {
     res.render("retail_admin/views/subscribers_list", { subscribe_master: data_review });
 }
 
+const deleteadmin = async (req,res) =>{
+    const id = req.params.id;
+    // console.log("id",id);
+    if (!id) {
+        res.send('error')
+    } else {
+        const result = await Subscribe.deleteOne({ _id: id });
+        res.send('ok');
+    }
+}
+
 module.exports = {
     insertsubscribers,
     getadmin,
+    deleteadmin,
 }

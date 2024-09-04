@@ -41,6 +41,8 @@ const Controllerannouncement = require('../controllers/announcement.js');
 const Controllerseason = require('../controllers/seasonstore.js');
 const Controllerreview = require('../controllers/review.js');
 const Controllersubscribers = require('../controllers/subscribe.js');
+const Controllercourier = require('../controllers/courier.js');
+const Controllercoupon = require('../controllers/coupon.js');
 
 
 
@@ -181,4 +183,14 @@ router.post('/retail_admin/review_rating_edit_process', Controllerreview.updater
 router.post('/retail_admin/review_rating_delete/:id', Controllerreview.deletereview)
 
 router.get('/retail_admin/subscribers_list',Controllersubscribers.getadmin)
+router.post('/retail_admin/subscriber_delete/:id',Controllersubscribers.deleteadmin)
+
+router.get('/retail_admin/courier_add',Controllercourier.getadmincourier)
+router.post('/retail_admin/courier_add_process',Controllercourier.addadmincourier)
+router.post('/retail_admin/courier_delete/:id',Controllercourier.deleteadmincourier)
+router.get('/retail_admin/courier_edit/:id', Controllercourier.courierEditInfo)
+router.post('/retail_admin/courier_edit_process', Controllercourier.updatecourierEdit)
+
+router.get('/retail_admin/coupon_add',Controllercoupon.getadmincoupon)
+router.post('/retail_admin/coupon_add_process',Controllercoupon.addadmincoupon)
 module.exports = router;
