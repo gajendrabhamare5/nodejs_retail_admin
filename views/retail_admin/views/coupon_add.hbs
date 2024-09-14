@@ -174,39 +174,42 @@
 
                                     var arr = "";
                                     var arr_label = "";
-                                    $(function () {
 
-                                        $("#customer_search").autocomplete({
-                                            source: "ajaxfiles/autocustname.php",
-                                            select: function (event, ui) {
-                                                event.preventDefault();
-                                                var value = ui.item.value;
-                                                var label = ui.item.label;
-                                                if (value)
+                                        {
+                                           {{!--  $(function () {
 
-                                                    arr += value + ",";
-                                                arr_label += label + ",";
-                                                $("#customer_search").val("");
-                                                $("#user_id_hidden").val(arr);
-                                                $("#customer_search").val(arr_label);
-                                            }
-                                        });
-                                    });
+                                                $("#customer_search").autocomplete({
+                                                    source: "ajaxfiles/autocustname.php",
+                                                    select: function (event, ui) {
+                                                        event.preventDefault();
+                                                        var value = ui.item.value;
+                                                        var label = ui.item.label;
+                                                        if (value)
+
+                                                            arr += value + ",";
+                                                        arr_label += label + ",";
+                                                        $("#customer_search").val("");
+                                                        $("#user_id_hidden").val(arr);
+                                                        $("#customer_search").val(arr_label);
+                                                    }
+                                                });
+                                            }); --}}
+                                    }
                                 </script>
 
                                 <input id="user_id_hidden" name="user_id_hidden[]" value="" type="hidden">
 
                                 <label class="form-label">Category</label>
-                                <select class="select2-demo form-control" multiple name="selected_cat[]" id="selected_cat"
-                                    onchange="get_subcat1()">
+                                <select class="select2-demo form-control" multiple name="selected_cat[]"
+                                    id="selected_cat" onchange="get_subcat1()">
                                     <option value="">Select Category</option>
                                     {{#each sql_cat}}
                                     <option value="{{this._id}}">{{this.category_name}} </option>
                                     {{/each}}
                                 </select>
                                 <label class="form-label">Select Subcategories</label>
-                                <select class="select2-demo form-control" multiple style="width: 100%"
-                                      id="get_subcat" name="selected_subcat[]">
+                                <select class="select2-demo form-control" multiple style="width: 100%" id="get_subcat"
+                                    name="selected_subcat[]">
                                     <option value=""></option>
                                 </select>
                                 <label class="form-label">Brand</label>
@@ -254,7 +257,7 @@
                                     <input type="number" class="form-control" id="limitation">
 
                                 </div>
-                        <input type="hidden" value="{{subtypeIds}}" id="hidden_subcat_id">
+                                <input type="hidden" value="{{subtypeIds}}" id="hidden_subcat_id">
                                 <small class="form-text text-muted" id="error"
                                     style="display:none;color:red !important;"></small>
                                 <button type="button" id="add_cat" class="btn btn-primary"
@@ -287,25 +290,29 @@
                                             <th>limitation</th>
                                         </tr>
                                     </thead>
-                                     {{#each results}}
-                                        <tr>
-                                            <td>{{{this.checkbox}}}</td>
-                                            <td>{{this.edit}}</td>
-                                            <td>{{this.no}}</td>
-                                            <td>{{this.active}}</td>
-                                            <td>{{this.coupon_name}}</td>
-                                            <td>{{this.rupees}}</td>
-                                            <td>{{this.percentage}}</td>
-                                            <td>{{this.cart_limit}}</td>
-                                            <td>{{this.user}}</td>
-                                            <td>{{this.category}}</td>
-                                            <td>{{this.subcategory}}</td>
-                                            <td>{{this.brand}}</td>
-                                            <td>{{this.remark}}</td>
-                                            <td>{{this.expiry_date}}</td>
-                                            <td>{{this.limitation}}</td>
-                                        </tr>
-                                        {{/each}}
+                                    {{#each results}}
+                                    <tr>
+                                        <td>{{{this.checkbox}}}</td>
+                                        <td><a href="coupon_edit/{{this.id}}"><button type="button"
+                                                    class="btn btn-info icon-btn borderless"><span
+                                                        class="ion ion-md-create"></span></button></a></td>
+                                        <td>{{this.no}}</td>
+                                        <td><label class="switch"><input type="checkbox" id="chk{{this.id}}" {{ this.status}} onclick="chkapp("{{this.id}}")">
+                                                <span class="slider round"></span></label></td>
+                                        <td>{{this.coupon_name}}</td>
+                                        <td>{{this.rupees}}</td>
+                                        <td>{{this.percentage}}</td>
+                                        <td>{{this.cart_limit}}</td>
+                                        <td><button onclick="edit_user({{this.id}})">Remove</button><button onclick="add_user({{id}})">Add</button></td>
+                                        <td>{{this.category}}</td>
+                                        <td>{{this.subcategory}}</td>
+                                        <td>{{this.brand}}</td>
+                                        <td>{{this.remark}}</td>
+                                        <td>{{this.expiry_date}}</td>
+                                        <td>{{this.limitation}}</td>
+
+                                    </tr>
+                                    {{/each}}
                                 </table>
                             </div>
                         </div>
@@ -385,6 +392,8 @@
                                 }
                             }
                         }
+
+
                     </script>
                     <a data-toggle="modal" data-target="#add_users_modal" id="add_users"></a>
                     <div class="modal" id="add_users_modal" tabindex="-1" role="dialog" aria-label="myModalLabel"
@@ -516,7 +525,7 @@
     </style>
     <!-- Core scripts -->
     <script src="/assets/js/pace.js"></script>
-    <!-- <script src="/assets/js/jquery-3.2.1.min.js"></script> tables not work in jquery-3.3.1 js -->
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <script src="/assets/libs/popper/popper.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/sidenav.js"></script>
@@ -558,6 +567,7 @@
                 appview = 0
             }
             var form_data = new FormData();
+            console.log("form_data",form_data);
             form_data.append('request_id', request_id);
             form_data.append('appview', appview);
             $.ajax({
@@ -666,13 +676,13 @@
                 success: function (response) {
                     //alert(response);
                     // $("#selected_subcat").html(response);
-                      var result = response.result;
+                    var result = response.result;
                     var responseOpt = '';
 
-                     for (var i = 0; i < result.length; i++) {
-                                responseOpt += `<option value='${result[i]._id}'>${result[i].subcategory_name}</option>`;
-                            }
-   document.getElementById("get_subcat").innerHTML = responseOpt;
+                    for (var i = 0; i < result.length; i++) {
+                        responseOpt += `<option value='${result[i]._id}'>${result[i].subcategory_name}</option>`;
+                    }
+                    document.getElementById("get_subcat").innerHTML = responseOpt;
                 }
             });
 
@@ -778,7 +788,7 @@
             $.each($("input[name='delete_checkbox']:checked"), function () {
                 delete_id.push($(this).val());
             });
-            //alert("Id to Delete are: " + delete_id.join(", "));
+           // alert("Id to Delete are: " + delete_id.join(", "));
             if (delete_id == "") {
                 alert("Please Select a Coupon to Delete");
             } else {
@@ -786,7 +796,7 @@
                 if (confirm('Are You Sure You Want To Delete?')) {
                     $.ajax({
                         type: "POST",
-                        url: "coupon_delete.php?id=" + delete_id,
+                        url: "coupon_delete/" + delete_id,
                         success: function (response) {
                             if (response == "ok") {
                                 location.reload();

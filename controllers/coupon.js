@@ -36,6 +36,9 @@ const getadmincoupon = async (req, res) => {
         const limitation = fetch.limitation
         const status = fetch.monthly
         const active = fetch.visible
+        if(status=='0'){
+            status = status =='1' ? 'checked' : ''
+        }
 
         num++;
 
@@ -55,24 +58,22 @@ const getadmincoupon = async (req, res) => {
                 .map(brand => brand.brand_name)
                 .join(', ');
 
-        const viewapp = `<label class="switch">
-        <input type="checkbox" id="chk${id}" ${status === '1' ? 'checked' : ''} onclick="chkapp(${id})">
-        <span class="slider round"></span>
-    </label>`;
+        const viewapp = ``;
 
         const activeCheckbox = `<label class="switch">
                 <input type="checkbox" id="act_${id}" ${active === '1' ? 'checked' : ''} onclick="active(${id})">
                 <span class="slider round"></span>
             </label>`;
 
-        const btn = `<button onclick="edit_user(${id})">Remove</button><button onclick="add_user(${id})">Add</button>`;
+        const btn = ``;
 
 
         const data1 = {
+            id:id,
             checkbox: `<input type="checkbox" id="delete_checkbox" name="delete_checkbox" value="${id}">`,
-            edit: `<a href="coupon_edit.php?id=${id}"><button type="button" class="btn btn-info icon-btn borderless"><span class="ion ion-md-create"></span></button></a>`,
+            //edit: `<a href="coupon_edit.php?id=${id}"><button type="button" class="btn btn-info icon-btn borderless"><span class="ion ion-md-create"></span></button></a>`,
             no: num,
-            status: viewapp,
+            status: status,
             active: activeCheckbox,
             coupon_name: coupon_name,
             rupees: rupees,
@@ -147,7 +148,50 @@ const addadmincoupon = async (req, res) => {
 
 }
 
+const deleteadmincoupon = async(req,res) => {
+    try {
+        const couponid = req.params.id;
+        const result = await Coupon.findByIdAndDelete(couponid);
+
+        if (!result) {
+            return res.status(404).json({ error: 'Coupon not found' });
+        }
+
+        /* res.json({ message: 'Brand deleted successfully' }); */
+        //res.redirect('/brand_add');
+        // res.status(302).set('Location', '/brand_add').end();
+        res.send("ok")
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Internal Server Error")
+    }
+}
+
+const couponEditInfo = async(req,res) => {
+    try {
+
+        const couponId = req.params.id;
+        const coupon = await Coupon.findById(couponId);
+        const sql_cat = await Category.find().sort({ category_name: 1 });
+        const sql_subcat = await SubCategory.find().sort({ subcategory_name: 1 });
+        const sql_brand = await Brand.find().sort({ brand_name: 1 });
+
+        if (!coupon) {
+            return res.status(404).json({ error: 'Brand not found' })
+        }
+
+        res.render("retail_admin/views/coupon_edit", { coupon,sql_cat,sql_subcat,sql_brand });
+
+    } catch (error) {
+        console.error("Error executing query", error);
+        res.status(500).send("Database query error");
+    }
+}
+
 module.exports = {
     getadmincoupon,
     addadmincoupon,
+    deleteadmincoupon,
+    couponEditInfo,
 }
