@@ -297,13 +297,18 @@
                                                     class="btn btn-info icon-btn borderless"><span
                                                         class="ion ion-md-create"></span></button></a></td>
                                         <td>{{this.no}}</td>
-                                        <td><label class="switch"><input type="checkbox" id="chk{{this.id}}" {{ this.status}} onclick="chkapp("{{this.id}}")">
-                                                <span class="slider round"></span></label></td>
+                                        <td><label class="switch">
+                                            <input type="checkbox" id="chk{{this.id}}"{{#if (eq this.status '1')}}checked="checked"{{/if}} onclick="chkapp('{{this.id}}')">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </td>
                                         <td>{{this.coupon_name}}</td>
                                         <td>{{this.rupees}}</td>
                                         <td>{{this.percentage}}</td>
                                         <td>{{this.cart_limit}}</td>
-                                        <td><button onclick="edit_user({{this.id}})">Remove</button><button onclick="add_user({{id}})">Add</button></td>
+                                        <td><button onclick="edit_user("{{this.id}}")" >Remove</button>
+                                            <button onclick="add_user("{{id}}")">Add</button>
+                                        </td>
                                         <td>{{this.category}}</td>
                                         <td>{{this.subcategory}}</td>
                                         <td>{{this.brand}}</td>
@@ -324,7 +329,7 @@
                             $("#edit_users").click();
                             $.ajax({
                                 type: "POST",
-                                url: "ajaxfiles/coupon_edit_add_process.php",
+                                url: "/retail_admin/coupon_edit_add_process",
                                 data: { coupon_id: coupon_id },
                                 cache: false,
                                 success: function (data) {
@@ -559,6 +564,7 @@
 
     <script>
         function chkapp(request_id) {
+            console.log("request_id",request_id);
             var appview = "";
             if ($("#chk" + request_id).prop('checked') == true) {
                 appview = 1;
@@ -578,7 +584,7 @@
                 contentType: false,
                 cache: false,
                 processData: false,
-                url: "ajaxfiles/monthly_coupon_process.php",
+                url: "/retail_admin/monthly_coupon_process",
                 success: function (response) {
                     //if(response == "ok"){
                     location.reload();

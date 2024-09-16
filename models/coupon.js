@@ -47,7 +47,9 @@ limitation:
     },
     monthly:
     {
+
         type:String,
+        default: '0',
     },
     visible:
     {

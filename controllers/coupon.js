@@ -35,11 +35,14 @@ const getadmincoupon = async (req, res) => {
         const expiry_date = fetch.expiry_date
         const limitation = fetch.limitation
         const status = fetch.monthly
-        const active = fetch.visible
-        if(status=='0'){
-            status = status =='1' ? 'checked' : ''
-        }
+        // console.log("status",status);
 
+        const active = fetch.visible
+
+        /*if(status=='0'){
+             status =='1' ? 'checked' : ''
+        } */
+            //  status = (status === '0') ? '' : 'checked';
         num++;
 
         const cat_names = categories
@@ -172,16 +175,21 @@ const couponEditInfo = async(req,res) => {
     try {
 
         const couponId = req.params.id;
-        const coupon = await Coupon.findById(couponId);
+        const coupon = await Coupon.find({ _id:couponId});
         const sql_cat = await Category.find().sort({ category_name: 1 });
         const sql_subcat = await SubCategory.find().sort({ subcategory_name: 1 });
         const sql_brand = await Brand.find().sort({ brand_name: 1 });
+
+        // const typeIds = Array.isArray(coupon.category_id) ? coupon.category_id : [coupon.category_id];
+        const typeIds = coupon.map(doc => doc.category_id);
+        const typeIdssubcat = coupon.map(doc => doc.subcategory_id);
+        const typeIdsbrand = coupon.map(doc => doc.brand_id);
 
         if (!coupon) {
             return res.status(404).json({ error: 'Brand not found' })
         }
 
-        res.render("retail_admin/views/coupon_edit", { coupon,sql_cat,sql_subcat,sql_brand });
+        res.render("retail_admin/views/coupon_edit", { coupon,sql_cat,sql_subcat,sql_brand,typeIds,typeIdssubcat,typeIdsbrand });
 
     } catch (error) {
         console.error("Error executing query", error);
@@ -189,9 +197,62 @@ const couponEditInfo = async(req,res) => {
     }
 }
 
+const updatecoupon = async(req,res) =>{
+
+const {coupon_name,rupees,percent,affiliate,limitation,selected_cat,selected_subcat,
+    selected_brand,remark,coupon_id,expiry_date,cart_limit_box}= req.body;
+    try {
+
+        await Coupon.updateOne(
+            { _id: coupon_id },
+            { $set: { coupon_name: coupon_name, rupees: rupees,
+                percentage:percent,affiliate:affiliate,
+                limitation:limitation,category_id:selected_cat,
+                subcategory_id:selected_subcat,brand_id:selected_brand,
+                remark:remark,expiry_date:expiry_date,cart_limit:cart_limit_box,
+            } }
+        );
+        res.send('ok');
+
+    } catch (error) {
+        console.error('Data Update failed:', error);
+        res.status(500).send({ status: 'error', message: 'Data Update failed.' });
+    }
+
+
+}
+
+const monthlycoupon = async(req,res) => {
+    const {request_id,appview} = req.body;
+    try {
+
+        await Coupon.updateOne(
+            { $set: { monthly: appview } }
+        );
+
+        await Coupon.updateOne(
+            { _id: request_id },
+            { $set: { monthly: appview } }
+        );
+        res.send('ok');
+
+    } catch (error) {
+        console.error('Monthly Data Update failed:', error);
+        res.status(500).send({ status: 'error', message: 'Monthly Data Update failed.' });
+    }
+
+}
+
+const editaddcoupon = async(req,res)=>{
+    const {coupon_id}= req.body;
+}
+
 module.exports = {
     getadmincoupon,
     addadmincoupon,
     deleteadmincoupon,
     couponEditInfo,
+    updatecoupon,
+    monthlycoupon,
+    editaddcoupon,
 }

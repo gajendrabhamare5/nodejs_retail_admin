@@ -33,6 +33,10 @@ const hbs = exphbs.create({
         eq: (a, b) => a == b,
         eq1: (a, b) => a === b,
         neq: (a, b) => a != b,
+      contains: function (array, value) {
+        if (!Array.isArray(array)) return false;
+        return array.includes(value);
+        },
         colClass: (num) => num == 1 ? '4' : '3',
         isGreaterThan: (value, comparison, options) => value > comparison ? options.fn(this) : options.inverse(this),
         includes: (array, value, options) => {

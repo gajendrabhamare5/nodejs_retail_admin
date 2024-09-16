@@ -14,7 +14,7 @@
     <meta name="keywords"
         content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
     <meta name="author" content="Srthemesvilla" />
-    <link rel="icon" type="image/x-icon" href="<?php echo  $favicon ?>">
+    <link rel="icon" type="image/x-icon" href="">
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -120,22 +120,28 @@
                                         }
                                     }
                                 </script>
+                                {{#each coupon}}
                                 <div class="form-group">
                                     <label class="form-label">
                                         <input type="radio" id="rupee" onclick="check_rupees()" {{#if (neq
-                                            coupon.rupees '' )}}checked="checked" {{/if}} name="coupon_disc">Rupees
+                                            this.rupees '' )}}checked="checked" {{/if}} name="coupon_disc">Rupees
                                     </label>
                                     &nbsp;&nbsp;&nbsp;<label class="form-label">
                                         <input type="radio" id="percentage" onclick="check_percent()" name="coupon_disc"
-                                            {{#if (neq coupon.percentage '' )}}checked="checked" {{/if}}>Percentage
+                                            {{#if (neq this.percentage '' )}}checked="checked" {{/if}}>Percentage
                                     </label>
                                 </div>
+                                {{/each}}
                                 <label class="form-label">Select Category</label>
 
-                                <select class="select2-demo form-control" multiple name="selected_cat" id="selected_cat"
+                                <select class="select2-demo form-control"  multiple name="selected_cat" id="selected_cat"
                                     onchange="get_subcat1()">
                                     {{#each sql_cat}}
-                                    <option value="{{this._id}}"> {{this.category_name}}</option>
+                                        <option value="{{this._id}}"
+                                            {{#includes ../typeIds this._id}}
+                                                        selected {{/includes}}>
+                                        {{this.category_name}}
+                                        </option>
                                     {{/each}}
                                 </select>
 
@@ -143,7 +149,8 @@
                                 <select class="select2-demo form-control" multiple style="width: 100%"
                                     id="selected_subcat" name="selected_subcat[]">
                                         {{#each sql_subcat}}
-                                    <option value="{{this._id}}"> {{this.subcategory_name}}</option>
+                                    <option value="{{this._id}}" {{#includes ../typeIdssubcat this._id}}
+                                                        selected {{/includes}}> {{this.subcategory_name}}</option>
                                         {{/each}}
                                 </select>
                                 <label class="form-label">Brand</label>
@@ -151,54 +158,56 @@
                                     id="selected_brand">
                                   {{#each sql_brand}}
 
-                                    <option value="{{this._id}}">{{this.brand_name}}</option>
+                                    <option value="{{this._id}}" {{#includes ../typeIdsbrand this._id}}
+                                                        selected {{/includes}}>{{this.brand_name}}</option>
                                     {{/each}}
                                 </select>
+                                {{#each coupon}}
                                 <div class="form-group">
                                     <label class="form-label">Cart Limit</label>
                                     <input type="text" class="form-control" id="cart_limit_box"
-                                        value="{{coupon.cart_limit}}">
+                                        value="{{this.cart_limit}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Coupon Name</label>
                                     <input type="text" class="form-control" id="coupon_name"
-                                        value="{{coupon.coupon_name}}">
+                                        value="{{this.coupon_name}}">
                                 </div>
                                 <div class="form-group" id="rupee_sec" style="{{#if (eq
-                                            coupon.rupees '' )}}display:none {{/if}}">
+                                            this.rupees '' )}}display:none {{/if}}">
                                     <label class="form-label">Rupees</label>
                                     <input type="number" class="form-control remove1" id="rupees_1"
-                                        value="{{coupon.rupees}}">
+                                        value="{{this.rupees}}">
                                 </div>
                                 <div class="form-group" id="percent_sec" style="{{#if (eq
-                                            coupon.percentage '' )}}display:none {{/if}}">
+                                            this.percentage '' )}}display:none {{/if}}">
                                     <label class="form-label">Percentage</label>
                                     <input type="text" class="form-control remove1" id="percent_1"
-                                        value="{{coupon.percentage}}">
+                                        value="{{this.percentage}}">
                                 </div>
-
 
                                 <div class="form-group">
                                     <label class="form-label">Remark</label>
-                                    <input type="text" class="form-control" id="remark" value="{{coupon.remark}}">
+                                    <input type="text" class="form-control" id="remark" value="{{this.remark}}">
 
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Expiry Date</label>
                                     <input type="date" class="form-control" id="expiry_date"
-                                        value="{{coupon.expiry_date}}">
+                                        value="{{this.expiry_date}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Limitation</label>
                                     <input type="number" class="form-control" id="limitation"
-                                        value="{{coupon.limitation}}">
+                                        value="{{this.limitation}}">
 
                                 </div>
                                 <small class="form-text text-muted" id="error"
                                     style="display:none;color:red !important;"></small>
-                                <input type="hidden" id="coupon_id" value="{{coupon._id}}">
+                                <input type="hidden" id="coupon_id" value="{{this._id}}">
                                 <button type="button" id="add_cat" class="btn btn-primary"
                                     onclick="edit_coupon()">Update</button>
+                                    {{/each}}
                             </div>
                         </div>
 
@@ -345,11 +354,11 @@
                     contentType: false,
                     cache: false,
                     processData: false,
-                    url: "ajaxfiles/coupon_edit_process.php",
+                    url: "/retail_admin/coupon_edit_process",
 
                     success: function (response) {
                         if (response == "ok") {
-                            location.href = "coupon_add.php";
+                            location.href = "/retail_admin/coupon_add";
                         } else if (response == "Not Exist") {
                             $("#error").html("Coupon Name Already Exists.");
                             $("#error").show();

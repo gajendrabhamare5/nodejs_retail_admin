@@ -195,5 +195,8 @@ router.get('/retail_admin/coupon_add',Controllercoupon.getadmincoupon)
 router.post('/retail_admin/coupon_add_process',Controllercoupon.addadmincoupon)
 router.post('/retail_admin/coupon_delete/:id',Controllercoupon.deleteadmincoupon)
 router.get('/retail_admin/coupon_edit/:id', Controllercoupon.couponEditInfo)
+router.post('/retail_admin/coupon_edit_process', Controllercoupon.updatecoupon)
+router.post('/retail_admin/monthly_coupon_process', Controllercoupon.monthlycoupon)
+router.post('/retail_admin/coupon_edit_add_process', Controllercoupon.editaddcoupon)
 
 module.exports = router;
