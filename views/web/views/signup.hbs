@@ -1,0 +1,248 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <link rel="canonical" href="Signup">
+    <link rel="preconnect" href="https://cdn.shopify.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopifycdn.com/" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com/">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="shortcut icon" href="<?php echo  $favicon ?>" type="image/png" />
+    <title>Register
+        &ndash; title
+    </title>
+    <meta property="og:site_name" content="<?php echo $title; ?>">
+    <meta property="og:url" content="Signup">
+    <meta property="og:title" content="Create Account">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="<?php echo $title; ?>">
+    <meta property="og:image" content="<?php echo $logo; ?>">
+    <link href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style data-shopify>
+        :root {
+            --typeHeaderPrimary: "Tenor Sans";
+            --typeHeaderFallback: sans-serif;
+            --typeHeaderSize: 36px;
+            --typeHeaderWeight: 400;
+            --typeHeaderLineHeight: 1;
+            --typeHeaderSpacing: 0.0em;
+            --typeBasePrimary: "Twentieth Century";
+            --typeBaseFallback: sans-serif;
+            --typeBaseSize: 18px;
+            --typeBaseWeight: 400;
+            --typeBaseSpacing: 0.025em;
+            --typeBaseLineHeight: 1.4;
+            --typeCollectionTitle: 18px;
+            --iconWeight: 2px;
+            --iconLinecaps: miter;
+            --buttonRadius: 0px;
+            --colorGridOverlayOpacity: 0.0;
+        }
+
+        .placeholder-content {
+            background-image: linear-gradient(100deg, #f4f4f4 40%, #ececec 63%, #f4f4f4 79%);
+        }
+    </style>
+    <script>
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        window.theme = window.theme || {};
+        theme.routes = {
+            home: "/",
+            cart: "/cart.js",
+            cartPage: "/cart",
+            cartAdd: "/cart/add.js",
+            cartChange: "/cart/change.js",
+            search: "/search"
+        };
+        theme.strings = {
+            soldOut: "Sold Out",
+            unavailable: "Unavailable",
+            inStockLabel: "In stock, ready to ship",
+            oneStockLabel: "Low stock - [count] item left",
+            otherStockLabel: "Low stock - [count] items left",
+            willNotShipUntil: "Ready to ship [date]",
+            willBeInStockAfter: "Back in stock [date]",
+            waitingForStock: "Inventory on the way",
+            savePrice: "Save [saved_amount]",
+            cartEmpty: "Your cart is currently empty.",
+            cartTermsConfirmation: "You must agree with the terms and conditions of sales to check out",
+            searchCollections: "Collections:",
+            searchPages: "Pages:",
+            searchArticles: "Articles:",
+            productFrom: "from ",
+        };
+        theme.settings = {
+            cartType: "drawer",
+            isCustomerTemplate: true,
+            moneyFormat: "${{amount_no_decimals}}",
+            saveType: "dollar",
+            productImageSize: "natural",
+            productImageCover: false,
+            predictiveSearch: true,
+            predictiveSearchType: "product,article",
+            predictiveSearchVendor: false,
+            predictiveSearchPrice: false,
+            quickView: true
+        };
+    </script>
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
+    <link rel="stylesheet" href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183" defer="defer"></script>
+    <script src="http://localhost:4000/cdn.shopify.com/shopifycloud/shopify/assets/themes_support/shopify_common-8ea6ac3faf357236a97f5de749df4da6e8436ca107bc3a4ee805cbf08bc47392.js" defer="defer"></script>
+
+    <style>
+        .page-width--tiny{
+            max-width: 560px;
+        }
+        .section-header__title{
+            margin:20px
+        }
+    </style>
+    <!-- End Meta Pixel Code -->
+</head>
+
+<body class="template-customers-register" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+    <div id="PageContainer" class="page-container">
+        <div class="transition-body">
+           {{>web/header}}
+            <div id="myLoading" style="display:none;"></div>
+            <main class="main-content" id="MainContent">
+                <div class="page-width page-width--tiny page-content">
+                    <div style="    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+    padding: 30px;">
+                        <header class="section-header">
+                            <h1 class="section-header__title">Create Account</h1>
+                        </header>
+                        <div class="form-vertical">
+                            <div>
+                                <input type="hidden" name="utf8" value="✓" />
+                                <div class="errors" style="display: none;">
+                                    <ul>
+                                        <li id="registermsg"></li>
+                                    </ul>
+                                </div>
+                                <label for="FirstName">Full Name</label>
+                                <input type="text" name="customer[first_name]" id="loginInputName" class="input-full" autocapitalize="words" autofocus>
+                                <!--  <label for="LastName">Last Name</label>
+                            <input type="text" name="customer[last_name]" id="LastName" class="input-full" autocapitalize="words"> -->
+                                <label for="Email">Email</label>
+                                <input type="email" name="loginInputEmail1" id="loginInputEmail1" class="input-full" autocorrect="off" autocapitalize="off">
+                                <label for="phonenumber">Mobile Number</label>
+                                <input type="text" name="phonenumber" id="phonenumber" class="input-full" autocorrect="off" autocapitalize="off" onkeypress="return isNumber(event)">
+                                <label for="CreatePassword">Password</label>
+                                <input type="password" name="customer[password]" id="loginInputPassword1" class="input-full passInputElement">
+                                <i class="fa fa-eye-slash showpasshide" style="float: right;margin-right: 6px;margin-top: -60px;position: relative;z-index: 2;color: black;cursor:pointer;" onclick="showHidePassword()"></i>
+                                <!-- <input type="checkbox" name="membership" id="membership" checked><span>Want free Membership?</span> -->
+                                <p id="regbtn">
+                                    <label for="register-submit" class="hidden-label">Create</label>
+                                    <input type="submit" style=" background-color: #dc1f26;" onclick="chkvalidatereg1()" id="register-submit" value="Create" class="btn btn--full">
+                                </p>
+                                <p>Already have an account? <a href="/login" style="color:red;text-transform: capitalize;">Login</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div id="shopify-section-footer" class="shopify-section">
+                <style data-shopify>
+                    .site-footer {
+                        border-top: 1px solid #e8e8e1;
+                    }
+                </style>
+               {{>web/footer}}
+            </div>
+        </div>
+    </div>
+    <script>
+        function showHidePassword() {
+            var passtype = $(".passInputElement").attr('type');
+            var passval = $(".passInputElement").val();
+            var oldInput = $(".passInputElement");
+            if (passtype == "password") {
+                var newInput = $('<input>').attr({
+                    type: 'text',
+                    id: 'loginInputPassword1',
+                    name: 'customer[password]',
+                    class: 'passInputElement input-full',
+                    value: passval
+                });
+                $(".showpasshide").removeClass('fa-eye-slash').addClass('fa-eye');
+            } else {
+                var newInput = $('<input>').attr({
+                    type: 'password',
+                    id: 'loginInputPassword1',
+                    name: 'customer[password]',
+                    class: 'passInputElement input-full',
+                    value: passval
+                });
+                $(".showpasshide").removeClass('fa-eye').addClass('fa-eye-slash');
+            }
+            oldInput.replaceWith(newInput);
+        }
+    </script>
+    <div id="VideoModal" class="modal modal--solid">
+        <div class="modal__inner">
+            <div class="modal__centered page-width text-center">
+                <div class="modal__centered-content">
+                    <div class="video-wrapper video-wrapper--modal">
+                        <div id="VideoHolder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="modal__close js-modal-close text-link">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+            </svg>
+            <span class="icon__fallback-text">"Close (esc)"</span>
+        </button>
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
+                        <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+                    </svg>
+                </button>
+                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                        <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                    </svg>
+                </button>
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
+                        <path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <tool-tip data-tool-tip="">
+        <div class="tool-tip__inner" data-tool-tip-inner>
+            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                    <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                </svg></button>
+            <div data-tool-tip-title>Create Account</div>
+            <div class="tool-tip__content" data-tool-tip-content>
+            </div>
+        </div>
+    </tool-tip>
+</body>
+<script src="http://localhost:4000/assets/custom_web.js?ver=<?php echo time(); ?>"></script>
+<script src="http://localhost:4000/assets/toastr.min.js"></script>
+
+</html>

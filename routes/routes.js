@@ -13,6 +13,10 @@ const Controllerprivacy_policy = require('../controllers/privacy-policy.js');
 const Controllerexchange_policy = require('../controllers/exchange-policy.js');
 const Controllerterms_condition = require('../controllers/terms_condition.js');
 const Controllerfaq = require('../controllers/faq.js');
+const Controllerlogin = require('../controllers/login.js');
+const Controllersignup = require('../controllers/signup.js');
+const Controlleraccount = require('../controllers/account.js');
+const Controllercheckmail = require('../controllers/checkmail.js');
 const Controllersubscribe = require('../controllers/subscribe.js');
 const Controllerheader = require('../controllers/headerweb.js');
 
@@ -69,6 +73,10 @@ router.get('/privacy-policy', Controllerprivacy_policy.getprivacy_policyInfo);
 router.get('/return-exchange', Controllerexchange_policy.getexchange_policyInfo);
 router.get('/terms-condition', Controllerterms_condition.getterms_conditionInfo);
 router.get('/faq', Controllerfaq.getfaqInfo);
+router.get('/login', Controllerlogin.getloginInfo);
+router.get('/signup', Controllersignup.getsignupInfo);
+router.post('/check_email_id', Controllercheckmail.getemail);
+router.post('/account', Controlleraccount.addaccount);
 //  router.post('/portfolio', Controller.updateportfolio)
 
 

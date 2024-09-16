@@ -1174,7 +1174,7 @@ function chkvalidatereg1() {
         $.ajax({
             type: "POST",
             dataType: "JSON",
-            url: baseurl + "ajaxfiles/check_email_id.php",
+            url:  "http://localhost:4000/check_email_id",
             data: {
                 Email: loginInputEmail,
                 Phone: phonenumber
@@ -1203,7 +1203,7 @@ function chkvalidatereg1() {
                     $.ajax({
                         type: "POST",
                         dataType: "JSON",
-                        url: baseurl + "ajaxfiles/account.php",
+                        url:  "http://localhost:4000/account",
                         data: {
                             Type: Type,
                             Email: loginInputEmail,

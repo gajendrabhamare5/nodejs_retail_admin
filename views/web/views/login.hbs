@@ -1,0 +1,756 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <link rel="canonical" href="login.html">
+    <link rel="preconnect" href="https://cdn.shopify.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopifycdn.com/" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com/">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="shortcut icon" href="<?php echo  $favicon ?>" type="image/png" />
+    <title>Account
+        &ndash; title -Login
+    </title>
+    <meta property="og:site_name" content="<?php echo $title ?>-Login">
+    <meta property="og:url" content="login.php">
+    <meta property="og:title" content="Account">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="<?php echo $title ?>-Login">
+    <meta property="og:image" content="<?php echo $logo; ?>">
+    <meta property="og:image:secure_url" content="<?php echo $logo; ?>">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <style data-shopify>
+        @font-face {
+            font-family: "Tenor Sans";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url("https://fonts.shopifycdn.com/tenor_sans/tenorsans_n4.ef7b684f1cfa0d3a90338d1fa5f36acdf7889632.woff2?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=bf4b87184a3ea75d69ae1408ce1fdd8c2e049945837ba849bfd6b4c8e4c4845e") format("woff2"),
+                url("https://fonts.shopifycdn.com/tenor_sans/tenorsans_n4.514efc84ed8364b455bb5dd12e65583fe93ccf0f.woff?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=4b3ae1d3bd90c7c7ce478664bdc6d4f7a4e3abfc2f20909aa7bc464722b37066") format("woff");
+        }
+
+        @font-face {
+            font-family: "Twentieth Century";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url("https://fonts.shopifycdn.com/twentieth_century/twentiethcentury_n4.1a7b2b68023505e1927302cc60a155187098ca59.woff2?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=35ba9a7b0e24dcc38016e3469320d72071a33fcf9533e454214e932159f74076") format("woff2"),
+                url("https://fonts.shopifycdn.com/twentieth_century/twentiethcentury_n4.2bd9ba3193feaaeabefe6059cf0ba7e11c41e810.woff?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=464d660fa45c9e8a6a9756e6188748b7bb7467b3757e3679835e6124e31bde90") format("woff");
+        }
+
+
+        @font-face {
+            font-family: "Twentieth Century";
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+            src: url("https://fonts.shopifycdn.com/twentieth_century/twentiethcentury_n6.0d3b76303d4b4a3612edbc69654ac2a8ca6886a4.woff2?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=944b09d4d8730914005925cb7bd50bceba149d2e79d2ac196f1942f0583112c4") format("woff2"),
+                url("https://fonts.shopifycdn.com/twentieth_century/twentiethcentury_n6.c396df293741c34c7c780d8677bc681d3c3ecd42.woff?h1=aW1wdWxzZS10aGVtZS1mYXNoaW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;hmac=6c929ea1d6f5be0047bf8445a0ea268b1f97b08d5a381f39bf096342437a7168") format("woff");
+        }
+    </style> -->
+    <link href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
+    <style data-shopify>
+        :root {
+            --typeHeaderPrimary: "Tenor Sans";
+            --typeHeaderFallback: sans-serif;
+            --typeHeaderSize: 36px;
+            --typeHeaderWeight: 400;
+            --typeHeaderLineHeight: 1;
+            --typeHeaderSpacing: 0.0em;
+
+            --typeBasePrimary: "Twentieth Century";
+            --typeBaseFallback: sans-serif;
+            --typeBaseSize: 18px;
+            --typeBaseWeight: 400;
+            --typeBaseSpacing: 0.025em;
+            --typeBaseLineHeight: 1.4;
+
+            --typeCollectionTitle: 18px;
+
+            --iconWeight: 2px;
+            --iconLinecaps: miter;
+
+
+            --buttonRadius: 0px;
+
+
+            --colorGridOverlayOpacity: 0.0;
+        }
+
+        .placeholder-content {
+            background-image: linear-gradient(100deg, #f4f4f4 40%, #ececec 63%, #f4f4f4 79%);
+        }
+    </style>
+    <script>
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+        window.theme = window.theme || {};
+        theme.routes = {
+            home: "/",
+            cart: "/cart.js",
+            cartPage: "/cart",
+            cartAdd: "/cart/add.js",
+            cartChange: "/cart/change.js",
+            search: "/search"
+        };
+        theme.strings = {
+            soldOut: "Sold Out",
+            unavailable: "Unavailable",
+            inStockLabel: "In stock, ready to ship",
+            oneStockLabel: "Low stock - [count] item left",
+            otherStockLabel: "Low stock - [count] items left",
+            willNotShipUntil: "Ready to ship [date]",
+            willBeInStockAfter: "Back in stock [date]",
+            waitingForStock: "Inventory on the way",
+            savePrice: "Save [saved_amount]",
+            cartEmpty: "Your cart is currently empty.",
+            cartTermsConfirmation: "You must agree with the terms and conditions of sales to check out",
+            searchCollections: "Collections:",
+            searchPages: "Pages:",
+            searchArticles: "Articles:",
+            productFrom: "from ",
+        };
+        theme.settings = {
+            cartType: "drawer",
+            isCustomerTemplate: true,
+            moneyFormat: "${{amount_no_decimals}}",
+            saveType: "dollar",
+            productImageSize: "natural",
+            productImageCover: false,
+            predictiveSearch: true,
+            predictiveSearchType: "product,article",
+            predictiveSearchVendor: false,
+            predictiveSearchPrice: false,
+            quickView: true,
+            themeName: 'Impulse',
+            themeVersion: "7.1.0"
+        };
+    </script>
+
+
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
+    <link rel="stylesheet" href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183" defer="defer"></script>
+    <script src="http://localhost:4000/cdn.shopify.com/shopifycloud/shopify/assets/themes_support/shopify_common-8ea6ac3faf357236a97f5de749df4da6e8436ca107bc3a4ee805cbf08bc47392.js" defer="defer"></script>
+    <link href="https://monorail-edge.shopifysvc.com/" rel="dns-prefetch">
+
+</head>
+
+<body class="template-customers-login" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+
+
+    <div id="PageContainer" class="page-container">
+        <div class="transition-body">
+          {{>web/header}}
+
+
+            <main class="main-content" id="MainContent">
+                <div class="page-width page-width--tiny page-content">
+                    <div style="    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding: 30px;">
+
+
+                        <div class="note note--success hide" id="ResetSuccess">
+                            We&#39;ve sent you an email with a link to update your password.
+                        </div>
+
+                        <div id="CustomerLoginForm" class="form-vertical">
+                            <header class="section-header">
+                                <h1 class="section-header__title">Login</h1>
+                            </header>
+                            <form accept-charset="UTF-8">
+                                <div class="errors" style="display: none;">
+                                    <ul>
+                                        <li id="loginpmsg"></li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="utf8" value="✓" />
+
+                                <label for="CustomerEmail">Email</label>
+                                <input type="email" name="Email" id="loginInputEmail" class="input-full" autocorrect="off" autocapitalize="off" autofocus>
+                                <div class="grid">
+                                    <div class="grid__item one-half">
+                                        <label for="CustomerPassword">Password</label>
+                                    </div>
+                                    <div class="grid__item one-half text-right">
+                                        <small class="label-info" style="font-size:10px;">
+                                            <a href="javascript:void(0)" id="RecoverPassword">
+                                                Forgot password?
+                                            </a>
+                                        </small>
+                                    </div>
+                                </div>
+                                <input type="password" value="" name="customer[password]" id="loginInputPassword" class="input-full passInputElement">
+                                <i class="fa fa-eye-slash showpasshide" style="float: right;margin-right: 6px;margin-top: -60px;position: relative;z-index: 2;color: black;cursor:pointer;" onclick="showHidePassword()"></i>
+
+                                <p>
+                                    <button type="button" class="loginbtn btn btn--full signInBtn" onclick="chkvalidate()">
+                                        Sign In
+                                    </button>
+                                </p>
+                                <center>
+                                    or
+                                    <p>
+                                        <button type="button" id="mobilelogin" class="mobilelogin loginbtn btn btn--full">
+                                            Login With Mobile
+                                        </button>
+                                    </p>
+                                </center>
+                                <p><a href="http://localhost:4000/signup" id="customer_register_link">Create account</a></p>
+                            </form>
+                        </div>
+                        <div id="mobileoginForm" style="display: none;">
+                            <div class="form-vertical">
+                                <header class="section-header">
+                                    <h1 class="section-header__title">Login</h1>
+                                </header>
+                                <div accept-charset="UTF-8">
+                                    <div class="errors" style="display: none;">
+                                        <ul>
+                                            <li class="loginpmsg"></li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="form_type" value="recover_customer_password" />
+                                    <input type="hidden" name="utf8" value="✓" />
+                                    <br>
+                                    <label for="CustomerEmail">Mobile No.</label>
+                                    <!--  <input type="tel" id="txtPhone" class="form-control" style="padding-left:77px !important;" /> -->
+                                    <input type="email" name="txtPhone" id="txtPhone" class="input-full form-control" autocorrect="off" autocapitalize="off" onkeypress="return isNumber(event)">
+                                    <div class="otpSec" style="display:none;margin-top:10px;">
+                                        <input type="password" onkeypress="return isNumber(event)" value="" placeholder="Enter OTP" name="customer[password]" id="loginInputPassword1" class="input-full passInputElement1">
+                                        <i class="fa fa-eye-slash showpasshide1" style="float: right;margin-right: 6px;margin-top: -60px;position: relative;z-index: 2;color: black;cursor:pointer;" onkeyup="errorHide()" onclick="showHidePassword1()"></i>
+                                    </div>
+
+                                    <p style="margin-top:10px;">
+                                        <button type="button" class="loginbtn mobloginbtn btn btn--full" onclick="sendOtp()">
+                                            Send OTP
+                                        </button>
+                                    </p>
+                                    <span onclick="resendGuest_otp()" id="resend_button" style="pointer-events:none;color:rgba(0, 0, 0, 0.51) !important;">Resend
+                                        Code</span>
+                                    <div id="some_div" style="color:black;"></div>
+                                </div>
+                                <button type="button" id="HideRecoverPasswordLink">Cancel</button>
+                            </div>
+
+                        </div>
+
+                        <div id="RecoverPasswordForm" style="display: none;">
+                            <div class="form-vertical">
+                                <h2>Reset password</h2>
+                                <p>We will send you an email to reset your password.</p>
+                                <div accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password" /><input type="hidden" name="utf8" value="✓" />
+                                    <label for="Email">Email</label>
+                                    <div class="errors" style="display: none;">
+                                        <ul>
+                                            <li id="loginpmsg"></li>
+                                        </ul>
+                                    </div>
+                                    <input type="email" value="" name="Email" id="loginInputEmailforgot" class="input-full" autocorrect="off" autocapitalize="off">
+                                    <div id="forgotmsg"></div>
+                                    <p>
+                                        <button href="javascript:void(0);" id="forgotbtn" onclick="chkvalidateforgot()" type="submit" class="btn">
+                                            Submit
+                                        </button>
+                                    </p>
+                                    <button type="button" id="HideRecoverPasswordLink">Cancel</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <script>
+                function errorHide(){
+
+                }
+                function sendOtp() {
+                    $(".loginbtn").html('Loading...');
+                    $(".loginbtn").css('pointer-events', 'none');
+                    /* var code = $("#txtPhone").intlTelInput("getSelectedCountryData").dialCode; */
+                    var code = '91';
+                    var phoneNumber = $('#txtPhone').val();
+                    if (phoneNumber == "") {
+                        $(".loginbtn").html('Send OTP');
+                        $(".loginbtn").css('pointer-events', 'auto');
+                        $(".loginpmsg").css("color", "red");
+                        $(".loginpmsg").html("Enter Mobile No.");
+                        $(".errors").css("display", "block");
+                        setTimeout(function() {
+                            $(".loginpmsg").html('');
+                            $(".errors").css("display", "none");
+                        }, 3000);
+                    } else if (phoneNumber.length != 10) {
+                        $(".loginbtn").html('Send OTP');
+                        $(".loginbtn").css('pointer-events', 'auto');
+                        $(".loginpmsg").css("color", "red");
+                        $(".loginpmsg").html("Mobile No. should be 10 digit.");
+                        $(".errors").css("display", "block");
+                        setTimeout(function() {
+                            $(".loginpmsg").html('');
+                            $(".errors").css("display", "none");
+                        }, 3000);
+                    } else {
+                        var Type = "send_otp";
+                        $.ajax({
+                            type: "POST",
+                            dataType: "JSON",
+                            url: baseurl + "ajaxfiles/account.php",
+                            data: {
+                                Type: Type,
+                                phoneNumber: phoneNumber,
+                                code: code
+                            },
+                            success: function(data) {
+                                //alert();
+                                if (data.status == "error") {
+                                    $(".loginbtn").html('Send OTP');
+                                    $(".loginbtn").css('pointer-events', 'auto');
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginpmsg").css("color", "red");
+                                    $(".loginpmsg").html(data.message);
+                                    $(".errors").css("display", "block");
+                                    setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000);
+
+                                } else if (data.status == "ok") {
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginbtn").css('pointer-events', 'auto');
+                                    $(".loginpmsg").css("color", "green");
+                                    $(".loginpmsg").html(data.message);
+                                    $(".errors").css("display", "block");
+                                    $(".otpSec").show();
+                                    $(".loginbtn").attr('onclick', 'verify_otp()');
+                                    $(".loginbtn").html('Submit');
+                                    counter();
+                                    /* setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000); */
+
+                                } else {
+                                    $(".loginbtn").html('Send OTP');
+                                    $(".loginbtn").css('pointer-events', 'auto');
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginpmsg").css("color", "red");
+                                    $(".loginpmsg").html("Something went wrong.");
+                                    $(".errors").css("display", "block");
+                                    setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function verify_otp() {
+                    $(".loginbtn").html('Loading...');
+                    $(".loginbtn").css('pointer-events', 'none');
+                    var enteredOTP = $("#loginInputPassword1").val();
+                    if (enteredOTP == "") {
+                        $(".loginbtn").html('Verify OTP');
+                        $(".loginbtn").css('pointer-events', 'auto');
+                        $("#loginbtn").css("pointer-events", "visible");
+                        $(".loginpmsg").css("color", "red");
+                        $(".loginpmsg").html("Enter OTP.");
+                        $(".errors").css("display", "block");
+                        setTimeout(function() {
+                            $(".loginpmsg").html('');
+                            $(".errors").css("display", "none");
+                        }, 3000);
+                    } else if (enteredOTP.length != 6) {
+                        $(".loginbtn").html('Verify OTP');
+                        $(".loginbtn").css('pointer-events', 'auto');
+                        $("#loginbtn").css("pointer-events", "visible");
+                        $(".loginpmsg").css("color", "red");
+                        $(".loginpmsg").html("Length of OTP must be 6 digit.");
+                        $(".errors").css("display", "block");
+                        setTimeout(function() {
+                            $(".loginpmsg").html('');
+                            $(".errors").css("display", "none");
+                        }, 3000);
+                    } else {
+                        var Type = "verify_otp";
+                        $.ajax({
+                            type: "POST",
+                            dataType: "JSON",
+                            url: baseurl + "ajaxfiles/account.php",
+                            data: {
+                                Type: Type,
+                                enteredOTP: enteredOTP,
+                            },
+                            success: function(data) {
+                                //alert();
+                                if (data.status == "success") {
+                                    /*  var countrycode = $("#txtPhone").intlTelInput("getSelectedCountryData").dialCode; */
+                                    var countrycode = '91';
+                                    var phonenumber = $('#txtPhone').val();
+                                    var Type = "process_user";
+                                    $.ajax({
+                                        type: "POST",
+                                        dataType: "JSON",
+                                        url: "http://localhost:4000//ajaxfiles/account.php",
+                                        data: {
+                                            Type: Type,
+                                            Country_code: countrycode,
+                                            Phone: phonenumber,
+                                        },
+                                        success: function(data) {
+                                            if (data.status == "ok") {
+                                                window.location.reload();
+                                                /* history.back(); */
+                                            } else {
+                                                $(".loginbtn").css("pointer-events", "auto");
+                                                $(".loginpmsg").css("color", "red");
+                                                $(".loginpmsg").html("Something went wrong.");
+                                                $(".errors").css("display", "block");
+                                                setTimeout(function() {
+                                                    $(".loginpmsg").html('');
+                                                    $(".errors").css("display", "none");
+                                                }, 3000);
+                                            }
+                                        }
+                                    });
+                                } else if (data.status == "timeOut") {
+                                    $(".loginbtn").html('Verify OTP');
+                                    $(".loginbtn").css("pointer-events", "visible");
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginpmsg").css("color", "red");
+                                    $(".loginpmsg").html("Your OTP has been expired.Please resend it.");
+                                    $(".errors").css("display", "block");
+                                    setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000);
+                                } else if (data.status == "error") {
+                                    $(".loginbtn").html('Verify OTP');
+                                    $(".loginbtn").css("pointer-events", "visible");
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginpmsg").css("color", "red");
+                                    $(".loginpmsg").html("OTP does not matched.");
+                                    $(".errors").css("display", "block");
+                                    setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000);
+                                } else {
+                                    $(".loginbtn").html('Verify OTP');
+                                    $(".loginbtn").css('pointer-events', 'auto');
+                                    $("#loginbtn").css("pointer-events", "visible");
+                                    $(".loginpmsg").css("color", "red");
+                                    $(".loginpmsg").html("An invalid OTP");
+                                    $(".errors").css("display", "block");
+                                    setTimeout(function() {
+                                        $(".loginpmsg").html('');
+                                        $(".errors").css("display", "none");
+                                    }, 3000);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function counter() {
+                    timeLeft = 59;
+                    elem = document.getElementById('some_div');
+                    timerId = setInterval(countdown, 1000);
+
+                    window.setTimeout(setDisabled, 30000);
+                }
+
+                function countdown() {
+
+                    if (timeLeft == 0) {
+                        $("#some_div").html("");
+                        clearTimeout(timerId);
+                        setDisabled();
+                    } else {
+                        elem.innerHTML = "Resend otp in " + timeLeft + " seconds";
+                        timeLeft--;
+                    }
+                }
+
+                function setDisabled() {
+                    $('#resend_button').css({
+                        "pointer-events": "visible",
+                        "color": "black",
+                        "cursor": "pointer"
+                    });
+                    //$('#resend_button').css("color","white");
+                }
+
+                function resendGuest_otp() {
+                    $('#resend_button').css({
+                        "pointer-events": "none",
+                        "color": "rgba(0, 0, 0, 0.51)"
+                    });
+                    counter();
+                    var phonenumber = $('#txtPhone').val();
+                    /*  var countrycode = $("#txtPhone").intlTelInput("getSelectedCountryData").dialCode; */
+                    var countrycode = '91';
+                    var Type = "send_otp";
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        url: baseurl + "ajaxfiles/account.php",
+                        data: {
+                            Type: Type,
+                            phoneNumber: phonenumber,
+                            code: countrycode
+                        },
+                        success: function(data) {
+                            //alert();
+                            if (data.status == "error") {
+                                $("#loginbtn").css("pointer-events", "visible");
+                                $(".loginpmsg").css("color", "red");
+                                $(".loginpmsg").html(data.message);
+                                $(".errors").css("display", "block");
+                                setTimeout(function() {
+                                    $(".loginpmsg").html('');
+                                    $(".errors").css("display", "none");
+                                }, 3000);
+
+                            } else if (data.status == "ok") {
+                                $("#loginbtn").css("pointer-events", "visible");
+                                $(".loginpmsg").css("color", "green");
+                                $(".loginpmsg").html(data.message);
+                                $(".errors").css("display", "block");
+                                $(".otpSec").show();
+                                $(".loginbtn").attr('onclick', 'verify_otp()');
+                                $(".loginbtn").html('Submit');
+                                /* setTimeout(function() {
+                                    $(".loginpmsg").html('');
+                                    $(".errors").css("display", "none");
+                                }, 3000); */
+
+                            } else {
+                                $("#loginbtn").css("pointer-events", "visible");
+                                $(".loginpmsg").css("color", "red");
+                                $(".loginpmsg").html("Something went wrong.");
+                                $(".errors").css("display", "block");
+                                setTimeout(function() {
+                                    $(".loginpmsg").html('');
+                                    $(".errors").css("display", "none");
+                                }, 3000);
+                            }
+                        }
+                    });
+
+                }
+
+                function showHidePassword() {
+                    var passtype = $(".passInputElement").attr('type');
+                    var passval = $(".passInputElement").val();
+                    var oldInput = $(".passInputElement");
+                    if (passtype == "password") {
+                        var newInput = $('<input>').attr({
+                            type: 'text',
+                            id: 'loginInputPassword',
+                            name: 'customer[password]',
+                            class: 'passInputElement input-full',
+                            value: passval
+                        });
+                        $(".showpasshide").removeClass('fa-eye-slash').addClass('fa-eye');
+                    } else {
+                        var newInput = $('<input>').attr({
+                            type: 'password',
+                            id: 'loginInputPassword',
+                            name: 'customer[password]',
+                            class: 'passInputElement input-full',
+                            value: passval
+                        });
+                        $(".showpasshide").removeClass('fa-eye').addClass('fa-eye-slash');
+                    }
+                    oldInput.replaceWith(newInput);
+                }
+
+                function showHidePassword1() {
+                    var passtype = $(".passInputElement1").attr('type');
+                    var passval = $(".passInputElement1").val();
+                    var oldInput = $(".passInputElement1");
+                    if (passtype == "password") {
+                        var newInput = $('<input>').attr({
+                            type: 'text',
+                            id: 'loginInputPassword1',
+                            name: 'customer[password]',
+                            class: 'passInputElement1 input-full',
+                            value: passval
+                        });
+                        $(".showpasshide1").removeClass('fa-eye-slash').addClass('fa-eye');
+                    } else {
+                        var newInput = $('<input>').attr({
+                            type: 'password',
+                            id: 'loginInputPassword1',
+                            name: 'customer[password]',
+                            class: 'passInputElement1 input-full',
+                            value: passval
+                        });
+                        $(".showpasshide1").removeClass('fa-eye').addClass('fa-eye-slash');
+                    }
+                    oldInput.replaceWith(newInput);
+                }
+            </script>
+            <style>
+                @media only screen and (min-width: 769px) {
+
+                    .page-content,
+                    .shopify-email-marketing-confirmation__container,
+                    .shopify-policy__container {
+                        padding-top: 175px;
+                        padding-bottom: 75px;
+                    }
+                }
+
+                .page-content {
+                    padding-top: 10px;
+                }
+            </style>
+            <div id="shopify-section-footer" class="shopify-section">
+                <style data-shopify>
+                    .site-footer {
+                        border-top: 1px solid #e8e8e1;
+                    }
+                </style>
+               {{>web/footer}}
+
+
+            </div>
+        </div>
+    </div>
+    <div id="VideoModal" class="modal modal--solid">
+        <div class="modal__inner">
+            <div class="modal__centered page-width text-center">
+                <div class="modal__centered-content">
+                    <div class="video-wrapper video-wrapper--modal">
+                        <div id="VideoHolder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="modal__close js-modal-close text-link">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+            </svg>
+            <span class="icon__fallback-text">"Close (esc)"</span>
+        </button>
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
+                        <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+                    </svg>
+                </button>
+
+                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                        <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                    </svg>
+                </button>
+
+                <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
+                        <path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <tool-tip data-tool-tip="">
+        <div class="tool-tip__inner" data-tool-tip-inner>
+            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                    <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
+                </svg></button>
+            <div data-tool-tip-title>Account</div>
+            <div class="tool-tip__content" data-tool-tip-content>
+            </div>
+        </div>
+    </tool-tip>
+</body>
+<script>
+    function chkvalidateforgot() {
+        $("#forgotbtn").css("pointer-events", "none");
+
+        var loginInputEmail = $("#loginInputEmailforgot").val();
+        console.log(loginInputEmail);
+
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (loginInputEmail == "") {
+            console.log("vali1");
+            $("#forgotbtn").css("pointer-events", "visible");
+            $("#loginInputEmailforgot").focus();
+            $("#forgotmsg").css("color", "red");
+            $("#forgotmsg").html("Enter Emailid");
+            setTimeout(function() {
+                $("#forgotmsg").html(' ');
+                $("#forgotmsg").css("color", "green");
+            }, 3000);
+        } else if (reg.test(loginInputEmail) == false) {
+            $("#forgotbtn").css("pointer-events", "visible");
+            $("#loginInputEmailforgot").focus();
+            $("#forgotmsg").css("color", "red");
+            $("#forgotmsg").html("Enter proper email Id");
+            setTimeout(function() {
+                $("#forgotmsg").html(' ');
+                $("#forgotmsg").css("color", "green");
+            }, 3000);
+        } else {
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "http://localhost:4000/ajaxfiles/forgot_password.php",
+                data: {
+                    Email: loginInputEmail
+                },
+                success: function(data) {
+                    if (data.flag == "0") {
+                        $("#forgotbtn").css("pointer-events", "visible");
+                        $("#loginInputEmailforgot").focus();
+                        $("#forgotmsg").css("color", "red");
+                        $("#forgotmsg").html(data.message);
+                        setTimeout(function() {
+                            $("#forgotmsg").html(' ');
+                            $("#forgotmsg").css("color", "green");
+                        }, 4000);
+                    } else {
+                        $("#forgotbtn").css("pointer-events", "visible");
+                        $("#loginInputEmailforgot").val("");
+                        $("#forgotmsg").css("color", "green");
+                        $("#forgotmsg").html("Forgot Password Link send in your mail..");
+                        setTimeout(function() {
+                            $("#forgotmsg").html(' ');
+                            $("#forgotmsg").css("color", "green");
+                        }, 3000);
+                    }
+                }
+            });
+
+        }
+    }
+</script>
+<script src="http://localhost:4000/assets/custom_web.js?ver=<?php echo time(); ?>"></script>
+<script src="http://localhost:4000/assets/toastr.min.js"></script>
+
+</html>
