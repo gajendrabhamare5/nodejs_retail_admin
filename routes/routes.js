@@ -53,7 +53,7 @@ const Controllercoupon = require('../controllers/coupon.js');
 //web routes called
 
 router.get('/', Controllerheader.getheaderInfo);
-router.get('/portfolio', Controllerport.getportfolioInfo);
+router.get('/portfolio/:id', Controllerport.getportfolioInfo);
 router.get('/product', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);
 router.get('/checkout', Controllercheckout.getcheckoutInfo);
@@ -77,6 +77,7 @@ router.get('/login', Controllerlogin.getloginInfo);
 router.get('/signup', Controllersignup.getsignupInfo);
 router.post('/check_email_id', Controllercheckmail.getemail);
 router.post('/account', Controlleraccount.addaccount);
+// router.get('/portfolio/:id', Controllerportfolio.getportfolio);
 //  router.post('/portfolio', Controller.updateportfolio)
 
 

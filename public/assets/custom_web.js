@@ -1047,7 +1047,7 @@ function chkvalidate() {
         $.ajax({
             type: "POST",
             dataType: "JSON",
-            url: baseurl + "ajaxfiles/account.php",
+            url:"http://localhost:4000/account",
             data: {
                 Type: Type,
                 Email: loginInputEmail,
@@ -1072,8 +1072,8 @@ function chkvalidate() {
                     }
                     else {
                         /* history.back(); */
-                        location.reload();
-                        /* location.href = baseurl + "index.php"; */
+                        //location.reload();
+                         location.href = "http://localhost:4000/";
                     }
                 }
             }

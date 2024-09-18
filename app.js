@@ -3,6 +3,8 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+
 require('./db/conn');
 const injectCommonData = require('./middleware/commonData');
 const helpers = require('./helpers/helpers.js');
@@ -11,6 +13,13 @@ const port = process.env.PORT || 4000;
 
 app.use(fileUpload({
     createParentPath: true
+}));
+
+app.use(session({
+    secret: 'your_secret_key', // Change this to a strong secret
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
 }));
 
 // Registering helpers

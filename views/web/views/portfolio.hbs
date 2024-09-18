@@ -12,12 +12,12 @@
     <link rel="preconnect" href="https://fonts.shopifycdn.com/" crossorigin>
     <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com/">
     <link rel="dns-prefetch" href="https://maps.gstatic.com/">
-    <link rel="shortcut icon" href="<?php echo $favicon; ?>" type="image/png" />
+    <link rel="shortcut icon" href="" type="image/png" />
     <title>meta_title1</title>
     <meta name="description" content="meta_desc1" />
     <meta property="og:image" content="">
     <meta name="keywords" content="meta_keyword1" />
-    <link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
+    <link href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
     <style data-shopify>
         :root {
             --typeHeaderPrimary: "Tenor Sans";
@@ -281,10 +281,10 @@
             themeVersion: "7.1.0"
         };
     </script>
-    <link rel="stylesheet" type="text/css" href="assets/css/toastr.min.css">
-    <link rel="stylesheet" href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
-    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
-    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/theme.js?v=<?php echo time(); ?>" defer="defer"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/toastr.min.css">
+    <link rel="stylesheet" href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
+    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/theme.js?v=<?php echo time(); ?>" defer="defer"></script>
 
 </head>
 
@@ -313,9 +313,11 @@
 
                     <div class="page-width page-content page-content--top">
                         <header class="section-header section-header--flush">
-                            <a href="/product"><h3 class="section-header__title">
-                               Category Name
-                            </h3></a>
+                            {{#each catdata}}
+                            <h3 class="section-header__title">
+                               {{this.category_name}}
+                            </h3>
+                            {{/each}}
                             <div class="top-short-desc" style="display: none;">
                                 <p> <strong class="show-more"></strong></p>
                             </div>
@@ -853,8 +855,8 @@
         </div>
     </tool-tip>
 </body>
-<script src="<?php echo $base_url; ?>assets/custom_web.js?ver=<?php echo time(); ?>"></script>
-<script src="<?php echo $base_url; ?>assets/toastr.min.js"></script>
+<script src="http://localhost:4000/assets/custom_web.js?ver=<?php echo time(); ?>"></script>
+<script src="http://localhost:4000/assets/toastr.min.js"></script>
 <script>
     var catid = '<?php echo $seo_id_new; ?>';
     var seo_id = '<?php echo $seo_id; ?>';
