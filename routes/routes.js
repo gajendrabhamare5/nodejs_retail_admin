@@ -54,7 +54,7 @@ const Controllercoupon = require('../controllers/coupon.js');
 
 router.get('/', Controllerheader.getheaderInfo);
 router.get('/portfolio/:id', Controllerport.getportfolioInfo);
-router.get('/product', Controllerproduct.getportproductInfo);
+router.get('/product/:id', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);
 router.get('/checkout', Controllercheckout.getcheckoutInfo);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);

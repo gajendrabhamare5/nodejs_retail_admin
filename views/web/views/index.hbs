@@ -604,7 +604,7 @@
 										</div>
 									</div>
 									<div class="section-header">
-										<a href="all_new-arrival" class="btn btn--secondary btn--small section-header__link">View all</a>
+										<a href="http://localhost:4000/portfolio/all_new_arrival" class="btn btn--secondary btn--small section-header__link">View all</a>
 									</div>
 								</div>
 							</div>
@@ -624,22 +624,22 @@
 
 												{{#each seasonStore}}
 												<div class="grid__item small--one-half medium-up--one-quarter">
-													<a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
+													<a href="http://localhost:4000/{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a>
 													<div class="collectionHover">
-														<a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+														<a href="http://localhost:4000/{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
 															<div class="collection-image collection-image--portrait image-wrap">
-																<img class="lazyautosizes lazyloaded" alt="s_image" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
+																<img class="lazyautosizes lazyloaded" alt="s_image" src="http://localhost:4000/{{this.slider_image}}" data-aspectratio="0.8001184483269174" data-widths="[360, 540, 720, 900, 1080]" data-sizes="auto" style="object-position: 20% 50%;" data-srcset="" sizes="301px">
 																<noscript>
-																	<img class="lazyloaded" alt="lazy_alt" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg">
+																	<img class="lazyloaded" alt="lazy_alt" src="http://localhost:4000/{{this.slider_image}}">
 																</noscript>
 															</div>
 														</a>
-														<div class="collection-item__title collection-item__title--overlaid collection-item__title--body collection-item__title--bottom-center"><a href="" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
+														<div class="collection-item__title collection-item__title--overlaid collection-item__title--body collection-item__title--bottom-center"><a href="http://localhost:4000/portfolio/{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4">
 																<span>
 																{{this.title}}
 																</span>
 															</a>
-															<div class="see_all"><a href="{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="{{this.url}}">See All</a></div>
+															<div class="see_all"><a href="http://localhost:4000/portfolio/{{this.url}}" aria-label="Season Store" class="collection-item collection-item--overlaid aos-init aos-animate" data-aos="row-of-4"></a><a href="http://localhost:4000/portfolio/{{this.url}}">See All</a></div>
 														</div>
 													</div>
 												</div>
@@ -684,13 +684,13 @@
 														{{#each video}}
 														<div>
 															<label style="position: relative;">
-																<video controls="" autoplay="" muted="" loop="" style="width:180px;height: 322px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);  border-radius: 10px;    margin: 6px;">
+																{{!-- <video controls="" autoplay="" muted="" loop="" style="width:180px;height: 322px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);  border-radius: 10px;    margin: 6px;">
 																	<source src="{{this.category_image}}" type="video/mp4">
-																</video>
-
-
+																</video> --}}
+																<iframe width="165" height="322" src="https://www.youtube.com/embed/{{this.category_image}}" title="WhatsApp Video 2023 02 09 at 2 54 34 PM" frameborder="0" style="width:180px;height: 322px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);  border-radius: 10px;    margin: 6px;"
+																 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+																 allowfullscreen></iframe>
 																	{{!-- <a class="btn btn-primary views_btn"> <i class="fa fa-eye"></i></button></a> --}}
-
 															</label>
 															<div class="bottom_sec">
 																<a href="{{this.category_seo_url}}" class="btn btn-primary view_btn">View</button></a>
@@ -819,9 +819,9 @@
 														</div>
 
 														<div class="testimonail-image testimonail-image--round">
-															<div class="image-wrap text-spacing" style="height: 0; padding-bottom: 100.0%;"><img class="lazyload" alt="customer" data-src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg" data-widths="[180, 360, 540, 720]" data-aspectratio="1.0" data-sizes="auto">
+															<div class="image-wrap text-spacing" style="height: 0; padding-bottom: 100.0%;"><img class="lazyload" alt="customer" data-src="{{this.customer_image}}" data-widths="[180, 360, 540, 720]" data-aspectratio="1.0" data-sizes="auto">
 																<noscript>
-																	<img class="lazyloaded" alt="customer_lazyload" src="images/product/2024/7/welcome-o-saree-wholesaler-in-surat--2024-07-01T05-13-25.734Z.jpeg"><br>
+																	<img class="lazyloaded" alt="customer_lazyload" src="{{this.customer_image}}"><br>
 																</noscript>
 															</div>
 														</div>

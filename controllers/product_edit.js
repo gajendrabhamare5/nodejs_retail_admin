@@ -555,7 +555,7 @@ const updateproduct = async (req, res) => {
                     const sizeIdsConcatenated = product_size.join('');
                     const sizeObjectId = mongoose.Types.ObjectId(sizeIdsConcatenated);
                     console.log("sizeObjectId",sizeObjectId);
-                    
+
                     const size = await Size.findById(sizeId);
                     const productSkuSize = "GB";
                     let sizePriceNew = size_price1[k];

@@ -306,18 +306,18 @@
             <main class="main-content" id="MainContent">
 
                 <div id="shopify-section-template--14452072644666__collection-header" class="shopify-section">
-
+                        {{#if categoryDetails.banner }}
                         <div class="collection-banners-strip" style="max-height:161px;overflow:hidden;">
-                            <img src="" loading="lazy" class="metafield-file_reference">
+                            <img src="http://localhost:4000/{{categoryDetails.banner}}" loading="lazy" class="metafield-file_reference">
                         </div>
-
+                        {{/if}}
                     <div class="page-width page-content page-content--top">
                         <header class="section-header section-header--flush">
-                            {{#each catdata}}
+
                             <h3 class="section-header__title">
-                               {{this.category_name}}
+                               {{categoryDetails.var_catagory_nama}}
                             </h3>
-                            {{/each}}
+
                             <div class="top-short-desc" style="display: none;">
                                 <p> <strong class="show-more"></strong></p>
                             </div>
