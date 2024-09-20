@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Controllerport = require('../controllers/portfolio.js');
 const Controllerproduct = require('../controllers/product1.js');
-const Controllercart = require('../controllers/cart.js');
+// const Controllercart = require('../controllers/cart.js');
 const Controllercheckout = require('../controllers/checkout.js');
 const Controllerwishlist = require('../controllers/wishlist.js');
 const Controllerabout = require('../controllers/aboutus.js');
@@ -16,6 +16,7 @@ const Controllerfaq = require('../controllers/faq.js');
 const Controllerlogin = require('../controllers/login.js');
 const Controllersignup = require('../controllers/signup.js');
 const Controlleraccount = require('../controllers/account.js');
+const Controlleraddcart = require('../controllers/cart.js');
 const Controllercheckmail = require('../controllers/checkmail.js');
 const Controllersubscribe = require('../controllers/subscribe.js');
 const Controllerheader = require('../controllers/headerweb.js');
@@ -77,6 +78,7 @@ router.get('/login', Controllerlogin.getloginInfo);
 router.get('/signup', Controllersignup.getsignupInfo);
 router.post('/check_email_id', Controllercheckmail.getemail);
 router.post('/account', Controlleraccount.addaccount);
+router.post('/add_to_cart', Controlleraddcart.addtocart);
 // router.get('/portfolio/:id', Controllerportfolio.getportfolio);
 //  router.post('/portfolio', Controller.updateportfolio)
 

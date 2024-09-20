@@ -63,5 +63,5 @@ const cartSchema = new mongoose.Schema ({
 
 })
 
-const card = new mongoose.model("cart_master", cartSchema);
+const card = new mongoose.model("cart_masters", cartSchema);
 module.exports = card

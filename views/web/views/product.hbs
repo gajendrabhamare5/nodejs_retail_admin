@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
-    <link rel="canonical" href=""/>
+    <link rel="canonical" href="" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -19,8 +19,8 @@
     <link rel="shortcut icon" href="" type="image/png" />
     <title>product_name</title>
 
-        <meta property="og:title" content="" />
-        <meta property="og:title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:title" content="" />
     <meta name="description" content="">
     <meta name="og:image" content="">
     <meta property="og:type" content="" />
@@ -31,8 +31,8 @@
     <meta property="og:image:height" content="200">
     <meta property="og:site_name" content="">
     <script>
-        var pro_id = '<?php echo $product_id; ?>';
-        var user_id = '<?php echo $user_id_cookie; ?>';
+        var pro_id = '$product_id';
+        var user_id = '$user_id_cookie; ';
         var cookieName = 'recently_viewed_products_' + user_id;
         if (document.cookie.indexOf(cookieName) >= 0) {
             var myCookieValue = getCookie(cookieName);
@@ -71,11 +71,17 @@
             return null;
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=<?php echo time(); ?>"
+        rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="http://localhost:4000/custom.css">
+    {{!-- <link rel="stylesheet" type="text/css" href="http://localhost:4000/custom.css"> --}}
     <style data-shopify>
         @media only screen and (max-width: 768px) {
             .desktopOnly {
@@ -380,15 +386,12 @@
             transition: opacity .25s ease, transform .25s ease-out, background .4s ease;
         }
     </style>
-    <script>
+     <script>
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         window.theme = window.theme || {};
         theme.routes = {
             home: "/",
-           // cart: "/cart.js",
-            cartPage: "/cart",
-            cartAdd: "/cart/add.js",
-            cartChange: "/cart/change.js",
+
             search: "/search"
         };
         theme.strings = {
@@ -422,42 +425,79 @@
             quickView: true
         };
     </script>
+    {{!--  cart: "/cart.js",
+            cartPage: "/cart",
+            cartAdd: "/cart/add.js",
+            cartChange: "/cart/change.js", --}}
     <script>
         window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');
     </script>
-    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js?v=<?php echo time(); ?>" defer="defer"></script>
-    <link rel="stylesheet" href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
-    <script src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=1386235116181753074166621218334" defer="defer"></script>
+    <script
+        src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js?v=<?php echo time(); ?>"
+        defer="defer"></script>
+    <link rel="stylesheet"
+        href="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
+    <script
+        src="http://localhost:4000/cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=1386235116181753074166621218334"
+        defer="defer"></script>
 
 
 </head>
 
-<body class="template-product" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+<body class="template-product" data-center-text="true" data-button_style="square" data-type_header_capitalize="true"
+    data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
     <div id="PageContainer" class="page-container">
         <div class="transition-body">
-        {{>web/header}}
+            {{>web/header}}
             <main class="main-content" id="MainContent">
                 <div id="shopify-section-template--14452073070650__main" class="shopify-section">
-                    <div id="ProductSection-template--14452073070650__main-605172793402" class="product-section" data-section-id="template--14452073070650__main" data-product-id="605172793402" data-section-type="product" data-product-handle="?php echo $product_seo_url; ?>" data-product-title="product_name" data-product-url="/product?id=<?php echo $product_seo_url; ?>" data-aspect-ratio="133.42696629213484" data-img-url="//cdn.shopify.com/s/files/1/0027/7692/4218/products/T2801-darkkk-Gray-1_{width}x.jpg?v=1526306296" data-history="true" data-modal="false">
+                    {{#each pro_data}}
+                    <div id="ProductSection-template--14452073070650__main-605172793402" class="product-section"
+                        data-section-id="template--14452073070650__main" data-product-id="605172793402"
+                        data-section-type="product" data-product-handle="?php echo $product_seo_url; ?>"
+                        data-product-title="product_name" data-product-url="/product?id=<?php echo $product_seo_url; ?>"
+                        data-aspect-ratio="133.42696629213484"
+                        data-img-url="//cdn.shopify.com/s/files/1/0027/7692/4218/products/T2801-darkkk-Gray-1_{width}x.jpg?v=1526306296"
+                        data-history="true" data-modal="false">
                         <div class="page-content page-content--product">
                             <div class="page-width">
                                 <div class="grid grid--product-images--partial">
                                     <div class="grid__item medium-up--three-fifths product-single__sticky">
                                         <div data-product-images data-zoom="true" data-has-slideshow="true">
-                                            <div class="product__photos product__photos-template--14452073070650__main product__photos--beside">
-                                                <div class="product__main-photos" data-aos data-product-single-media-group>
-                                                    <div data-product-photos data-zoom="true" class="product-slideshow" id="ProductPhotos-template--14452073070650__main">
+                                            <div
+                                                class="product__photos product__photos-template--14452073070650__main product__photos--beside">
+                                                <div class="product__main-photos" data-aos
+                                                    data-product-single-media-group>
+                                                    <div data-product-photos data-zoom="true" class="product-slideshow"
+                                                        id="ProductPhotos-template--14452073070650__main">
                                                         <div class="product-main-slide starting-slide" data-index="0">
-                                                            <div data-product-image-main class="product-image-main img_producto_container" data-scale="2">
-                                                                <div class="image-wrap img_producto" style="height: 0; padding-bottom: 133.42696629213484%;">
-                                                                    <img class="photoswipe__image lazyload" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" data-photoswipe-src="" data-photoswipe-width="1780" data-photoswipe-height="2375" data-index="0" data-widths="[360, 540, 720, 900, 1080]" data-aspectratio="0.7494736842105263" data-sizes="auto" alt="product_name" onerror="this.src=''">
+                                                            <div data-product-image-main
+                                                                class="product-image-main img_producto_container"
+                                                                data-scale="2">
+                                                                <div class="image-wrap img_producto"
+                                                                    style="height: 0; padding-bottom: 133.42696629213484%;">
+                                                                    <img class="photoswipe__image lazyload"
+                                                                        src="{{this.product_image}}"
+                                                                        data-photoswipe-src=""
+                                                                        data-photoswipe-width="1780"
+                                                                        data-photoswipe-height="2375" data-index="0"
+                                                                        data-widths="[360, 540, 720, 900, 1080]"
+                                                                        data-aspectratio="0.7494736842105263"
+                                                                        data-sizes="auto" alt="product_name"
+                                                                        onerror="this.src=''">
                                                                     <noscript>
-                                                                        <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="" onerror="">
+                                                                        <img class="lazyloaded"
+                                                                            src="{{this.product_image}}" alt=""
+                                                                            onerror="">
                                                                     </noscript>
-                                                                    <button type="button" class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
+                                                                    <button type="button"
+                                                                        class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
 
-                                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64">
-                                                                            <path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42">
+                                                                        <svg aria-hidden="true" focusable="false"
+                                                                            role="presentation" class="icon icon-search"
+                                                                            viewBox="0 0 64 64">
+                                                                            <path
+                                                                                d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42">
                                                                         </svg>
                                                                         <span class="icon__fallback-text">Close
                                                                             (esc)</span>
@@ -466,65 +506,114 @@
                                                             </div>
                                                         </div>
 
-                                                                <div class="product-main-slide secondary-slide" data-index="<?php echo $i; ?>">
-                                                                    <div data-product-image-main class="product-image-main img_producto_container" data-scale="2">
-                                                                        <div class="image-wrap img_producto" style="height: 0; padding-bottom: 133.42696629213484%;">
-                                                                            <img class="photoswipe__image lazyload" src="" data-photoswipe-src="" data-photoswipe-width="1780" data-photoswipe-height="2375" data-index="<?php echo $i; ?>" data-src="" data-widths="[360, 540, 720, 900, 1080]" data-aspectratio="0.7494736842105263" data-sizes="auto" alt="product_name" onerror="this.src=''">
-                                                                            <noscript>
-                                                                                <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="product_name" onerror="this.src=''">
-                                                                            </noscript>
-                                                                            <button type="button" class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
-                                                                                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64">
-                                                                                    <path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" />
-                                                                                </svg>
-                                                                                <span class="icon__fallback-text">Close
-                                                                                    (esc)</span>
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            <div class="product-main-slide secondary-slide single" data-index="<?php echo $i; ?>">
-                                                                <div data-product-image-main class="product-image-main img_producto_container" data-scale="2">
-                                                                    <div class="image-wrap img_producto" style="height: 0; padding-bottom: 133.42696629213484%;">
-                                                                        <noscript>
-                                                                            <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="product_name" onerror="this.src=''">
-                                                                        </noscript>
-                                                                        <button type="button" class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
-                                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64">
-                                                                                <path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" />
-                                                                            </svg>
-                                                                            <span class="icon__fallback-text">Close
-                                                                                (esc)</span>
-                                                                        </button>
-                                                                    </div>
+                                                        <div class="product-main-slide secondary-slide"
+                                                            data-index="<?php echo $i; ?>">
+                                                            <div data-product-image-main
+                                                                class="product-image-main img_producto_container"
+                                                                data-scale="2">
+                                                                <div class="image-wrap img_producto"
+                                                                    style="height: 0; padding-bottom: 133.42696629213484%;">
+                                                                    <img class="photoswipe__image lazyload" src=""
+                                                                        data-photoswipe-src=""
+                                                                        data-photoswipe-width="1780"
+                                                                        data-photoswipe-height="2375"
+                                                                        data-index="<?php echo $i; ?>" data-src=""
+                                                                        data-widths="[360, 540, 720, 900, 1080]"
+                                                                        data-aspectratio="0.7494736842105263"
+                                                                        data-sizes="auto" alt="product_name"
+                                                                        onerror="this.src=''">
+                                                                    <noscript>
+                                                                        <img class="lazyloaded"
+                                                                            src="{{this.product_image}}"
+                                                                            alt="product_name" onerror="this.src=''">
+                                                                    </noscript>
+                                                                    <button type="button"
+                                                                        class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
+                                                                        <svg aria-hidden="true" focusable="false"
+                                                                            role="presentation" class="icon icon-search"
+                                                                            viewBox="0 0 64 64">
+                                                                            <path
+                                                                                d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" />
+                                                                        </svg>
+                                                                        <span class="icon__fallback-text">Close
+                                                                            (esc)</span>
+                                                                    </button>
                                                                 </div>
                                                             </div>
+                                                        </div>
+
+                                                        <div class="product-main-slide secondary-slide single"
+                                                            data-index="<?php echo $i; ?>">
+                                                            <div data-product-image-main
+                                                                class="product-image-main img_producto_container"
+                                                                data-scale="2">
+                                                                <div class="image-wrap img_producto"
+                                                                    style="height: 0; padding-bottom: 133.42696629213484%;">
+                                                                    <noscript>
+                                                                        <img class="lazyloaded"
+                                                                            src="{{this.product_image}}"
+                                                                            alt="product_name" onerror="this.src=''">
+                                                                    </noscript>
+                                                                    <button type="button"
+                                                                        class="btn btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
+                                                                        <svg aria-hidden="true" focusable="false"
+                                                                            role="presentation" class="icon icon-search"
+                                                                            viewBox="0 0 64 64">
+                                                                            <path
+                                                                                d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" />
+                                                                        </svg>
+                                                                        <span class="icon__fallback-text">Close
+                                                                            (esc)</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                     </div>
                                                 </div>
-                                                <div data-product-thumbs class="product__thumbs product__thumbs--beside product__thumbs-placement--left small--hide" data-position="beside" data-arrows="false" data-aos>
+                                                <div data-product-thumbs
+                                                    class="product__thumbs product__thumbs--beside product__thumbs-placement--left small--hide"
+                                                    data-position="beside" data-arrows="false" data-aos>
                                                     <div class="product__thumbs--scroller">
                                                         <div class="product__thumb-item" data-index="0">
-                                                            <div class="image-wrap" style="height: 0; padding-bottom: 133.42696629213484%;">
-                                                                <a href="" data-product-thumb class="product__thumb" data-index="0" data-id="754115772474">
-                                                                    <img class="animation-delay-3 lazyload" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" data-src="" data-widths="[120, 360, 540, 720]" data-aspectratio="0.7494736842105263" data-sizes="auto" alt="" onerror="this.src=''">
+                                                            <div class="image-wrap"
+                                                                style="height: 0; padding-bottom: 133.42696629213484%;">
+                                                                <a href="" data-product-thumb class="product__thumb"
+                                                                    data-index="0" data-id="754115772474">
+                                                                    <img class="animation-delay-3 lazyload"
+                                                                        src="{{this.product_image}}" data-src=""
+                                                                        data-widths="[120, 360, 540, 720]"
+                                                                        data-aspectratio="0.7494736842105263"
+                                                                        data-sizes="auto" alt="" onerror="this.src=''">
                                                                     <noscript>
-                                                                        <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="" onerror="this.src=''">
+                                                                        <img class="lazyloaded"
+                                                                            src="{{this.product_image}}" alt=""
+                                                                            onerror="this.src=''">
                                                                     </noscript>
                                                                 </a>
                                                             </div>
                                                         </div>
 
-                                                            <div class="product__thumb-item" data-index="<?php echo $j; ?>">
-                                                                <div class="image-wrap" style="height: 0; padding-bottom: 133.42696629213484%;">
-                                                                    <a href="" data-product-thumb class="product__thumb" data-index="<?php echo $j; ?>" data-id="754115805242"><img src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" class="animation-delay-6 lazyload" data-src="" data-widths="[120, 360, 540, 720]" data-aspectratio="0.7494736842105263" data-sizes="auto" alt="product_name" onerror="this.src=''">
-                                                                        <noscript>
-                                                                            <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="product_name">
-                                                                        </noscript>
-                                                                    </a>
-                                                                </div>
+                                                        <div class="product__thumb-item" data-index="<?php echo $j; ?>">
+                                                            <div class="image-wrap"
+                                                                style="height: 0; padding-bottom: 133.42696629213484%;">
+                                                                <a href="" data-product-thumb class="product__thumb"
+                                                                    data-index="<?php echo $j; ?>"
+                                                                    data-id="754115805242"><img
+                                                                        src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg"
+                                                                        class="animation-delay-6 lazyload" data-src=""
+                                                                        data-widths="[120, 360, 540, 720]"
+                                                                        data-aspectratio="0.7494736842105263"
+                                                                        data-sizes="auto" alt="product_name"
+                                                                        onerror="this.src=''">
+                                                                    <noscript>
+                                                                        <img class="lazyloaded"
+                                                                            src="{{this.product_image}}"
+                                                                            alt="product_name">
+                                                                    </noscript>
+                                                                </a>
                                                             </div>
+                                                        </div>
 
                                                     </div>
                                                 </div>
@@ -535,57 +624,53 @@
                                         </script>
                                     </div>
                                     <div class="grid__item medium-up--two-fifths">
+                                        {{#if video_link}}
+                                        {{!-- <a href=" # "></a>
+                                        <video controls="" autoplay="" muted="" loop="" style="
+ position: fixed;
+ top: 170px;
+ bottom: 135px;
+ right: 10px;
+ z-index: 5;
+ width: 107px;
+ height: 199px;
+ box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);
+ border-radius: 10px;
+">
+                                            <source src="{{this.video_link}}" type="video/mp4">
+                                        </video></a> --}}
+                                        <iframe width="165" height="322"
+                                            src="https://www.youtube.com/embed/{{this.video_link}}"
+                                            title="WhatsApp Video 2023 02 09 at 2 54 34 PM" frameborder="0"
+                                            style="
+            position: fixed;top: 170px;bottom: 135px;right: 10px;z-index: 5;width: 107px;height: 199px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);border-radius: 10px;"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        {{/if}}
 
-                                            <!-- <video display: none !important;></video> -->
-                                            </video>
-
-                                            <a href=" # ">
-                                            {{!-- <iframe style="position: fixed;top: 170px;bottom: 135px;right: 10px;z-index: 5;width: 107px;height: 199px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);border-radius: 10px;" src="https://www.youtube.com/embed/<?php echo $product_video?>?autoplay=1&controls=1&loop=1" frameborder="0" allowfullscreen></iframe> --}}
-                                                <!-- src="https://www.youtube.com/embed/YoYzuFt9bVo?autoplay=1&controls=1&loop=1" -->
-                                              <!--   <video controls autoplay muted loop style="position: fixed;top: 170px;bottom: 135px;right: 10px;z-index: 5;width: 107px;height: 199px;box-shadow: inset 0 3px 6px rgb(0 0 0 / 16%), 0 4px 6px rgb(0 0 0 / 45%);border-radius: 10px;"  src="<?php echo "$product_video" ?>">
-                                                    <source src="<?php echo "$product_video" ?>" type="video/mp4">
-                                                    <source src="<?php echo "$product_video" ?>" type="video/ogg">
-                                                    <source src="<?php echo "$product_video" ?>" type="video/webm">
-                                                </video> -->
-                                            </a>
 
                                         <div class="product-single__meta">
                                             <div class="mobileOnly">
                                                 color_sec
                                             </div>
                                             <div class="product-block product-block--header">
-                                                <h1 class="h2 product-single__title">product_name
+                                                <h1 class="h2 product-single__title">{{this.product_name}}
                                                 </h1>
                                             </div>
                                             <div data-product-blocks>
                                                 <div class="product-block product-block--price">
                                                     <span data-a11y-price class="visually-hidden">Regular price</span>
-                                                    <span data-product-price class="product__price">
+                                                    <span data-product-price class="product__price"> </span>
+                                                    Rs. {{this.product_mrp_price}}
+                                                    <span class="grid-product__price--original"><span
+                                                            class="money bacurr-money">Rs.
+                                                            {{this.product_sale_price}}</span></span>
+                                                    <span class="visually-hidden">Sale price</span><span
+                                                        class="grid-product__price--savings"> 50% OFF</span>
 
-                                                    </span>
-
-                                                        <span class="grid-product__price--original"><span class="money bacurr-money">
-                                                               </span></span>
-                                                        <span class="visually-hidden">Sale price</span><span class="grid-product__price--savings">
-                                                            5% OFF</span>
-
-                                                        <span class="grid-product__price--original"><span class="money bacurr-money">
-                                                               500</span></span>
-                                                        <span class="visually-hidden">Sale price</span><span class="grid-product__price--savings">
-                                                            10% OFF</span>
-
-                                                        <span class="grid-product__price--original"><span class="money bacurr-money">
-                                                               1000</span></span>
-                                                        <span class="visually-hidden">Sale price</span><span class="grid-product__price--savings">
-                                                            500% OFF</span>
-
-                                                        <span class="grid-product__price--original"><span class="money bacurr-money">
-                                                                </span></span>
-                                                        <span class="visually-hidden">Sale price</span><span class="grid-product__price--savings">
-                                                            10% OFF</span>
-
-                                                    <span data-save-price="" class="save-amount product__price-savings hide"> <span class="money bacurr-money"></span>
-                                                    </span>
+                                                    <span data-save-price=""
+                                                        class="save-amount product__price-savings hide"> <span
+                                                            class="money bacurr-money"></span> </span>
                                                     <span data-save-price class="product__price-savings hide"></span>
 
                                                     <div class="product__policies rte small--text-center">Tax included.
@@ -605,24 +690,36 @@
 
 
 
-                                                    <hr>
+                                                <hr>
 
                                             </div>
 
                                             <div class="product__quantity">
-                                                <label for="Quantity-template--<?php echo $product_id ?>">Quantity</label>
+                                                <label for="Quantity-template--{{this._id}}">Quantity</label>
                                                 <div class="js-qty__wrapper">
-                                                    <input type="text" id="proqty<?php echo $product_id; ?>" class="js-qty__num quantity_<?php echo $product_id; ?>" value="1" min="1" max="<?php echo $product_qty; ?>" aria-label="quantity" pattern="[0-9]*" name="quantity" readonly>
-                                                    <button type="button" class="js-qty__adjust js-qty__adjust--minus" aria-label="Reduce item quantity by one" onclick="onplusmin_product('min',<?php echo $product_id; ?>,<?php echo $product_qty; ?>)">
-                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20">
-                                                            <path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z">
+                                                    <input type="text" id="proqty{{this._id}}"
+                                                        class="js-qty__num quantity_{{this._id}}" value="1" min="1"
+                                                        max="{{this._id}}" aria-label="quantity" pattern="[0-9]*"
+                                                        name="quantity" readonly>
+                                                    <button type="button" class="js-qty__adjust js-qty__adjust--minus"
+                                                        aria-label="Reduce item quantity by one"
+                                                        onclick="onplusmin_product('min',{{this._id}},{{this.product_qty}})">
+                                                        <svg aria-hidden="true" focusable="false" role="presentation"
+                                                            class="icon icon-minus" viewBox="0 0 20 20">
+                                                            <path fill="#444"
+                                                                d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z">
                                                             </path>
                                                         </svg>
                                                         <span class="icon__fallback-text" aria-hidden="true">−</span>
                                                     </button>
-                                                    <button type="button" class="quantity-plus js-qty__adjust js-qty__adjust--plus" aria-label="Increase item quantity by one" onclick="onplusmin_product('plus',<?php echo $product_id; ?>,<?php echo $product_qty; ?>)">
-                                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20">
-                                                            <path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z">
+                                                    <button type="button"
+                                                        class="quantity-plus js-qty__adjust js-qty__adjust--plus"
+                                                        aria-label="Increase item quantity by one"
+                                                        onclick="onplusmin_product('plus',{{this._id}},{{this.product_qty}})">
+                                                        <svg aria-hidden="true" focusable="false" role="presentation"
+                                                            class="icon icon-plus" viewBox="0 0 20 20">
+                                                            <path fill="#444"
+                                                                d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z">
                                                             </path>
                                                         </svg>
                                                         <span class="icon__fallback-text" aria-hidden="true">+</span>
@@ -630,88 +727,106 @@
                                                 </div>
                                             </div>
 
-                                                <div class="product-block" data-dynamic-variants-enabled>
-                                                    <div class="variant-wrapper js" data-type="button">
-                                                        <label class="variant__label" for="ProductSelect-template--14452073070650__main-605172793402-option-0">
-                                                            Size
-                                                            <span class="variant__label-info">
-                                                                &mdash;
-                                                                <tool-tip-trigger class="tool-tip-trigger" data-tool-tip="size-chart">
-                                                                    <div class="tool-tip-trigger__title">Size chart <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-size-chart" viewBox="0 0 64 64">
-                                                                            <defs>
-                                                                            </defs>
-                                                                            <path class="a" d="M22.39 33.53c-7.46 0-13.5-3.9-13.5-8.72s6-8.72 13.5-8.72 13.5 3.9 13.5 8.72a12 12 0 0 1-.22 1.73" />
-                                                                            <ellipse cx="22.39" cy="24.81" rx="3.28" ry="2.12" />
-                                                                            <path class="a" d="M8.89 24.81V38.5c0 7.9 6.4 9.41 14.3 9.41h31.92V33.53H22.39M46.78 33.53v7.44M38.65 33.53v7.44M30.52 33.53v7.44M22.39 33.53v7.44" />
-                                                                        </svg></div>
-                                                                    <span class="tool-tip-trigger__content" data-tool-tip-content="">
-                                                                        <table>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <th colspan="2">United States</th>
-                                                                                    <th>UK</th>
-                                                                                    <th>Europe</th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>0</td>
-                                                                                    <td>Extra Small</td>
-                                                                                    <td>4</td>
-                                                                                    <td>32</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>4</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <meta charset="utf-8">
-                                                                                        </div>
-                                                                                        <span>Small</span>
-                                                                                    </td>
-                                                                                    <td>6</td>
-                                                                                    <td>34</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>6</td>
-                                                                                    <td>
-                                                                                        <div>
-                                                                                            <meta charset="utf-8">
-                                                                                        </div>
-                                                                                        <span>Small</span>
-                                                                                    </td>
-                                                                                    <td>8</td>
-                                                                                    <td>36</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>8</td>
-                                                                                    <td>Medium</td>
-                                                                                    <td>10</td>
-                                                                                    <td>38</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>10</td>
-                                                                                    <td>Large</td>
-                                                                                    <td>12</td>
-                                                                                    <td>40</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </span>
-                                                                </tool-tip-trigger>
-                                                            </span></label>
-                                                        <fieldset class="variant-input-wrap sizeavailable" name="Size" data-index="option1" data-handle="size" id="ProductSelect-template--<?php echo $product_id ?>-option-0">
-                                                            <legend class="hide">Size</legend>
+                                            <div class="product-block" data-dynamic-variants-enabled>
+                                                <div class="variant-wrapper js" data-type="button">
+                                                    <label class="variant__label"
+                                                        for="ProductSelect-template--14452073070650__main-605172793402-option-0">
+                                                        Size
+                                                        <span class="variant__label-info">
+                                                            &mdash;
+                                                            <tool-tip-trigger class="tool-tip-trigger"
+                                                                data-tool-tip="size-chart">
+                                                                <div class="tool-tip-trigger__title">Size chart <svg
+                                                                        aria-hidden="true" focusable="false"
+                                                                        role="presentation" class="icon icon-size-chart"
+                                                                        viewBox="0 0 64 64">
+                                                                        <defs>
+                                                                        </defs>
+                                                                        <path class="a"
+                                                                            d="M22.39 33.53c-7.46 0-13.5-3.9-13.5-8.72s6-8.72 13.5-8.72 13.5 3.9 13.5 8.72a12 12 0 0 1-.22 1.73" />
+                                                                        <ellipse cx="22.39" cy="24.81" rx="3.28"
+                                                                            ry="2.12" />
+                                                                        <path class="a"
+                                                                            d="M8.89 24.81V38.5c0 7.9 6.4 9.41 14.3 9.41h31.92V33.53H22.39M46.78 33.53v7.44M38.65 33.53v7.44M30.52 33.53v7.44M22.39 33.53v7.44" />
+                                                                    </svg></div>
+                                                                <span class="tool-tip-trigger__content"
+                                                                    data-tool-tip-content="">
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th colspan="2">United States</th>
+                                                                                <th>UK</th>
+                                                                                <th>Europe</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>0</td>
+                                                                                <td>Extra Small</td>
+                                                                                <td>4</td>
+                                                                                <td>32</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>4</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <meta charset="utf-8">
+                                                                                    </div>
+                                                                                    <span>Small</span>
+                                                                                </td>
+                                                                                <td>6</td>
+                                                                                <td>34</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>6</td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        <meta charset="utf-8">
+                                                                                    </div>
+                                                                                    <span>Small</span>
+                                                                                </td>
+                                                                                <td>8</td>
+                                                                                <td>36</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>8</td>
+                                                                                <td>Medium</td>
+                                                                                <td>10</td>
+                                                                                <td>38</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>10</td>
+                                                                                <td>Large</td>
+                                                                                <td>12</td>
+                                                                                <td>40</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </span>
+                                                            </tool-tip-trigger>
+                                                        </span></label>
+                                                    <fieldset class="variant-input-wrap sizeavailable" name="Size"
+                                                        data-index="option1" data-handle="size"
+                                                        id="ProductSelect-template--{{this._id}}-option-0">
+                                                        <legend class="hide">Size</legend>
+                                                        <div class="variant-input" data-index="option1"
+                                                            data-value="s">
+                                                            <input type="radio" value="s"
+                                                                data-index="s"
+                                                                data-productid="{{this._id}}" name="Size"
+                                                                data-variant-input
+                                                                class="size customeclass_{{this._id}}"
+                                                                id="ProductSelect-template--{{this._id}}-option-size-s">
+                                                            <label
+                                                                for="ProductSelect-template--{{this._id}}-option-size-s"
+                                                                class="variant__button-label"> S </label>
+                                                        </div>
 
-                                                                <div class="variant-input" data-index="option1" data-value="<?php echo $value ?>">
-                                                                    <input type="radio" value="<?php echo $value ?>" data-index="<?php echo $key ?>" data-productid="<?php echo $product_id; ?>" name="Size" data-variant-input class="size customeclass_<?php echo $product_id; ?>" id="ProductSelect-template--<?php echo $product_id ?>-option-size-<?php echo $value ?>">
-                                                                    <label for="ProductSelect-template--<?php echo $product_id ?>-option-size-<?php echo $value ?>" class="variant__button-label">5</label>
-                                                                </div>
-
-                                                        </fieldset>
-                                                    </div>
+                                                    </fieldset>
                                                 </div>
-
-                                            <div class="desktopOnly">
-                                              color_sec
                                             </div>
+                                         {{/each}}
+                                           {{!--  <div class="desktopOnly">
+                                                color_sec
+                                            </div> --}}
                                             <!--  <?php
                                                     if ($parent_sku == '') {
                                                         $fea_simialr = $conn->query("select * from product_master where parent_sku='$product_sku'  and product_seo_url != '$product_seo_url'");
@@ -767,8 +882,10 @@
                                                                 <circle class="a" cx="32" cy="32" r="22" />
                                                                 <path class="a" d="M13 21h38M10 32h44M13 43h38M32 10c-12 8-12 37 0 44M32 10c12 8 12 37 0 44" />
                                                             </svg> -->
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
-                                                                <path d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                                viewBox="0 0 640 512">
+                                                                <path
+                                                                    d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z" />
                                                             </svg>
                                                             <span> &nbsp; Fast Shipping</span>
                                                         </span>
@@ -776,24 +893,26 @@
                                                 </ul>
                                             </div>
                                             <div class="product-block product-block--sales-point">
-                                                <span class="blink_me"><i class="fa fa-eye" style="font-size:20px"></i></span><span class="count clc fwm cd" style="font-weight: 600;"> 55</span> <span style="font-weight: 600;">People</span> are viewing this right now
+                                                <span class="blink_me"><i class="fa fa-eye" style="font-size:20px"></i></span>
+                                                <span class="count clc fwm cd"
+                                                    style="font-weight: 600;"> 55</span> <span
+                                                    style="font-weight: 600;">People</span> are viewing this right now
                                             </div>
                                             <div class="product-block product-block--sales-point">
                                                 <ul class="sales-points">
                                                     <li class="sales-point">
 
-                                                            <span class="icon-and-text">
-                                                                <span class="icon icon--inventory"></span>
-
-                                                            </span>
-
-                                                            <span>BEST SELLING </span>
+                                                        <span class="icon-and-text">
+                                                            <span class="icon icon--inventory"></span>
+                                                        BEST SELLING </span>
 
                                                     </li>
                                                     <li class="sales-point hide">
                                                         <span class="icon-and-text inventory--low">
                                                             <span class="icon icon--inventory"></span>
-                                                            <span class="product__policies rte small--text-center" data-product-inventory data-threshold="0">product_shortdescription </span>
+                                                            <span class="product__policies rte small--text-center"
+                                                                data-product-inventory
+                                                                data-threshold="0">product_shortdescription </span>
                                                         </span>
                                                     </li>
                                                     <li data-incoming-inventory class="sales-point hide">
@@ -805,108 +924,176 @@
                                                     </li>
                                                 </ul>
                                             </div>
-
+                                            {{#each pro_data}}
                                             <div class="product-block">
+                                                {{#if pro_data.product_qty}}
+                                                <div class="payment-buttons">
+                                                    <button type="button" name="add" data-add-to-cart
+                                                        class="btn btn--full add-to-cart btn--secondary">
+                                                        <span data-add-to-cart-text data-default-text="out of stock">
+                                                            OUT OF STOCK
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                {{/if}}
+                                                {{#if pro_data.disable_date}}
+                                                {{#if (lt pro_data.disable_date date)}}
+                                                <div class="payment-buttons">
+                                                    <button type="button" name="add" data-add-to-cart
+                                                        class="btn btn--full add-to-cart btn--secondary">
+                                                        <span data-add-to-cart-text
+                                                            data-default-text="Ask for Whatsapp">
+                                                            <a rel="nofollow noreferrer noopener"
+                                                                href="https://api.whatsapp.com/send?phone=8007840596&amp;text=I want information about "
+                                                                target="_blank"> Ask for Whatsapp </a>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                {{/if}}
+                                                {{/if}}
 
-                                                    <div class="payment-buttons">
-                                                        <button type="button" name="add" data-add-to-cart class="btn btn--full add-to-cart btn--secondary">
-                                                            <span data-add-to-cart-text data-default-text="out of stock">
-                                                                OUT OF STOCK
-                                                            </span>
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="payment-buttons">
-                                                        <button type="button" name="add" data-add-to-cart class="btn btn--full add-to-cart btn--secondary">
-                                                            <span data-add-to-cart-text data-default-text="Ask for Whatsapp">
-                                                                <a rel="nofollow noreferrer noopener" href="https://api.whatsapp.com/send?phone=<?php echo $phonenumber_dynamic ?>&amp;text=I want information about " target="_blank"> Ask for Whatsapp </a>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="payment-buttons">
-                                                        <button type="button" style="margin-right: 10px;" onclick="addtocart(<?php echo $product_id; ?>,'add')" name="add" data-add-to-cart class="customcartbtn btn btn--full add-to-cart btn--secondary ">
+                                                <div class="payment-buttons">
+                                                   {{!--  <button type="button" style="margin-right: 10px;"
+                                                        onclick="addtocart({{this._id}},'add')" name="add" data-add-to-cart
+                                                        class="customcartbtn btn btn--full add-to-cart btn--secondary ">
+                                                        <span data-add-to-cart-text data-default-text="Add to cart">
+                                                            Add to cart
+                                                        </span>
+                                                    </button> --}}
+                                                    <button type="button" style="margin-right: 10px;"
+                                                     onclick="addtocart('{{this._id }}','add')"
+                                                     name="add"
+                                                     data-add-to-cart
+                                                      class="customcartbtn btn btn--full add-to-cart btn--secondary">
                                                             <span data-add-to-cart-text data-default-text="Add to cart">
                                                                 Add to cart
                                                             </span>
                                                         </button>
-                                                        <br>
-                                                        <button type="button" onclick="addtocart(<?php echo $product_id; ?>,'buy')" name="add" data-add-to-cart class="customcartbtn customcartbtn_buy btn btn--full add-to-cart btn--secondary">
-                                                            <span data-add-to-cart-text data-default-text="Add to cart">
-                                                                Buy Now
-                                                            </span>
-                                                        </button>
-                                                    </div>
+                                                    <br>
+                                                    <button type="button" onclick="addtocart('{{this._id}}','buy')"
+                                                        name="add" data-add-to-cart
+                                                        class="customcartbtn  btn btn--full add-to-cart btn--secondary">
+                                                        <span data-add-to-cart-text data-default-text="Add to cart">
+                                                            Buy Now
+                                                        </span>
+                                                    </button>
+                                                </div>
 
                                             </div>
+
                                             <div class="product-block product-block--tab">
                                                 <div class="collapsibles-wrapper collapsibles-wrapper--border-bottom">
-                                                    <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-content-tab6051727934022">
+                                                    <button type="button"
+                                                        class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
+                                                        aria-controls="Product-content-tab6051727934022">
                                                         Description
-                                                        <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
-                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
-                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd" />
+                                                        <span
+                                                            class="collapsible-trigger__icon collapsible-trigger__icon--open"
+                                                            role="presentation">
+                                                            <svg aria-hidden="true" focusable="false"
+                                                                role="presentation"
+                                                                class="icon icon--wide icon-chevron-down"
+                                                                viewBox="0 0 28 16">
+                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59"
+                                                                    stroke-width="2" stroke="#000" fill="none"
+                                                                    fill-rule="evenodd" />
                                                             </svg>
                                                         </span>
                                                     </button>
-                                                    <div id="Product-content-tab6051727934022" class="collapsible-content collapsible-content--all">
-                                                        <div class="collapsible-content__inner rte" style=" font-size: 12px;font-weight: 400;opacity: 1;letter-spacing: 0.025em; line-height: 1.4;text-align:justify;">
-                                                          product_fulldescription
+                                                    <div id="Product-content-tab6051727934022"
+                                                        class="collapsible-content collapsible-content--all">
+                                                        <div class="collapsible-content__inner rte"
+                                                            style=" font-size: 12px;font-weight: 400;opacity: 1;letter-spacing: 0.025em; line-height: 1.4;text-align:justify;">
+                                                            {{this.product_full_description}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="product-block product-block--tab">
                                                 <div class="collapsibles-wrapper collapsibles-wrapper--border-bottom">
-                                                    <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-content-tab6051727934021">
+                                                    <button type="button"
+                                                        class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
+                                                        aria-controls="Product-content-tab6051727934021">
                                                         Specification
-                                                        <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
-                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
-                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd" />
+                                                        <span
+                                                            class="collapsible-trigger__icon collapsible-trigger__icon--open"
+                                                            role="presentation">
+                                                            <svg aria-hidden="true" focusable="false"
+                                                                role="presentation"
+                                                                class="icon icon--wide icon-chevron-down"
+                                                                viewBox="0 0 28 16">
+                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59"
+                                                                    stroke-width="2" stroke="#000" fill="none"
+                                                                    fill-rule="evenodd" />
                                                             </svg>
                                                         </span>
                                                     </button>
-                                                    <div id="Product-content-tab6051727934021" class="collapsible-content collapsible-content--all">
-                                                        <div class="collapsible-content__inner rte" style=" font-size: 12px;font-weight: 400;opacity: 1;letter-spacing: 0.025em; line-height: 2;">
+                                                    <div id="Product-content-tab6051727934021"
+                                                        class="collapsible-content collapsible-content--all">
+                                                        <div class="collapsible-content__inner rte"
+                                                            style=" font-size: 12px;font-weight: 400;opacity: 1;letter-spacing: 0.025em; line-height: 2;">
 
-                                                                <strong>Brand: </strong>brand_name <br>
-
-
-                                                                <strong>Fabric: </strong>fabric_name <br>
-
-                                                                <strong>Product Sku: </strong>product_sku <br>
+                                                            <strong>Brand: </strong>brand <br>
 
 
-                                                                <strong>Color: </strong>color_name<br>
+                                                            <strong>Fabric: </strong>fabric <br>
+                                                            {{#if pro_data.product_sku}}
+                                                            <strong>Product Sku: </strong>{{pro_data.product_sku}}<br>
+                                                            {{/if}}
+                                                            {{#if pro_data.color}}
+                                                            <strong>Color: </strong>{{pro_data.color}}<br>
+                                                            {{/if}}
+                                                             {{#if pro_data.fabric}}
+                                                            <strong>Top Fabric: </strong>{{pro_data.fabric}}<br>
+                                                            {{/if}}
 
-                                                                <strong>Top Fabric: </strong>top_fabric<br>
+                                                            {{#if pro_data.bottom_fabric}}
+                                                            <strong>Bottom Fabric: </strong>{{pro_data.bottom_fabric}}<br>
+                                                            {{/if}}
 
-                                                                <strong>Bottom Fabric: </strong>bottom_fabric<br>
+                                                            {{#if pro_data.dupatta_fabric}}
+                                                            <strong>Dupatta Fabric: </strong>{{pro_data.dupatta_fabric}}<br>
+                                                            {{/if}}
 
-                                                                <strong>Dupatta Fabric: </strong>dupatta_fabric<br>
+                                                            {{#if pro_data.saree_fabric}}
+                                                            <strong>Saree Fabric: </strong>{{pro_data.saree_fabric}}<br>
+                                                            {{/if}}
 
-                                                                <strong>Saree Fabric: </strong>saree_fabric<br>
+                                                            {{#if pro_data.blouse_fabric}}
+                                                            <strong>Blouse Fabric: </strong>{{pro_data.blouse_fabric}}<br>
+                                                            {{/if}}
 
-                                                                <strong>Blouse Fabric: </strong>blouse_fabric<br>
-
-                                                                <strong>Lehenga Fabric: </strong>lehenga_fabric<br>
-
-                                                                    <strong>attribute_name</strong><br>
+                                                            {{#if pro_data.lehenga_fabric}}
+                                                            <strong>Lehenga Fabric: </strong>{{pro_data.lehenga_fabric}}<br>
+                                                            {{/if}}
+                                                            <strong>attribute_name</strong><br>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            {{/each}}
                                             <div class="product-block product-block--tab">
                                                 <div class="collapsibles-wrapper collapsibles-wrapper--border-bottom">
-                                                    <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height" aria-controls="Product-content-tab605172793402">
+                                                    <button type="button"
+                                                        class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
+                                                        aria-controls="Product-content-tab605172793402">
                                                         Shipping information
-                                                        <span class="collapsible-trigger__icon collapsible-trigger__icon--open" role="presentation">
-                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16">
-                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd" />
+                                                        <span
+                                                            class="collapsible-trigger__icon collapsible-trigger__icon--open"
+                                                            role="presentation">
+                                                            <svg aria-hidden="true" focusable="false"
+                                                                role="presentation"
+                                                                class="icon icon--wide icon-chevron-down"
+                                                                viewBox="0 0 28 16">
+                                                                <path d="M1.57 1.59l12.76 12.77L27.1 1.59"
+                                                                    stroke-width="2" stroke="#000" fill="none"
+                                                                    fill-rule="evenodd" />
                                                             </svg>
                                                         </span>
                                                     </button>
-                                                    <div id="Product-content-tab605172793402" class="collapsible-content collapsible-content--all">
+                                                    <div id="Product-content-tab605172793402"
+                                                        class="collapsible-content collapsible-content--all">
                                                         <div class="collapsible-content__inner rte">
                                                             <p style=" font-size: 12px;
     font-weight: 400;opacity: 1;letter-spacing: 0.025em; line-height: 1.4;">Use collapsible tabs for more detailed
@@ -922,34 +1109,61 @@
                                             <div class="product-block">
                                                 <div id="fb-root"></div>
 
-                                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=765771441151811&autoLogAppEvents=1" nonce="K1kCqzlo"></script>
-                                                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="" data-size="">
+                                                <script async defer crossorigin="anonymous"
+                                                    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=765771441151811&autoLogAppEvents=1"
+                                                    nonce="K1kCqzlo"></script>
+                                                <div class="fb-share-button"
+                                                    data-href="https://developers.facebook.com/docs/plugins/"
+                                                    data-layout="" data-size="">
                                                     <div class="social-sharing">
-                                                        <a href="//www.facebook.com/sharer.php?u=product/<?php echo $product_seo_url; ?>" target="_blank" class="social-sharing__link" title="Share on Facebook">
-                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 14222 14222">
-                                                                <path d="M14222 7112c0 3549.352-2600.418 6491.344-6000 7024.72V9168h1657l315-2056H8222V5778c0-562 275-1111 1159-1111h897V2917s-814-139-1592-139c-1624 0-2686 984-2686 2767v1567H4194v2056h1806v4968.72C2600.418 13603.344 0 10661.352 0 7112 0 3184.703 3183.703 1 7111 1s7111 3183.703 7111 7111zm-8222 7025c362 57 733 86 1111 86-377.945 0-749.003-29.485-1111-86.28zm2222 0v-.28a7107.458 7107.458 0 0 1-167.717 24.267A7407.158 7407.158 0 0 0 8222 14137zm-167.717 23.987C7745.664 14201.89 7430.797 14223 7111 14223c319.843 0 634.675-21.479 943.283-62.013z" />
+                                                       {{!--  <a href="//www.facebook.com/sharer.php?u=product/<?php echo $product_seo_url; ?>"
+                                                            target="_blank" class="social-sharing__link"
+                                                            title="Share on Facebook"> --}}
+                                                            <svg aria-hidden="true" focusable="false"
+                                                                role="presentation" class="icon icon-facebook"
+                                                                viewBox="0 0 14222 14222">
+                                                                <path
+                                                                    d="M14222 7112c0 3549.352-2600.418 6491.344-6000 7024.72V9168h1657l315-2056H8222V5778c0-562 275-1111 1159-1111h897V2917s-814-139-1592-139c-1624 0-2686 984-2686 2767v1567H4194v2056h1806v4968.72C2600.418 13603.344 0 10661.352 0 7112 0 3184.703 3183.703 1 7111 1s7111 3183.703 7111 7111zm-8222 7025c362 57 733 86 1111 86-377.945 0-749.003-29.485-1111-86.28zm2222 0v-.28a7107.458 7107.458 0 0 1-167.717 24.267A7407.158 7407.158 0 0 0 8222 14137zm-167.717 23.987C7745.664 14201.89 7430.797 14223 7111 14223c319.843 0 634.675-21.479 943.283-62.013z" />
                                                             </svg>
-                                                            <span class="social-sharing__title" aria-hidden="true">Facebook</span>
+                                                            <span class="social-sharing__title"
+                                                                aria-hidden="true">Facebook</span>
                                                             <span class="visually-hidden">Facebook</span>
                                                         </a>
 
-
-                                                        <a href="https://api.whatsapp.com/send?text=product/<?php echo $product_seo_url_wh; ?>" target="_blank" class="social-sharing__link whatsapp-icon" count-layout="horizontal" class="social-sharing__link whatsapp-icon" title="Share on Whatsapp">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="IconChangeColor" height="20" width="20" aria-hidden="true" focusable="false" role="presentation" class="whatsapp-icon">
+{{!--   <a href="https://api.whatsapp.com/send?text=product/<?php echo $product_seo_url_wh; ?>"
+                                                            target="_blank" class="social-sharing__link whatsapp-icon"
+                                                            count-layout="horizontal"
+                                                            class="social-sharing__link whatsapp-icon"
+                                                            title="Share on Whatsapp"> --}}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                                id="IconChangeColor" height="20" width="20"
+                                                                aria-hidden="true" focusable="false" role="presentation"
+                                                                class="whatsapp-icon">
                                                                 <g>
-                                                                    <path fill="none" d="M0 0h24v24H0z" id="mainIconPathAttribute"></path>
-                                                                    <path fill-rule="nonzero" d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z" id="mainIconPathAttribute"></path>
+                                                                    <path fill="none" d="M0 0h24v24H0z"
+                                                                        id="mainIconPathAttribute"></path>
+                                                                    <path fill-rule="nonzero"
+                                                                        d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"
+                                                                        id="mainIconPathAttribute"></path>
                                                                 </g>
                                                             </svg>
-                                                            <span class="social-sharing__title" aria-hidden="true">Whatsapp</span>
+                                                            <span class="social-sharing__title"
+                                                                aria-hidden="true">Whatsapp</span>
                                                             <span class="visually-hidden">Share on Whatsapp</span>
                                                         </a>
 
-                                                        <a href="https://pinterest.com/pin/create/button/?url=product/<?php echo $product_seo_url; ?>&media&description=<?php echo $product_fulldescription; ?>" target="_blank" class="pin-it-button" count-layout="horizontal" class="social-sharing__link" title="Pin on Pinterest">
-                                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pinterest" viewBox="0 0 256 256">
-                                                                <path d="M0 128.002c0 52.414 31.518 97.442 76.619 117.239-.36-8.938-.064-19.668 2.228-29.393 2.461-10.391 16.47-69.748 16.47-69.748s-4.089-8.173-4.089-20.252c0-18.969 10.994-33.136 24.686-33.136 11.643 0 17.268 8.745 17.268 19.217 0 11.704-7.465 29.211-11.304 45.426-3.207 13.578 6.808 24.653 20.203 24.653 24.252 0 40.586-31.149 40.586-68.055 0-28.054-18.895-49.052-53.262-49.052-38.828 0-63.017 28.956-63.017 61.3 0 11.152 3.288 19.016 8.438 25.106 2.368 2.797 2.697 3.922 1.84 7.134-.614 2.355-2.024 8.025-2.608 10.272-.852 3.242-3.479 4.401-6.409 3.204-17.884-7.301-26.213-26.886-26.213-48.902 0-36.361 30.666-79.961 91.482-79.961 48.87 0 81.035 35.364 81.035 73.325 0 50.213-27.916 87.726-69.066 87.726-13.819 0-26.818-7.47-31.271-15.955 0 0-7.431 29.492-9.005 35.187-2.714 9.869-8.026 19.733-12.883 27.421a127.897 127.897 0 0 0 36.277 5.249c70.684 0 127.996-57.309 127.996-128.005C256.001 57.309 198.689 0 128.005 0 57.314 0 0 57.309 0 128.002z" />
+                                                        {{!-- <a href="https://pinterest.com/pin/create/button/?url=product/<?php echo $product_seo_url; ?>&media&description=<?php echo $product_fulldescription; ?>"
+                                                            target="_blank" class="pin-it-button"
+                                                            count-layout="horizontal" class="social-sharing__link"
+                                                            title="Pin on Pinterest"> --}}
+                                                            <svg aria-hidden="true" focusable="false"
+                                                                role="presentation" class="icon icon-pinterest"
+                                                                viewBox="0 0 256 256">
+                                                                <path
+                                                                    d="M0 128.002c0 52.414 31.518 97.442 76.619 117.239-.36-8.938-.064-19.668 2.228-29.393 2.461-10.391 16.47-69.748 16.47-69.748s-4.089-8.173-4.089-20.252c0-18.969 10.994-33.136 24.686-33.136 11.643 0 17.268 8.745 17.268 19.217 0 11.704-7.465 29.211-11.304 45.426-3.207 13.578 6.808 24.653 20.203 24.653 24.252 0 40.586-31.149 40.586-68.055 0-28.054-18.895-49.052-53.262-49.052-38.828 0-63.017 28.956-63.017 61.3 0 11.152 3.288 19.016 8.438 25.106 2.368 2.797 2.697 3.922 1.84 7.134-.614 2.355-2.024 8.025-2.608 10.272-.852 3.242-3.479 4.401-6.409 3.204-17.884-7.301-26.213-26.886-26.213-48.902 0-36.361 30.666-79.961 91.482-79.961 48.87 0 81.035 35.364 81.035 73.325 0 50.213-27.916 87.726-69.066 87.726-13.819 0-26.818-7.47-31.271-15.955 0 0-7.431 29.492-9.005 35.187-2.714 9.869-8.026 19.733-12.883 27.421a127.897 127.897 0 0 0 36.277 5.249c70.684 0 127.996-57.309 127.996-128.005C256.001 57.309 198.689 0 128.005 0 57.314 0 0 57.309 0 128.002z" />
                                                             </svg>
-                                                            <span class="social-sharing__title" aria-hidden="true">Pin it</span>
+                                                            <span class="social-sharing__title" aria-hidden="true">Pin
+                                                                it</span>
                                                             <span class="visually-hidden">Pin on Pinterest</span>
                                                         </a>
                                                     </div>
@@ -959,15 +1173,24 @@
                                                 <h4 class="badge-heading">Your safety is our priority</h4>
                                                 <div class="badge-wrapper">
                                                     <div class="badge-item">
-                                                        <img alt="Genuine product" class="hs-id-93e82e20 hs-lazyload lazyautosizes lazyloaded" data-src="cust_img/easy_returns_1_120x.jpg" src="cust_img/easy_returns_1_120x.jpg">
+                                                        <img alt="Genuine product"
+                                                            class="hs-id-93e82e20 hs-lazyload lazyautosizes lazyloaded"
+                                                            data-src="cust_img/easy_returns_1_120x.jpg"
+                                                            src="http://localhost:4000/cust_img/easy_returns_1_120x.jpg">
                                                         <span>Genuine Product</span>
                                                     </div>
                                                     <div class="badge-item">
-                                                        <img alt="Easy Returns" class="hs-id-54419a08 hs-lazyload lazyautosizes lazyloaded" data-src="cust_img/no_contact_delivery_120x-_1_.jpeg" src="cust_img/no_contact_delivery_120x-_1_.jpeg">
+                                                        <img alt="Easy Returns"
+                                                            class="hs-id-54419a08 hs-lazyload lazyautosizes lazyloaded"
+                                                            data-src="cust_img/no_contact_delivery_120x-_1_.jpeg"
+                                                            src="http://localhost:4000/cust_img/no_contact_delivery_120x-_1_.jpeg">
                                                         <span>No Contact Delivery</span>
                                                     </div>
                                                     <div class="badge-item">
-                                                        <img alt="Safe &amp; Clean Packaging" class="hs-id-6247af7e hs-lazyload lazyautosizes lazyloaded" data-src="cust_img/safe-and-clean-packaging_120x.jpg" src="cust_img/safe-and-clean-packaging_120x.jpg">
+                                                        <img alt="Safe &amp; Clean Packaging"
+                                                            class="hs-id-6247af7e hs-lazyload lazyautosizes lazyloaded"
+                                                            data-src="cust_img/safe-and-clean-packaging_120x.jpg"
+                                                            src="http://localhost:4000/cust_img/safe-and-clean-packaging_120x.jpg">
                                                         <span>Safe &amp; Clean Packaging</span>
                                                     </div>
                                                 </div>
@@ -978,27 +1201,31 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="hr--large">
 
-                        <div class="page-width">
-                            <div class="section-header">
-                                <h2 class="section-header__title">
-                                    Recently Viewed Products
-                                </h2>
-                            </div>
-                            <div class="gallery gallery-responsive portfolio_slider">
+                   {{!--  <hr class="hr--large"> --}}
 
-                            </div>
+                {{!--     <div class="page-width">
+                        <div class="section-header">
+                            <h2 class="section-header__title">
+                                Recently Viewed Products
+                            </h2>
                         </div>
+                        <div class="gallery gallery-responsive portfolio_slider">
 
-                    <div id="shopify-section-template--14452072742970__featured-collection" class="shopify-section index-section">
-                        <div id="CollectionSection-template--14452072742970__featured-collection" data-section-id="template--14452072742970__featured-collection" data-section-type="featured-collection">
+                        </div>
+                    </div> --}}
+
+                    {{!-- <div id="shopify-section-template--14452072742970__featured-collection"
+                        class="shopify-section index-section">
+                        <div id="CollectionSection-template--14452072742970__featured-collection"
+                            data-section-id="template--14452072742970__featured-collection"
+                            data-section-type="featured-collection">
                             <div class="page-width">
                                 <div class="section-header">
                                     <h2 class="section-header__title">
                                         YOU MAY ALSO LIKE
                                     </h2>
-                                    <!-- a href="#" class="btn btn--secondary btn--small section-header__link">View all</a> -->
+                                 //<a href="#" class="btn btn--secondary btn--small section-header__link">View all</a>
                                     <p class="section-header__title">
                                         Shop our all-new styles in ethnic and contemporary fashion for women.
                                     </p>
@@ -1015,14 +1242,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="product-block page-width" id="loopreivew">
+                   {{!--  <div class="product-block page-width" id="loopreivew">
                         <hr>
-                    </div>
+                    </div> --}}
 
-                        <div id="shopify-section-template--14452072742971__featured-collection" class="shopify-section index-section">
-                        </div>
+                  {{!--   <div id="shopify-section-template--14452072742971__featured-collection"
+                        class="shopify-section index-section">
+                    </div> --}}
 
 
                     <!--modals-->
@@ -1031,7 +1259,7 @@
             </main>
 
             <div id="shopify-section-footer" class="shopify-section">
-              {{>web/footer}}
+                {{>web/footer}}
             </div>
         </div>
     </div>
@@ -1063,18 +1291,24 @@
             </div>
             <div class="pswp__ui pswp__ui--hidden">
                 <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
-                        <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left"
+                        viewBox="0 0 284.49 498.98">
+                        <path
+                            d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
                     </svg>
                 </button>
-                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close"
+                    title="Close (esc)">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close"
+                        viewBox="0 0 64 64">
                         <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
                     </svg>
                 </button>
                 <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
-                        <path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right"
+                        viewBox="0 0 284.49 498.98">
+                        <path
+                            d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
                     </svg>
                 </button>
             </div>
@@ -1082,7 +1316,8 @@
     </div>
     <tool-tip data-tool-tip="">
         <div class="tool-tip__inner" data-tool-tip-inner>
-            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false"
+                    role="presentation" class="icon icon-close" viewBox="0 0 64 64">
                     <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
                 </svg></button>
             <div data-tool-tip-title> product_name </div>
@@ -1091,14 +1326,15 @@
         </div>
     </tool-tip>
 </body>
-{{!-- <script src="assets/custom_web.js"></script>
-<script src="assets/toastr.min.js"></script>
-<script src="assets/addtoany.js"></script>
-<script>
-    var pro_id = '<?php echo $product_id ?>';
-</script>
-<script src="product_custom.js"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="http://localhost:4000/assets/custom_web.js"></script>
+<script src="http://localhost:4000/assets/toastr.min.js"></script>
+<script src="http://localhost:4000/assets/addtoany.js"></script>
+
+{{!-- <script src="http://localhost:4000/product_custom.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $('.gallery-responsive').slick({
         dots: false,
@@ -1107,28 +1343,28 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false
             }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        }
             // You can unslick at a given breakpoint now by adding:
             // settings: "unslick"
             // instead of a settings object

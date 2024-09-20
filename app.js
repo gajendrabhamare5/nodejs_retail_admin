@@ -33,6 +33,7 @@ const hbs = exphbs.create({
     ],
     helpers: {
         lte: (a, b) => a <= b,
+        lt : (a, b) => a < b,
         intval: (value) => parseInt(value, 10),
         add: (a, b) => a + b,
         objectArrayContains: (array, property, value, options) => {

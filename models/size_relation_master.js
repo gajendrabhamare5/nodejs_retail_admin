@@ -29,6 +29,6 @@ const sizeRelationSchema = new mongoose.Schema ({
 
 })
 
-const sizeRelation = new mongoose.model("size_relation_master", sizeRelationSchema);
+const sizeRelation = new mongoose.model("size_relation_masters", sizeRelationSchema);
 
 module.exports = sizeRelation

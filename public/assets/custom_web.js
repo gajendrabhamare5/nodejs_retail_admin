@@ -23,10 +23,13 @@ function addtocart(product_id,carttype1) {
     var sizeid = "";
     var qty = $(".quantity_" + product_id).val();
     if ($("fieldset").hasClass("sizeavailable")) {
+        console.log("size available");
+
         if ($(".customeclass_" + product_id).hasClass("active")) {
             sizename = $(".customeclass_" + product_id + ".active").val();
             sizeid = $(".customeclass_" + product_id + ".active").data('index');
         } else {
+
             $(".customcartbtn").removeClass('load-more-overlay loading');
             $(".customcartbtn").attr("onclick", "addtocart(" + product_id + ")");
             toastr.error("", "Please select size", {
@@ -50,7 +53,7 @@ function addtocart(product_id,carttype1) {
     var type = "add_to_cart";
     $.ajax({
         type: "POST",
-        url: baseurl + "ajaxfiles/add_to_cart.php",
+        url:"http://localhost:4000/add_to_cart",
         dataType: "JSON",
         data: { Size: sizename, sizeid: sizeid, carttype1: carttype1, ProId: product_id, Type: type, Qty: qty, Cart_type: "catalog" },
         success: function (data) {
@@ -61,7 +64,7 @@ function addtocart(product_id,carttype1) {
             //var returnedData = JSON.parse(data);
             if (data.status == "ok") {
                 if (carttype1 == "buy") {
-                    location.href = baseurl + "checkout";
+                    location.href = "http://localhost:4000/checkout";
                     return false;
                 }
                 $('.mfp-close').trigger('click');
