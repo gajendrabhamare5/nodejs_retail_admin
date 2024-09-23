@@ -26,7 +26,8 @@
     <meta property="og:description" content="">
     <meta property="og:image" content="">
     <meta property="og:image:secure_url" content="">
-    <link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227" rel="stylesheet" type="text/css" media="all" />
+    <link href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themef0c4.css?v=22983630061457647171666212227"
+        rel="stylesheet" type="text/css" media="all" />
     <style data-shopify>
         :root {
             --typeHeaderPrimary: "Tenor Sans";
@@ -104,7 +105,8 @@
     </script>
     <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/vendor-scripts-v11.js" defer="defer"></script>
     <link rel="stylesheet" href="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/country-flags.css">
-    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183" defer="defer"></script>
+    <script src="cdn.shopify.com/s/files/1/0027/7692/4218/t/38/assets/themeddb0.js?v=13862351161817530741666212183"
+        defer="defer"></script>
 
 </head>
 <style>
@@ -145,7 +147,7 @@
     }
 
     .crossbutton {
-      /*   left: calc(100% - 50px); */
+        /*   left: calc(100% - 50px); */
         position: absolute;
         color: white;
         background: #ea4a4a;
@@ -159,143 +161,182 @@
 
     @media screen and (min-width: 768px) {
         .crossbutton {
-          /*   left: calc(100% - 630px); */
+            /*   left: calc(100% - 630px); */
         }
     }
 </style>
 
-<body class="template-cart" data-center-text="true" data-button_style="square" data-type_header_capitalize="true" data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
+<body class="template-cart" data-center-text="true" data-button_style="square" data-type_header_capitalize="true"
+    data-type_headers_align_text="true" data-type_product_capitalize="true" data-swatch_style="round">
 
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">Skip to content</a>
 
     <div id="PageContainer" class="page-container">
         <div class="transition-body">
-         {{>web/header}}
+            {{>web/header}}
             <main class="main-content" id="MainContent">
                 <div id="shopify-section-template--14452072579130__main" class="shopify-section">
                     <div class="page-width page-content">
                         <header class="section-header text-center">
                             <h1 class="section-header__title">Cart</h1>
 
+                            {{#if (gt cartItems 0)}}
+                            <div class="text-spacing">
+                                <p>Your cart is currently empty</p>
+                                <p><a href='http://localhost:4000/'>Continue shopping1</a></p>
+                            </div>
 
-                                <div class="text-spacing">
-                                    <p>Your cart is currently empty</p>
-                                    <p><a href='http://localhost:4000/'>Continue shopping</a></p>
-                                </div>
+                            {{else}}
+                            <div class=" text-spacing">
 
-                                <div class=" text-spacing">
+                                <p><a href='http://localhost:4000/'>Continue shopping</a></p>
+                            </div>
+                            {{/if}}
 
-                                    <p><a href='http://localhost:4000/'>Continue shopping</a></p>
-                                </div>
                         </header>
 
 
-                        <form action="" method="post" novalidate="" data-location="page" id="CartPageForm">
+                        <form action="http://localhost:4000/checkout" method="post" novalidate="" data-location="page"
+                            id="CartPageForm">
                             <div class="cart__page">
                                 <div data-products="" class="cart__page-col showcart">
+                                    {{#each cartItems}}
                                     <div class="maincart">
 
-                                                       {{!--  <div class="prod-offer-wrap subcart">
-                                                            <div class="prod-offer-text">
-                                                                <p class="prod-offer-head">scheme_name</p>
-                                                                <p class="prod-offer-desc">text_applied</p>
-                                                            </div>
-                                                            <div>
-                                                                <button class="prod-offer-btn" style="color: rgb(234, 128, 0); font-size: 16px; font-family: montserrat;"><a href="">Add items</a></button>
-                                                            </div>
-                                                        </div> --}}
+                                        {{!-- <div class="prod-offer-wrap subcart">
+                                            <div class="prod-offer-text">
+                                                <p class="prod-offer-head">scheme_name</p>
+                                                <p class="prod-offer-desc">text_applied</p>
+                                            </div>
+                                            <div>
+                                                <button class="prod-offer-btn"
+                                                    style="color: rgb(234, 128, 0); font-size: 16px; font-family: montserrat;"><a
+                                                        href="">Add items</a></button>
+                                            </div>
+                                        </div> --}}
 
 
-                                            <div class="cart__item" data-key="7832701861946:66be641dcd6160f6ab01156da3783e9f">
-                                            <a href="javaScript:void(0)" class="dcartitemremove" aria-label="button" data-type="carts" data-id="549"><span class="crossbutton">x</span></a>
-                                                <div class="cart__image">
-                                                    <!-- <a href="/<?php echo $pagename . $product_seo_url ?>" style="height: 0; padding-bottom: 133.42696629213484%;"> -->
-                                                    <img class="lazyautosizes lazyloaded" data-widths="[180, 360, 540]" data-aspectratio="" data-sizes="auto" alt="" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" sizes="150px" srcset="<?Php echo $img; ?>">
+                                        <div class="cart__item"
+                                            data-key="7832701861946:66be641dcd6160f6ab01156da3783e9f">
+                                            <a href="javaScript:void(0)" class="dcartitemremove" aria-label="button"
+                                                data-type="carts" data-id="{{this._id}}"><span
+                                                    class="crossbutton">x</span></a>
 
-                                                    <noscript>
-                                                        <img class="lazyloaded" src="\images\product\2024\6\test-product-bbbb-2024-06-08T04-09-22.896Z.jpg" alt="">
-                                                    </noscript>
-                                                    <!-- </a> -->
-                                                </div>
-                                                <div class="cart__item-details">
-                                                    <div class="cart__item-title">
-                                                        <a href="" class="cart__item-name">
-                                                            title
-                                                        </a>
-                                                        <div class="cart__item--variants">
 
-                                                                <div>
-                                                                    <span>Size:</span> strtoupper($Size)
+                                            <div class="cart__image">
+                                                {{#if this.fetch_product}}
+                                                <!-- <a href="/<?php echo $pagename . $product_seo_url ?>" style="height: 0; padding-bottom: 133.42696629213484%;"> -->
+                                                <img class="lazyautosizes lazyloaded" data-widths="[180, 360, 540]"
+                                                    data-aspectratio="" data-sizes="auto" alt=""
+                                                    src="{{this.fetch_product.product_image}}" sizes="150px">
+                                                {{/if}}
+                                                <!-- </a> -->
+                                            </div>
 
-                                                                </div>
 
-                                                            <div>
-                                                                <span>Weight:</span><span class="pro-weight977">45</span>
-                                                            </div>
-                                                            <!-- <div>
+                                            <div class="cart__item-details">
+                                                <div class="cart__item-title">
+                                                    <a href="" class="cart__item-name">
+                                                        {{this.fetch_product.product_name}}
+                                                    </a>
+                                                    <div class="cart__item--variants">
+
+                                                        <div>
+                                                            <span>Size:</span> {{this.Size}}
+
+                                                        </div>
+
+                                                        <div>
+                                                            <span>Weight:</span><span class="pro-weight{{this.fetch_product._id}}">{{this.weightTotal}}</span>
+                                                        </div>
+                                                        <!-- <div>
                                                             <span>Pcs:</span> <?php echo $productcount * $qty * $catalog_pcs ?>
                                                         </div> -->
 
-                                                                <div>
-
-                                                                    <div class="prod-offer-apply">
-
-                                                                        <p style="margin-left: 5px;color: #63c954;"></p>
-                                                                    </div>
-                                                                </div>
-
-{{!--
-                                                                <div>
-                                                                    <span>Point:</span><span class="pro-point98898"></span>
-                                                                </div>
- --}}
-                                                        </div>
-                                                        <div class="cart__item--variants">
-
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="cart__item-sub">
                                                         <div>
 
-                                                            <div class="js-qty__wrapper">
-                                                                <label for="proqty<?php echo $ccid; ?>" class="hidden-label">Quantity</label>
-                                                                <input type="text" id="proqty<?php echo $ccid; ?>" name="updates[]" class="js-qty__num" value="<?php echo $qty ?>" min="1" max="100000" pattern="[0-9]*" data-id="proqty<?php echo $ccid; ?>" readonly>
-                                                                <button type="button" onclick="onplusmin('min','<?php echo $ccid; ?>')" class="quantity-minus js-qty__adjust js-qty__adjust--minus" aria-label="Reduce item quantity by one">
-                                                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 20 20">
-                                                                        <path fill="#444" d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z"></path>
-                                                                    </svg>
-                                                                    <span class="icon__fallback-text" aria-hidden="true">−</span>
-                                                                </button>
-                                                                <button type="button" onclick="onplusmin('plus','<?php echo $ccid; ?>')" class="quantity-plus js-qty__adjust js-qty__adjust--plus" aria-label="Increase item quantity by one">
-                                                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 20 20">
-                                                                        <path fill="#444" d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z"></path>
-                                                                    </svg>
-                                                                    <span class="icon__fallback-text" aria-hidden="true">+</span>
-                                                                </button>
-                                                            </div>
+                                                            <div class="prod-offer-apply">
 
-                                                            <div class="cart__remove">
-
-                                                                <button type="button" class="dcartitemremove" aria-label="button" data-type="carts" data-id="988">
-                                                                    Remove
-                                                                </button>
-
+                                                                <p style="margin-left: 5px;color: #63c954;"></p>
                                                             </div>
                                                         </div>
 
-                                                        <div class="cart__item-price-col text-right">
+                                                        {{!--
+                                                        <div>
+                                                            <span>Point:</span><span class="pro-point98898"></span>
+                                                        </div>
+                                                        --}}
+                                                    </div>
+                                                    <div class="cart__item--variants">
 
-                                                            <span class="cart__pricecart-item-price fwm cd js_tt_price_it" id="tt-subtot<?php echo $ccid; ?>">
+                                                    </div>
 
-                                                            </span>
+                                                </div>
+                                                <div class="cart__item-sub">
+                                                    <div>
+
+                                                        <div class="js-qty__wrapper">
+                                                            <label for="proqty{{this._id}}"
+                                                                class="hidden-label">Quantity</label>
+                                                            <input type="text" id="proqty{{this._id}}" name="updates[]"
+                                                                class="js-qty__num" value="{{this.qty}}" min="1"
+                                                                max="100000" pattern="[0-9]*"
+                                                                data-id="proqty{{this._id}}" readonly>
+                                                            <button type="button"
+                                                                onclick="onplusmin('min','{{this._id}}')"
+                                                                class="quantity-minus js-qty__adjust js-qty__adjust--minus"
+                                                                aria-label="Reduce item quantity by one">
+                                                                <svg aria-hidden="true" focusable="false"
+                                                                    role="presentation" class="icon icon-minus"
+                                                                    viewBox="0 0 20 20">
+                                                                    <path fill="#444"
+                                                                        d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z">
+                                                                    </path>
+                                                                </svg>
+                                                                <span class="icon__fallback-text"
+                                                                    aria-hidden="true">−</span>
+                                                            </button>
+                                                            <button type="button"
+                                                                onclick="onplusmin('plus','{{this._id}}')"
+                                                                class="quantity-plus js-qty__adjust js-qty__adjust--plus"
+                                                                aria-label="Increase item quantity by one">
+                                                                <svg aria-hidden="true" focusable="false"
+                                                                    role="presentation" class="icon icon-plus"
+                                                                    viewBox="0 0 20 20">
+                                                                    <path fill="#444"
+                                                                        d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z">
+                                                                    </path>
+                                                                </svg>
+                                                                <span class="icon__fallback-text"
+                                                                    aria-hidden="true">+</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="cart__remove">
+
+                                                            <button type="button" class="dcartitemremove"
+                                                                aria-label="button" data-type="carts" data-id="988">
+                                                                Remove
+                                                            </button>
 
                                                         </div>
+                                                    </div>
+
+                                                    <div class="cart__item-price-col text-right">
+
+                                                        <span class="cart__pricecart-item-price fwm cd js_tt_price_it"
+                                                            id="tt-subtot{{this._id}}">
+
+                                                        </span>
+
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
 
+                                    </div>
+                                    {{/each}}
                                 </div>
 
                                 <div class="cart__page-col">
@@ -305,10 +346,10 @@
                                     </div>
 
                                     <div class="cart__item-sub cart__item-row">
-                                        <input type="hidden" id="fullsubtotalcart" value="<?php echo $total; ?>">
+                                        <input type="hidden" id="fullsubtotalcart" value=" {{total}}">
                                         <div>Subtotal</div>
 
-                                        <div data-subtotal="" id="subtotcart"> 56565</div>
+                                        <div data-subtotal="" id="subtotcart"> {{total}}</div>
                                     </div>
                                     <div class="cart__item-sub cart__item-row combodiv" style="display: none;">
                                         <input type="hidden" id="combodiscount" value="0">
@@ -318,7 +359,8 @@
                                     </div>
 
                                     <div class="cart__item-row cart__checkout-wrapper">
-                                        <button type="submit" name="checkout" data-terms-required="false" class="btn cart__checkout">
+                                        <button type="submit" name="checkout" data-terms-required="false"
+                                            class="btn cart__checkout">
                                             Check out
                                         </button>
 
@@ -337,8 +379,11 @@
 
                 </div>
                 <hr class="hr--large">
-                <div id="shopify-section-template--14452072579130__featured-collection" class="shopify-section index-section">
-                    <div id="CollectionSection-template--14452072579130__featured-collection" data-section-id="template--14452072579130__featured-collection" data-section-type="featured-collection">
+                <div id="shopify-section-template--14452072579130__featured-collection"
+                    class="shopify-section index-section">
+                    <div id="CollectionSection-template--14452072579130__featured-collection"
+                        data-section-id="template--14452072579130__featured-collection"
+                        data-section-type="featured-collection">
                         <div class="page-width">
                             <div class="section-header">
                                 <h2 class="section-header__title">
@@ -359,7 +404,8 @@
                         </div>
                         <div class="section-header">
 
-                            <a href="index.php" class="btn btn--secondary btn--small section-header__link">View all</a>
+                            <a href="http://localhost:4000"
+                                class="btn btn--secondary btn--small section-header__link">View all</a>
                         </div>
                     </div>
                 </div>
@@ -371,7 +417,7 @@
                         border-top: 1px solid #e8e8e1;
                     }
                 </style>
-            {{>web/footer}}
+                {{>web/footer}}
             </div>
         </div>
     </div>
@@ -387,20 +433,26 @@
 
             <div class="pswp__ui pswp__ui--hidden">
                 <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--left" title="Previous">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98">
-                        <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left"
+                        viewBox="0 0 284.49 498.98">
+                        <path
+                            d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
                     </svg>
                 </button>
 
-                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close" title="Close (esc)">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                <button class="btn btn--body btn--circle btn--large pswp__button pswp__button--close"
+                    title="Close (esc)">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close"
+                        viewBox="0 0 64 64">
                         <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
                     </svg>
                 </button>
 
                 <button class="btn btn--body btn--circle pswp__button pswp__button--arrow--right" title="Next">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98">
-                        <path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right"
+                        viewBox="0 0 284.49 498.98">
+                        <path
+                            d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
                     </svg>
                 </button>
             </div>
@@ -408,7 +460,8 @@
     </div>
     <tool-tip data-tool-tip="">
         <div class="tool-tip__inner" data-tool-tip-inner>
-            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+            <button class="tool-tip__close" data-tool-tip-close=""><svg aria-hidden="true" focusable="false"
+                    role="presentation" class="icon icon-close" viewBox="0 0 64 64">
                     <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" />
                 </svg></button>
             <div data-tool-tip-title>Your Shopping Cart</div>
@@ -418,13 +471,13 @@
     </tool-tip>
 </body>
 
-<script src="assets/custom_web.js?ver=<?php echo time(); ?>"></script>
-<script src="assets/toastr.min.js"></script>
+<script src="http://localhost:4000/assets/custom_web.js?ver=<?php echo time(); ?>"></script>
+<script src="http://localhost:4000/assets/toastr.min.js"></script>
 
 </html>
 <script>
-    var basurl = '<?php echo $base_url; ?>';
-    $(function() {
+    var basurl = 'http://localhost:4000/';
+    $(function () {
 
         var rowcount = '<? echo $rowcount; ?>';
         var scheme_count = '<? echo $scheme_count; ?>';
@@ -432,7 +485,7 @@
             view_cart_design();
         }
 
-        $('body').on('click', '.dcartitemremove', function() {
+        $('body').on('click', '.dcartitemremove', function () {
             var cartid = $(this).attr("data-id");
             var carttype = $(this).attr("data-type");
             console.log(cartid);
@@ -443,14 +496,14 @@
 
             $.ajax({
                 type: "POST",
-                url: baseurl + "ajaxfiles/add_to_cart.php",
+                url: baseurl + "http://localhost:4000/add_to_cart",
                 dataType: "JSON",
                 data: {
                     Type: type,
                     CID: cartid,
                     CType: ctype
                 },
-                success: function(data) {
+                success: function (data) {
                     $(".countproduct").html(data.count);
                     if (carttype == "popup") {
                         $(".opencart").click();
@@ -473,7 +526,7 @@
             url: baseurl + "ajaxfiles/view_cart_scheme.php",
             dataType: "json",
 
-            success: function(data) {
+            success: function (data) {
                 $(".showcart").html('');
                 var cartitem = data.cartitem;
                 var subtotal = data.total;
@@ -532,7 +585,7 @@
 
                     if (offer != '' && jQuery.inArray(offer, scheme_aplied) === -1 && offer_applied == true) {
                         scheme_aplied.push(offer);
-                        scheme_array[offer].sort(function(a, b) {
+                        scheme_array[offer].sort(function (a, b) {
                             return a - b
                         });
                         var count1 = all_scm[0]['free_qty']
@@ -704,6 +757,6 @@
 
 <script>
     var cart_array = [];
-    cart_array = <?php echo json_encode($cart_array); ?>;
+    cart_array = <? php echo json_encode($cart_array); ?>;
     console.log(cart_array);
 </script>

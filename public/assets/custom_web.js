@@ -301,7 +301,7 @@ function onplusmin(type, cart_id) {
 }
 function viewcart() {
 
-    location.href = baseurl+'cart';
+    location.href = 'http://localhost:4000/cart';
     return false;
     $(".comman").hide();
     $(".cartsproducts").addClass("load-more-overlay loading");
