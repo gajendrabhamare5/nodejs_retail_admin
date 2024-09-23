@@ -161,12 +161,13 @@ const viewcart = async (req, res) => {
 
                 const weightTotal= validProduct.product_weight * qty;
                 item.weightTotal = weightTotal;
+                item.qrate = qrate;
 
             } else {
                 await Cart.delete({ ProID: proidg });
             }
         }));
-        console.log("Total Price:", total);
+       // console.log("Total Price:", total);
 
         // Render the view with updated cart items
         res.render("web/views/cart", { cartItems,total });
