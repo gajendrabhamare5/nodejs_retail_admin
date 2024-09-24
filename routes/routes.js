@@ -79,6 +79,8 @@ router.get('/signup', Controllersignup.getsignupInfo);
 router.post('/check_email_id', Controllercheckmail.getemail);
 router.post('/account', Controlleraccount.addaccount);
 router.post('/add_to_cart', Controlleraddcart.addtocart);
+router.post('/update_to_cart', Controlleraddcart.updatetocart);
+router.post('/view_cart_scheme', Controlleraddcart.viewcartscheme);
 router.get('/cart', Controlleraddcart.viewcart);
 // router.get('/portfolio/:id', Controllerportfolio.getportfolio);
 //  router.post('/portfolio', Controller.updateportfolio)

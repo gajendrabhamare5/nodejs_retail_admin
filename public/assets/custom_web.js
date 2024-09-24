@@ -211,6 +211,7 @@ function onplusmin(type, cart_id) {
     // $(".quantity-plus").css("pointer-events", "none");
     // $(".quantity-minus").css("pointer-events", "none");
     var qty1 = $("#proqty" + cart_id).val();
+
     if (type == "min") {
         var qty = +qty1 - 1;
     } else {
@@ -219,7 +220,7 @@ function onplusmin(type, cart_id) {
     if (qty != "0") {
         $.ajax({
             type: "POST",
-            url: baseurl + "ajaxfiles/update_to_cart.php",
+            url: "update_to_cart",
             dataType: "JSON",
             data: {
                 Qty: qty,

@@ -496,7 +496,7 @@
 
             $.ajax({
                 type: "POST",
-                url: baseurl + "http://localhost:4000/add_to_cart",
+                url: "http://localhost:4000/add_to_cart",
                 dataType: "JSON",
                 data: {
                     Type: type,
@@ -523,7 +523,7 @@
         console.log(oldsubtot, 'oldsubtot');
         $.ajax({
             type: "POST",
-            url: baseurl + "ajaxfiles/view_cart_scheme.php",
+            url: "http://localhost:4000/view_cart_scheme",
             dataType: "json",
 
             success: function (data) {
