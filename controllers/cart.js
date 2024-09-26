@@ -21,10 +21,10 @@ const addtocart = async (req, res) => {
         const sizeid = req.body.sizeid
         const carttype1 = req.body.carttype1
         const proid = req.body.ProId
-        const qty = req.body.Qty
+        const qty = Number(req.body.Qty)
         const Cart_type = req.body.Cart_type
         const datetime = new Date();
-        console.log("body", req.body);
+        //console.log("body", req.body);
 
         try {
             const cartData = await Cart.find({
@@ -33,37 +33,42 @@ const addtocart = async (req, res) => {
                 Size: { $regex: new RegExp(`^${Size.toLowerCase()}$`, 'i') },
                 cartType: Cart_type
             });
-            console.log("cartData",cartData);
+            // console.log("cartData",cartData);
 
             let oldqty = 0;
             if (cartData && cartData.length > 0) {
-                oldqty = cartData[0].Qty;
+                oldqty = Number(cartData[0].Qty);
             }
-           /*  let oldqty = cartData ? cartData.Qty : 0;
-            console.log("oldqty",oldqty); */
+            /*  let oldqty = cartData ? cartData.Qty : 0;
+             console.log("oldqty",oldqty); */
 
             let newqty = oldqty + qty;
-            console.log("newqty",newqty);
+            // console.log("newqty",newqty);
 
             let stock = 0;
 
             if (Size) {
 
                 const sizeRelation = await sizerelationMaster.find({ product_id: proid, size: { $regex: new RegExp(Size.toLowerCase(), 'i') } });
-                stock = sizeRelation ? sizeRelation.size_qty : 0;
-                console.log("size stock",stock);
+
+                if (sizeRelation.length > 0) {
+                    stock = Number(sizeRelation[0].size_qty);
+                } else {
+                    stock = 0;
+                }
+                // console.log("stock size",stock);
 
             } else {
 
                 const product = await product_master.find({ product_id: proid });
                 stock = product ? product.product_qty : 0;
-                console.log("stock",stock);
+                //console.log("stock",stock);
             }
             if (stock < newqty) {
 
                 let message;
                 if (stock > 0) {
-                        message = `Only ${stock} stocks are available`;
+                    message = `Only ${stock} stocks are available`;
                 } else {
                     message = "Out of Stock";
                 }
@@ -71,15 +76,15 @@ const addtocart = async (req, res) => {
                 return res.status(400).json({ status: "error", message })
 
             } else {
-                if (cartData) {
-
+                if (cartData.length > 0) {
+                    // console.log("inn if")
                     const updatecartdata = await Cart.updateOne(
                         { UserID: uid, ProID: proid, Size: { $regex: new RegExp(`^${Size.toLowerCase()}$`, 'i') }, cartType: Cart_type },
                         { $set: { Qty: newqty } }
                     );
-                    //  console.log("updatecartdata",updatecartdata);
+                    // console.log("updatecartdata",updatecartdata);
                 } else {
-                        console.log("inn else");
+                    // console.log("inn else");
 
                     const newData = new Cart({
                         UserID: uid,
@@ -90,10 +95,10 @@ const addtocart = async (req, res) => {
                         cartType: Cart_type
                     });
                     const savedata = await newData.save();
-                    console.log("Inserted new cart item",savedata);
+                    // console.log("Inserted new cart item",savedata);
 
                 }
-               // res.status(200).json({ status: "ok", message: "Inserted to card" });
+                // res.status(200).json({ status: "ok", message: "Inserted to card" });
             }
 
             if (carttype1 == "buy") {
@@ -106,7 +111,7 @@ const addtocart = async (req, res) => {
             return res.status(200).json({
                 status: "ok",
                 count: rowcount,
-                message: "success",
+                message: "",
                 stock: stock,
                 qu: ""
             });
@@ -214,7 +219,7 @@ const viewcart = async (req, res) => {
     }
 };
 
-const updatetocart = async (req,res)=>{
+const updatetocart = async (req, res) => {
     const cid = req.body.CID
     const Qty = req.body.Qty
 
@@ -239,7 +244,7 @@ const updatetocart = async (req,res)=>{
             stock = product ? product.product_qty : 0;
         }
 
-       // let newqty = Math.abs(oldqty - Qty);
+        // let newqty = Math.abs(oldqty - Qty);
 
         if (stock < Qty) {
             if (stock > 0) {
@@ -291,7 +296,7 @@ const updatetocart = async (req,res)=>{
 
 }
 
-const viewcartscheme = async(req,res)=>{
+const viewcartscheme = async (req, res) => {
 
     const uidNew = 22
     let cart_product = [];

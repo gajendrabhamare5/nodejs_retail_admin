@@ -73,7 +73,7 @@ function addtocart(product_id,carttype1) {
                 $(".countproduct").html(data.count);
                 if(data.count > 0) {
                     $(".countproduct").css("display","block");
-                    wishlist(product_id,'addtocart');
+                   // wishlist(product_id,'addtocart');
                 }else{
                     $(".countproduct").css("display","none");
                 }
@@ -941,7 +941,7 @@ function wishlist(id, type = null) {
         var add_type = "addtocart";
     }
     $.ajax({
-        url: baseurl + "add_wishlist_new.php",
+        url: "http://localhost:4000/add_wishlist_new",
         type: "POST",
         dataType: "json",
         data: {

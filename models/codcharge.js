@@ -33,6 +33,6 @@ const codSchema = new mongoose.Schema ({
 
 })
 
-const cod_charge = new mongoose.model("cod_charge", codSchema);
+const cod_charge = new mongoose.model("cod_charges", codSchema);
 
 module.exports = cod_charge

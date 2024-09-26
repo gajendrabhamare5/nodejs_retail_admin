@@ -48,5 +48,5 @@ const addressmasterRelationSchema = new mongoose.Schema ({
 
 })
 
-const addressmasterRelation = new mongoose.model("address_master", addressmasterRelationSchema);
+const addressmasterRelation = new mongoose.model("address_masters", addressmasterRelationSchema);
 module.exports = addressmasterRelation

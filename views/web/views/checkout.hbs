@@ -224,7 +224,7 @@
                                                             <div class="_16s97g713"></div>
                                                         </div>
                                                         <div class="_1fragemd5 _1fragem1g _1fragem2x _1fragem2g _1fragem2w _1fragem3k _1fragem3o _16s97g73 _16s97g75 _16s97g7b _16s97g7d" style="--_16s97g72:minmax(0, 14.5rem); --_16s97g74:minmax(0, 1fr); --_16s97g7a:minmax(0, 14.5rem); --_16s97g7c:minmax(0, 1fr);">
-                                                            <p class="n8k95w1 _1fragemd5 n8k95w2"><a class="JXMCh" href="<?php echo $base_url; ?>"><img src="" alt="<?php echo $title; ?>" class="_2HBIM"></a></p>
+                                                            <p class="n8k95w1 _1fragemd5 n8k95w2"><a class="JXMCh" href="http://localhost:4000/"><img src="" alt="logo" class="_2HBIM"></a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,7 +330,7 @@
                                                                                 <div class="_1fragem1a _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragemei _1fragemd5 _16s97g7r _16s97g7t _16s97g7v" style="--_16s97g7q:6.4rem; --_16s97g7s:6.4rem; --_16s97g7u:6.4rem;">
                                                                                     <div class="_1h3po421 _1h3po423 _1fragemd5" style="--_1h3po420:1;">
                                                                                         <picture>
-                                                                                            <source media="(min-width: 0px)" srcset="<?php echo $img; ?>"><img src="<?php echo $img; ?>" alt="Army DLMN <?php echo $title; ?>" class="_1h3po425 _1fragem1a _1fragembx _1fragem3z _1fragem3w _1fragem42 _1fragem3t _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragem5y _1fragem5t _1fragem63 _1fragem5o _1fragemch">
+                                                                                            <source media="(min-width: 0px)" srcset=""><img src="Imaage" alt="Army DLMN <?php echo $title; ?>" class="_1h3po425 _1fragem1a _1fragembx _1fragem3z _1fragem3w _1fragem42 _1fragem3t _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragem5y _1fragem5t _1fragem63 _1fragem5o _1fragemch">
                                                                                         </picture>
                                                                                     </div>
                                                                                     <div class="_1fragem1c _1fragem1j _1fragem4n _1fragem4u _1fragem58 _1fragem51 _1fragem4 _1fragem3i _1fragemaz _1fragemb1 _1fragemaj _1fragembh _1fragemd3 _16s97g7t _16s97g7v _16s97g7x _16s97g7h _16s97g7j _16s97g7l _16s97g7n _1hPXg" aria-hidden="true" style="--_16s97g7s:2.1rem; --_16s97g7u:2.1rem; --_16s97g7w:translateX(calc(25% * var(--_1coqx4239))) translateY(-50%); --_16s97g7g:0rem; --_16s97g7i:auto; --_16s97g7k:auto; --_16s97g7m:0rem;">
@@ -626,9 +626,9 @@
                                                                                                                     <div>
                                                                                                                         <div class="_3fWM8"><label class="_3M3ds _2yhvc" for="b_country"><span class="_23YnC"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">Country/Region</span></span></label>
                                                                                                                             <select name="b_country" id="b_country" required="" class="lR9fE _1fRUX _23HvW sWGEL" aria-invalid="false" autocomplete="shipping country">
-
-                                                                                                                                    <option value="<?php echo $countrydata['name'] ?>" >countrydata</option>
-
+                                                                                                                                {{#each countrydata}}
+                                                                                                                                    <option value="{{this.name}}" >{{this.name}}</option>
+                                                                                                                                {{/each}}
                                                                                                                             </select>
                                                                                                                             <div class="cg791 _3RVyp"><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i _1fragem1a a8x1wuf"><svg viewBox="0 0 20 20" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
                                                                                                                                         <path d="M0 5h20L10 15"></path>
@@ -637,7 +637,9 @@
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
+                                                                                                            {{#each billingAddress}}
                                                                                                             <div class="_1fragemd5 _1fragem1g _1fragem2x _1fragem26 _1fragem2m _16s97g73 _16s97g75 _16s97g7b _16s97g7d" style="--_16s97g72:minmax(0, 1fr); --_16s97g74:minmax(0, 1fr); --_16s97g7a:minmax(0, 1fr); --_16s97g7c:minmax(0, 1fr);">
+
                                                                                                                 <div class="_7ozb2u2 _1fragem22 _1fragem2i _1fragemd5 _1fragem1g _10vrn9p1 _10vrn9p0 _10vrn9p6">
                                                                                                                     <div class="_1fragemd5">
                                                                                                                         <label id="TextField0-label" for="b_fname" class="cektnc3 _1fragemd3 _1fragemd2 _1fragemdz _1fragemcj _1frageme5 _1fragemdq _1fragemdm _1fragemdy cektnc6 _1fragemcv">
@@ -646,10 +648,11 @@
                                                                                                                             </span>
                                                                                                                         </label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                            <input value="<?php echo $fetch_billing['first_name']; ?>" name="b_fname" id="b_fname" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField0-label" autocomplete="shipping given-name">
+                                                                                                                            <input value="{{this.first_name}}" name="b_fname" id="b_fname" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField0-label" autocomplete="shipping given-name">
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
+
                                                                                                                 <div class="_7ozb2u2 _1fragem22 _1fragem2i _1fragemd5 _1fragem1g _10vrn9p1 _10vrn9p0 _10vrn9p6" style="display: none;">
                                                                                                                     <div class="_1fragemd5"><label id="TextField1-label" for="b_lname" class="cektnc3 _1fragemd3 _1fragemd2 _1fragemdz _1fragemcj _1frageme5 _1fragemdq _1fragemdm _1fragemdy cektnc6 _1fragemcv"><span class="cektnc9"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">Last name</span></span></label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
@@ -658,6 +661,7 @@
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
+
                                                                                                             <div class="_1fragemd5 _1fragem1g _1fragem2x _1fragem26 _1fragem2m _16s97g73 _16s97g75 _16s97g7b _16s97g7d" style="--_16s97g72:minmax(0, 1fr); --_16s97g74:minmax(0, 1fr); --_16s97g7a:minmax(0, 1fr); --_16s97g7c:minmax(0, 1fr);">
                                                                                                                 <div class="_7ozb2u2 _1fragem22 _1fragem2i _1fragemd5 _1fragem1g _10vrn9p1 _10vrn9p0 _10vrn9p6">
                                                                                                                     <div class="_1fragemd5">
@@ -667,12 +671,12 @@
                                                                                                                             </span>
                                                                                                                         </label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                            <input value="<?php echo $fetch_billing['address']; ?>" name="b_address" id="b_address" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField0-label" autocomplete="shipping address-line1">
+                                                                                                                            <input value="{{this.address}}" name="b_address" id="b_address" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField0-label" autocomplete="shipping address-line1">
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-
                                                                                                             </div>
+
                                                                                                             <!--  <div class="_1fragemd5 _1fragem1g _1fragem2x _1fragem26 _1fragem2m _16s97g73 _16s97g75 _16s97g7b _16s97g7d" style="--_16s97g72:minmax(0, 1fr); --_16s97g74:minmax(0, 1fr); --_16s97g7a:minmax(0, 1fr); --_16s97g7c:minmax(0, 1fr);">
                                                                                                                 <div class="_1FhTT">
                                                                                                                     <div class="_1ip0g651 _1fragem1g _1fragemd5 _1fragem24 _1fragem2k">
@@ -682,7 +686,7 @@
                                                                                                                                     <span class="cektnc9"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">Address</span></span>
                                                                                                                                 </label>
                                                                                                                                 <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                                    <input id="b_address" name="b_address" value="<?php echo $fetch_billing['address']; ?>" placeholder="Address"
+                                                                                                                                    <input id="b_address" name="b_address" value="" placeholder="Address"
                                                                                                                                      class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2u15 _7ozb2u1n" required=""
                                                                                                                                       type="text" aria-required="true" aria-labelledby="TextField2-label" autocomplete="shipping address-line1">
                                                                                                                                 </div>
@@ -691,7 +695,7 @@
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div> -->
-                                                                                                            <input type="hidden" value="<?php echo $fetch_billing['email_id']; ?>" name="b_email" id="b_email" type="email">
+                                                                                                            <input type="hidden" value="{{this.email_id}}" name="b_email" id="b_email" type="email">
                                                                                                             <div class="_1fragemd5 _1fragem1g _1fragem2x _1fragem26 _1fragem2m _16s97g73 _16s97g75 _16s97g7b _16s97g7d" style="--_16s97g72:minmax(0, 1fr); --_16s97g74:minmax(0, 1fr); --_16s97g7a:minmax(0, 1fr); --_16s97g7c:minmax(0, 1fr);">
                                                                                                                 <div class="_7ozb2u2 _1fragem22 _1fragem2i _1fragemd5 _1fragem1g _10vrn9p1 _10vrn9p0 _10vrn9p6">
                                                                                                                     <div class="_1fragemd5">
@@ -699,7 +703,7 @@
                                                                                                                             <span class="cektnc9"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">Phone Number </span></span>
                                                                                                                         </label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                            <input onkeypress="return isNumber(event)" id="b_phone" value="<?php echo $fetch_billing['phone_no']; ?>" name="b_phone" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField3-label" autocomplete="shipping mobile_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                                                                                                            <input onkeypress="return isNumber(event)" id="b_phone" value="{{this.phone_no}}" name="b_phone" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" type="text" aria-required="false" aria-labelledby="TextField3-label" autocomplete="shipping mobile_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -710,7 +714,7 @@
                                                                                                                         <div class="_1fragemd5">
                                                                                                                             <label id="TextField5-label" for="s_postal" class="cektnc3 _1fragemd3 _1fragemd2 _1fragemdz _1fragemcj _1frageme5 _1fragemdq _1fragemdm _1fragemdy cektnc6 _1fragemcv"><span class="cektnc9"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">ZIP code</span></span></label>
                                                                                                                             <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                                <input id="b_postal" name="b_postal" onchange="get_pincode('billing')" value="<?php echo $fetch_billing['pincode']; ?>" onkeypress="return isNumber(event)" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField5-label" autocomplete="shipping postal-code" autocapitalize="characters" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                                                                                                                <input id="b_postal" name="b_postal" onchange="get_pincode('billing')" value="{{this.pincode}}" onkeypress="return isNumber(event)" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField5-label" autocomplete="shipping postal-code" autocapitalize="characters" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
@@ -721,7 +725,7 @@
                                                                                                                         _1frageme5 _1fragemdq _1fragemdm _1fragemdy cektnc6 _1fragemcv">
                                                                                                                             <span class="cektnc9"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">City</span></span></label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                            <input id="b_city" name="b_city" value="<?php echo $fetch_billing['city']; ?>" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '').replace(/(\..*?)\..*/g, '$1');" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField4-label" autocomplete="shipping address-level2">
+                                                                                                                            <input id="b_city" name="b_city" value="{{this.city}}" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '').replace(/(\..*?)\..*/g, '$1');" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField4-label" autocomplete="shipping address-level2">
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -734,10 +738,11 @@
                                                                                                                             </span>
                                                                                                                         </label>
                                                                                                                         <div class="_7ozb2u4 _1fragemd5 _1fragem1g _1fragem19 _1fragemdq _1fragemdm _1fragemdy _1frageme4 _7ozb2ub _7ozb2um _7ozb2uo _7ozb2ui">
-                                                                                                                            <input id="b_state" name="b_state" value="<?php echo $fetch_billing['state']; ?>" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '').replace(/(\..*?)\..*/g, '$1');" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField5-label" autocomplete="shipping address-state">
+                                                                                                                            <input id="b_state" name="b_state" value="{{this.state}}" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '').replace(/(\..*?)\..*/g, '$1');" class="_7ozb2ut _1fragemd5 _1frageme5 _1fragem3g _1fragemcz _7ozb2uu _7ozb2uz _1fragemdq _1fragemdm _1fragemdy _7ozb2u15 _7ozb2u1n" required="" type="text" aria-required="true" aria-labelledby="TextField5-label" autocomplete="shipping address-state">
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
+                                                                                                                 {{/each}}
                                                                                                                 <!-- <div class="_3lyEW _10vrn9p1 _10vrn9p0 _10vrn9p6">
                                                                                                                     <div>
                                                                                                                         <div class="_3fWM8">
@@ -788,28 +793,28 @@
                                                                                                 <p class="_1x52f9s1 _1fragemd5 _1x52f9sn _1fragem1t">Select the address that matches your card or payment method.</p>
                                                                                             </div>
 
+                                                                                            {{#if shippingAddress}}
 
                                                                                                 <div class="form-group _1xO-s _12pKa uGXqL _3eTZ7 _8ysAV" style="border: 1px solid gray;padding: 8px;">
-
-
-                                                                                                        <label for="shipping_address_selector_<?php echo $shipping_address_id ?>" class="_2XH1S dhoOJ">
+                                                                                                     {{#each shippingAddress}}
+                                                                                                        <label for="shipping_address_selector_{{this._id}}" class="_2XH1S dhoOJ">
                                                                                                             <div class="_1GfMy">
 
                                                                                                                 <div class="_1fragemd5">
-                                                                                                                    <input type="radio" id="shipping_address_selector_<?php echo $shipping_address_id ?>" name="shipping_address_selector" value="<?php echo $shipping_address_id ?>" onclick="fetchshipping('<?php echo $shipping_address_id ?>','<?php echo $uid ?>')" class="_6hzjvo4 _1fragem18 _1fragem1a _1fragemdq _1fragemdl _1fragemdv _1fragema _6hzjvoj _6hzjvo7 _1fragem3z _1fragem3w _1fragem42 _1fragem3t _6hzjvoi _6hzjvof">
+                                                                                                                    <input type="radio" id="shipping_address_selector_{{this._id}}" name="shipping_address_selector" value="{{this._id}}" onclick="fetchshipping('{{this._id}}','22')" class="_6hzjvo4 _1fragem18 _1fragem1a _1fragemdq _1fragemdl _1fragemdv _1fragema _6hzjvoj _6hzjvo7 _1fragem3z _1fragem3w _1fragem42 _1fragem3t _6hzjvoi _6hzjvof">
                                                                                                                 </div>
 
-                                                                                                                <span class="_19gi7yt0 _19gi7ytg _1fragem1t _19gi7yt2 _19gi7yt9 shipping_address_<?php echo $shipping_address_id ?>">
+                                                                                                                <span class="_19gi7yt0 _19gi7ytg _1fragem1t _19gi7yt2 _19gi7yt9 shipping_address_{{this._id}}">
 
                                                                                                                     shipping_state </span>
 
                                                                                                             </div>
 
                                                                                                         </label>
-                                                                                                            <span style="float: right;margin-top: -40px;cursor: pointer;"><i style=" font-size: 17px;" class="fa fa-edit" onclick="storeshippingdata('<?php echo $shipping_address_id ?>','<?php echo $uid ?>')"></i></span>
-
-
+                                                                                                         {{/each}}
+                                                                                                            <span style="float: right;margin-top: -40px;cursor: pointer;"><i style=" font-size: 17px;" class="fa fa-edit" onclick="storeshippingdata('{{this._id}}','22')"></i></span>
                                                                                                 </div>
+                                                                                                {{/if}}
 
                                                                                             <fieldset>
                                                                                                 <div class="_1fragem1a _1fragemd7 _1fragemd5">
@@ -844,10 +849,10 @@
                                                                                                                                             <div class="_3fWM8"><label class="_3M3ds _2yhvc" for="s_country"><span class="_23YnC"><span class="_1fragema1 _1fragema3 _1fragem1a _1frageme3 _1fragemdf">Country/Region</span></span></label>
                                                                                                                                                 <select name="s_country" id="s_country" required="" class="lR9fE _1fRUX _23HvW sWGEL" aria-invalid="false" autocomplete="billing country">
                                                                                                                                                     <option value=""></option>
-
-                                                                                                                                                        <option value="<?php echo $countrydata['name'] ?>">
-                                                                                                                                                          countrydata</option>
-
+                                                                                                                                                            {{#each countrydata}}
+                                                                                                                                                        <option value="{{this.name}}">
+                                                                                                                                                          {{this.name}}</option>
+                                                                                                                                                                {{/each}}
                                                                                                                                                 </select>
                                                                                                                                                 <div class="cg791 _3RVyp"><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i _1fragem1a a8x1wuf"><svg viewBox="0 0 20 20" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
                                                                                                                                                             <path d="M0 5h20L10 15"></path>
@@ -956,7 +961,7 @@
                                                                             </div>
                                                                             <div class="_3XHWd _7J8O">
                                                                                 <div><button type="button" onclick="check1()" class="_2pOWh uWTUp _1Kqoj _2tVwl _3MrgP _10zXD sd4hU"><span class="_9I39O">Continue to Payment</span></button></div>
-                                                                                <div><a class="_2pOWh pS81L _10zXD sd4hU" href="<?php echo $base_url; ?>cart"><span class="_9I39O">
+                                                                                <div><a class="_2pOWh pS81L _10zXD sd4hU" href="http://localhost:4000/cart"><span class="_9I39O">
                                                                                             <div class="_1fragem1c _1fragemd5 _1fragem3k">
                                                                                                 <div class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem0 _1fragem4 _1fragem3k"><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i _1fragem1a a8x1wug a8x1wue"><svg viewBox="0 0 10 10" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
                                                                                                             <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path>
@@ -990,12 +995,12 @@
                                                         <div class="_1fragem1c _1fragemd5 _1fragem3k">
                                                             <ol class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem2 _1fragem6 _1fragem3k">
                                                                 <div class="_1fragem1c _1fragemd5 _1fragem3k">
-                                                                    <li class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem0 _1fragem4 _1fragem3k"><span class="_19gi7yt0 _19gi7yte _1fragem1s"><a class="s2kwpi1 _1fragemd5 s2kwpi3 _1fragemdc _1fragemdq _1fragemdy _1fragemdc" href="<?php echo $base_URL ?>/cart">Cart</a></span><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i a8x1wu4 _1fragem1a a8x1wuf a8x1wue"><svg viewBox="0 0 10 10" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
+                                                                    <li class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem0 _1fragem4 _1fragem3k"><span class="_19gi7yt0 _19gi7yte _1fragem1s"><a class="s2kwpi1 _1fragemd5 s2kwpi3 _1fragemdc _1fragemdq _1fragemdy _1fragemdc" href="http://localhost:4000/cart">Cart</a></span><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i a8x1wu4 _1fragem1a a8x1wuf a8x1wue"><svg viewBox="0 0 10 10" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
                                                                                 <path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"></path>
                                                                             </svg></span></li>
                                                                 </div>
                                                                 <div class="_1fragem1c _1fragemd5 _1fragem3k">
-                                                                    <li class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem0 _1fragem4 _1fragem3k"><span class="_19gi7yt0 _19gi7yte _1fragem1s"><a href="<?php echo $base_url ?>/checkout.php" class="s2kwpi1 _1fragemd5 s2kwpi3 _1fragemdc _1fragemdq _1fragemdy _1fragemdc">Information</a></span><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i a8x1wu4 _1fragem1a a8x1wuf a8x1wue"><svg viewBox="0 0 10 10" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
+                                                                    <li class="_1fragem1c _1fragem1q _1fragemby _1fragem24 _1fragem2k _1fragem0 _1fragem4 _1fragem3k"><span class="_19gi7yt0 _19gi7yte _1fragem1s"><a href="http://localhost:4000/checkout" class="s2kwpi1 _1fragemd5 s2kwpi3 _1fragemdc _1fragemdq _1fragemdy _1fragemdc">Information</a></span><span class="_1fragem3g _1fragem12 _1fragembx _1fragembw _1fragem1i a8x1wu4 _1fragem1a a8x1wuf a8x1wue"><svg viewBox="0 0 10 10" class="_1fragem1a _1fragem3g _1fragembx _1fragembw" focusable="false" aria-hidden="true">
                                                                                 <path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"></path>
                                                                             </svg></span></li>
                                                                 </div>
@@ -1056,7 +1061,7 @@
                                                                                                     <legend>Choose a Payment method</legend>
                                                                                                 </div>
                                                                                                 <div class="_1xO-s _12pKa uGXqL _3eTZ7 _8ysAV">
-
+                                                                                                {{#if (eq codChargeData.show_hide  1)}}
                                                                                                     <div class="_1FPaj NBXSB"><label for="payment_method_bacs" class="_2XH1S dhoOJ">
                                                                                                             <div class="_1GfMy">
                                                                                                                 <div class="_1fragemd5"><input type="radio" id="payment_method_bacs" name="radiopaymenthod" onclick="paymentprice('cod')" value="Cash On Delivery" class="_6hzjvo4 _1fragem18 _1fragem1a _1fragemdq _1fragemdl _1fragemdv _1fragema _6hzjvoj _6hzjvo7 _1fragem3z _1fragem3w _1fragem42 _1fragem3t _6hzjvoi _6hzjvof"></div>
@@ -1070,7 +1075,7 @@
                                                                                                             </div>
                                                                                                         </label>
                                                                                                     </div>
-
+                                                                                                    {{/if}}
                                                                                                     <div class="_1FPaj"><label for="payment_method_stripe" class="_2XH1S dhoOJ">
                                                                                                             <div class="_1GfMy">
                                                                                                                 <div class="_1fragemd5">
@@ -1135,7 +1140,7 @@
                                 </script>
                                 <footer role="contentinfo" class="_2JaId">
                                     <div class="gCk8u">
-                                        <p class="_1x52f9s1 _1fragemd5 _1x52f9sl _1fragem1s _1x52f9sg">All rights reserved by myttaksh</p>
+                                        <p class="_1x52f9s1 _1fragemd5 _1x52f9sl _1fragem1s _1x52f9sg">All rights reserved by Gajendra Bhamare</p>
                                     </div>
                                 </footer>
                             </div>
@@ -1167,21 +1172,25 @@
                                                                     <div class="_1fragem1a _1fragemd7 _1fragemd5">Price</div>
                                                                 </div>
                                                             </div>
-
+                                                                {{#each cartdata}}
                                                                 <div role="row" class="_6zbcq525 _1fragem1c _1fragem12 _6zbcq52c">
                                                                     <div role="cell" class="_6zbcq53x _1fragem1c _1fragem1j _1fragem3k">
+                                                                          {{#if this.fetch_product}}
                                                                         <div class="_1fragem1a _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragemei _1fragemd5 _16s97g7r _16s97g7t _16s97g7v" style="--_16s97g7q:6.4rem; --_16s97g7s:6.4rem; --_16s97g7u:6.4rem;">
                                                                             <div class="_1h3po421 _1h3po423 _1fragemd5" style="--_1h3po420:1;">
+
                                                                                 <picture>
-                                                                                    <source media="(min-width: 0px)" srcset="<?php echo $img; ?>"><img src="<?php echo $img; ?>" alt="Black DLMN Swing Dress" class="_1h3po425 _1fragem1a _1fragembx _1fragem3z _1fragem3w _1fragem42 _1fragem3t _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragem5y _1fragem5t _1fragem63 _1fragem5o _1fragemch">
+
+                                                                                    <source media="(min-width: 0px)" srcset="{{this.fetch_product.product_image}}"><img src="http://localhost:4000/{{this.fetch_product.product_image}}" alt="Black DLMN Swing Dress" class="_1h3po425 _1fragem1a _1fragembx _1fragem3z _1fragem3w _1fragem42 _1fragem3t _1fragem4m _1fragem4t _1fragem57 _1fragem50 _1fragem5y _1fragem5t _1fragem63 _1fragem5o _1fragemch">
                                                                                 </picture>
                                                                             </div>
                                                                             <div class="_1fragem1c _1fragem1j _1fragem4n _1fragem4u _1fragem58 _1fragem51 _1fragem4 _1fragem3i _1fragemaz _1fragemb1 _1fragemaj _1fragembh _1fragemd3 _16s97g7t _16s97g7v _16s97g7x _16s97g7h _16s97g7j _16s97g7l _16s97g7n _1hPXg" aria-hidden="true" style="--_16s97g7s:2.1rem; --_16s97g7u:2.1rem; --_16s97g7w:translateX(calc(25% * var(--_1coqx4239))) translateY(-50%); --_16s97g7g:0rem; --_16s97g7i:auto; --_16s97g7k:auto; --_16s97g7m:0rem;">
                                                                                 <div class="_1fragem1a _1fragemd5 _1rRtA">
-                                                                                    <p class="_1x52f9s1 _1fragemd5 _1x52f9sl _1fragem1s _1x52f9s3">5</p>
+                                                                                    <p class="_1x52f9s1 _1fragemd5 _1x52f9sl _1fragem1s _1x52f9s3">{{this.fetch_product.product_qty}}</p>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        {{/if}}
                                                                     </div>
                                                                     <div role="cell" class="_6zbcq53x _1fragem1c _1fragem1j _1fragem3i _1fragem1m">
                                                                         <p class="_1x52f9s1 _1fragemd5 _1x52f9sn _1fragem1t _1x52f9s3 _1x52f9sh">title</p>
@@ -1200,7 +1209,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
+                                                                {{/each}}
                                                         </div>
                                                     </section>
                                                     <div>
