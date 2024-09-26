@@ -5,19 +5,21 @@ const product_master = require("../models/product");
 const sizerelationMaster = require("../models/size_relation_master.js")
 const AddressMaster = require("../models/address_master.js")
 const ViewCount = require("../models/viewcount.js")
+const UserMaster = require("../models/user_master_wholesale.js")
 
 const getcheckoutInfo = async (req, res) => {
     const countrydata = await country_master.find();
     const codChargeData = await CodCharge.find({ _id: '66bb1235715001fdf14289d2' });
     const cartdata = await CartMaster.find({UserID:22}).sort({ Id: -1 });
    // console.log("cartdata",cartdata);
+   let total = 0;
 
     await Promise.all(cartdata.map(async (item) => {
         const { ProID: proidg, Size, cartType, Qty: oldqty } = item;
 
         // Check if the product exists
         const product = await product_master.find({ _id: proidg });
-       console.log("product",product);
+       //console.log("product",product);
 
         if (!product) {
             // Delete from cart if product does not exist
@@ -55,18 +57,30 @@ const getcheckoutInfo = async (req, res) => {
         }
 
         if (product) {
-            item.fetch_product = product;
+            const productData = product[0];
+
+            item.fetch_product = productData;
             item.qty = oldqty;
 
-            const price = product.product_sale_price;
-            const catalog_pcs = parseFloat(product.catalog_pcs) || 0;
+            const price = productData.product_sale_price;
+           // console.log("price",price);
+
+            const catalog_pcs = parseFloat(productData.catalog_pcs) || 0;
+            //console.log("catalog_pcs",catalog_pcs);
+
             const rate1 = price * catalog_pcs;
-          //  const qrate = rate1 * qty * catalog_pcs;
-         //   total += qrate;
+           // console.log("rate1",rate1);
+
+            const qrate = rate1 * oldqty;
+           // console.log("qrate",qrate);
+
+           /*  total += qrate;
+            console.log("total",total); */
+
 
            // const weightTotal = product.product_weight * qty;
           //  item.weightTotal = weightTotal;
-          //  item.qrate = qrate;
+            item.qrate = qrate;
 
         }
 
@@ -116,7 +130,64 @@ const getcheckoutInfo = async (req, res) => {
     res.render("web/views/checkout",{cartdata,countrydata,codChargeData,codChargeData,billingAddress,shippingAddress})
 }
 
+const insertdataaddress = async(req,res)=>{
+    try {
+        const {
+            uid,address_id,b_fname, b_lname, b_phone, b_whatsapp_no, b_email, b_address, b_country,b_state,b_city,
+            b_postal,gst_no,new_mobile_no,addresstype, s_address,s_postal, s_fname, s_lname,s_phone,s_whatsapp_no,
+            s_country, s_state,s_city } = req.body;
+            console.log("body",req.body);
+
+            if (req.session.UserID) {
+                const existingAddress = await AddressMaster.find({ user_id: uid, type: 1 });
+                console.log("existingAddress",existingAddress);
+
+            if (existingAddress) {
+                // Update existing billing address
+                existingAddress.first_name = b_fname;
+                existingAddress.last_name = b_lname;
+                existingAddress.address = b_address;
+                existingAddress.country = b_country;
+                existingAddress.state = b_state;
+                existingAddress.city = b_city;
+                existingAddress.pincode = b_postal;
+                existingAddress.phone_no = b_phone;
+                existingAddress.whatsapp_no = b_whatsapp_no;
+                existingAddress.email_id = b_email;
+                existingAddress.gst_no = gst_no;
+
+                await existingAddress.save();
+                return res.json({ status: 'success', message: 'Billing address updated' });
+            } else {
+                // Insert new billing address
+                const newAddress = new Address({
+                    user_id: uid,
+                    first_name: b_fname,
+                    last_name: b_lname,
+                    address: b_address,
+                    country: b_country,
+                    state: b_state,
+                    city: b_city,
+                    pincode: b_postal,
+                    phone_no: b_phone,
+                    whatsapp_no: b_whatsapp_no,
+                    email_id: b_email,
+                    gst_no: gst_no,
+                    type: 1 // Billing address
+                });
+
+                await newAddress.save();
+                return res.json({ status: 'success', message: 'Billing address added', address_id: newAddress._id });
+
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        res.json({ status: "error", message: "An error occurred." });
+    }
+}
+
 module.exports = {
     getcheckoutInfo,
-
+    insertdataaddress,
 }

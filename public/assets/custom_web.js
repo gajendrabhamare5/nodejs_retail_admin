@@ -2129,7 +2129,7 @@ function check1() {
         $("#step1err").html("");
         $.ajax({
             type: "POST",
-            url: "ajaxfiles/insert_address_data.php",
+            url: "http://localhost:4000/insert_address_data",
             data: {
                 uid: uid,
                 address_id: address_id,

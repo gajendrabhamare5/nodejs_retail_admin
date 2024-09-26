@@ -58,6 +58,7 @@ router.get('/portfolio/:id', Controllerport.getportfolioInfo);
 router.get('/product/:id', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);
 router.get('/checkout', Controllercheckout.getcheckoutInfo);
+router.post('/insert_address_data', Controllercheckout.insertdataaddress);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
 router.get('/aboutus', Controllerabout.getaboutInfo);
 router.get('/track-order', Controllertrackorder.gettrackorderInfo);
