@@ -1699,7 +1699,7 @@ function placeorder() {
     fd.append('shippingaddressid', shipping_id);
     $.ajax({
         type: "POST",
-        url: baseurl + "ajaxfiles/place_order.php",
+        url:  "http://localhost:4000/place_order",
         type: 'post',
         dataType: "json",
         data: fd,
@@ -2258,7 +2258,7 @@ function check2() {
         $("#step1err").html("");
         $.ajax({
             type: "POST",
-            url: "ajaxfiles/insert_address_data.php",
+            url: "http://localhost:4000/insert_address_data",
             data: {
                 uid: uid,
                 address_id: address_id,
@@ -2397,7 +2397,7 @@ function calculateshipping() {
 function store_value(value, name) {
     $.ajax({
         type: "POST",
-        url: baseurl + "ajaxfiles/store_value.php",
+        url: "http://localhost:4000/store_value",
         dataType: "JSON",
         data: { value: value, name: name },
         success: function (data) {
@@ -2542,7 +2542,7 @@ function storeshipprice(shipprice, title) {
 function store_value(value, name) {
     $.ajax({
         type: "POST",
-        url: baseurl + "ajaxfiles/store_value.php",
+        url: "http://localhost:4000/store_value",
         dataType: "JSON",
         data: { value: value, name: name },
         success: function (data) {

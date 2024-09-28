@@ -7,6 +7,7 @@ const Controllercheckout = require('../controllers/checkout.js');
 const Controllerwishlist = require('../controllers/wishlist.js');
 const Controllerabout = require('../controllers/aboutus.js');
 const Controllertrackorder = require('../controllers/track.js');
+const Controllerplaceorder = require('../controllers/order.js');
 const Controllercontactus = require('../controllers/contactus.js');
 const Controllershipping_policy = require('../controllers/shipping-policy.js');
 const Controllerprivacy_policy = require('../controllers/privacy-policy.js');
@@ -59,9 +60,11 @@ router.get('/product/:id', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);
 router.get('/checkout', Controllercheckout.getcheckoutInfo);
 router.post('/insert_address_data', Controllercheckout.insertdataaddress);
+router.post('/store_value', Controllercheckout.storevalue);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
 router.get('/aboutus', Controllerabout.getaboutInfo);
 router.get('/track-order', Controllertrackorder.gettrackorderInfo);
+router.get('/place_order', Controllerplaceorder.placeorder);
 
 router.post('/subscribe_process', Controllersubscribe.insertsubscribers)
 

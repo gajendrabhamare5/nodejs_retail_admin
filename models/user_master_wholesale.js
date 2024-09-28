@@ -81,6 +81,6 @@ const usermasterRelationSchema = new mongoose.Schema ({
 
 })
 
-const usermasterRelation = new mongoose.model("user_master_wholesale", usermasterRelationSchema);
+const usermasterRelation = new mongoose.model("user_master_wholesales", usermasterRelationSchema);
 
 module.exports = usermasterRelation

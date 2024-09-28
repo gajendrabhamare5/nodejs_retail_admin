@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const cors = require('cors');
 
 require('./db/conn');
 const injectCommonData = require('./middleware/commonData');
@@ -21,6 +22,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // Set to true if using HTTPS
 }));
+
+app.use(cors());
+let sessionStore = {};
 
 // Registering helpers
 const hbs = exphbs.create({
