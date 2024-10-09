@@ -2430,8 +2430,7 @@
                                                             </div>
                                                             <div class="_16s97g711"></div>
                                                         </div>
-                                                        <!-- <input type="hidden" id="fullgrandtot" value="<?php //echo  $total - round($payment_fees_amount)  - $_SESSION['discount']
-                                                                                                            ?>"> -->
+                                                     <input type="hidden" id="fullgrandtot" value="{{this.qrate}}">
                                                         <input type="hidden" id="fullgrandtot"
                                                             value="<?php echo  $total - $_SESSION['discount'] ?>">
                                                         <div class="_1x41w3p1 _1fragem1g _1fragem4 _1x41w3p8"
@@ -2448,14 +2447,15 @@
                                                                         <strong translate="yes"
                                                                             class="_19gi7yt0 _19gi7ytm _1fragem1w _19gi7yt2 _19gi7yt9 notranslate"><span
                                                                                 class="cart_price amount total-value"
-                                                                                id="grandtot">Rs. {{this.qrate}}</span></strong>
+                                                                                id="grandtot1">Rs. {{this.qrate}}</span></strong>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                     {{/each}}
                                                 </section>
-                                                {{/each}}
+
                                             </div>
                                         </div>
                                     </div>
@@ -2636,7 +2636,7 @@
                                 var new_mobile = $("#new_mobile_no").val();
                                 copen_mpbile = $("#new_mobile_no").val();
                                 console.log(type, 'type');
-                                // var fullsubtotal = $("#fullsubtotal").val();
+                                 var fullsubtotal = $("#fullsubtotal").val();
                                 var uid = '<?php echo $uid; ?>';
                                 var coupon_id;
                                 if (type == "desk") {
@@ -2926,7 +2926,7 @@
     }
     $("#redirect_url").val("");
     var billing_address_id =  $("#billing_address_id").val();
-    var fullsubtotal = "<?php echo $total; ?>";
+    var fullsubtotal = $("#subtotal").val();
     var fullgst = "<?php echo round($payment_fees_amount); ?>";
     var baseurl = "http://localhost:4000/";
     var uid = "22";
@@ -2946,7 +2946,7 @@
         var show_scheme = [];
         $.ajax({
             type: "POST",
-            url: baseurl + "ajaxfiles/view_cart_scheme.php",
+            url: "http://localhost:4000/view_cart_scheme",
             dataType: "json",
 
             success: function (data) {

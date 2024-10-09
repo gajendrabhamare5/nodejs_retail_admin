@@ -12,11 +12,11 @@ var addresstype = "";
 var wallet_method_price = 0;
 var combo_discount = 0;
 var previosstatte = 0;
-function openNavMenuR(){
+function openNavMenuR() {
     alert();
     $(".js-drawer-open-nav").click();
 }
-function addtocart(product_id,carttype1) {
+function addtocart(product_id, carttype1) {
     $(".customcartbtn").addClass("load-more-overlay loading");
     $(".customcartbtn").removeAttr("onclick");
     var sizename = "";
@@ -53,14 +53,14 @@ function addtocart(product_id,carttype1) {
     var type = "add_to_cart";
     $.ajax({
         type: "POST",
-        url:"http://localhost:4000/add_to_cart",
+        url: "http://localhost:4000/add_to_cart",
         dataType: "JSON",
         data: { Size: sizename, sizeid: sizeid, carttype1: carttype1, ProId: product_id, Type: type, Qty: qty, Cart_type: "catalog" },
         success: function (data) {
             $(".customcartbtn").removeClass('load-more-overlay loading');
             $(".customcartbtn").attr("onclick", "addtocart(" + product_id + ")");
-           /*  $(".customcartbtn").attr("onclick", "gotocart()");
-            $(".customcartbtn").html("GO TO CART"); */
+            /*  $(".customcartbtn").attr("onclick", "gotocart()");
+             $(".customcartbtn").html("GO TO CART"); */
             //var returnedData = JSON.parse(data);
             if (data.status == "ok") {
                 if (carttype1 == "buy") {
@@ -69,13 +69,13 @@ function addtocart(product_id,carttype1) {
                 }
                 $('.mfp-close').trigger('click');
                 $('.cart-toggle').trigger('click');
-               /*  $('.cart-link').trigger('click'); */
+                /*  $('.cart-link').trigger('click'); */
                 $(".countproduct").html(data.count);
-                if(data.count > 0) {
-                    $(".countproduct").css("display","block");
-                   // wishlist(product_id,'addtocart');
-                }else{
-                    $(".countproduct").css("display","none");
+                if (data.count > 0) {
+                    $(".countproduct").css("display", "block");
+                    // wishlist(product_id,'addtocart');
+                } else {
+                    $(".countproduct").css("display", "none");
                 }
                 toastr.success("", "Added To Cart ", {
                     "timeOut": "3000",
@@ -103,7 +103,7 @@ function addtocart(product_id,carttype1) {
     });
 }
 function gotocart() {
-    location.href=baseurl +'cart';
+    location.href = baseurl + 'cart';
 
 }
 function get_currency(i) {
@@ -181,7 +181,7 @@ function quickshop(id) {
         }
     });
 }
-function onplusmin_product(type, product_id,pqty) {
+function onplusmin_product(type, product_id, pqty) {
     // $(".quantity-plus").css("pointer-events", "none");
     // $(".quantity-minus").css("pointer-events", "none");
     var qty1 = $("#proqty" + product_id).val();
@@ -190,8 +190,8 @@ function onplusmin_product(type, product_id,pqty) {
         var qty = +qty1 - 1;
     } else {
         var qty = +qty1 + 1;
-        if(qty > pqty){
-            toastr.error("", "only " +pqty + " Stock Available" , {
+        if (qty > pqty) {
+            toastr.error("", "only " + pqty + " Stock Available", {
                 "timeOut": "3000",
                 "positionClass": "toast-top-right",
                 "extendedTImeout": "0"
@@ -265,12 +265,15 @@ function onplusmin(type, cart_id) {
                         var newcartsub = +oldcarttotal - +productrate;
                         var gst = +oldgst - +productgstval;
                         var grandtot = +subtot + +gst;
+                        console.log("grandtot1", grandtot);
+
                         $("#subtotcart").html(currency_symbol + Math.round((parseInt(subtot) / parseFloat(currency_cost)) * 100) / 100);
                         $("#gstcart").html(currency_symbol + Math.round((parseInt(gst) / parseFloat(currency_cost)) * 100) / 100);
                         $("#grandtotcart").html(currency_symbol + Math.round((parseInt(grandtot) / parseFloat(currency_cost)) * 100) / 100);
                         $("#fullsubtotalcart").val(subtot);
                         $("#fullgstcart").val(gst.toFixed(0));
                         $("#fullgrandtotcart").val(grandtot);
+
                         $("#cartsubtot").val(newcartsub);
                         $(".cart_tot_price").html(currency_symbol + Math.round((parseInt(newcartsub) / parseFloat(currency_cost)) * 100) / 100);
                     } else {
@@ -278,6 +281,8 @@ function onplusmin(type, cart_id) {
                         var newcartsub = +oldcarttotal + +productrate;
                         var gst = +oldgst + +productgstval;
                         var grandtot = +subtot + +gst + -paymentmethodpri;
+                        console.log("grandtot2", grandtot);
+
                         $("#subtotcart").html(currency_symbol + Math.round((parseInt(subtot) / parseFloat(currency_cost)) * 100) / 100);
                         $("#gstcart").html("<?php echo $_SESSION['currency_label']; ?>" + Math.round((parseInt(gst.toFixed(0)) / parseFloat(currency_cost)) * 100) / 100);
                         $("#grandtotcart").html(currency_symbol + Math.round((parseInt(grandtot) / parseFloat(currency_cost)) * 100) / 100);
@@ -1051,7 +1056,7 @@ function chkvalidate() {
         $.ajax({
             type: "POST",
             dataType: "JSON",
-            url:"http://localhost:4000/account",
+            url: "http://localhost:4000/account",
             data: {
                 Type: Type,
                 Email: loginInputEmail,
@@ -1077,7 +1082,7 @@ function chkvalidate() {
                     else {
                         /* history.back(); */
                         //location.reload();
-                         location.href = "http://localhost:4000/";
+                        location.href = "http://localhost:4000/";
                     }
                 }
             }
@@ -1086,7 +1091,7 @@ function chkvalidate() {
 }
 function chkvalidatereg1() {
     $("#register-submit").val('Loading...');
-    $("#register-submit").css('pointer-events','none');
+    $("#register-submit").css('pointer-events', 'none');
     $("#regbtn").css("pointer-events", "none");
     var membership = '1';
     var fname = $("#loginInputName").val();
@@ -1098,7 +1103,7 @@ function chkvalidatereg1() {
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     if (fname == "") {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#loginInputName").focus();
         $("#registermsg").css("color", "red");
@@ -1109,9 +1114,9 @@ function chkvalidatereg1() {
             $("#registermsg").css("color", "green");
             $(".errors").css("display", "none");
         }, 3000);
-    }  else if (loginInputEmail == "") {
+    } else if (loginInputEmail == "") {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#loginInputEmail1").focus();
         $("#registermsg").css("color", "red");
@@ -1124,7 +1129,7 @@ function chkvalidatereg1() {
         }, 3000);
     } else if (reg.test(loginInputEmail) == false) {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#loginInputEmail1").focus();
         $("#registermsg").css("color", "red");
@@ -1137,7 +1142,7 @@ function chkvalidatereg1() {
         }, 3000);
     } else if (phonenumber == "") {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#phonenumber").focus();
         $("#registermsg").css("color", "red");
@@ -1150,7 +1155,7 @@ function chkvalidatereg1() {
         }, 3000);
     } else if (phonenumber.length != "10") {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#phonenumber").focus();
         $("#registermsg").css("color", "red");
@@ -1163,7 +1168,7 @@ function chkvalidatereg1() {
         }, 3000);
     } else if (loginInputPassword == "") {
         $("#register-submit").val('Create');
-        $("#register-submit").css('pointer-events','auto');
+        $("#register-submit").css('pointer-events', 'auto');
         $("#regbtn").css("pointer-events", "visible");
         $("#loginInputPassword").focus();
         $("#registermsg").css("color", "red");
@@ -1178,7 +1183,7 @@ function chkvalidatereg1() {
         $.ajax({
             type: "POST",
             dataType: "JSON",
-            url:  "http://localhost:4000/check_email_id",
+            url: "http://localhost:4000/check_email_id",
             data: {
                 Email: loginInputEmail,
                 Phone: phonenumber
@@ -1193,7 +1198,7 @@ function chkvalidatereg1() {
                     }
                     $("#regbtn").css("pointer-events", "visible");
                     $("#register-submit").val('Create');
-                    $("#register-submit").css('pointer-events','auto');
+                    $("#register-submit").css('pointer-events', 'auto');
                     $("#registermsg").css("color", "red");
                     $("#registermsg").html(data.message);
                     $(".errors").css("display", "block");
@@ -1207,7 +1212,7 @@ function chkvalidatereg1() {
                     $.ajax({
                         type: "POST",
                         dataType: "JSON",
-                        url:  "http://localhost:4000/account",
+                        url: "http://localhost:4000/account",
                         data: {
                             Type: Type,
                             Email: loginInputEmail,
@@ -1650,8 +1655,11 @@ function placeorder() {
     }
     var productgst = $("#totalgst").val();
     /* var discount_off=$("#discount_off").val(); */
+    var shipmethodprice = 0;
     var discount_off = 0;
     var shipmethodprice = $("#shipping_charge_txt").val();
+    // console.log("shipmethodprice",shipmethodprice);
+
     var paymentmethodpri = $("#transaction_charge_txt").val();
     var fullgrandtot = $("#fullgrandtot").val();
     $("#confirm_order").css("pointer-events", "none");
@@ -1699,7 +1707,7 @@ function placeorder() {
     fd.append('shippingaddressid', shipping_id);
     $.ajax({
         type: "POST",
-        url:  "http://localhost:4000/place_order",
+        url: "http://localhost:4000/place_order",
         type: 'post',
         dataType: "json",
         data: fd,
@@ -1950,7 +1958,7 @@ function isNumber(evt) {
     return true;
 }
 function get_pincode(type) {
-   /*  calculateshipping() */
+    /*  calculateshipping() */
     var shipping = 0;
     if (type == "billing") {
         var b_postal = $("#b_postal").val();
@@ -1964,29 +1972,29 @@ function get_pincode(type) {
         var b_postal = $("#shippingpincode1").val();
         /*  $(".shipping-charge").html(currency_symbol + "" + Math.round(((shipping / parseFloat(currency_cost)) * 100) / 100)); */
     }
-        $.ajax({
-            type: "POST",
-            dataType: "JSON",
-            url: baseurl + "ajaxfiles/get_sc_from_pincode.php",
-            data: { pincode: b_postal },
-            success: function (data) {
-                if (type == "billing") {
-                    $("#b_state").val(data.state_name);
-                    $("#b_city").val(data.city_name);
-                    calculateshipping()
-                }
-                if (type == "shipping") {
-                    $("#s_state").val(data.state_name);
-                    $("#s_city").val(data.city_name);
-                    calculateshipping()
-                }
-                if (type == "shipping_edit") {
-                    $("#shippingstate").val(data.state_name);
-                    $("#shippingcity").val(data.city_name);
-                }
-
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: baseurl + "ajaxfiles/get_sc_from_pincode.php",
+        data: { pincode: b_postal },
+        success: function (data) {
+            if (type == "billing") {
+                $("#b_state").val(data.state_name);
+                $("#b_city").val(data.city_name);
+                calculateshipping()
             }
-        });
+            if (type == "shipping") {
+                $("#s_state").val(data.state_name);
+                $("#s_city").val(data.city_name);
+                calculateshipping()
+            }
+            if (type == "shipping_edit") {
+                $("#shippingstate").val(data.state_name);
+                $("#shippingcity").val(data.city_name);
+            }
+
+        }
+    });
 }
 $(document).on("click", ".showshipblock", function () {
     $("#billing_address_selector-custom_billing_address-collapsible").css({
@@ -2008,16 +2016,16 @@ $(document).on("click", ".showshipblock", function () {
             "height": "auto",
             "overflow": "visible"
         });
-        if(previosstatte == 0 && iz_checked == 1){
-        $("input[name=s_fname]").val('');
-        $("input[name=s_lname]").val('');
-        $("input[name=s_phone]").val('');
-        /*  $("input[name=s_email]").val(b_email); */
-        $("#s_address").val('');
-        $("select[name=s_country]").val('');
-        $("input[name=s_state]").val('');
-        $("input[name=s_city]").val('');
-        $("input[name=s_postal]").val('');
+        if (previosstatte == 0 && iz_checked == 1) {
+            $("input[name=s_fname]").val('');
+            $("input[name=s_lname]").val('');
+            $("input[name=s_phone]").val('');
+            /*  $("input[name=s_email]").val(b_email); */
+            $("#s_address").val('');
+            $("select[name=s_country]").val('');
+            $("input[name=s_state]").val('');
+            $("input[name=s_city]").val('');
+            $("input[name=s_postal]").val('');
         }
         previosstatte = 1;
     } else {
@@ -2300,7 +2308,7 @@ function check2() {
 
 
 
-function fetchshipping(shipping_address_id,uid) {
+function fetchshipping(shipping_address_id, uid) {
 
 
     var shipping_address_id = shipping_address_id;
@@ -2310,7 +2318,7 @@ function fetchshipping(shipping_address_id,uid) {
         type: "POST",
         url: baseurl + "ajaxfiles/get_shipping_adress.php",
         dataType: "JSON",
-        data: { UserID: uid, shipping_address_id: shipping_address_id},
+        data: { UserID: uid, shipping_address_id: shipping_address_id },
         success: function (data) {
 
             if (data.status == "ok") {
@@ -2352,7 +2360,7 @@ function calculateshipping() {
     }
     $.ajax({
         type: "POST",
-        url: baseurl + "ajaxfiles/get_shipping.php",
+        url: "http://localhost:4000/get_shipping",
         dataType: "JSON",
         data: { UserID: UserID, sid: sid, b_country: b_country, paymentmethod: paymentmethod, s_country: s_country },
         success: function (data) {
@@ -2416,11 +2424,11 @@ function calculate_grandtotal() {
     var scheme_discount = combo_discount;
     var handling_chrg = handling_charge;
     var subtotal = fullsubtotal;
-    var shipping_charge11 = shipmethodprice;
+    var shipping_charge11 = 0;
     var transaction_charge = paymentmethodpri;
-    console.log('ss',shipping_charge11);
-    console.log('tt',transaction_charge);
-    console.log('hh',handling_chrg);
+    console.log('ss', shipping_charge11);
+    console.log('tt', transaction_charge);
+    console.log('hh', handling_chrg);
     var gst = 0;
     handling_chrg = store_value(handling_chrg, 'handlingcharge');
     scheme_discount = store_value(scheme_discount, 'combodiscount');
@@ -2428,6 +2436,7 @@ function calculate_grandtotal() {
     var currency_cost = c_convert;
     var grand_total = parseInt(subtotal) + parseInt(shipping_charge11) + parseInt(transaction_charge) + parseInt(handling_chrg);
     var grand_total_point = parseInt(subtotal) + parseInt(shipping_charge11) + parseInt(transaction_charge) + parseInt(handling_chrg);
+
     totalgst = 0;
 
     if (handling_chrg > 0) {
@@ -2443,7 +2452,9 @@ function calculate_grandtotal() {
     grand_total_point = grand_total_point - +coupon;
     grand_total_point = store_value(grand_total_point, 'grand_total_point');
     fullsubtotal = store_value(fullsubtotal, 'fullsubtotal');
-    $(".total-value").html(currency_symbol + "" + Math.round((parseInt(fullgrandtot) / parseFloat(currency_cost)) * 100) / 100);
+   var totalvalue = $(".total-value").html(currency_symbol + "" + Math.round((parseInt(fullgrandtot) / parseFloat(currency_cost)) * 100) / 100);
+    console.log("total-value",totalvalue);
+
     $('.shopingcart_total').html(currency_symbol + Math.round((parseInt(fullgrandtot) / parseFloat(currency_cost)) * 100) / 100)
 }
 function inquiry_popup() {
@@ -2706,7 +2717,7 @@ function storeshippingdata(shipadd_id, uid) {
             Action: Action,
             shipadd_id: shipadd_id
         },
-        success: function(data) {
+        success: function (data) {
 
 
             if (data.status == "ok") {
@@ -2737,7 +2748,7 @@ function storeshippingdata(shipadd_id, uid) {
                         $("#shippingpincode1").val("0");
                         $("#shippingpincodebox").hide();
                     }
-                    var statename = shipping_state.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    var statename = shipping_state.toLowerCase().replace(/\b[a-z]/g, function (letter) {
                         return letter.toUpperCase();
                     });
                     $("#shippingstate").val(statename);
@@ -2778,7 +2789,7 @@ function saveshipping() {
         $("#shippingfirstname").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter First Name");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2789,7 +2800,7 @@ function saveshipping() {
         $("#shippingphone").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter Phone Number");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2800,7 +2811,7 @@ function saveshipping() {
         $("#shippingaddress").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter Address");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2812,7 +2823,7 @@ function saveshipping() {
         $("#shippingcountry").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Select Country");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2824,7 +2835,7 @@ function saveshipping() {
         $("#shippingpincode1").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter Pincode");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2836,7 +2847,7 @@ function saveshipping() {
         $("#shippingstate").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter State ");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2848,7 +2859,7 @@ function saveshipping() {
         $("#shippingcity").focus();
         $("#shippingmsg").css("color", "red");
         $("#shippingmsg").html("Enter City ");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#shippingmsg").html('Shipping Address');
             $("#shippingmsg").css("color", "green");
         }, 3000);
@@ -2884,22 +2895,22 @@ function saveshipping() {
                 shipping_phone_no: shippingphone,
 
             },
-            success: function(data) {
+            success: function (data) {
                 if (data.status == "ok") {
 
-                 var countbill = data.address.length;
-                   for (i = 0; i < countbill; i++) {
-                    var shipping_id = data.address[i].shipping_id;
-                    var shipping_first_name = data.address[i].shipping_first_name;
-                    var shipping_address = data.address[i].shipping_address_1;
-                    var shipping_city = data.address[i].shipping_city;
-                    var shipping_state = data.address[i].shipping_state;
-                    var shipping_pincode = data.address[i].shipping_pincode;
-                    var shipping_country = data.address[i].shipping_country;
-                    var shipping_phone_no = data.address[i].shipping_phone_no;
-                    var shipping_countrycode = data.address[i].shipping_countrycode;
-                    $(".shipping_address_"+shipaddid).html(shipping_first_name+','+shipping_address+','+shipping_state);
-                }
+                    var countbill = data.address.length;
+                    for (i = 0; i < countbill; i++) {
+                        var shipping_id = data.address[i].shipping_id;
+                        var shipping_first_name = data.address[i].shipping_first_name;
+                        var shipping_address = data.address[i].shipping_address_1;
+                        var shipping_city = data.address[i].shipping_city;
+                        var shipping_state = data.address[i].shipping_state;
+                        var shipping_pincode = data.address[i].shipping_pincode;
+                        var shipping_country = data.address[i].shipping_country;
+                        var shipping_phone_no = data.address[i].shipping_phone_no;
+                        var shipping_countrycode = data.address[i].shipping_countrycode;
+                        $(".shipping_address_" + shipaddid).html(shipping_first_name + ',' + shipping_address + ',' + shipping_state);
+                    }
 
                     $("#shipclose").click();
                     $("#shippingsavebtn").show();

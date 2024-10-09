@@ -12,6 +12,7 @@ const order_master = require("../models/order_master.js")
 
 const placeorder = async (req, res) => {
 
+    
     let uid;
     if (req.session.UserID) {
         uid = req.session.UserID;
@@ -115,7 +116,7 @@ const placeorder = async (req, res) => {
             const {
                 userid, addresstype, shippingid, shiptitle, paymentmethod, billingaddid, shippingaddressid, fullsubtotal,
                 fullgrandtot_order, totalgst_order, shipmethodprice_order, handlingcharge_order, paymentmethodpri_order,
-                combodiscount_order, wallet_point_order, discount, coupon_point, coupon, cartuserid } = req.body;
+                combodiscount_order, wallet_point_order, discount, coupon, cartuserid } = req.body;
 
             const billingAddress = await AddressMaster.findById(billingaddid);
             const {
@@ -126,8 +127,46 @@ const placeorder = async (req, res) => {
 
             const shippingAddressId = shippingaddressid || billingaddid;
             let shippingAddress = {};
-            if (['shipping', 'billing'].includes(addresstype.toLowerCase())) {
-                shippingAddress = await Address.findById(shippingAddressId);
+            if (addresstype.toLowerCase() === "shipping" || addresstype.toLowerCase() === "billing") {
+                /*   shippingAddress = await Address.findById(shippingAddressId); */
+                const addressData = await AddressMaster.find({ address_id: shippingaddressid });
+                if (addressData) {
+                    const {
+                        phone_no: shipping_phone_no,
+                        whatsapp_no: shipping_whatsapp_no,
+                        country: shipping_country,
+                        state: shipping_state,
+                        city: shipping_city,
+                        pincode: shipping_pincode,
+                        email_id: shipping_email_id,
+                        first_name: shipping_first_name,
+                        last_name: shipping_last_name,
+                        address: shipping_address,
+                        address2: shipping_address2,
+                        gst_no: shipping_shipping_gst_number,
+                    } = addressData;
+
+                    // Insert into order_address_master
+                    const result = order_address_master.insert({
+                        user_id: userid,
+                        first_name: shipping_first_name,
+                        last_name: shipping_last_name,
+                        address: shipping_address,
+                        address2: shipping_address2,
+                        country: shipping_country,
+                        state: shipping_state,
+                        city: shipping_city,
+                        pincode: shipping_pincode,
+                        phone_no: shipping_phone_no,
+                        whatsapp_no: shipping_whatsapp_no,
+                        email_id: shipping_email_id,
+                        gst_no: shipping_shipping_gst_number,
+                        type: 2
+                    });
+
+                    const address_id = result.insertedId;
+                    console.log("Address inserted with ID:", address_id);
+                }
             }
             const orderDetails = {
                 user_id: userid,
@@ -153,7 +192,43 @@ const placeorder = async (req, res) => {
                 order_type: "website"
             };
 
-            const order = await order_address_master.create(orderDetails);
+            const date = new Date().toISOString();
+
+            const maxOrderInvoiceDoc = await order_master.find({}, { sort: { order_invoice: -1 }, projection: { order_invoice: 1 } });
+            const max_order_invoice = maxOrderInvoiceDoc ? maxOrderInvoiceDoc.order_invoice : 0;
+
+
+            const order_invoice = max_order_invoice === 0 ? 1 : max_order_invoice + 1;
+
+            let paystatus = "4";
+            let redirect_online = 'yes';
+
+
+            if (grand_total_point === wallet_point && ordertotal === 0 && paymentmethod === 'Online Payments') {
+                redirect_online = 'no';
+                paystatus = "6";
+            }
+
+            let coupon_amt = 0;
+            if (typeof global.discount !== 'undefined') {
+                coupon_amt = global.discount;
+            }
+            if (wallet_point) {
+                coupon_amt = 0;
+            }
+
+            let coupon_point = 0;
+            if (typeof global.coupon_point !== 'undefined') {
+                coupon_point = global.coupon_point;
+            }
+            if (!affiliate_user_id) {
+                affiliate_user_id = 0;
+            }
+
+
+
+
+            const order = await order_master.create(orderDetails);
             const orderid_id = order._id;
 
             if (discount && coupon) {
@@ -204,18 +279,6 @@ const placeorder = async (req, res) => {
                             order_id: orderid_id
                         });
                     }
-                }
-
-                // Handle wallet points
-                if (wallet_point_order) {
-                    await UserPoint.create({
-                        user_id: userid,
-                        order_id: orderid_id,
-                        amount: -wallet_point_order,
-                        type: 'Debit',
-                        remark: `#Used on Order ${orderid_id}`,
-                        date: new Date()
-                    });
                 }
 
                 await CartMaster.deleteMany({ UserID: cartuserid });
