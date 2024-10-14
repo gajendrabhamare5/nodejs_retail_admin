@@ -59,13 +59,13 @@ router.get('/', Controllerheader.getheaderInfo);
 router.get('/portfolio/:id', Controllerport.getportfolioInfo);
 router.get('/product/:id', Controllerproduct.getportproductInfo);
 // router.get('/cart', Controllercart.getcartInfo);
-router.get('/checkout', Controllercheckout.getcheckoutInfo);
+router.post('/checkout', Controllercheckout.getcheckoutInfo);
 router.post('/insert_address_data', Controllercheckout.insertdataaddress);
 router.post('/store_value', Controllercheckout.storevalue);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
 router.get('/aboutus', Controllerabout.getaboutInfo);
 router.get('/track-order', Controllertrackorder.gettrackorderInfo);
-router.get('/place_order', Controllerplaceorder.placeorder);
+router.post('/place_order', Controllerplaceorder.placeorder);
 
 router.post('/subscribe_process', Controllersubscribe.insertsubscribers)
 

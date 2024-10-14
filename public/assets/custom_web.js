@@ -2449,6 +2449,9 @@ function calculate_grandtotal() {
     }
     fullgrandtot = store_value(grand_total, 'fullgrandtot');
     fullgrandtot = fullgrandtot - +coupon;
+    console.log("fullgrandtot",fullgrandtot);
+    console.log("currency_cost",currency_cost);
+
     grand_total_point = grand_total_point - +coupon;
     grand_total_point = store_value(grand_total_point, 'grand_total_point');
     fullsubtotal = store_value(fullsubtotal, 'fullsubtotal');

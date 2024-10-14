@@ -2446,8 +2446,9 @@
                                                                             class="_19gi7yt0 _19gi7yte _1fragem1s _19gi7yt8 notranslate _1fragem20 _1fragemdc"></abbr>
                                                                         <strong translate="yes"
                                                                             class="_19gi7yt0 _19gi7ytm _1fragem1w _19gi7yt2 _19gi7yt9 notranslate"><span
-                                                                                class="cart_price amount total-value"
+                                                                            class="cart_price amount total-value"
                                                                                 id="grandtot1">Rs. {{this.qrate}}</span></strong>
+                                                                                {{!-- class="cart_price amount total-value" --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2933,8 +2934,8 @@
     var session_userid = "22";
     var producttype = "<?php echo $producttype; ?>";
     var currency_symbol = "<?php echo $_SESSION['currency_label'] ?>";
-    var c_convert = "<?php echo $_SESSION['currency_cost']; ?>";
-    var minimum_charge = '<?php echo $minimum_charge; ?>';
+    var c_convert = "1";
+    var minimum_charge = '<?php echo $minimum_charge; ?>'; 
     var cod_percent = '<?php echo $cod_percent; ?>';
     var is_apply_cod = '<?php echo $is_apply_cod; ?>';
     if ($("#b_postal").val() != "") {

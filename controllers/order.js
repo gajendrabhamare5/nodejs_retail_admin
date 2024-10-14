@@ -4,15 +4,18 @@ const CartMaster = require("../models/cartmaster.js")
 const product_master = require("../models/product");
 const crypto = require('crypto');
 const sizerelationMaster = require("../models/size_relation_master.js")
+const sizeMaster = require("../models/size.js");
 const AddressMaster = require("../models/address_master.js")
 const ViewCount = require("../models/viewcount.js")
 const UserMaster = require("../models/user_master_wholesale.js")
 const order_address_master = require("../models/order_address_master.js")
 const order_master = require("../models/order_master.js")
+const orderProductmaster = require("../models/order_product_master.js")
 
 const placeorder = async (req, res) => {
 
-    
+
+
     let uid;
     if (req.session.UserID) {
         uid = req.session.UserID;
@@ -21,47 +24,82 @@ const placeorder = async (req, res) => {
     }
 
     let a = "";
-    let userid;
-    let cartuserid;
+    let userid="22";
+    let cartuserid = "22";
 
-    if (req.session.UserID) {
+    /* if (req.session.UserID) {
         userid = req.session.UserID;
         cartuserid = userid;
     } else {
         const guest_id = req.sessionID;
         cartuserid = guest_id;
-
-        // Fetch user by guest_id
         const fetchUser = await UserMaster.find({ guest_id: guest_id });
 
         if (fetchUser) {
             userid = fetchUser.user_id;
         } else {
-            userid = null; // Handle case where user is not found
+            userid = null;
         }
-    }
+    } */
     let total_point = 0;
+    // console.log("userid",userid);
+
 
     if (userid) {
 
         const cartItems = await CartMaster.find({ UserID: cartuserid }).sort({ Id: -1 });
+        console.log("cartItems",cartItems);
+
         for (const item of cartItems) {
             const { ProID: proidg, Size, Id: ccid, cartType, Qty: oldqty } = item;
             let newqty = oldqty;
 
             // Check if product exists
-            const product = await product_master.find({ product_id: proidg });
+            const product = await product_master.find({ _id: proidg });
+            console.log("product",product);
+
             if (!product) {
                 await CartMaster.deleteOne({ ProID: proidg });
                 continue;
             }
 
             let stock = 0;
+
+            console.log("Size",Size);
+
             if (Size) {
-                const sizeRelation = await sizerelationMaster.find({
-                    product_id: proidg,
-                    'size_master.size_name': { $regex: new RegExp(Size, 'i') }
-                });
+
+                const sizeRelation = await sizerelationMaster.aggregate([
+                    {
+                        $lookup: {
+                            from: 'size_masters',         // The collection to join
+                            localField: 'size_id',      // Field from size_relation_master
+                            foreignField: '_id',    // Field from size_master
+                            as: 'sizeDetails'            // Name of the output array
+                        }
+                    },
+                    {
+                        $project: {
+                            product_id: 1,              // Include product_id in the output
+                            size_id: 1,                 // Include size_id for reference
+                            sizeDetails: 1               // Include sizeDetails to see the results of the lookup
+                        }
+                    },
+                    {
+                        $unwind: '$sizeDetails'        // Flatten the array (if there are multiple matches)
+                    },
+                    {
+                        $match: {
+                            product_id: proidg,                // Filter by product_id
+                            'sizeDetails.size_name': { $regex: new RegExp(Size, 'i') } // Case-insensitive match
+                        }
+                    },
+                    {
+                        $sort: { product_id: 1 }            // Sort by product_id ascending
+                    }
+                ]);
+
+                console.log("sizeRelation",sizeRelation);
 
                 if (sizeRelation) {
                     stock = sizeRelation.size_qty || 0;
@@ -72,7 +110,7 @@ const placeorder = async (req, res) => {
 
             if (stock < newqty) {
                 if (stock === 0) {
-                    await CartMaster.delete({ ProID: proidg, cartType });
+                    await CartMaster.deleteOne({ ProID: proidg, cartType });
                 } else {
                     await CartMaster.update(
                         { UserID: cartuserid, ProID: proidg, Size, cartType },
@@ -117,6 +155,9 @@ const placeorder = async (req, res) => {
                 userid, addresstype, shippingid, shiptitle, paymentmethod, billingaddid, shippingaddressid, fullsubtotal,
                 fullgrandtot_order, totalgst_order, shipmethodprice_order, handlingcharge_order, paymentmethodpri_order,
                 combodiscount_order, wallet_point_order, discount, coupon, cartuserid } = req.body;
+
+                console.log("req.body",req.body);
+
 
             const billingAddress = await AddressMaster.findById(billingaddid);
             const {
@@ -241,8 +282,8 @@ const placeorder = async (req, res) => {
                 });
                 await order_address_master.update({ _id: orderid_id }, { $set: { coupon_id: coupon } });
             }
-            const cartItems = await CartMaster.find({ UserID: cartuserid });
 
+            const cartItems = await CartMaster.find({ UserID: cartuserid });
             for (const item of cartItems) {
                 const { ProID: product_id, Qty, Size, cartType } = item;
 
@@ -255,7 +296,7 @@ const placeorder = async (req, res) => {
                 await product_master.update({ _id: product_id }, { $set: { product_qty: newProductQty } });
 
                 // Insert order product details
-                await order_master.create({
+                await orderProductmaster.create({
                     order_id: orderid_id,
                     product_id,
                     product_qty: Qty,
@@ -330,11 +371,36 @@ const placeorder = async (req, res) => {
                         date: new Date()
                     });
                 }
-
                 // Clear the cart
                 await CartMaster.deleteMany({ UserID: cartuserid });
+                let status = "ok";
+                const oid = orderId;
+                const result = {
+                    status,
+                    oid,
+
+                };
+                return res.json(result);
             }
+
+        }else{
+
+            let status = "error1";
+            const result = {
+                status,
+            };
+            return res.json(result);
         }
+
+        /* sendMail(orderId); */
+
+
+    }else{
+        let msg = `${product_names.join(", ")} is out of stock`;
+        if (!counter_cart) {
+            msg = "None of the Products(s) you selected are available currently.";
+        }
+        return res.json({ status: "outofstck", message: msg });
     }
 
 }
