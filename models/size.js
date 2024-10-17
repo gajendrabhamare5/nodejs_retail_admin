@@ -16,6 +16,6 @@ const sizeSchema = new mongoose.Schema ({
 
 })
 
-const size = new mongoose.model("size_master", sizeSchema);
+const size = new mongoose.model("size_masters", sizeSchema);
 
 module.exports = size

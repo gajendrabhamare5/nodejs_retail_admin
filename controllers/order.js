@@ -11,6 +11,7 @@ const UserMaster = require("../models/user_master_wholesale.js")
 const order_address_master = require("../models/order_address_master.js")
 const order_master = require("../models/order_master.js")
 const orderProductmaster = require("../models/order_product_master.js")
+const mongoose = require('mongoose');
 
 const placeorder = async (req, res) => {
 
@@ -43,12 +44,13 @@ const placeorder = async (req, res) => {
     } */
     let total_point = 0;
     // console.log("userid",userid);
-
+    const sizes = await sizeMaster.find({});
+  /*   console.log("Sizes:", sizes); */
 
     if (userid) {
 
-        const cartItems = await CartMaster.find({ UserID: cartuserid }).sort({ Id: -1 });
-        console.log("cartItems",cartItems);
+        const cartItems = await CartMaster.find({ UserID: cartuserid });
+        /* console.log("cartItems",cartItems); */
 
         for (const item of cartItems) {
             const { ProID: proidg, Size, Id: ccid, cartType, Qty: oldqty } = item;
@@ -56,20 +58,17 @@ const placeorder = async (req, res) => {
 
             // Check if product exists
             const product = await product_master.find({ _id: proidg });
-            console.log("product",product);
+            /* console.log("product",product); */
 
             if (!product) {
                 await CartMaster.deleteOne({ ProID: proidg });
                 continue;
             }
 
-            let stock = 0;
-
-            console.log("Size",Size);
-
+            let stock;
             if (Size) {
 
-                const sizeRelation = await sizerelationMaster.aggregate([
+                /* const sizeRelation = await sizerelationMaster.aggregate([
                     {
                         $lookup: {
                             from: 'size_masters',         // The collection to join
@@ -97,22 +96,44 @@ const placeorder = async (req, res) => {
                     {
                         $sort: { product_id: 1 }            // Sort by product_id ascending
                     }
-                ]);
+                ]); */
 
-                console.log("sizeRelation",sizeRelation);
+               /*  const sizeRelation = await sizerelationMaster.find({
+                    product_id: proidg,
+                    size_id: { $in: await sizeMaster.find({ size_name: { $regex: new RegExp(Size, 'i') } }, { _id: 1 }).map(s => s._id) }
+                }); */
 
-                if (sizeRelation) {
-                    stock = sizeRelation.size_qty || 0;
+                const sizeDocuments = await sizeMaster.find({ size_name: { $regex: new RegExp(Size, 'i') } }, { _id: 1 });
+                if (!Array.isArray(sizeDocuments)) {
+                    console.error("Expected an array but got:", sizeDocuments);
+                    return; // Handle the error appropriately
                 }
+                const sizeIds = sizeDocuments.map(s => s._id);
+                const sizeRelation = await sizerelationMaster.find({
+                    product_id: proidg,
+                    size_id: { $in: sizeIds }
+                });
+
+               /*  console.log("Size Relation Result:",sizeRelation); */
+
+                if (sizeRelation.length > 0) {
+                    stock = sizeRelation[0].size_qty || 0;
+                } else {
+                    stock = 0;
+                }
+
             } else {
                 stock = product.product_qty || 0;
             }
+
+           /*  console.log("stock",stock);
+            console.log("newqty",newqty); */
 
             if (stock < newqty) {
                 if (stock === 0) {
                     await CartMaster.deleteOne({ ProID: proidg, cartType });
                 } else {
-                    await CartMaster.update(
+                    await CartMaster.updateOne(
                         { UserID: cartuserid, ProID: proidg, Size, cartType },
                         { Qty: stock }
                     );
@@ -123,20 +144,57 @@ const placeorder = async (req, res) => {
         let counter_cart = 0;
         const product_names = [];
         const cartData = await CartMaster.find({ UserID: cartuserid });
+
+
         for (const item of cartData) {
             const { ProID: product_id, Qty, Size, cartType } = item;
 
             let product_qty = 0;
             if (Size) {
-                const sizeRelation = await sizerelationMaster.findOne({
-                    product_id,
-                    'size_master.size_name': { $regex: new RegExp(Size, 'i') }
+               /*  const sizeRelation = await sizerelationMaster.aggregate([
+                    {
+                        $lookup: {
+                            from: 'size_masters',
+                            localField: 'size_id',
+                            foreignField: 'size_id',
+                            as: 'sizeDetails'
+                        }
+                    },
+                    {
+                        $unwind: '$sizeDetails'
+                    },
+                    {
+                        $match: {
+                            product_id: product_id,
+                            'sizeDetails.size_name': { $regex: new RegExp(Size, 'i') }
+                        }
+                    },
+                    {
+                        $sort: { product_id: 1 }
+                    }
+                ]); */
+
+                const sizeDocuments = await sizeMaster.find({ size_name: { $regex: new RegExp(Size, 'i') } }, { _id: 1 });
+                if (!Array.isArray(sizeDocuments)) {
+                    console.error("Expected an array but got:", sizeDocuments);
+                    return; // Handle the error appropriately
+                }
+                const sizeIds = sizeDocuments.map(s => s._id);
+                const sizeRelation = await sizerelationMaster.find({
+                    product_id: product_id,
+                    size_id: { $in: sizeIds }
                 });
 
-                product_qty = sizeRelation ? sizeRelation.size_qty : 0;
+                if (sizeRelation.length > 0) {
+                    product_qty = sizeRelation[0].size_qty;
+                } else {
+                    product_qty = 0;
+                }
+
             } else {
                 const product = await product_master.find({ product_id });
                 product_qty = product ? product.product_qty : 0;
+
             }
 
             if (parseInt(product_qty) > 0) {
@@ -149,28 +207,43 @@ const placeorder = async (req, res) => {
             }
         }
         const cart_count = cartItems.length;
+
+        console.log("counter_cart",counter_cart);
+        console.log("cart_count",cart_count);
+
         if (cart_count === counter_cart && counter_cart > 0) {
 
+
             const {
-                userid, addresstype, shippingid, shiptitle, paymentmethod, billingaddid, shippingaddressid, fullsubtotal,
+                userid, addresstype, shippingid, shiptitle, paymentmethod, billingaddid, fullsubtotal,
                 fullgrandtot_order, totalgst_order, shipmethodprice_order, handlingcharge_order, paymentmethodpri_order,
                 combodiscount_order, wallet_point_order, discount, coupon, cartuserid } = req.body;
 
-                console.log("req.body",req.body);
+                const shippingaddressid = req.body.shippingaddressid;
 
-
-            const billingAddress = await AddressMaster.findById(billingaddid);
-            const {
+            const billingAddress = await AddressMaster.find({ _id: billingaddid });
+            console.log("billingAddress",billingAddress);
+             const {
                 phone_no: Phone,
                 first_name,
                 country
             } = billingAddress;
 
+
+
             const shippingAddressId = shippingaddressid || billingaddid;
+            console.log("shippingAddressId",shippingAddressId);
+
+            if (!mongoose.Types.ObjectId.isValid(shippingaddressid) || shippingaddressid.length !== 24) {
+                return res.status(400).send('Invalid shipping address ID format');
+            }
+
             let shippingAddress = {};
             if (addresstype.toLowerCase() === "shipping" || addresstype.toLowerCase() === "billing") {
                 /*   shippingAddress = await Address.findById(shippingAddressId); */
-                const addressData = await AddressMaster.find({ address_id: shippingaddressid });
+                const addressData = await AddressMaster.find({ _id:new mongoose.Types.ObjectId(shippingaddressid)  });
+                console.log("addressData",addressData);
+
                 if (addressData) {
                     const {
                         phone_no: shipping_phone_no,
@@ -187,8 +260,11 @@ const placeorder = async (req, res) => {
                         gst_no: shipping_shipping_gst_number,
                     } = addressData;
 
+                    console.log("addressData",addressData);
+
+
                     // Insert into order_address_master
-                    const result = order_address_master.insert({
+                    const result = order_address_master.create({
                         user_id: userid,
                         first_name: shipping_first_name,
                         last_name: shipping_last_name,
