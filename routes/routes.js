@@ -6,6 +6,7 @@ const Controllerproduct = require('../controllers/product1.js');
 const Controllercheckout = require('../controllers/checkout.js');
 const Controllerwishlist = require('../controllers/wishlist.js');
 const Controllerabout = require('../controllers/aboutus.js');
+const Controllerorderdetails = require('../controllers/order_details.js');
 const Controllertrackorder = require('../controllers/track.js');
 const Controllerplaceorder = require('../controllers/order.js');
 const Controllercontactus = require('../controllers/contactus.js');
@@ -64,8 +65,9 @@ router.post('/insert_address_data', Controllercheckout.insertdataaddress);
 router.post('/store_value', Controllercheckout.storevalue);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
 router.get('/aboutus', Controllerabout.getaboutInfo);
-router.get('/track-order', Controllertrackorder.gettrackorderInfo);
+router.post('/track-order', Controllertrackorder.gettrackorderInfo);
 router.post('/place_order', Controllerplaceorder.placeorder);
+router.get('/order_details/:id/thank_you', Controllerorderdetails.orderDetails);
 
 router.post('/subscribe_process', Controllersubscribe.insertsubscribers)
 

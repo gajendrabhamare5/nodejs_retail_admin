@@ -208,41 +208,34 @@ const placeorder = async (req, res) => {
         }
         const cart_count = cartItems.length;
 
-        console.log("counter_cart",counter_cart);
-        console.log("cart_count",cart_count);
-
         if (cart_count === counter_cart && counter_cart > 0) {
 
 
             const {
-                userid, addresstype, shippingid, shiptitle, paymentmethod, billingaddid, fullsubtotal,
+                userid, addresstype, shippingid, shiptitle, paymentmethod, fullsubtotal,
                 fullgrandtot_order, totalgst_order, shipmethodprice_order, handlingcharge_order, paymentmethodpri_order,
-                combodiscount_order, wallet_point_order, discount, coupon, cartuserid } = req.body;
+                combodiscount_order, wallet_point_order, discount, coupon } = req.body;
 
                 const shippingaddressid = req.body.shippingaddressid;
+                const billingaddid = req.body.billingaddid;
+
 
             const billingAddress = await AddressMaster.find({ _id: billingaddid });
-            console.log("billingAddress",billingAddress);
-             const {
-                phone_no: Phone,
-                first_name,
-                country
-            } = billingAddress;
+            /* console.log("billingAddress=",billingAddress); */
+
+          /*   let shippingAddressId =   billingaddid;
+            console.log("shippingAddressId",shippingAddressId); */
+
+           /*  const shippingAddressId = shippingaddressid || billingaddid; */
+
+            const addressData = await AddressMaster.find({ _id:billingaddid  });
 
 
 
-            const shippingAddressId = shippingaddressid || billingaddid;
-            console.log("shippingAddressId",shippingAddressId);
-
-            if (!mongoose.Types.ObjectId.isValid(shippingaddressid) || shippingaddressid.length !== 24) {
-                return res.status(400).send('Invalid shipping address ID format');
-            }
-
-            let shippingAddress = {};
             if (addresstype.toLowerCase() === "shipping" || addresstype.toLowerCase() === "billing") {
-                /*   shippingAddress = await Address.findById(shippingAddressId); */
-                const addressData = await AddressMaster.find({ _id:new mongoose.Types.ObjectId(shippingaddressid)  });
-                console.log("addressData",addressData);
+
+                const addressData = await AddressMaster.find({ _id:billingaddid  });
+                /* console.log("addressData1",addressData); */
 
                 if (addressData) {
                     const {
@@ -258,12 +251,10 @@ const placeorder = async (req, res) => {
                         address: shipping_address,
                         address2: shipping_address2,
                         gst_no: shipping_shipping_gst_number,
-                    } = addressData;
-
-                    console.log("addressData",addressData);
+                    } = addressData[0];
 
 
-                    // Insert into order_address_master
+
                     const result = order_address_master.create({
                         user_id: userid,
                         first_name: shipping_first_name,
@@ -282,14 +273,14 @@ const placeorder = async (req, res) => {
                     });
 
                     const address_id = result.insertedId;
-                    console.log("Address inserted with ID:", address_id);
+
                 }
             }
             const orderDetails = {
                 user_id: userid,
                 payment_method: paymentmethod,
                 shipping_method: shiptitle,
-                address_id: shippingAddressId,
+                address_id: billingaddid,
                 address_type: addresstype,
                 order_subtotal: fullsubtotal,
                 order_gst: totalgst_order,
@@ -304,7 +295,7 @@ const placeorder = async (req, res) => {
                 used_wallet_point: wallet_point_order || 0,
                 order_status: "Pending",
                 order_date: new Date(),
-                affiliate_user_id: affiliate_user_id || 0,
+                affiliate_user_id: 0,
                 user_type: "retail",
                 order_type: "website"
             };
@@ -321,32 +312,36 @@ const placeorder = async (req, res) => {
             let redirect_online = 'yes';
 
 
-            if (grand_total_point === wallet_point && ordertotal === 0 && paymentmethod === 'Online Payments') {
+          /*   if (grand_total_point === wallet_point && ordertotal === 0 && paymentmethod === 'Online Payments') {
                 redirect_online = 'no';
                 paystatus = "6";
-            }
+            } */
 
             let coupon_amt = 0;
             if (typeof global.discount !== 'undefined') {
                 coupon_amt = global.discount;
             }
+
+            let wallet_point= 0;
             if (wallet_point) {
                 coupon_amt = 0;
             }
 
-            let coupon_point = 0;
+
             if (typeof global.coupon_point !== 'undefined') {
                 coupon_point = global.coupon_point;
             }
+
+            let affiliate_user_id = 0;
             if (!affiliate_user_id) {
                 affiliate_user_id = 0;
             }
 
-
-
-
             const order = await order_master.create(orderDetails);
+
             const orderid_id = order._id;
+            console.log("orderid_id",orderid_id);
+
 
             if (discount && coupon) {
                 await CouponRelation.create({
@@ -359,20 +354,23 @@ const placeorder = async (req, res) => {
                 await order_address_master.update({ _id: orderid_id }, { $set: { coupon_id: coupon } });
             }
 
-            const cartItems = await CartMaster.find({ UserID: cartuserid });
+            const cartItems = await CartMaster.find({ UserID: 22 });
+
             for (const item of cartItems) {
                 const { ProID: product_id, Qty, Size, cartType } = item;
 
                 // Fetch product details
-                const product = await product_master.findById(product_id);
+                const product = await product_master.find({ _id:product_id});
+                /* console.log("product",product); */
+
                 let product_qty = product.product_qty;
 
                 // Update inventory
                 const newProductQty = product_qty - Qty;
-                await product_master.update({ _id: product_id }, { $set: { product_qty: newProductQty } });
+                await product_master.updateOne({ _id: product_id }, { $set: { product_qty: newProductQty } });
 
                 // Insert order product details
-                await orderProductmaster.create({
+            const opmaster = await orderProductmaster.create({
                     order_id: orderid_id,
                     product_id,
                     product_qty: Qty,
@@ -387,7 +385,8 @@ const placeorder = async (req, res) => {
                     is_free: item.free_item
                 });
 
-                // Handle dealer relation if exists
+                // console.log("opmaster",opmaster);
+
                 if (product.vendor) {
                     const dealer = await Dealer.find({ vendor_sku: product.vendor });
                     if (dealer) {
@@ -450,7 +449,7 @@ const placeorder = async (req, res) => {
                 // Clear the cart
                 await CartMaster.deleteMany({ UserID: cartuserid });
                 let status = "ok";
-                const oid = orderId;
+                const oid = orderid_id;
                 const result = {
                     status,
                     oid,
