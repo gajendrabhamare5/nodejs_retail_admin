@@ -2,7 +2,9 @@ const order_master = require("../models/order_master");
 const user_master_wholesale = require("../models/user_master_wholesale");
 
 const orderDetails = async (req, res) => {
-    const id = req.params.id;
+
+
+     const id = req.params.id;
     let uid = req.session.UserID;
     let OID = req.session.Order_id;
 
@@ -14,11 +16,13 @@ const orderDetails = async (req, res) => {
         }
     }
 
-    const oid = req.query.id
+     const oid = req.query.id
     const orderData = await order_master.findOne({ order_id: oid });
-    if (!oid || !req.session.Order_id) {
+    
+
+    /* if (!oid || !req.session.Order_id) {
         return res.redirect('/');
-    }
+    } */
 
     if (orderData) {
         const orderTotalAmount = orderData.order_total;
@@ -28,10 +32,9 @@ const orderDetails = async (req, res) => {
         const userName = userData ? userData.user_fname : '';
         let voucherName = '';
 
-        res.send(`User: ${userName}, Order Total: ${orderTotalAmount}`);
     }
 
-        res.render("web/views/order_details")
+        res.render("web/views/order_details",{orderData})
 
 }
 
