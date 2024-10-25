@@ -134,17 +134,18 @@
             {{>web/header}}
             <main class="main-content" id="MainContent" style="margin-top:10px;">
                 <div class="page-width page-content custom_width">
-                <p style="float: left;width: 100%;text-align: initial;">Dear Gajendra,</p>
+                <p style="float: left;width: 100%;text-align: initial;">Dear {{orderData.user_fname}},</p>
                 <p style="text-align:initial">
                     Thank you for choosing [Web Name]  for your recent purchase. We are excited to confirm that your order  is now being processed. Below are the details of your order:
                     </p>
-
+                            {{#if isLoggedIn}}
                                 <p>
                                     <a href="/login" style="color:#5656d5;text-transform: capitalize;">Log in</a> to see account details.
                                 </p>
+                                {{/if}}
 
                      <div style="text-align:start;">
-                        <b>Order Number:</b>  <br>
+                        <b>Order Number:</b> {{oid}} <br>
                         <b>Estimated Delivery Date:</b>  5-7 Days
                      </div>
                      <br>

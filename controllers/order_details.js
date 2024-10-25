@@ -3,7 +3,6 @@ const user_master_wholesale = require("../models/user_master_wholesale");
 
 const orderDetails = async (req, res) => {
 
-
      const id = req.params.id;
     let uid = req.session.UserID;
     let OID = req.session.Order_id;
@@ -18,7 +17,7 @@ const orderDetails = async (req, res) => {
 
      const oid = req.query.id
     const orderData = await order_master.findOne({ order_id: oid });
-    
+
 
     /* if (!oid || !req.session.Order_id) {
         return res.redirect('/');
@@ -29,12 +28,12 @@ const orderDetails = async (req, res) => {
         uid = orderData.user_id;
 
         const userData = await user_master_wholesale.findOne({ user_id: uid });
-        const userName = userData ? userData.user_fname : '';
+        if (userData) {
+            orderData.user_fname = userData.user_fname;
+        }
         let voucherName = '';
-
+        res.render("web/views/order_details",{orderData,oid})
     }
-
-        res.render("web/views/order_details",{orderData})
 
 }
 
