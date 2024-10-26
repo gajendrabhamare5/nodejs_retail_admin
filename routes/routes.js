@@ -51,6 +51,7 @@ const Controllerreview = require('../controllers/review.js');
 const Controllersubscribers = require('../controllers/subscribe.js');
 const Controllercourier = require('../controllers/courier.js');
 const Controllercoupon = require('../controllers/coupon.js');
+const Controllerdealer = require('../controllers/dealer.js');
 
 
 
@@ -220,5 +221,8 @@ router.get('/retail_admin/coupon_edit/:id', Controllercoupon.couponEditInfo)
 router.post('/retail_admin/coupon_edit_process', Controllercoupon.updatecoupon)
 router.post('/retail_admin/monthly_coupon_process', Controllercoupon.monthlycoupon)
 router.post('/retail_admin/coupon_edit_add_process', Controllercoupon.editaddcoupon)
+
+router.get('/retail_admin/dealer_add', Controllerdealer.getdealer)
+router.post('/retail_admin/dealer_add_process', Controllerdealer.adddealer)
 
 module.exports = router;

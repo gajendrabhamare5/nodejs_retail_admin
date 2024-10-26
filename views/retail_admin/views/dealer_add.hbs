@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+    <title>Dealer </title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon" href="">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.css">
+    <link rel="stylesheet" href="../assets/fonts/linearicons.css">
+    <link rel="stylesheet" href="../assets/fonts/open-iconic.css">
+    <link rel="stylesheet" href="../assets/fonts/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="../assets/css/bootstrap-material.css">
+    <link rel="stylesheet" href="../assets/css/shreerang-material.css">
+    <link rel="stylesheet" href="../assets/css/uikit.css">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="../assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../assets/libs/flot/flot.css">
+	<link rel="stylesheet" href="../assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../assets/libs/datatables/datatables.css">
+	<link rel="stylesheet" href="../assets/libs/dropzone/dropzone.css">
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+            <!-- [ Layout sidenav ] Start -->
+             {{>admin/sidebar}}
+            <!-- [ Layout sidenav ] End -->
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                <!-- [ Layout navbar ( Header ) ] Start -->
+                 {{>admin/header}}
+                <!-- [ Layout navbar ( Header ) ] End -->
+
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Add Dealer</h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.php"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item ">Dealer</li>
+                                <li class="breadcrumb-item active">Add Dealer</li>
+                            </ol>
+                        </div>
+
+                        <div class="card mb-4 col-md-5" style="float:left;margin-right:40px;">
+                            <h6 class="card-header">Add New Dealer</h6>
+                            <div class="card-body">
+
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">First Name</label>
+									<input type="text" class="form-control" id="first_name" autofocus>
+								</div>
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">Last Name</label>
+									<input type="text" class="form-control" id="last_name">
+								</div>
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">Phone Number</label>
+									<input type="number" class="form-control" id="phone">
+								</div>
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">Whatsapp Number</label>
+									<input type="number" class="form-control" id="whatsapp">
+								</div>
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">Email</label>
+									<input type="email" class="form-control" id="email">
+								</div>
+								<div class="form-group col-md-6" style="float:left;">
+									<label class="form-label">Company Name</label>
+									<input type="text" class="form-control" id="company">
+								</div>
+								<div class="form-group">
+								<label class="form-label">Vendor Code</label>
+									<input type="text" class="form-control" id="vendor_sku">
+								</div>
+								<div class="form-group">
+									<label class="form-label">Address</label>
+									<textarea class="form-control" id="address"></textarea>
+								</div>
+								<small class="form-text text-muted" id="error" style="display:none;color:red !important;"></small>
+								<button type="button" id="add_cat" class="btn btn-primary" onclick="add_dealer()">Add</button>
+                            </div>
+                        </div>
+						<div class="card col-md-6">
+						<div>
+							<button type="button" onclick="delete_dealer()" class="btn btn-danger icon-btn borderless">Delete</button>
+						</div>
+                            <div class="card-datatable table-responsive">
+                                <table id="user-list" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>No</th>
+                                            <th>Dealer Name</th>
+                                            <th>Phone Number</th>
+											<th>Vendor Code</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- [ content ] End -->
+
+                    <!-- [ Layout footer ] Start -->
+                     {{>admin/footer}}
+                    <!-- [ Layout footer ] End -->
+
+                </div>
+                <!-- [ Layout content ] Start -->
+
+            </div>
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- [ Layout wrapper] End -->
+
+    <!-- Core scripts -->
+    <script src="../assets/js/pace.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+    <script src="../assets/libs/popper/popper.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/sidenav.js"></script>
+    <script src="../assets/js/layout-helpers.js"></script>
+    <script src="../assets/js/material-ripple.js"></script>
+
+    <!-- Libs -->
+    <script src="../assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="../assets/libs/eve/eve.js"></script>
+    <script src="../assets/libs/flot/flot.js"></script>
+    <script src="../assets/libs/flot/curvedLines.js"></script>
+    <script src="../assets/libs/chart-am4/core.js"></script>
+    <script src="../assets/libs/chart-am4/charts.js"></script>
+    <script src="../assets/libs/chart-am4/animated.js"></script>
+    <script src="../assets/libs/raphael/raphael.js"></script>
+    <script src="../assets/libs/morris/morris.js"></script>
+	<script src="../assets/libs/moment/moment.js"></script>
+    <script src="../assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="../assets/libs/datatables/datatables.js"></script>
+	<script src="../assets/libs/dropzone/dropzone.js"></script>
+
+
+    <!-- Demo -->
+    <script src="../assets/js/demo.js"></script><script src="../assets/js/analytics.js"></script>
+    <script>
+		$(function() {
+
+					$('#user-list').dataTable({
+									 "dom": 'lfrtip',
+									 "buttons": [
+										  {
+											   extend: 'pdf',
+											   exportOptions: {
+													columns: [2,3]
+												}
+										   },
+										   {
+											   extend: 'csv',
+											   exportOptions: {
+													columns: [2,3]
+												}
+										   },
+										   {
+											   extend: 'print',
+											   exportOptions: {
+													columns: [2,3]
+												}
+										   }
+									 ],
+									 "aLengthMenu": [
+												[10, 25, 50, 100, -1],
+												[10, 25, 50, 100, "All"]
+												],
+									 "iDisplayLength": 10,
+									 "bProcessing": true,
+									 "sAjaxSource": "datatables/view_dealers.php",
+									 "aoColumns": [
+											{ mData: 'checkbox' },
+											{ mData: 'no' },
+											{ mData: 'name' } ,
+											{ mData: 'phone' },
+											{ mData: 'vendor_sku' },
+									],
+
+							});
+					});
+	</script>
+
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+
+	<script>
+		function add_dealer(){
+
+			var first_name = $("#first_name").val();
+			var last_name = $("#last_name").val();
+			var phone = $("#phone").val();
+			var whatsapp = $("#whatsapp").val();
+			var email = $("#email").val();
+			var company = $("#company").val();
+			var address = $("#address").val();
+			var vendor_sku = $("#vendor_sku").val();
+
+			if(first_name == ""){
+				$("#error").html("Enter First Name.");
+				$("#error").show();
+			}else if(vendor_sku == ""){
+				$("#error").html("Enter Vendor Sku.");
+				$("#error").show();
+			}else{
+				$("#error").hide();
+				$("#add_cat").attr("disabled","disabled");
+
+				$.ajax({
+
+					type: "POST",
+					data: {first_name:first_name,last_name:last_name,phone:phone,whatsapp:whatsapp,email:email,company:company,address:address,vendor_sku:vendor_sku},
+					dataType: 'text',
+					url: "/retail_admin/dealer_add_process",
+					//data: {cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
+					success: function(response){
+						if(response == "ok"){
+							location.reload();
+						}else if(response == "vendorsku_error")
+						{
+							alert("Vendor Sku already exist.")
+						}else{
+							alert("Something went wrong.")
+						}
+					}
+
+				});
+			}
+		}
+
+		function delete_dealer(){
+				var delete_id = [];
+				$.each($("input[name='delete_checkbox']:checked"), function(){
+					delete_id.push($(this).val());
+				});
+				//alert("Id to Delete are: " + delete_id.join(", "));
+				if(delete_id == ""){
+					alert("Please Select a Dealer to Delete");
+				}else{
+
+					if(confirm('Are You Sure You Want To Delete?')){
+						$.ajax({
+							type: "POST",
+							url: "dealer_delete.php?id="+delete_id,
+							success: function(response){
+								if(response == "ok"){
+									/* location.reload(); */
+								}else if(response == "vendor_error"){
+
+                              alert("You can Not Delete Dealer Who Related With Product");
+								}
+							}
+						});
+						//alert(delete_id);
+
+					}
+
+				}
+		}
+	</script>
+
+</body>
+
+
+</html>
