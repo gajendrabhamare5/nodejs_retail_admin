@@ -16,7 +16,9 @@ const orderDetails = async (req, res) => {
     }
 
      const oid = req.query.id
+
     const orderData = await order_master.findOne({ order_id: oid });
+    console.log("orderData",orderData);
 
 
     /* if (!oid || !req.session.Order_id) {
@@ -32,9 +34,8 @@ const orderDetails = async (req, res) => {
             orderData.user_fname = userData.user_fname;
         }
         let voucherName = '';
-        res.render("web/views/order_details",{orderData,oid})
     }
-
+    res.render("web/views/order_details",{orderData,oid})
 }
 
 module.exports = {
