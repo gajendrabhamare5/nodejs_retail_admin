@@ -18,7 +18,7 @@ const orderDetails = async (req, res) => {
      const oid = req.query.id
 
     const orderData = await order_master.findOne({ order_id: oid });
-    console.log("orderData",orderData);
+    // console.log("orderData",orderData);
 
 
     /* if (!oid || !req.session.Order_id) {

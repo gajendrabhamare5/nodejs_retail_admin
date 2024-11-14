@@ -125,6 +125,15 @@
 											<th>Vendor Code</th>
                                         </tr>
                                     </thead>
+  									{{#each dealer_master}}
+                                     <tr>
+                                    <td>{{{this.checkbox}}}</td>
+                                    <td>{{this.no}}</td>
+                                    <td>{{this.first_name}}</td>
+                                    <td>{{this.phone}}</td>
+                                    <td>{{this.vendor_sku}}</td>
+                                     </tr>
+                                    {{/each}}
                                 </table>
                             </div>
                         </div>
@@ -175,49 +184,7 @@
 
     <!-- Demo -->
     <script src="../assets/js/demo.js"></script><script src="../assets/js/analytics.js"></script>
-    <script>
-		$(function() {
 
-					$('#user-list').dataTable({
-									 "dom": 'lfrtip',
-									 "buttons": [
-										  {
-											   extend: 'pdf',
-											   exportOptions: {
-													columns: [2,3]
-												}
-										   },
-										   {
-											   extend: 'csv',
-											   exportOptions: {
-													columns: [2,3]
-												}
-										   },
-										   {
-											   extend: 'print',
-											   exportOptions: {
-													columns: [2,3]
-												}
-										   }
-									 ],
-									 "aLengthMenu": [
-												[10, 25, 50, 100, -1],
-												[10, 25, 50, 100, "All"]
-												],
-									 "iDisplayLength": 10,
-									 "bProcessing": true,
-									 "sAjaxSource": "datatables/view_dealers.php",
-									 "aoColumns": [
-											{ mData: 'checkbox' },
-											{ mData: 'no' },
-											{ mData: 'name' } ,
-											{ mData: 'phone' },
-											{ mData: 'vendor_sku' },
-									],
-
-							});
-					});
-	</script>
 
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
       <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
@@ -257,8 +224,9 @@
 					url: "/retail_admin/dealer_add_process",
 					//data: {cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
 					success: function(response){
-						if(response == "ok"){
-							location.reload();
+						if(response === "ok"){
+
+							location.href="/retail_admin/dealer_add";
 						}else if(response == "vendorsku_error")
 						{
 							alert("Vendor Sku already exist.")
@@ -284,10 +252,11 @@
 					if(confirm('Are You Sure You Want To Delete?')){
 						$.ajax({
 							type: "POST",
-							url: "dealer_delete.php?id="+delete_id,
+							url: "/retail_admin/dealer_delete/"+delete_id,
 							success: function(response){
-								if(response == "ok"){
+								if(response === "ok"){
 									/* location.reload(); */
+									location.href="/retail_admin/dealer_add";
 								}else if(response == "vendor_error"){
 
                               alert("You can Not Delete Dealer Who Related With Product");

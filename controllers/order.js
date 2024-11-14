@@ -340,7 +340,7 @@ const placeorder = async (req, res) => {
             const order = await order_master.create(orderDetails);
 
             const orderid_id = order._id;
-            console.log("orderid_id",orderid_id);
+            // console.log("orderid_id",orderid_id);
 
 
             if (discount && coupon) {
