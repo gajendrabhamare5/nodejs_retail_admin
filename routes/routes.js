@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const Controllerport = require('../controllers/portfolio.js');
 const Controllerproduct = require('../controllers/product1.js');
 // const Controllercart = require('../controllers/cart.js');
@@ -48,6 +49,7 @@ const Controllercod = require('../controllers/cod_charge.js');
 const Controllerannouncement = require('../controllers/announcement.js');
 const Controllerseason = require('../controllers/seasonstore.js');
 const Controllerreview = require('../controllers/review.js');
+const Controlleruserlist = require('../controllers/userslist.js');
 const Controllersubscribers = require('../controllers/subscribe.js');
 const Controllercourier = require('../controllers/courier.js');
 const Controllercoupon = require('../controllers/coupon.js');
@@ -226,6 +228,10 @@ router.post('/retail_admin/coupon_edit_add_process', Controllercoupon.editaddcou
 router.get('/retail_admin/dealer_add', Controllerdealer.getdealer)
 router.post('/retail_admin/dealer_add_process', Controllerdealer.adddealer)
 router.post('/retail_admin/dealer_delete/:id', Controllerdealer.deletedealer)
+
+router.get('/retail_admin/users_list',Controlleruserlist.getadminuserlist)
+router.post('/retail_admin/view_users',Controlleruserlist.getadminuserslist)
+router.get('/retail_admin/user_edit/:id', Controlleruserlist.userEditInfo)
 
 router.get('/retail_admin/order_list', Controllerorderretail.getorderlist)
 

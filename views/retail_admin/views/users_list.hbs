@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+
+<head>
+	<title>Users | title </title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+	<meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+	<meta name="author" content="Srthemesvilla" />
+	<link rel="icon" type="image/x-icon" href="<?php echo  $favicon ?>">
+
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+	<!-- Icon fonts -->
+	<link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+	<link rel="stylesheet" href="/assets/fonts/ionicons.css">
+	<link rel="stylesheet" href="/assets/fonts/linearicons.css">
+	<link rel="stylesheet" href="/assets/fonts/open-iconic.css">
+	<link rel="stylesheet" href="/assets/fonts/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="/assets/fonts/feather.css">
+
+	<!-- Core stylesheets -->
+	<link rel="stylesheet" href="/assets/css/bootstrap-material.css">
+	<link rel="stylesheet" href="/assets/css/shreerang-material.css">
+	<link rel="stylesheet" href="/assets/css/uikit.css">
+
+	<!-- Libs -->
+	<link rel="stylesheet" href="/assets/libs/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" href="/assets/libs/flot/flot.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+	<link rel="stylesheet" href="/assets/libs/datatables/datatables.css">
+	<link rel="stylesheet" href="/assets/libs/dropzone/dropzone.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-select/bootstrap-select.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="/assets/libs/select2/select2.css">
+	<link rel="stylesheet" href="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css">
+	<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+</head>
+
+<body>
+	<!-- [ Preloader ] Start -->
+	<div class="page-loader">
+		<div class="bg-primary"></div>
+	</div>
+	<!-- [ Preloader ] End -->
+
+	<!-- [ Layout wrapper ] Start -->
+	<div class="layout-wrapper layout-2">
+		<div class="layout-inner">
+			<!-- [ Layout sidenav ] Start -->
+			 {{>admin/sidebar}}
+			<!-- [ Layout sidenav ] End -->
+			<!-- [ Layout container ] Start -->
+			<div class="layout-container">
+				<!-- [ Layout navbar ( Header ) ] Start -->
+				 {{>admin/header}}
+				<!-- [ Layout navbar ( Header ) ] End -->
+
+				<!-- [ Layout content ] Start -->
+				<div class="layout-content">
+
+					<!-- [ content ] Start -->
+					<div class="container-fluid flex-grow-1 container-p-y">
+						<h4 class="font-weight-bold py-3 mb-0">View Users</h4>
+						<div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="http://localhost:4000/retail_admin"><i class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item ">Users</li>
+								<li class="breadcrumb-item active">View Users</li>
+							</ol>
+						</div>
+						<style>
+							.switch {
+								position: relative;
+								display: inline-block;
+								width: 60px;
+								height: 34px;
+							}
+
+							.switch input {
+								opacity: 0;
+								width: 0;
+								height: 0;
+							}
+
+							.slider {
+								position: absolute;
+								cursor: pointer;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								background-color: #ccc;
+								-webkit-transition: .4s;
+								transition: .4s;
+							}
+
+							.slider:before {
+								position: absolute;
+								content: "";
+								height: 26px;
+								width: 26px;
+								left: 4px;
+								bottom: 4px;
+								background-color: white;
+								-webkit-transition: .4s;
+								transition: .4s;
+							}
+
+							input:checked+.slider {
+								background-color: #2196F3;
+							}
+
+							input:focus+.slider {
+								box-shadow: 0 0 1px #2196F3;
+							}
+
+							input:checked+.slider:before {
+								-webkit-transform: translateX(26px);
+								-ms-transform: translateX(26px);
+								transform: translateX(26px);
+							}
+
+							/* Rounded sliders */
+							.slider.round {
+								border-radius: 34px;
+							}
+
+							.slider.round:before {
+								border-radius: 50%;
+							}
+						</style>
+						<div class="card mb-4 col-md-12" style="float:left;margin-right:40px;">
+							<div>
+								<!--<button type="button" onclick="delete_user()" class="btn btn-danger icon-btn borderless">Delete</button>-->
+
+								<!--<button type="button" onclick="export_selected()" class="btn btn-success icon-btn borderless">Export Selected</button>
+							<button type="button" onclick="select_all()" class="btn btn-success icon-btn borderless">Select All</button>
+							<button type="button" onclick="unselect_all()" class="btn btn-success icon-btn borderless">Unselect All</button>
+							<div style="width:50%;float:right;">
+							<label>From : </label>
+							<input type="date" id="from_date">
+							<label>To : </label>
+							<input type="date" id="to_date">
+							<button type="button" onclick="export_date()" class="btn btn-success icon-btn borderless">Export</button>
+						</div>-->
+
+								{{!-- <button type="button" onclick="export_selected()" class="btn btn-success icon-btn borderless">Export Selected</button> --}}
+								<!-- <button type="button" class="btn btn-success icon-btn borderless" data-toggle="modal" data-target="#modals-customer">Add New Customer</button> -->
+
+							</div>
+
+							<div class="card-datatable table-responsive">
+								<table id="user-list" class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th></th>
+											<th>uid</th>
+											<th>Email</th>
+											<th>Full Name</th>
+											<th>Mobile No.</th>
+											<th>Whatsapp No.</th>
+											<th>Total Buy</th>
+											<th>Pincode</th>
+											<th>State</th>
+											<th>City</th>
+											<th>Date</th>
+										</tr>
+									</thead>
+									<!-- <thead>
+										<tr>
+										<tr>
+											<td colspan="10" style="text-align: center;">Total Wallet Balance</td>
+											<td><?php echo $wallet_amount; ?></td>
+										</tr>
+										</tr>
+									</thead> -->
+								</table>
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<div class="modal fade" id="modals-customer">
+						<div class="modal-dialog">
+							<form class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="registermsg">New Customer
+
+									</h5>
+									<button type="button" id="closecustomer" class="close" data-dismiss="modal" aria-label="Close">×</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group col-md-4">
+											<input type="radio" class="" value="User" name="user_type" checked>Normal User(Msp)
+										</div>
+										<div class="form-group col-md-4">
+											<input type="radio" class="" value="Wallet" name="user_type">Wallet User(dp) <!--Wholesaler-->
+										</div>
+										<div class="form-group col-md-4">
+											<input type="radio" class="" value="Reseller" name="user_type">Reseller(Your Price) <!--reseller-->
+										</div>
+
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter First Name">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="text" name="lastName" class="form-control" id="loginLastName" placeholder="Enter Last Name">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="text" name="companyName" class="form-control" id="logincompanyName" placeholder="Enter Company Name" autocomplete="new-password">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="form-label">Select Pincode</label>
+										<input type="text" class="form-control" id="selected_pincode" name="pincode" onchange="get_city_state()" autofocus>
+									</div>
+
+									<div class="form-group">
+										<label class="form-label">State</label>
+										<input type="text" class="form-control" id="selected_state" name="state" disabled>
+									</div>
+
+									<div class="form-group">
+										<label class="form-label">City</label>
+										<input type="text" class="form-control" id="selected_city" name="city" disabled>
+									</div>
+									<script>
+										function get_city_state() {
+											var pincode = $("#selected_pincode").val();
+											//alert(cat_id);
+											$.ajax({
+												type: "POST",
+												data: {
+													pincode: pincode
+												},
+												url: "ajaxfiles/get_state_from_pincode.php",
+												success: function(response) {
+													//alert(response);
+													var obj = JSON.parse(response);
+
+													$("#selected_state").val(obj.state);
+													$("#selected_city").val(obj.city);
+												}
+											});
+										}
+									</script>
+									<div class="form-row">
+										<div class="form-group col">
+
+											<input type="text" name="phonenumber" id="phonenumber" class="form-control  col-12" placeholder="Enter Phone Number" style="float: right;" onkeyup="return isNumber(event)">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="checkbox" id="same_checkbox1" onchange="same_checkbox()"> Same as phone number
+										</div>
+									</div>
+
+									<div class="form-row">
+										<div class="form-group col">
+
+											<input type="text" name="whatsappnumber" id="whatsappnumber" class="form-control  col-12" placeholder="Enter Whatsapp Number" style="float: right;" onkeyup="return isNumber(event)">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="text" class="form-control" id="loginInputEmail1" placeholder="Enter Email Id">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="password" class="form-control" id="loginInputPassword1" placeholder="Enter Password">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="password" class="form-control" id="loginInputPassword1" placeholder="Enter Password">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<label>Address</label>
+											<textarea class="form-control" rows="4" name="address" id="address"></textarea>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col">
+											<input type="text" class="form-control" id="gstdetail" name="gstdetail" placeholder="Enter GST No.">
+											<div class="clearfix"></div>
+										</div>
+									</div>
+
+
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" onclick="chkvalidatereg()" class="btn btn-primary" id="regbtn">Add</button>
+									<button type="button" id="regloading" class="btn btn-primary" style="display:none">Loading...</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- [ content ] End -->
+
+					<!-- [ Layout footer ] Start -->
+					 {{>admin/footer}}
+					<!-- [ Layout footer ] End -->
+
+				</div>
+				<!-- [ Layout content ] Start -->
+
+			</div>
+			<!-- [ Layout container ] End -->
+		</div>
+		<!-- Overlay -->
+		<div class="layout-overlay layout-sidenav-toggle"></div>
+	</div>
+	<!-- [ Layout wrapper] End -->
+
+	<!-- Core scripts -->
+	<script src="/assets/js/pace.js"></script>
+	<script src="/assets/js/jquery-3.2.1.min.js"></script><!-- tables not work in jquery-3.3.1 js -->
+	<script src="/assets/libs/popper/popper.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
+	<script src="/assets/js/sidenav.js"></script>
+	<script src="/assets/js/layout-helpers.js"></script>
+	<script src="/assets/js/material-ripple.js"></script>
+
+	<!-- Libs -->
+	<script src="/assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="/assets/libs/eve/eve.js"></script>
+	<script src="/assets/libs/flot/flot.js"></script>
+	<script src="/assets/libs/flot/curvedLines.js"></script>
+	<script src="/assets/libs/chart-am4/core.js"></script>
+	<script src="/assets/libs/chart-am4/charts.js"></script>
+	<script src="/assets/libs/chart-am4/animated.js"></script>
+	<script src="/assets/libs/raphael/raphael.js"></script>
+	<script src="/assets/libs/morris/morris.js"></script>
+	<script src="/assets/libs/moment/moment.js"></script>
+	<script src="/assets/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+	<script src="/assets/libs/datatables/datatables.js"></script>
+	<script src="/assets/libs/dropzone/dropzone.js"></script>
+	<script src="/assets/libs/bootstrap-select/bootstrap-select.js"></script>
+	<script src="/assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+	<script src="/assets/libs/select2/select2.js"></script>
+	<script src="/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+
+	<!-- Demo -->
+	<script src="/assets/js/demo.js"></script>
+	<script src="/assets/js/analytics.js"></script>
+	<script src="/assets/js/pages/forms_selects.js"></script>
+
+
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<style>
+		.newstyle {
+			margin-right: 5px;
+		}
+	</style>
+	<script>
+		function export_date() {
+			var from_date = $("#from_date").val();
+			var to_date = $("#to_date").val();
+			if (from_date == "" || to_date == "") {
+				alert("Please Select Both From and To date to export");
+			} else {
+				location.href = "export_selected_user_date_wise.php?from_date=" + from_date + "&to_date=" + to_date;
+			}
+		}
+
+		function select_all() {
+			var items = document.getElementsByName('delete_checkbox');
+			for (var i = 0; i < items.length; i++) {
+				if (items[i].type == 'checkbox')
+					items[i].checked = true;
+			}
+
+			//$('input[name="delete_checkbox"]').attr('checked', true);
+
+		}
+
+		function unselect_all() {
+			var items = document.getElementsByName('delete_checkbox');
+			for (var i = 0; i < items.length; i++) {
+				if (items[i].type == 'checkbox')
+					items[i].checked = false;
+			}
+			//$('input[name="delete_checkbox"]').attr('checked', false);
+
+		}
+
+		function export_selected() {
+
+			location.href = "excel_demo/user_list_download_sheet.php";
+
+		}
+
+		function chkapp(user_id) {
+			var appview = "";
+			if ($("#chk" + user_id).prop('checked') == true) {
+				appview = 1;
+			} else {
+				appview = 0
+			}
+			var form_data = new FormData();
+			form_data.append('user_id', user_id);
+			form_data.append('appview', appview);
+			$.ajax({
+
+				type: "POST",
+				data: form_data,
+				dataType: 'text',
+				contentType: false,
+				cache: false,
+				processData: false,
+				url: "ajaxfiles/user_appview_process.php",
+				success: function(response) {
+					if (response == "ok") {
+						location.reload();
+					}
+				}
+
+			});
+		}
+
+		function chkapp1(user_id) {
+			var affiliate = "";
+			if ($("#chk" + user_id).prop('checked') == true) {
+				affiliate = 1;
+			} else {
+				affiliate = 0
+			}
+			var form_data = new FormData();
+			form_data.append('user_id', user_id);
+			form_data.append('affiliate', affiliate);
+			$.ajax({
+
+				type: "POST",
+				data: form_data,
+				dataType: 'text',
+				contentType: false,
+				cache: false,
+				processData: false,
+				url: "ajaxfiles/user_affiliate_process.php",
+				success: function(response) {
+					if (response == "ok") {
+						/* location.reload(); */
+					}
+				}
+
+			});
+		}
+		$(function() {
+
+			$('#user-list').dataTable({
+				"dom": 'Blfrtip',
+				"buttons": [{
+						text: 'Delete',
+						className: 'btn btn-danger icon-btn borderless newstyle',
+						action: function(e, dt, node, config) {
+							delete_user();
+						}
+					},
+
+				],
+				"aLengthMenu": [
+					[10, 25, 50, 100, -1],
+					[10, 25, 50, 100, "All"]
+				],
+				"iDisplayLength": 10,
+				"processing": true,
+				"serverSide": true,
+				"responsive": true,
+				"ordering": false,
+				"stateSave": true,
+				"order": [],
+				"ajax": {
+					"url": "/retail_admin/view_users",
+					"type": "POST"
+				},
+
+				"initComplete": function(settings, json) {
+					$('[data-toggle="popover"]').popover();
+					$("#user-list_length").css("float", "left");
+				}
+
+			});
+
+		});
+
+		function all_user() {
+
+
+			$(".all_user").hide();
+
+			$(".ref_user").show();
+
+			$(".aff_user").show();
+
+
+			$('#user-list').dataTable().fnDestroy();
+
+			$(function() {
+
+				var tot = '<?php echo $totalData ?>';
+
+				$('#user-list').dataTable({
+
+					"dom": 'lfrtip',
+					"buttons": [{
+							text: 'Delete',
+							className: 'btn btn-danger icon-btn borderless newstyle',
+							action: function(e, dt, node, config) {
+								delete_user();
+							}
+						},
+
+					],
+
+					"aLengthMenu": [
+
+						[10, 25, 50, 100],
+
+						[10, 25, 50, 100]
+
+					],
+
+					"processing": true,
+
+					"serverSide": true,
+
+					"responsive": true,
+
+					"ordering": false,
+
+					"stateSave": true,
+
+					"order": [],
+
+					"ajax": {
+
+						"url": "datatables/view_users.php",
+
+						"type": "POST"
+
+					},
+
+					"initComplete": function(settings, json) {
+
+						$('[data-toggle="popover"]').popover();
+
+					}
+
+
+
+				});
+
+			});
+
+		}
+
+		function referel_user() {
+
+			$(".all_user").show();
+
+			$(".aff_user").show();
+
+			$(".ref_user").hide();
+
+			$('#user-list').dataTable().fnDestroy();
+
+			$(function() {
+
+				var tot = '<?php echo $totalData ?>';
+
+				$('#user-list').dataTable({
+
+					"dom": 'lfrtip',
+
+					"aLengthMenu": [
+
+						[10, 25, 50, 100, tot],
+
+						[10, 25, 50, 100, "All"]
+
+					],
+					"buttons": [{
+							text: 'Delete',
+							className: 'btn btn-danger icon-btn borderless newstyle',
+							action: function(e, dt, node, config) {
+								delete_user();
+							}
+						},
+
+					],
+
+					"processing": true,
+
+					"serverSide": true,
+
+					"responsive": true,
+
+					"ordering": false,
+
+					"stateSave": true,
+
+					"order": [],
+
+					"ajax": {
+
+						"url": "datatables/view_users.php?ref=1",
+
+						"type": "POST"
+
+					},
+
+
+
+
+
+					"initComplete": function(settings, json) {
+
+						$('[data-toggle="popover"]').popover();
+
+					}
+
+
+
+				});
+
+			});
+
+		}
+		function affiliate_user() {
+
+			$(".all_user").show();
+
+			$(".ref_user").hide();
+
+			$(".aff_user").hide();
+
+			$('#user-list').dataTable().fnDestroy();
+
+			$(function() {
+
+				var tot = '<?php echo $totalData ?>';
+
+				$('#user-list').dataTable({
+
+					"dom": 'lfrtip',
+
+					"aLengthMenu": [
+
+						[10, 25, 50, 100, tot],
+
+						[10, 25, 50, 100, "All"]
+
+					],
+					"buttons": [{
+							text: 'Delete',
+							className: 'btn btn-danger icon-btn borderless newstyle',
+							action: function(e, dt, node, config) {
+								delete_user();
+							}
+						},
+
+					],
+
+					"processing": true,
+
+					"serverSide": true,
+
+					"responsive": true,
+
+					"ordering": false,
+
+					"stateSave": true,
+
+					"order": [],
+
+					"ajax": {
+
+						"url": "datatables/view_users.php?affi=1",
+
+						"type": "POST"
+
+					},
+
+
+
+
+
+					"initComplete": function(settings, json) {
+
+						$('[data-toggle="popover"]').popover();
+
+					}
+
+
+
+				});
+
+			});
+
+		}
+
+		function open_dicount(uid) {
+			$('#brand-listing-area').html("");
+			$("#user_id").val(uid);
+			$("#user_id_brand").val(uid);
+			var uid = $("#user_id").val();
+
+			$.ajax({
+				type: "POST",
+				data: {
+					uid: uid
+				},
+				url: "ajaxfiles/fetch_all_brand.php",
+				success: function(response) {
+					$('#selected_brand').html(response);
+
+				}
+			});
+		}
+
+		function open_credit(uid, type) {
+			$("#user_id_credit").val(uid);
+			$("#user_id_credit_type").val(type);
+			if (type == "add") {
+				$("#mtype").html("Add");
+			} else {
+				$("#mtype").html("Deduct");
+			}
+		}
+
+		function open_noti(uid) {
+			$("#user_id_noti").val(uid);
+		}
+
+		function add_brand_list() {
+
+			var brand_id = $("#selected_brand").val();
+			var user_id = $("#user_id_brand").val();
+			var brand_id_values = $("input[name='brand_id_array[]']").map(function() {
+				return $(this).val();
+			}).get();
+
+			arrayDiff(brand_id, brand_id_values);
+
+			console.log(user_id);
+			$.ajax({
+				type: "POST",
+				data: {
+					brand_id: brand_id,
+					user_id: user_id,
+					brand_id_values: brand_id_values
+				},
+				url: "ajaxfiles/fetch_brand_list.php",
+				success: function(response) {
+					$('#brand-listing-area').append(response);
+					$("#user_id_brand").val(user_id);
+
+				}
+			});
+
+		}
+
+		function arrayDiff(array1, array2) {
+			var newItems = [];
+			jQuery.grep(array2, function(i) {
+				if (jQuery.inArray(i, array1) == -1) {
+					newItems.push(i);
+				}
+			});
+			$("#rm_brand_" + newItems).html("");
+		}
+	</script>
+	<div class="modal fade" id="modals-discount">
+		<div class="modal-dialog">
+			<form class="modal-content" method="POST" action="ajaxfiles/add_discount_user.php">
+				<div class="modal-header">
+					<h5 class="modal-title">Add Discount</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-row">
+
+						<div class="form-group col">
+							<label class="form-label">Select Brand</label>
+							<select class="select2-demo form-control" multiple style="width: 100%" id="selected_brand" onchange="add_brand_list()">
+								<option value="">Select Brand</option>
+								<?php
+								$sql_dealer_master = $conn->query("select * from brand_master order by brand_name asc");
+								while ($fetch_dealer_master = mysqli_fetch_assoc($sql_dealer_master)) {
+								?>
+									<option value="<?php echo $fetch_dealer_master['brand_id']; ?>"><?php echo $fetch_dealer_master['brand_name']; ?></option>
+								<?php } ?>
+							</select>
+							<input type="hidden" id="user_id_brand" name="user_id_brand" value="">
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div id="brand-listing-area">
+						<!--<div class="form-row" >
+															<div class="form-group col">
+																<label class="form-label col-4" style="max-width:32.333333%">Brand Name</label>
+																<input type="text" class="col-4" style="max-width:32.333333%" id="" placeholder="Percentage">
+																<input type="text" class=" col-4" style="max-width:32.333333%" id="" placeholder="Rupees">
+															</div>
+														</div>-->
+					</div>
+					<div class="form-row" id="errorbox1" style="display:none;">
+
+						<div class="form-group col">
+							<label class="form-label" id="error1" style="color:red;"></label>
+
+						</div>
+					</div>
+					<!--<input type="hidden" id="order_pm_id">-->
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal fade" id="modals-credit">
+		<div class="modal-dialog">
+			<form class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Money Transaction</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+				</div>
+				<div class="modal-body">
+
+					<input type="hidden" id="user_id_credit">
+					<input type="hidden" id="user_id_credit_type">
+					<div class="form-row">
+
+						<div class="form-group col">
+							<label class="form-label">Select Point Type</label>
+							<select  class="form-control" id="point_type">
+								<option value="gift">Gift Point</option>
+								<option value="wallet">Wallet Point</option>
+							</select>
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="form-row">
+
+						<div class="form-group col">
+							<label class="form-label">Enter Points</label>
+							<input type="number" class="form-control" id="credit">
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="form-row">
+
+						<div class="form-group col">
+							<label class="form-label">Enter Remarks</label>
+							<textarea class="form-control" rows="3" id="money_remark"></textarea>
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="form-row" id="errorbox" style="display:none;">
+
+						<div class="form-group col">
+							<label class="form-label" id="error" style="color:red;"></label>
+
+						</div>
+					</div>
+					<!--<input type="hidden" id="order_pm_id">-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" onclick="add_credit()" class="btn btn-primary" id="mtype">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal fade" id="modals-noti">
+		<div class="modal-dialog">
+			<form class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Add Notification</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+				</div>
+				<div class="modal-body">
+
+					<input type="hidden" id="user_id_noti">
+					<div class="form-group">
+						<label class="form-label">Select Image</label>
+						<input type="file" name="image_file" accept="image/*" class="form-control" onchange="readURL(this,1);" id="image_file">
+						<img id="blah1" src="http://via.placeholder.com/1168x456" style="max-width:200px;max-height:200px;margin: auto;padding: 10px;">
+					</div>
+					<script>
+						function readURL(input, id) {
+							if (input.files && input.files[0]) {
+								var reader = new FileReader();
+
+								reader.onload = function(e) {
+									$('#blah' + id)
+										.attr('src', e.target.result);
+								};
+
+								reader.readAsDataURL(input.files[0]);
+							}
+						}
+					</script>
+					<div class="form-group">
+						<label class="form-label">Title</label>
+						<input type="text" class="form-control" id="title" autofocus>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Description</label>
+						<textarea id="description" class="form-control"></textarea>
+						<small class="form-text text-muted" id="error" style="display:none;color:red !important;"></small>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" onclick="add_noti()" class="btn btn-primary">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+	<!--<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>-->
+
+	<script>
+		// function add_discount(){
+
+		// var brand_id_array = $("#brand_id_array").val();
+		// var total = $("#total").val();
+		// console.log(total);
+		// console.log(brand_id_array);
+
+
+		// var user_id = $("#user_id").val();
+
+		// $.ajax({
+		// type: "POST",
+		// data:{user_id:user_id,selected_brand:selected_brand,amount:amount,selected_type:selected_type},
+		// url: "ajaxfiles/add_discount_user.php",
+		// success: function(response){
+
+		// if(response == "ok"){
+		// location.reload();
+		// }
+		// else
+		// {
+		// $("#error").html(response);
+		// $("#errorbox").css("display","block");
+		// setTimeout(function(){ $("#error").html("");
+		// $("#errorbox").css("display","none");}, 3000);
+		// }
+		// }
+		// });
+
+
+		//}
+		function add_noti() {
+
+			var title = $("#title").val();
+			var description = $("#description").val();
+			var user_id = $("#user_id_noti").val();
+			var image_file = $('#image_file').prop('files')[0];
+
+			var form_data = new FormData();
+			form_data.append('title', title);
+			form_data.append('description', description);
+			form_data.append('image_file', image_file);
+			form_data.append('user_id', user_id);
+
+			if (title == "") {
+				$("#error").html("Enter Title");
+				$("#error").show();
+			} else if (description == "") {
+				$("#error").html("Enter Description");
+				$("#error").show();
+			}
+			/*else if(image_file == "" || image_file == undefined){
+							$("#error").html("Select Image");
+							$("#error").show();
+						}*/
+			else {
+				$("#error").hide();
+				$("#add_cat").attr("disabled", "disabled");
+
+				$.ajax({
+
+					type: "POST",
+					data: form_data,
+					contentType: false,
+					cache: false,
+					processData: false,
+					url: "ajaxfiles/notification_add_process.php",
+					success: function(response) {
+						//console.log(response);
+						if (response == "ok") {
+							location.reload();
+						}
+
+					}
+
+				});
+				/*$.ajax({
+
+					type: "POST",
+					url: "ajaxfiles/category_add_process.php",
+					data: {type_id:type_id,cat_name:cat_name,cat_meta_title:cat_meta_title,cat_meta_keyword:cat_meta_keyword,cat_meta_desc:cat_meta_desc,cat_sort:cat_sort},
+					success: function(response){
+						if(response == "ok"){
+							location.reload();
+						}
+					}
+
+				});*/
+			}
+		}
+
+		function add_credit() {
+
+
+			var amount = $("#credit").val();
+			var money_remark = $("#money_remark").val();
+			var point_type = $("#point_type").val();
+			console.log("amount=" + amount);
+			var user_id = $("#user_id_credit").val();
+			var moneytype = $("#user_id_credit_type").val();
+			if (amount == "") {
+				$("#error").html("Insert Amount");
+				$("#errorbox").css("display", "block");
+				setTimeout(function() {
+					$("#error").html("");
+					$("#errorbox").css("display", "none");
+				}, 3000);
+			} else {
+				$.ajax({
+					type: "POST",
+					data: {
+						user_id: user_id,
+						amount: amount,
+						moneytype: moneytype,
+						point_type: point_type,
+						money_remark: money_remark
+					},
+					url: "ajaxfiles/add_credit_user.php",
+					success: function(response) {
+						//alert(response);
+						if (response == "ok") {
+							location.reload();
+							//alert(response);
+						} else {
+							$("#error").html(response);
+							$("#errorbox").css("display", "block");
+							setTimeout(function() {
+								$("#error").html("");
+								$("#errorbox").css("display", "none");
+							}, 3000);
+						}
+					}
+				});
+			}
+
+		}
+
+		function delete_user() {
+			var delete_id = [];
+			$.each($("input[name='delete_checkbox']:checked"), function() {
+				delete_id.push($(this).val());
+			});
+			//alert("Id to Delete are: " + delete_id.join(", "));
+			if (delete_id == "") {
+				alert("Please Select a User to Delete");
+			} else {
+
+				if (confirm('Are You Sure You Want To Delete?')) {
+					$.ajax({
+						type: "POST",
+						url: "user_delete.php?id=" + delete_id,
+						success: function(response) {
+							if (response == "error") {
+								alert("You cannot delete user who has placed orders!");
+							} else if (response == "ok") {
+								location.reload();
+							}
+						}
+					});
+					//alert(delete_id);
+
+				}
+
+			}
+		}
+
+		function chkvalidatereg() {
+			$("#regbtn").hide();
+			$("#regloading").show();
+			var user_type = $("input[type='radio'][name='user_type']:checked").val();
+			var fname = $("#loginInputName").val();
+			var lname = $("#loginLastName").val();
+			var logincompanyName = $("#logincompanyName").val();
+			var phonenumber = $("#phonenumber").val();
+			var pincode = $("#selected_pincode").val();
+			var state = $("#selected_state").val();
+			var city = $("#selected_city").val();
+			var countrycode = $("#countrycode").val();
+			var countrycode1 = $("#countrycode1").val();
+			var whatsappnumber = $("#whatsappnumber").val();
+			var loginInputEmail = $("#loginInputEmail1").val();
+			var loginInputPassword = $("#loginInputPassword1").val();
+			var address = $("#address").val();
+			var gstdetail = $("#gstdetail").val();
+			console.log(address);
+			console.log('2' + gstdetail);
+			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+			if (fname == "") {
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#loginInputName").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter First Name");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			}
+			/* else if(lname=="")
+			{
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#loginLastName").focus();
+				$("#registermsg").css("color","red");
+				$("#registermsg").html("Enter Last Name");
+				setTimeout(function(){ $("#registermsg").html('New Customer');
+					$("#registermsg").css("color","black");}, 3000);
+			} */
+			else if (phonenumber == "") {
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#phonenumber").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter Phone Number");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			}
+			/* else if(phonenumber.length!="10" && countrycode=="+91")
+			{
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#phonenumber").focus();
+				$("#registermsg").css("color","red");
+				$("#registermsg").html("phone No must be 10 degit");
+				setTimeout(function(){ $("#registermsg").html('New Customer');
+					$("#registermsg").css("color","black");}, 3000);
+			} */
+			else if (whatsappnumber == "") {
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#whatsappnumber").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter Whatsapp Number");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			}
+			/* else if(whatsappnumber.length!="10" && countrycode1=="+91")
+			{
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#whatsappnumber").focus();
+				$("#registermsg").css("color","red");
+				$("#registermsg").html("Whatsapp No must be 10 degit");
+				setTimeout(function(){ $("#registermsg").html('New Customer');
+				$("#registermsg").css("color","black");}, 3000);
+			} */
+			else if (loginInputEmail == "") {
+
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#loginInputEmail1").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter Emailid");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			} else if (reg.test(loginInputEmail) == false) {
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#loginInputEmail1").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter proper email Id");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			} else if (loginInputPassword == "") {
+				$("#regbtn").show();
+				$("#regloading").hide();
+				$("#loginInputPassword").focus();
+				$("#registermsg").css("color", "red");
+				$("#registermsg").html("Enter Password");
+				setTimeout(function() {
+					$("#registermsg").html('New Customer');
+					$("#registermsg").css("color", "black");
+				}, 3000);
+			} else {
+				var Type = "sign_with_email";
+				$.ajax({
+					type: "POST",
+					dataType: "JSON",
+					url: "ajaxfiles/account.php",
+					data: {
+						Type: Type,
+						Email: loginInputEmail,
+						Country_code: countrycode,
+						Password: loginInputPassword,
+						Firstname: fname,
+						Lastname: lname,
+						Phone: phonenumber,
+						pincode: pincode,
+						state: state,
+						city: city,
+						Whatsno: whatsappnumber,
+						Country_code1: countrycode1,
+						Company_name: logincompanyName,
+						user_type: user_type,
+						address: address,
+						gstdetail: gstdetail
+					},
+					success: function(data) {
+						if (data.flag == "0") {
+							$("#registermsg").css("color", "red");
+							$("#registermsg").html(data.message);
+							setTimeout(function() {
+								$("#registermsg").html('New Customer');
+								$("#registermsg").css("color", "black");
+							}, 3000);
+						} else {
+							var fname = $("#loginInputName").val("");
+							var lname = $("#loginLastName").val("");
+							var logincompanyName = $("#logincompanyName").val("");
+							var phonenumber = $("#phonenumber").val("");
+							var countrycode = $("#countrycode").val("");
+							var countrycode1 = $("#countrycode1").val("");
+							var whatsappnumber = $("#whatsappnumber").val("");
+							var loginInputEmail = $("#loginInputEmail1").val("");
+
+							var loginInputPassword = $("#loginInputPassword1").val("");
+							$("#closecustomer").click();
+						}
+						$("#regbtn").show();
+						$("#regloading").hide();
+					}
+				});
+
+			}
+		}
+
+		function same_checkbox() {
+			if ($("#same_checkbox1").prop('checked') == true) {
+				//var address_country = $("#address_country").val();
+				//var countrycode = $("#countrycode").val();
+				var phonenumber = $("#phonenumber").val();
+				//alert(address_country);
+				//$("#address_country1").val(address_country);
+				//$("#countrycode1").val(countrycode);
+				$("#whatsappnumber").val(phonenumber);
+
+			} else {
+				//$("#address_country1").val("47");
+				//$("#countrycode1").val("+91");
+				$("#whatsappnumber").val("");
+			}
+
+		}
+
+		function isNumber(evt) {
+			evt = (evt) ? evt : window.event;
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+</body>
+
+
+</html>

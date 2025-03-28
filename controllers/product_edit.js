@@ -43,10 +43,6 @@ const getproductpage = async (req, res) => {
 
         const typeIds = sql_relation_cat.map(doc => doc.type_id);
 
-        /*   sql_relation_cat.forEach(doc => {
-              doc.typeIds = type_id
-          }); */
-
         const sql_relation_subcat = await relationMaster.find({ product_id: productId, type: 'subcat' })
         const subtypeIds = sql_relation_subcat.map(doc => doc.type_id);
         // console.log("subtypeIds",subtypeIds);

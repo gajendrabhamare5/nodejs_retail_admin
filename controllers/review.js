@@ -1,12 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const mongoose = require('mongoose');
 
 const Product = require("../models/product");
 const Review = require("../models/review");
 
 const getadminreview = async (req, res) => {
     const sql_data = await Product.find();
+
     const sql_data_review = await Review.find();
 
     let num = 0;
@@ -127,7 +129,7 @@ const addadminreview = async (req, res) => {
                 });
 
                 const savedReview = await review.save();
-                console.log("savedReview=", savedReview);
+                /* console.log("savedReview=", savedReview); */
 
                 res.send({ status: 'ok', message: 'Inserted successfully' });
             } catch (err) {
@@ -215,14 +217,26 @@ const updatereview = async (req, res) => {
 }
 
 const deletereview = async (req,res)=>{
-    const reviewid = req.params.id;
-    console.log("id",reviewid);
-    if (!reviewid) {
+    const reviewid = req.params.id.split(",");
+    let objectIds = reviewid.map(id => new mongoose.Types.ObjectId(id.trim()));
+
+
+   /*  if (!reviewid) {
         res.send('error')
     } else {
         const result = await Review.deleteOne({ _id: reviewid });
         res.send('ok');
-    }
+    } */
+
+        const result = await Review.deleteMany({ _id: { $in: objectIds } });
+
+        if (result.deletedCount > 0) {
+            res.send('ok');
+        } else {
+            res.send('error')
+        }
+
+
 }
 
 module.exports = {

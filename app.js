@@ -36,7 +36,7 @@ const hbs = exphbs.create({
         { dir: path.join(__dirname, 'views/retail_admin/partials'), namespace: 'admin' }
     ],
     helpers: {
-        lte: (a, b) => a <= b,
+        lte: (a, b) => a <= b, 
         lt : (a, b) => a < b,
         intval: (value) => parseInt(value, 10),
         add: (a, b) => a + b,
