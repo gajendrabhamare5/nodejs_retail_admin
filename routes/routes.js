@@ -232,6 +232,7 @@ router.post('/retail_admin/dealer_delete/:id', Controllerdealer.deletedealer)
 router.get('/retail_admin/users_list',Controlleruserlist.getadminuserlist)
 router.post('/retail_admin/view_users',Controlleruserlist.getadminuserslist)
 router.get('/retail_admin/user_edit/:id', Controlleruserlist.userEditInfo)
+router.post('/retail_admin/update_user_general', Controlleruserlist.userUpdateInfo)
 
 router.get('/retail_admin/order_list', Controllerorderretail.getorderlist)
 

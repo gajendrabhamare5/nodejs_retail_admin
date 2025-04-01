@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 
 const usermasterRelationSchema = new mongoose.Schema ({
+    user_id: {
+        type:String,
+    },
     guest_id : {
         type:String,
     },

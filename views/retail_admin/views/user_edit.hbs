@@ -94,8 +94,10 @@
 									</span>
 									<div class="card-body">
 										<div class="form-row">
+
 											<div class="form-group col-md-4">
-												<input type="radio" class="" value="retail" name="user_type" <?php if($user_type=="retail"){ echo "checked";} ?>>Normal User
+												<input type="radio" class="" value="retail" name="user_type" {{#if
+                                                        (eq sql_user.user_type 'retail' )}}Checked{{/if}}>Normal User
 											</div>
 											<!-- <div class="form-group col-md-4">
 												<input type="radio" class="" value="reseller" name="user_type" <?php if($user_type=="reseller"){ echo "checked";} ?>>Reseller User
@@ -107,18 +109,20 @@
 											</div> -->
 											<!--reseller-->
 										<br>
+
 											<div class="form-group col-md-6">
 												<label class="form-label">First Name</label>
-												<input type="text" class="form-control" name="fname" id="fname" value="user_fname">
+												<input type="text" class="form-control" name="fname" id="fname" value="{{sql_user.user_fname}}">
 											</div>
+
 											<div class="form-group col-md-6">
 												<label class="form-label">Last Name</label>
-												<input type="text" class="form-control" name="lname" id="lname" value="user_lname">
+												<input type="text" class="form-control" name="lname" id="lname" value="{{sql_user.user_lname}}">
 											</div>
 
 										<div class="form-group col-md-6">
 												<label class="form-label">Email ID</label>
-												<input type="text" class="form-control" name="cust_email" id="cust_email" value="Email">
+												<input type="text" class="form-control" name="cust_email" id="cust_email" value="{{sql_user.Email}}">
 											</div>
 										<div class="form-group col-md-6">
 
@@ -132,7 +136,7 @@
 												<?php }?>
 												</select>
 												<input type="text" class="form-control col-md-2" style="float:left;margin-bottom:1rem;" id="get_country_code" name="get_country_code" value="<?php echo "+".trim($country_code); ?>" readonly>-->
-												<input type="number" class="form-control" name="phone" id="phone" value="Phone" readonly>
+												<input type="number" class="form-control" name="phone" id="phone" value="{{sql_user.Email}}" readonly>
 											</div>
 											<div class="form-group col-md-6">
 
@@ -146,25 +150,25 @@
 												<?php }?>
 												</select>
 												<input type="text" class="form-control col-md-2" style="float:left;" name="get_country_code1" id="get_country_code1" value="<?php echo "+".trim($country_code1); ?>" readonly>-->
-												<input type="number" class="form-control" name="whatsapp" id="whatsapp" value="Whatsno">
+												<input type="number" class="form-control" name="whatsapp" id="whatsapp" value="{{sql_user.Whatsno}}">
 											</div>
 											<div class="form-group col-md-6">
 												<label class="form-label">Company Name</label>
-												<input type="text" class="form-control" name="company_name" id="company_name" value="Company_name">
+												<input type="text" class="form-control" name="company_name" id="company_name" value="{{sql_user.Company_name}}">
 											</div>
 											<div class="form-group">
 									<label class="form-label">Select Pincode</label>
-									<input type="text" class="form-control" id="selected_pincode" name="pincode"  onchange="get_city_state()" value="pincode" autofocus>
+									<input type="text" class="form-control" id="selected_pincode" name="pincode"  onchange="get_city_state()" value="{{sql_user.pincode}}" autofocus>
 								</div>
 
 								<div class="form-group">
 									<label class="form-label">State</label>
-									<input type="text" class="form-control" id="selected_state" name="state" value="state" disabled>
+									<input type="text" class="form-control" id="selected_state" name="state" value="{{sql_user.state}}" disabled>
 								</div>
 
 								<div class="form-group">
 									<label class="form-label">City</label>
-									<input type="text" class="form-control" id="selected_city" value="city" name="city" disabled>
+									<input type="text" class="form-control" id="selected_city" value="city" name="{{sql_user.city}}" disabled>
 								</div>
 								<script>
 									function get_city_state(){
@@ -186,15 +190,16 @@
 								</script>
 										<div class="form-group col-md-6">
 												<label class="form-label">GST number</label>
-												<input type="text" class="form-control" name="gst_number" id="gst_number" value="gstNumber">
+												<input type="text" class="form-control" name="gst_number" id="gst_number" value="{{sql_user.gstNumber}}">
 											</div>
 										<div class="form-group col-md-12">
 											<label>Address</label>
-											<textarea class="form-control" rows="4" name="cust_address" id="cust_address">bill_to</textarea>
+											<textarea class="form-control" rows="4" name="cust_address" id="cust_address">{{sql_user.bill_to}}</textarea>
 
 										</div>
+
 									</div>
-									<button class="btn btn-success" onclick="update(<?php echo $fetch['user_id']; ?>)">Update</button>
+									<button class="btn btn-success" onclick="update('{{sql_user._id}}')">Update</button>
 								</div>
 							</div>
 							</div>
@@ -208,7 +213,7 @@
 										<div class="col-md-12" style="float:left;">
 											<div class="form-group">
 												<label class="form-label">Email</label>
-												<input type="email" class="form-control" value="Email" readonly>
+												<input type="email" class="form-control" value="{{sql_user.Email}}" readonly>
 											</div>
 											<div class="form-group">
 												<label class="form-label">Password</label>
@@ -216,7 +221,7 @@
 											</div>
 										</div>
 									</div>
-									<button class="btn btn-success" onclick="change_password(<?php echo $fetch['user_id']; ?>)">Change Password</button>
+									<button class="btn btn-success" onclick="change_password('{{sql_user._id}}')">Change Password</button>
 								</div>
 							</div>
                         </div>
@@ -298,6 +303,7 @@
 
 		function update(user_id){
 			var fname = $("#fname").val();
+
 			var user_type = $("input[type='radio'][name='user_type']:checked").val();
 			var lname = $("#lname").val();
 			var company_name = $("#company_name").val();
@@ -315,7 +321,7 @@
 			$.ajax({
 				type: "POST",
 				data: {user_id:user_id,fname:fname,lname:lname,company_name:company_name,get_country_code:get_country_code,phone:phone,pincode:pincode,state:state,city:city,get_country_code1:get_country_code1,whatsapp:whatsapp,user_type:user_type,cust_address:cust_address,gst_number:gst_number,cust_email:cust_email},
-				url: "ajaxfiles/update_user_general.php",
+				url: "/retail_admin/update_user_general",
 				success: function(response){
 					if(response == "ok"){
 						location.reload();
