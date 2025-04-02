@@ -20,6 +20,7 @@ const Controllerlogin = require('../controllers/login.js');
 const Controllersignup = require('../controllers/signup.js');
 const Controlleraccount = require('../controllers/account.js');
 const Controlleraddcart = require('../controllers/cart.js');
+
 const Controllercheckmail = require('../controllers/checkmail.js');
 const Controllersubscribe = require('../controllers/subscribe.js');
 const Controllerheader = require('../controllers/headerweb.js');
@@ -68,6 +69,7 @@ router.post('/checkout', Controllercheckout.getcheckoutInfo);
 router.post('/insert_address_data', Controllercheckout.insertdataaddress);
 router.post('/store_value', Controllercheckout.storevalue);
 router.get('/wishlist', Controllerwishlist.getwishlistInfo);
+router.post('/add_wishlist_new', Controllerwishlist.addwishlistpro);
 router.get('/aboutus', Controllerabout.getaboutInfo);
 router.post('/track-order', Controllertrackorder.gettrackorderInfo);
 router.post('/place_order', Controllerplaceorder.placeorder);
@@ -93,6 +95,7 @@ router.post('/add_to_cart', Controlleraddcart.addtocart);
 router.post('/update_to_cart', Controlleraddcart.updatetocart);
 router.post('/view_cart_scheme', Controlleraddcart.viewcartscheme);
 router.get('/cart', Controlleraddcart.viewcart);
+
 router.post('/get_shipping', Controllershippingcheck.getshipping);
 // router.get('/portfolio/:id', Controllerportfolio.getportfolio);
 //  router.post('/portfolio', Controller.updateportfolio)

@@ -14,7 +14,7 @@ function product_design(product) {
 			<div class="grid-product__tag grid-product__tag--custom" style="right: 0px;background: #fff;border-radius: 100%; padding: 5px;text-align: center;line-height: 0px; height: 30px;width: 30px; vertical-align: middle;">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?display=swap">
 
-					<a href="javascript:void(0);" onClick="wishlist(<?php echo $fetch_data['product_id']; ?>)" class="tt-btn-wishlist iconheart" style="top:35px;" id="id<?php echo $product_id ?>">
+					<a href="javascript:void(0);" onClick="wishlist('${product._id}')" class="tt-btn-wishlist iconheart" style="top:35px;" id="id${product._id}">
 								<i class='fa fa-heart-o' style='font-size:17px;color:#dc1f26 !important;'></i>
 					</a>
 
@@ -27,7 +27,7 @@ function product_design(product) {
                     }
 				</style>
 
-<a href="javascript:void(0)" onclick="addtocart(<?php echo $product_id; ?>,'add')"  class="mobilecart" style="display: none;
+<a href="javascript:void(0)" onclick="addtocart('${product._id}','add')"  class="mobilecart" style="display: none;
     position: absolute;
     top: 38px;
     left: 0px;

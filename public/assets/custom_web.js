@@ -941,6 +941,8 @@ function subscribe() {
 }
 function wishlist(id, type = null) {
     var product_id = id;
+    console.log("product id",product_id);
+
     var add_type = '';
     if (type != null) {
         var add_type = "addtocart";
@@ -972,7 +974,7 @@ function wishlist(id, type = null) {
 }
 function delete_wishlist(product_id) {
     $.ajax({
-        url: "/add_wishlist_new.php",
+        url: "http://localhost:4000/add_wishlist_new",
         type: "POST",
         dataType: "json",
         data: {
@@ -994,7 +996,7 @@ function delete_wishlist(product_id) {
 }
 function countwish() {
     $.ajax({
-        url: baseurl + "add_wishlist_new.php",
+        url: "http://localhost:4000/add_wishlist_new",
         type: "POST",
         dataType: "json",
         data: {

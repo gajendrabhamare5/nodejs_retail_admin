@@ -33,7 +33,7 @@ const addtocart = async (req, res) => {
                 Size: { $regex: new RegExp(`^${Size.toLowerCase()}$`, 'i') },
                 cartType: Cart_type
             });
-            // console.log("cartData",cartData);
+             console.log("cartData",cartData);
 
             let oldqty = 0;
             if (cartData && cartData.length > 0) {
