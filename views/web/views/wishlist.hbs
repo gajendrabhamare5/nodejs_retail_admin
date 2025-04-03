@@ -158,9 +158,13 @@
                                         <li data-hulkdeleteallitmes="" style="display: none;"><a href="javascript:void(0)">Delete</a></li>
                                     </ul>
                                     <div class="wishlist-list-view" data-hulklistviewcontainer="" style="display: none;"></div>
-
-                                    <p id="empty_wishlist" style="color: #666;font-size: 25px;display: flex;align-items: center;justify-content: center;font-weight: 700;">
-
+                                            {{#if products.length}}
+                                            {{#each products}}
+													{{{product_design this}}}
+												{{/each}}
+                                                {{else}}
+                                    <p id="empty_wishlist" style="color: #666;font-size: 25px;display: flex;align-items: center;justify-content: center;font-weight: 700;"> Your wishlist is empty!  </p>
+                                            {{/if}}
                                     <div class="wishlist-empty" data-hulkemptywishlist="" style="display: none">
                                         <div class="empty_content" style="text-align: center">
                                             <h3>Please add product to your wishlist to see them here.</h3>

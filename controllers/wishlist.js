@@ -3,23 +3,20 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const Wishlist = require("../models/wishlist");
-const product = require("../models/product.js")
+const Product = require("../models/product.js")
 
 const getwishlistInfo = async (req, res) => {
+    var userId = 22;
     const wishlistItems = await Wishlist.find({ user_id: userId, wishlist_type: 'catalog' });
-
+    
     if (wishlistItems.length > 0) {
         const productIds = wishlistItems.map(item => item.product_id);
+        const products = await Product.find({ _id: { $in: productIds } });
 
-        // Fetch corresponding products from the product_master collection
-        const products = await Product.find({ product_id: { $in: productIds } });
-
-        // Loop through the products and call product_design function
-        products.forEach(product => {
-            product_design(product, 'wishlist'); // Modify as needed
-        });
+        return res.render('web/views/wishlist', { products });
     }
-    res.render("web/views/wishlist")
+    res.render('web/views/wishlist', { products: [] });
+
 }
 
 const addwishlistpro = async (req,res) => {

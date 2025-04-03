@@ -308,12 +308,15 @@ function onplusmin(type, cart_id) {
 function viewcart() {
 
     location.href = 'http://localhost:4000/cart';
-    return false;
+    //return false;
     $(".comman").hide();
     $(".cartsproducts").addClass("load-more-overlay loading");
     var carttype = "";
     var type = "view_cart";
     $.ajax({
+
+
+        
         type: "POST",
         url: baseurl + "ajaxfiles/add_to_cart.php",
         dataType: "JSON",
